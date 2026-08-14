@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kai | 護理生活 & 理財投資筆記 🩺💰</title>
+    
+    <!-- SEO Standard Meta Tags (P1 Item) -->
+    <meta name="description" content="國北護畢業 ｜ 31歲臨床護理9年 🏥 ｜ 113&114年薪百萬達成 🌟 記錄護理日常、衛教筆記、理財投資與 2030 Model Y 圓夢計畫">
+    <meta name="keywords" content="Kai, 護理師, 公職護理師, N4護理師, 國北護, 年薪百萬, Model Y, 理財投資, 護理日常, 衛教筆記">
+    <meta name="author" content="Kai">
+    <link rel="canonical" href="https://kainursinglife.com/">
+    <link rel="icon" href="https://res.cloudinary.com/p6esflub/image/upload/v1786270726/11_skvgrb.png" type="image/png">
+
+    <!-- Open Graph Meta Tags for Social Sharing (P1 Item) -->
+    <meta property="og:title" content="Kai | 護理生活 & 理財投資筆記 🩺💰">
+    <meta property="og:description" content="國北護畢業 ｜ 31歲臨床護理9年 🏥 ｜ 113&114年薪百萬達成 🌟 記錄護理日常、衛教筆記、理財投資與 2030 Model Y 圓夢計畫">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kainursinglife.com/">
+    <meta property="og:image" content="https://res.cloudinary.com/p6esflub/image/upload/v1786270901/15_ub1o2u.png">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:site_name" content="Kai 護理生活 & 理財投資">
+
+    <!-- Twitter Card Meta Tags (P1 Item) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kai | 護理生活 & 理財投資筆記 🩺💰">
+    <meta name="twitter:description" content="國北護畢業 ｜ 31歲臨床護理9年 🏥 ｜ 記錄護理日常、衛教筆記與理財投資">
+    <meta name="twitter:image" content="https://res.cloudinary.com/p6esflub/image/upload/v1786270901/15_ub1o2u.png">
+
+    <!-- JSON-LD Structured Data for Person & Blog (P1 Item) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Kai",
+      "jobTitle": "公職護理師 / 臨床教師 / 衛教創作者",
+      "alumniOf": "國立臺北護理健康大學",
+      "url": "https://kainursinglife.com/",
+      "sameAs": [
+        "https://www.instagram.com/kai.nursing_life"
+      ]
+    }
+    </script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Firebase (CDN 版本) — 初始化邏輯已搬移至 js/firebase.js -->
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        teal: {
+                            50: '#f6f4ee',
+                            100: '#ece6d8',
+                            200: '#d9cdae',
+                            300: '#c2b184',
+                            400: '#a89268',
+                            500: '#8a7452',
+                            600: '#6f5c40',
+                            700: '#574836',
+                            800: '#423628',
+                            900: '#2e251b',
+                            950: '#1c160f',
+                        },
+                        amber: {
+                            50: '#faf5ec',
+                            100: '#f2e4c9',
+                            200: '#e3c896',
+                            300: '#d1a868',
+                            400: '#c08f4a',
+                            500: '#a97638',
+                            600: '#8f6129',
+                            700: '#714c20',
+                            800: '#563a19',
+                            900: '#3c2812',
+                            950: '#241608',
+                        },
+                        slate: {
+                            50: '#faf9f7',
+                            100: '#f2efe9',
+                            200: '#e7e2d9',
+                            300: '#d3ccbe',
+                            400: '#b3a894',
+                            500: '#8f8371',
+                            600: '#6b6153',
+                            700: '#554d42',
+                            800: '#3d3730',
+                            900: '#2b2622',
+                            950: '#1a1714',
+                        },
+                        warmbg: {
+                            light: '#faf8f4',
+                            cardLight: '#fffdfa',
+                            dark: '#23201c',
+                            cardDark: '#322d27'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', '"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-warmbg-light dark:bg-warmbg-dark text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- 1. 頂部防詐與信譽宣言標章 (Trust Banner) -->
+    <div class="bg-teal-700 dark:bg-teal-900 text-white text-xs md:text-sm py-2 px-4 text-center font-medium shadow-inner flex flex-wrap items-center justify-center gap-2 md:gap-6">
+        <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-amber-300"></i> 📌 唯一官方帳號：<a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="underline hover:text-amber-200">@kai.nursing_life</a></span>
+        <span class="hidden sm:inline">|</span>
+        <span class="flex items-center gap-1.5"><i class="fa-solid fa-ban text-red-300"></i> 🚫 無群組・不推銷・不飆股私訊</span>
+        <span class="hidden md:inline">|</span>
+        <span class="hidden md:flex items-center gap-1.5"><i class="fa-solid fa-notes-medical text-teal-200"></i> 純粹護理日常 & 理財經驗紀錄</span>
+    </div>
+
+    <!-- 2. 導覽列 Navbar -->
+    <nav class="sticky top-0 z-40 glass-effect border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div id="brandLogoWrap" class="w-10 h-10 rounded-full bg-gradient-to-tr from-teal-500 to-amber-500 p-0.5 shadow-md group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-white dark:bg-slate-900 rounded-full flex items-center justify-center overflow-hidden">
+                        <i class="fa-solid fa-stethoscope text-teal-600 dark:text-teal-400 text-lg"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-teal-700 to-amber-600 dark:from-teal-400 dark:to-amber-400 bg-clip-text text-transparent">Kai 護理 & 理財</span>
+                    <span class="block text-[10px] text-slate-500 dark:text-slate-400 font-medium">@kai.nursing_life</span>
+                </div>
+            </a>
+
+            <!-- Right Controls -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button id="addPostBtn" onclick="openAddPostModal()" class="hidden px-3 py-1.5 rounded-full text-xs font-semibold bg-teal-600 hover:bg-teal-700 text-white transition-colors items-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                    <span class="hidden sm:inline">匯入/新增</span>貼文
+                </button>
+
+                <button id="logoutBtn" onclick="handleAdminLogout()" class="hidden px-2.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors items-center gap-1.5" title="登出管理員身分">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
+
+                <button onclick="openCalcModal()" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-900/60 transition-colors flex items-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-calculator text-amber-600 dark:text-amber-400"></i>
+                    <span class="hidden sm:inline">夜班/存股</span>試算器
+                </button>
+
+                <button onclick="openAboutModal()" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-user text-teal-600 dark:text-teal-400"></i>
+                    關於 Kai
+                </button>
+
+                <button id="themeToggle" aria-label="切換深淺模式" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3. Header 個人形象看板 (Profile Header) -->
+    <header class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+        <div class="bg-white dark:bg-warmbg-cardDark rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 dark:border-slate-800 transition-colors relative overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-56 h-56 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-12 -bottom-12 w-56 h-56 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8 relative z-10">
+                <div class="relative group cursor-pointer" onclick="openAboutModal()">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-teal-500 via-amber-400 to-teal-600 shadow-xl group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://res.cloudinary.com/p6esflub/image/upload/v1786270726/11_skvgrb.png" alt="Kai 大頭貼" class="w-full h-full object-cover rounded-full border-2 border-white dark:border-slate-900">
+                    </div>
+                    <span class="absolute bottom-1 right-1 bg-teal-600 text-white p-1.5 rounded-full text-xs shadow-lg border-2 border-white dark:border-slate-900" title="公職護理師 & N4">
+                        <i class="fa-solid fa-user-nurse"></i>
+                    </span>
+                </div>
+
+                <div class="flex-1 text-center md:text-left space-y-3">
+                    <div class="flex flex-col sm:flex-row items-center md:items-start gap-2 sm:gap-4">
+                        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                            Kai | 護理生活 & 理財投資 <span class="inline-block animate-bounce">🩺💰</span>
+                        </h1>
+                        <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-teal-600 hover:bg-teal-700 text-white transition-colors inline-flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-brands fa-instagram text-sm"></i> 追蹤 IG @kai.nursing_life
+                        </a>
+                    </div>
+
+                    <p class="text-sm sm:text-base font-medium text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+                        國北護畢業 🎓 ｜ 31 歲臨床護理 9 年 🏥 ｜ 公職護理師 & 臨床教師 🩺<br>
+                        從 22 歲低空飛過的小屁孩，到堅守臨床的大學長。記錄護理日常、衛教筆記、淨資產成長與 2030 Model Y 圓夢計畫 🚗
+                    </p>
+
+                    <div class="flex flex-wrap justify-center md:justify-start gap-2 pt-1">
+                        <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                            💉 臨床經驗 9 年 (2017-2026)
+                        </span>
+                        <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/50">
+                            🌟 113 & 114 年薪百萬達成
+                        </span>
+                        <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-teal-50 dark:bg-teal-950/40 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800/50">
+                            📸 30 歲 16 張心路圖文全典藏
+                        </span>
+                        <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                            🚗 2030 Model Y 目標中
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2 sm:gap-4 pt-3 border-t border-slate-100 dark:border-slate-800 max-w-md mx-auto md:mx-0">
+                        <div class="text-center md:text-left">
+                            <span class="text-xs text-slate-400">臨床資歷</span>
+                            <p class="text-sm sm:text-base font-bold text-teal-600 dark:text-teal-400">9 年 + <span class="text-xs font-normal text-slate-500">公職/N4</span></p>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <span class="text-xs text-slate-400">薪資里程碑</span>
+                            <p class="text-sm sm:text-base font-bold text-amber-600 dark:text-amber-400">年薪百萬 <span class="text-xs font-normal text-slate-500">連續2年</span></p>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <span class="text-xs text-slate-400">夢想進度</span>
+                            <p class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-200">Model Y <span class="text-xs font-normal text-slate-500">2030🎯</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 4. 主功能區：分類選單 + 搜尋 + 排序 -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 flex-1">
+        <div class="space-y-4 mb-8">
+            <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2 hide-scrollbar">
+                <div class="flex items-center gap-2">
+                    <button onclick="setCategory('all')" id="cat-all" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-teal-600 text-white shadow-md shadow-teal-600/20">
+                        ✨ 全部文章
+                    </button>
+                    <button onclick="setCategory('nursing')" id="cat-nursing" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
+                        🏥 護理類
+                    </button>
+                    <button onclick="setCategory('finance')" id="cat-finance" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
+                        📊 理財類 (薪資記帳)
+                    </button>
+                    <button onclick="setCategory('invest')" id="cat-invest" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
+                        📈 投資類
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-2 shrink-0">
+                    <span class="text-xs text-slate-400 hidden sm:inline"><i class="fa-solid fa-arrow-down-wide-short"></i> 排序：</span>
+                    <select id="sortSelect" onchange="renderPosts()" class="bg-white dark:bg-slate-800 text-xs text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-teal-500">
+                        <option value="newest">最新發布</option>
+                        <option value="popular">最高熱門度 (按讚)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-warmbg-cardDark p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 space-y-3">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input type="text" id="searchInput" oninput="renderPosts()" placeholder="搜尋關鍵字（例如：國北護、30歲、16張圖文、年薪百萬、夜班津貼、Model Y...）" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 dark:text-white placeholder-slate-400">
+                </div>
+
+                <div class="flex flex-wrap items-center gap-1.5 text-xs" id="subTagsContainer"></div>
+            </div>
+        </div>
+
+        <!-- 5. 文章卡片牆 (Blog Posts Grid) -->
+        <div id="postsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+        <div id="emptyState" class="hidden text-center py-16 space-y-3">
+            <i class="fa-solid fa-folder-open text-4xl text-slate-300 dark:text-slate-600"></i>
+            <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">找不到符合條件的文章，請試試其他關鍵字或分類！</p>
+            <button onclick="resetFilters()" class="text-xs text-teal-600 dark:text-teal-400 font-semibold underline hover:text-teal-700">重設所有篩選條件</button>
+        </div>
+    </main>
+
+    <!-- 6. 頁尾 Footer -->
+    <footer class="bg-white dark:bg-warmbg-cardDark border-t border-slate-200 dark:border-slate-800 py-10 mt-auto transition-colors">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <div class="bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/60 dark:border-amber-900/40 p-4 rounded-2xl text-xs text-amber-800/90 dark:text-amber-300/80 leading-relaxed">
+                <p class="font-bold mb-1 flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation"></i> 免責聲明與版權宣告：</p>
+                本網站為 Kai 個人經驗分享與學習紀錄（包含護理衛教知識、個人薪資記帳與投資觀察），內容不構成任何醫療診斷建議或金融投資邀約。醫療相關問題請諮詢專業醫師，投資理財請審慎評估風險。本站無公開 Telegram / LINE 群組，亦不進行任何推銷行為。
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+                <p>© 2026 Kai | 護理生活 & 理財投資 (@kai.nursing_life). All rights reserved.</p>
+                <div class="flex items-center gap-4">
+                    <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="hover:text-pink-500 transition-colors flex items-center gap-1">
+                        <i class="fa-brands fa-instagram text-sm"></i> IG @kai.nursing_life
+                    </a>
+                    <span>•</span>
+                    <button onclick="openAboutModal()" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">關於創作者</button>
+                    <span>•</span>
+                    <button onclick="openLoginModal()" aria-label="管理員登入" class="opacity-40 hover:opacity-100 transition-opacity">
+                        <i class="fa-solid fa-lock text-[11px]"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="回到頁首" class="fixed bottom-6 right-6 z-30 w-11 h-11 bg-teal-600 hover:bg-teal-700 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:scale-110">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Modal 1: 文章內文與圖文輪播視窗 (Post Modal) -->
+    <div id="postModal" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-4xl max-h-[92vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="postModalCard">
+            <div class="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between sticky top-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md z-20">
+                <div class="flex items-center gap-2 text-xs font-semibold text-teal-600 dark:text-teal-400" id="modalCategory"></div>
+                <div class="flex items-center gap-2">
+                    <button onclick="toggleFullscreenImage()" id="fullscreenBtn" title="全螢幕放大圖片" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors text-xs">
+                        <i class="fa-solid fa-expand"></i>
+                    </button>
+                    <button onclick="closePostModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-8 overflow-y-auto space-y-6 text-slate-800 dark:text-slate-100" id="modalBody"></div>
+
+            <div class="p-4 sm:p-5 border-t border-slate-100 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/80 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-2">
+                    <button id="modalLikeBtn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/60 transition-colors flex items-center gap-1.5">
+                        <i class="fa-solid fa-heart"></i> <span id="modalLikeCount">0</span> 按讚
+                    </button>
+                    <button id="modalBookmarkBtn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-1.5">
+                        <i class="fa-regular fa-bookmark"></i> 收藏
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button onclick="copyCurrentLink()" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors flex items-center gap-1.5">
+                        <i class="fa-solid fa-link text-xs"></i> 複製連結
+                    </button>
+                    <button onclick="shareToLine()" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-emerald-500 hover:bg-emerald-600 text-white transition-colors flex items-center gap-1.5">
+                        <i class="fa-brands fa-line text-base"></i> LINE 分享
+                    </button>
+                    <a id="modalIgLink" href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-teal-600 hover:bg-teal-700 text-white transition-colors flex items-center gap-1.5 shadow-sm">
+                        <i class="fa-brands fa-instagram"></i> 前往 IG 看原文 ↗
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: 關於我 (About Modal) -->
+    <div id="aboutModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-2xl max-h-[90vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="aboutModalCard">
+            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-address-card text-teal-600"></i> 關於 Kai (創作者檔案)
+                </h3>
+                <button onclick="closeAboutModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm leading-relaxed">
+                <div class="flex flex-col items-center text-center -mt-2">
+                    <img src="https://res.cloudinary.com/p6esflub/image/upload/v1786270726/12_qeh4rc.png" alt="Kai 個人形象照" onclick="openImageLightbox(this.src)" class="w-28 h-28 rounded-full object-cover border-4 border-teal-100 dark:border-teal-900 shadow-md cursor-pointer hover:opacity-90 transition-opacity">
+                    <p class="mt-2 font-bold text-slate-900 dark:text-white">Kai</p>
+                    <p class="text-[11px] text-slate-400">@kai.nursing_life</p>
+                </div>
+
+                <div class="bg-teal-50 dark:bg-teal-950/40 p-4 rounded-2xl border border-teal-200/60 dark:border-teal-800/40 space-y-2">
+                    <div class="flex items-center gap-2 font-bold text-teal-800 dark:text-teal-300">
+                        <i class="fa-solid fa-badge-check text-teal-600"></i> Kai 的核心理念
+                    </div>
+                    <p class="text-xs text-teal-900/80 dark:text-teal-200/80">
+                        「一個喜歡做圖文的護理師。」畢業於國立臺北護理健康大學，返鄉至公立醫院服務滿 9 年。這裡公開分享醫護職場心得、衛教學理與小資理財投資紀錄。堅持純粹分享，無私人群組、不推銷。
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b pb-2 dark:border-slate-800">
+                        <i class="fa-solid fa-user-nurse text-amber-500"></i> 🏥 護理專業與職場資歷 (2017 - 2026)
+                    </h4>
+                    <ul class="space-y-2.5 text-xs text-slate-600 dark:text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-teal-500 mt-0.5"></i>
+                            <span><b>學歷與公職：</b> 國立臺北護理健康大學畢業，考取公職護理師，現服務於南部公立醫院。</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-teal-500 mt-0.5"></i>
+                            <span><b>專業晉升：</b> 取得 <b>N4 職級</b>，榮獲<b>績優護理師</b>與<b>臨床教師</b>殊榮，參加 QCC 競賽與海報發表。</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-teal-500 mt-0.5"></i>
+                            <span><b>臨床考驗：</b> 經歷數百次急救生死離別、撐過 COVID-19 黑暗期，陪伴無數實習生與新人獨立。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b pb-2 dark:border-slate-800">
+                        <i class="fa-solid fa-chart-line text-teal-500"></i> 📈 理財投資與夢想地圖
+                    </h4>
+                    <ul class="space-y-2.5 text-xs text-slate-600 dark:text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-amber-500 mt-0.5"></i>
+                            <span><b>薪資里程碑：</b> 護理師也能達成年薪百萬（113 年、114 年連續達成）。</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-amber-500 mt-0.5"></i>
+                            <span><b>資產成長實錄：</b> 實測淨資產 90 天成長百萬，公開指數化投資與記帳心法。</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-amber-500 mt-0.5"></i>
+                            <span><b>2030 夢想清單：</b> 目標於 2030 年靠自己的能力擁有一台 Tesla Model Y ⚡</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b pb-2 dark:border-slate-800">
+                        <i class="fa-solid fa-images text-teal-500"></i> 📸 生活剪影
+                    </h4>
+                    <div class="grid grid-cols-3 gap-2">
+                        <img src="https://res.cloudinary.com/p6esflub/image/upload/v1786270726/13_sslpzj.png" alt="Kai 生活照" onclick="openImageLightbox(this.src)" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+                        <img src="https://res.cloudinary.com/p6esflub/image/upload/v1786270901/15_ub1o2u.png" alt="Kai 生活照" onclick="openImageLightbox(this.src)" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+                        <img src="https://res.cloudinary.com/p6esflub/image/upload/v1786270726/14_lfk0rp.png" alt="Kai 生活照" onclick="openImageLightbox(this.src)" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-center">
+                <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-full text-xs font-bold bg-teal-600 hover:bg-teal-700 text-white transition-colors inline-flex items-center gap-2">
+                    <i class="fa-brands fa-instagram"></i> 追蹤 Kai 的 IG @kai.nursing_life
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: 夜班津貼與存股試算器 (Calc Modal) -->
+    <div id="calcModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="calcModalCard">
+            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-amber-50/50 dark:bg-amber-950/30">
+                <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-calculator text-amber-500"></i> 🧮 護理夜班津貼 & 存股試算
+                </h3>
+                <button onclick="closeCalcModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="p-6 space-y-5 text-xs">
+                <div class="space-y-3 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-700">
+                    <span class="font-bold text-slate-800 dark:text-slate-200 block text-sm">🌙 本月夜班津貼試算</span>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label for="nightSmallDays" class="text-slate-500 block mb-1">小夜班天數 ($500/天)</label>
+                            <input type="number" id="nightSmallDays" value="8" min="0" oninput="calculateSalary()" class="w-full p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-bold">
+                        </div>
+                        <div>
+                            <label for="nightBigDays" class="text-slate-500 block mb-1">大夜班天數 ($800/天)</label>
+                            <input type="number" id="nightBigDays" value="5" min="0" oninput="calculateSalary()" class="w-full p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-bold">
+                        </div>
+                    </div>
+                    <div class="text-right font-bold text-amber-600 dark:text-amber-400 text-sm">
+                        預估夜班津貼：+$<span id="shiftAllowanceResult">8,000</span> 元
+                    </div>
+                </div>
+
+                <div class="space-y-3 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-700">
+                    <span class="font-bold text-slate-800 dark:text-slate-200 block text-sm">📈 每月定期定額複利試算 (年報酬6%)</span>
+                    <div>
+                        <label for="monthlyInvest" class="text-slate-500 block mb-1">每月投入金額 (TWD)</label>
+                        <input type="number" id="monthlyInvest" value="15000" step="1000" oninput="calculateSalary()" class="w-full p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-bold">
+                    </div>
+                    <div>
+                        <label for="investYears" class="text-slate-500 block mb-1">投資年限</label>
+                        <select id="investYears" onchange="calculateSalary()" class="w-full p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-bold">
+                            <option value="3">3 年 (短期累積)</option>
+                            <option value="5" selected>5 年 (Model Y 夢想進度)</option>
+                            <option value="10">10 年 (資產翻倍目標)</option>
+                        </select>
+                    </div>
+                    <div class="text-right font-bold text-teal-600 dark:text-teal-400 text-sm">
+                        預估累積本利和：$<span id="investResult">1,046,550</span> 元
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: 新增/編輯貼文 Modal (Add/Edit Post Modal) -->
+    <div id="addPostModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="addPostModalCard">
+            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-teal-50/50 dark:bg-teal-950/30">
+                <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-plus-circle text-teal-600"></i> <span id="addPostModalTitle">➕ 匯入 / 新增 IG 圖文貼文</span>
+                </h3>
+                <button onclick="closeAddPostModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <form id="addPostForm" onsubmit="handleSaveCustomPost(event)" class="p-6 space-y-4 text-xs overflow-y-auto max-h-[75vh]">
+                <div>
+                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">文章標題 *</label>
+                    <input type="text" id="newTitle" required placeholder="例如：【護理日常】臨床夜班小撇步" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">文章分類</label>
+                        <select id="newCategory" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                            <option value="nursing">🏥 護理類</option>
+                            <option value="finance">📊 理財類</option>
+                            <option value="invest">📈 投資類</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">閱讀估算時間</label>
+                        <input type="text" id="newReadTime" value="3 分鐘" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">上傳圖片（可一次選多張，會自動加浮水印並填入下方欄位）</label>
+                    <div class="flex items-center gap-2">
+                        <label for="imageFileInput" class="cursor-pointer flex-1 flex items-center justify-center gap-2 p-2.5 rounded-xl border-2 border-dashed border-teal-300 dark:border-teal-700 text-teal-600 dark:text-teal-400 font-semibold text-xs hover:bg-teal-50 dark:hover:bg-teal-950/30 transition-colors">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span id="uploadStatusLabel">選擇圖片檔案上傳</span>
+                        </label>
+                        <input type="file" id="imageFileInput" accept="image/*" multiple class="hidden" onchange="handleImageFileUpload(event)">
+                    </div>
+                    <div id="uploadPreviewRow" class="flex gap-2 mt-2 flex-wrap"></div>
+                </div>
+
+                <div>
+                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">圖片網址（第一張＝文章首圖；上傳後可點縮圖右上角⭐指定首圖）</label>
+                    <input type="text" id="newImages" placeholder="例如：1.png, 2.png, 3.png 或 Cloudinary 網址" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">IG 貼文網址 (選填)</label>
+                    <input type="url" id="newIgUrl" placeholder="https://www.instagram.com/p/..." class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">標籤 Tags (用逗號隔開)</label>
+                    <input type="text" id="newTags" placeholder="#護理日常, #臨床經驗, #心律不整" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">文章內文概要與心得 *</label>
+                    <textarea id="newSummary" required rows="4" placeholder="在此貼上您在 IG 撰寫的發文內文..." class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none"></textarea>
+                </div>
+
+                <div class="pt-2 flex items-center justify-end gap-2">
+                    <button type="button" onclick="closeAddPostModal()" class="px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold">取消</button>
+                    <button type="submit" id="addPostSubmitBtn" class="px-5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold shadow-md">儲存並發布至網站</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 5: 管理員登入 Modal -->
+    <div id="loginModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-sm rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="loginModalCard">
+            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-user-shield text-teal-600"></i> 管理員登入
+                </h3>
+                <button onclick="closeLoginModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <form onsubmit="handleAdminLogin(event)" class="p-6 space-y-4 text-xs">
+                <div>
+                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">Email</label>
+                    <input type="email" id="loginEmail" required class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                </div>
+                <div>
+                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">密碼</label>
+                    <input type="password" id="loginPassword" required class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                </div>
+                <p id="loginError" class="hidden text-red-500 text-[11px]"></p>
+                <button type="submit" class="w-full px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold shadow-md">登入</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div id="imageLightbox" onclick="closeImageLightbox()" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 cursor-zoom-out">
+        <img id="imageLightboxImg" src="" alt="放大檢視" class="max-w-full max-h-[90vh] rounded-2xl shadow-2xl object-contain">
+        <button onclick="closeImageLightbox()" aria-label="關閉大圖" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed top-20 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <script src="js/utils.js"></script>
+    <script type="module" src="js/firebase.js"></script>
+    <script>
+        const DEFAULT_FALLBACK_IMAGES = {
+            'nursing': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
+            'finance': 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&auto=format&fit=crop&q=80',
+            'invest': 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&auto=format&fit=crop&q=80'
+        };
+
+        const staticPostsData = [
+            {
+                id: 'post-30years',
+                title: '【我 30 歲了】30 歲的心路歷程與下個十年展望：從國北護畢業到公職護理師',
+                category: 'nursing',
+                tags: ['#30歲', '#人生階段紀錄', '#護理師', '#公職護理', '#16張圖文全典藏'],
+                date: '2026-04-01',
+                readTime: '6 分鐘',
+                likes: 452,
+                featured: true,
+                image: '1.jpg',
+                images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg'],
+                summary: '2026.04.01 我滿 30 歲了！自 22 歲從國立臺北護理健康大學畢業後，回到南部公立醫院服務至今已滿 8 年。經歷風雨與挫折，如今考取公職護理師、晉升 N4 職級並成為臨床教師。內含 16 張完整圖文全典藏與下個十年藍圖...',
+                igUrl: 'https://www.instagram.com/p/DSzZGbLknAR/',
+                highlights: [
+                    '🎓 22 歲國北護畢業，進南部公立醫院服務，如今獨立帶生並成為臨床教師',
+                    '🏥 專業成長：取得 N4 護理師、獲得績優護理師與單位優良臨床教師認證',
+                    '🏆 考取公職：考取公職護理師失敗3年，仍不放棄，終順利正取公職護理師',
+                    '💰 財務獨立：28歲擁有第一台車、29歲買房，30歲淨資產近300萬！',
+                    '❤️ 健康認知：經歷右手脫臼與右眼暫時失明，明白「健康是所有夢想的起點」',
+                    '🎯 下個十年展望 (40歲前)：考取碩士、資產達千萬、維持健身羽球、成為專業創作者！'
+                ],
+                content: `
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">📌 2026.04.01 我滿 30 歲了 (回顧及下一段旅程)</h3>
+                    <p>自 22 歲從國立臺北護理健康大學畢業後，我回到南部家鄉，進到家人建議的公立醫院服務至今已滿 8 年。經歷各種風風雨雨及挫折，曾多次想逃離，但最後還是撐了下來，漸漸找到自信及獲得成就感，不知不覺間，也成為了別人的老師。接下來，讓我來回顧及分享這 8 年來的種種與下個十年展望！</p>
+                    
+                    <h4 class="font-bold text-base text-slate-900 dark:text-white mt-4 mb-2">🏥 回顧臨床歲月的四大維度</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-200">
+                        <li><b>工作及專業成長：</b>從懵懵懂懂的新人護理師，晉升至層級最高的 N4 護理師；參與品質管理競賽獲獎三次並發表學術文章。獲得績優護理師與優良臨床教師殊榮！考取公職護理師雖然失敗 3 年，但堅持不放棄，最終成功考取正取公職！大聲說：「我還留在臨床第一線！」</li>
+                        <li><b>財務成熟及獨立：</b>28 歲擁有第一台車、29 歲擁有自己的房子，30 歲淨資產達成近 300 萬！</li>
+                        <li><b>健康認知與轉變：</b>22 歲時常包攬大小夜班、每月換時差；28 歲後拒絕大夜班。29-30歲經歷右手脫臼及右眼創傷性暫時失明（目前已痊癒）。體會到<b>「健康不是成本，而是所有夢想的起點」</b>，身體才是最大的本錢！</li>
+                        <li><b>創作興趣：</b>自 2024 年 1 月踏進自媒體領域，學習作圖與撰寫文章。創作之路，沒有極限，沒有終點！</li>
+                    </ul>
+
+                    <h4 class="font-bold text-base text-slate-900 dark:text-white mt-4 mb-2">🎯 我的下個十年 (40 歲前目標藍圖)</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-200">
+                        <li><b>🎓 自我提升：</b>31 歲考取研究所，適應在職就學生活；目標 34 歲前順利畢業取得碩士學位。</li>
+                        <li><b>🏥 事業規劃：</b>成為更加專業成熟的護理人員！保持年薪百萬、獲得病人及家屬好評。</li>
+                        <li><b>📈 財務計畫：</b>投資理財及心態修練！階段一：33歲淨資產500萬 ➔ 階段二：36歲淨資產700萬 ➔ 階段三：40歲淨資產1,000萬！</li>
+                        <li><b>🏋️ 健康保健：</b>規律健身強健體魄，維持打羽球與籃球習慣，保持良好心態。</li>
+                        <li><b>🎨 創作者藍圖：</b>持續不間斷創作、IG & Thread 粉絲破萬、開發創新收入，成為真正的專業創作者！</li>
+                    </ul>
+
+                    <div class="bg-teal-50 dark:bg-teal-950/40 p-4 rounded-xl border border-teal-200 dark:border-teal-800 my-4 text-xs leading-relaxed">
+                        <p class="font-semibold text-teal-800 dark:text-teal-300">💬 結語與感悟：</p>
+                        <p class="text-slate-700 dark:text-slate-200 mt-1">
+                            從懵懵懂懂學生蛻變成職場新鮮人，到現在中生代的老鳥，一步一步走來經歷許多辛酸，但也收穫許多美好的回憶及成果。感謝那些離開我卻帶給我許多種種的人們，讓我成長，造就今天的我。感謝這些年來努力的自己，感謝自己好好的活著，努力的充實度過每一天，每天給自己一個鼓勵及擁抱。<br><br>
+                            在接下來的日子，一樣要好好的活著，好好的度過每一天，去邂逅新的人事物，以及繼續喜愛每一天，喜愛愛著我的每個人。Thank you! ❤️
+                        </p>
+                    </div>
+                `
+            },
+            {
+                id: 'ig-post-DSzZGbLknAR',
+                title: '【IG 最新貼文】Kai 的護理與理財圖文筆記實錄',
+                category: 'nursing',
+                tags: ['#IG原文', '#最新貼文', '#護理職場', '#經驗分享'],
+                date: '2026-08-08',
+                readTime: '3 分鐘',
+                likes: 198,
+                featured: false,
+                image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
+                summary: '這是一篇來自 IG @kai.nursing_life (DSzZGbLknAR) 的最新圖文分享！點擊展開觀看詳細心得與摘要，亦可直接點擊連結跳轉至 IG 看原文圖文討論...',
+                igUrl: 'https://www.instagram.com/p/DSzZGbLknAR/',
+                highlights: [
+                    '📌 點擊彈窗下方連結可直接觀看 IG 原圖文與互動社群',
+                    '🩺 記錄護理臨床日常真實點滴與思維轉變',
+                    '💡 將 IG 圖文沉澱的優質內容長效保存於個人網站'
+                ],
+                content: `
+                    <p class="font-semibold text-teal-700 dark:text-teal-300">歡迎來到 Kai 的圖文典藏區！</p>
+                    <p>這篇文章同步來自 Instagram 帳號 <a href="https://www.instagram.com/p/DSzZGbLknAR/" target="_blank" rel="noopener noreferrer" class="underline text-pink-600 font-bold">@kai.nursing_life 的最新貼文 (點此觀看 IG 原文)</a>。</p>
+                `
+            },
+            {
+                id: 'post-9years',
+                title: '【2026.08.01】擔任護理師的第 9 年，我還在！從成績倒數到公職護理師的心路歷程',
+                category: 'nursing',
+                tags: ['#護理日常', '#臨床經驗', '#公職護理', '#大齡學長'],
+                date: '2026-08-01',
+                readTime: '4 分鐘',
+                likes: 412,
+                featured: true,
+                image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&auto=format&fit=crop&q=80',
+                summary: '2026.08.01 是我擔任護理師的第 9 年，今年我 31 歲，我還在！22 歲成績倒數的小屁孩，如今取得 N4 職級、公職護理師與臨床教師殊榮。只要還能行，我就會繼續堅守下去...',
+                igUrl: 'https://www.instagram.com/kai.nursing_life',
+                highlights: [
+                    '🏥 歷經急救生死離別、撐過 COVID-19 疫情最黑暗的時代',
+                    '🏆 參加 QCC 競賽、海報發表、順利晉升 N4 職級與公職護理師',
+                    '⚓ 目送新人獨立與師父光榮退休，為身為「護理師」感到無比驕傲'
+                ],
+                content: `
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">🌟 2026.08.01 — 我擔任護理師的第 9 年，我還在！</h3>
+                    <p>今年我 31 歲。22 歲的我，曾經是那個成績總是倒數、低空飛過畢業的小屁孩，絕對沒想過自己能一路堅持到現在，並且從未離開。</p>
+                `
+            },
+            {
+                id: 'post-salary100',
+                title: '【薪資公開】護理師如何達成年薪百萬？113 & 114 年連續達標的薪資結構拆解',
+                category: 'finance',
+                tags: ['#薪資公開', '#年薪百萬', '#公職護理', '#夜班津貼'],
+                date: '2026-02-15',
+                readTime: '6 分鐘',
+                likes: 520,
+                featured: false,
+                image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&auto=format&fit=crop&q=80',
+                summary: '護理師真的能領到年薪百萬嗎？公開公職護理師的薪資結構：本薪、專業加給、夜班津貼、年終與績效獎金，以及如何透過理性排班與存股打造百萬年收入...',
+                igUrl: 'https://www.instagram.com/kai.nursing_life',
+                highlights: [
+                    '📊 完整拆解公職護理師本薪、年終獎金與夜班津貼比例',
+                    '💡 合理排班與體力調配，不盲目加班護健康',
+                    '📈 結合定期定額高股息/指數 ETF 被動加薪'
+                ],
+                content: `
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">📊 護理師年薪百萬的真實結構拆解</h3>
+                    <p>許多護理系學弟妹常問我：「護理師真的有機會領到年薪百萬嗎？」答案是肯定的！我在 113 年與 114 年連續兩年達成了年薪百萬里程碑。</p>
+                `
+            },
+            {
+                id: 'post-modely',
+                title: '【夢想清單】2030 擁有一台 Tesla Model Y！資產 90 天成長百萬的理財規劃',
+                category: 'invest',
+                tags: ['#ModelY', '#資產規劃', '#定額存股', '#ETF配置'],
+                date: '2026-06-10',
+                readTime: '4 分鐘',
+                likes: 389,
+                featured: false,
+                image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&auto=format&fit=crop&q=80',
+                summary: '設定目標是實現夢想的第一步！分享我的 2030 買車目標：如何透過「淨資產 90 天成長百萬」的紀律記帳與指數化投資，按部就班往 Tesla Model Y 邁進...',
+                igUrl: 'https://www.instagram.com/kai.nursing_life',
+                highlights: [
+                    '🚗 2030 年靠自己的投資成果買下第一台 Model Y',
+                    '📈 實測「淨資產 90 天成長百萬」的資金分配原則',
+                    '🛡️ 保留足夠緊急預備金，絕不開高槓桿開玩笑'
+                ],
+                content: `
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">🚗 2030 Model Y 購車計畫與資產配置</h3>
+                    <p>理財最忌諱沒有具體的目標。為了讓自己更有動力，我設定了 2030 年擁有一台 Tesla Model Y 的圓夢計畫。</p>
+                `
+            }
+        ];
+
+        let currentCategory = 'all';
+        let currentSubTag = 'all';
+        let userLikes = JSON.parse(localStorage.getItem('kai_user_likes') || '{}');
+        let userBookmarks = JSON.parse(localStorage.getItem('kai_user_bookmarks') || '{}');
+
+        let customPosts = [];
+        let postsData = [...staticPostsData];
+        let firestoreReady = false;
+        let isAdminLoggedIn = false;
+
+        function rebuildPostsData() {
+            const taggedCustom = customPosts.map(p => ({ ...p, _isCustom: true }));
+            postsData = [...taggedCustom, ...staticPostsData];
+        }
+
+        function startFirestoreSync() {
+            if (!window.fb) return;
+            const { db, collection, onSnapshot, query, orderBy } = window.fb;
+            const postsQuery = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
+
+            onSnapshot(postsQuery, (snapshot) => {
+                customPosts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                rebuildPostsData();
+                renderPosts();
+            }, (error) => {
+                console.error('Firestore 讀取失敗：', error);
+                showToast('⚠️ 貼文資料讀取失敗，請確認 Firestore 安全規則設定');
+            });
+
+            firestoreReady = true;
+        }
+
+        const SITE_LOGO_URL = 'https://res.cloudinary.com/p6esflub/image/upload/v1786270726/14_lfk0rp.png';
+
+        function openImageLightbox(src) {
+            const lightbox = document.getElementById('imageLightbox');
+            const img = document.getElementById('imageLightboxImg');
+            img.src = sanitizeUrl(src);
+            lightbox.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeImageLightbox() {
+            const lightbox = document.getElementById('imageLightbox');
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function applySiteLogo() {
+            if (!SITE_LOGO_URL) return;
+            const wrap = document.getElementById('brandLogoWrap');
+            if (!wrap) return;
+            const inner = wrap.querySelector('div');
+            inner.innerHTML = `<img src="${sanitizeUrl(SITE_LOGO_URL)}" alt="Kai Logo" class="w-full h-full object-cover rounded-full">`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            renderSubTags();
+            renderPosts();
+            setupScrollListener();
+            calculateSalary();
+            setupKeyboardAndTouchEvents();
+            applySiteLogo();
+
+            if (window.fb) {
+                startFirestoreSync();
+            } else {
+                window.addEventListener('fb-ready', startFirestoreSync, { once: true });
+            }
+        });
+
+        window.addEventListener('auth-changed', (e) => {
+            const isAdmin = e.detail.isAdmin;
+            isAdminLoggedIn = isAdmin;
+            const btn = document.getElementById('addPostBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (btn) {
+                btn.classList.toggle('hidden', !isAdmin);
+                btn.classList.toggle('flex', isAdmin);
+            }
+            if (logoutBtn) {
+                logoutBtn.classList.toggle('hidden', !isAdmin);
+                logoutBtn.classList.toggle('flex', isAdmin);
+            }
+            if (isAdmin) showToast('🔓 已以管理員身分登入');
+            renderPosts();
+        });
+
+        async function handleAdminLogout() {
+            if (!window.fb) return;
+            const { auth, signOut } = window.fb;
+            await signOut(auth);
+            showToast('已登出管理員身分');
+        }
+
+        function openLoginModal() {
+            const modal = document.getElementById('loginModal');
+            const card = document.getElementById('loginModalCard');
+            document.getElementById('loginError').classList.add('hidden');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-95');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLoginModal() {
+            const modal = document.getElementById('loginModal');
+            const card = document.getElementById('loginModalCard');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            card.classList.add('scale-95');
+            document.body.style.overflow = '';
+        }
+
+        async function handleAdminLogin(e) {
+            e.preventDefault();
+            const errorElem = document.getElementById('loginError');
+            errorElem.classList.add('hidden');
+
+            if (!window.fb) return;
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const { auth, signInWithEmailAndPassword } = window.fb;
+                await signInWithEmailAndPassword(auth, email, password);
+                closeLoginModal();
+                e.target.reset();
+            } catch (err) {
+                console.error('登入失敗：', err);
+                errorElem.textContent = '登入失敗，請確認帳號密碼是否正確';
+                errorElem.classList.remove('hidden');
+            }
+        }
+
+        function initTheme() {
+            const isDark = localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                document.getElementById('themeIcon').className = 'fa-solid fa-sun text-amber-400 text-lg';
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('themeIcon').className = 'fa-solid fa-moon text-slate-600 text-lg';
+            }
+
+            document.getElementById('themeToggle').addEventListener('click', () => {
+                const darkNow = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', darkNow ? 'dark' : 'light');
+                document.getElementById('themeIcon').className = darkNow ? 'fa-solid fa-sun text-amber-400 text-lg' : 'fa-solid fa-moon text-slate-600 text-lg';
+            });
+        }
+
+        const subTagsMap = {
+            all: ['#全部', '#IG原文', '#30歲', '#16張圖文', '#護理日常', '#公職護理', '#年薪百萬', '#ModelY', '#資產規劃'],
+            nursing: ['#全部', '#30歲', '#16張圖文', '#護理日常', '#衛教筆記', '#職場心得', '#臨床經驗', '#公職護理'],
+            finance: ['#全部', '#薪資公開', '#記帳方法', '#年薪百萬', '#緊急預備金', '#省錢撇步'],
+            invest: ['#全部', '#定額存股', '#ETF配置', '#理財新手', '#資產規劃', '#ModelY']
+        };
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            currentSubTag = 'all';
+
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = 'cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700';
+            });
+
+            const activeBtn = document.getElementById(`cat-${cat}`);
+            if (activeBtn) {
+                activeBtn.className = 'cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-teal-600 text-white shadow-md shadow-teal-600/20';
+            }
+
+            renderSubTags();
+            renderPosts();
+        }
+
+        function renderSubTags() {
+            const container = document.getElementById('subTagsContainer');
+            const tags = subTagsMap[currentCategory] || subTagsMap.all;
+            
+            container.innerHTML = tags.map(tag => {
+                const tagVal = tag === '#全部' ? 'all' : tag;
+                const isActive = currentSubTag === tagVal;
+                return `
+                    <button onclick="setSubTag('${escapeHtml(tagVal)}')" class="px-2.5 py-1 rounded-lg transition-colors ${
+                        isActive 
+                        ? 'bg-amber-500 text-white font-bold shadow-sm' 
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                    }">
+                        ${escapeHtml(tag)}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function setSubTag(tag) {
+            currentSubTag = tag;
+            renderSubTags();
+            renderPosts();
+        }
+
+        function renderPosts() {
+            const grid = document.getElementById('postsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+            const sortBy = document.getElementById('sortSelect').value;
+
+            let filtered = postsData.filter(post => {
+                const matchCat = currentCategory === 'all' || post.category === currentCategory;
+                const matchTag = currentSubTag === 'all' || post.tags.includes(currentSubTag);
+                const matchSearch = !searchQuery || 
+                    (post.title && post.title.toLowerCase().includes(searchQuery)) || 
+                    (post.summary && post.summary.toLowerCase().includes(searchQuery)) ||
+                    (post.tags && post.tags.some(t => t.toLowerCase().includes(searchQuery)));
+                return matchCat && matchTag && matchSearch;
+            });
+
+            if (sortBy === 'popular') {
+                filtered.sort((a, b) => (b.likes + (userLikes[b.id] ? 1 : 0)) - (a.likes + (userLikes[a.id] ? 1 : 0)));
+            } else {
+                filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            emptyState.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(post => {
+                const isLiked = userLikes[post.id];
+                const likeCount = post.likes + (isLiked ? 1 : 0);
+                const isBookmarked = userBookmarks[post.id];
+                const imageCount = post.images ? post.images.length : 1;
+
+                const safeTitle = escapeHtml(post.title);
+                const safeSummary = escapeHtml(post.summary);
+                const safeImage = sanitizeUrl(post.image);
+                const safeDate = escapeHtml(post.date);
+                const safeReadTime = escapeHtml(post.readTime);
+
+                return `
+                    <article class="bg-white dark:bg-warmbg-cardDark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100 dark:border-slate-800 transition-all duration-300 flex flex-col group ${post.featured ? 'md:col-span-2 lg:col-span-2 border-teal-500/30 dark:border-teal-500/30 ring-1 ring-teal-500/20' : ''}">
+                        <div class="relative overflow-hidden ${post.featured ? 'h-56 sm:h-72' : 'h-48'} bg-slate-100 dark:bg-slate-800 cursor-pointer" onclick="openPostModal('${escapeHtml(post.id)}')">
+                            <img src="${safeImage}" alt="${safeTitle}" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/20 transition-colors flex items-center justify-center">
+                                <i class="fa-solid fa-expand text-white text-lg opacity-0 group-hover:opacity-90 transition-opacity drop-shadow-md"></i>
+                            </div>
+                            
+                            ${post.featured ? `
+                                <span class="absolute top-3 left-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1 z-10">
+                                    <i class="fa-solid fa-fire"></i> 精選主打貼文
+                                </span>
+                            ` : ''}
+
+                            <div class="absolute top-3 right-3 flex items-center gap-2 z-10">
+                                ${isAdminLoggedIn && post._isCustom ? `
+                                    <button onclick="openEditPostModal('${escapeHtml(post.id)}', event)" aria-label="編輯文章" class="w-8 h-8 rounded-full bg-slate-900/40 text-white hover:bg-slate-900/70 backdrop-blur-md flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-pen text-xs"></i>
+                                    </button>
+                                    <button onclick="handleDeletePost('${escapeHtml(post.id)}', event)" aria-label="刪除文章" class="w-8 h-8 rounded-full bg-red-500/80 text-white hover:bg-red-600 backdrop-blur-md flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-trash text-xs"></i>
+                                    </button>
+                                ` : ''}
+                                <button onclick="toggleBookmark('${escapeHtml(post.id)}', event)" aria-label="收藏文章" class="w-8 h-8 rounded-full ${isBookmarked ? 'bg-amber-500 text-white' : 'bg-slate-900/40 text-white hover:bg-slate-900/70'} backdrop-blur-md flex items-center justify-center transition-colors">
+                                    <i class="${isBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark text-xs"></i>
+                                </button>
+                            </div>
+
+                            <div class="absolute bottom-3 left-3 flex items-center gap-2 z-10">
+                                <span class="bg-slate-900/60 backdrop-blur-md text-white text-[10px] font-medium px-2.5 py-1 rounded-lg">
+                                    ☕ ${safeReadTime}
+                                </span>
+                                ${imageCount > 1 ? `
+                                    <span class="bg-teal-600/90 backdrop-blur-md text-white text-[10px] font-bold px-2 py-1 rounded-lg flex items-center gap-1 shadow-md">
+                                        <i class="fa-solid fa-images"></i> ${imageCount} 張圖文典藏
+                                    </span>
+                                ` : ''}
+                            </div>
+                        </div>
+
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2 text-xs text-slate-400">
+                                    <i class="fa-regular fa-calendar"></i> ${safeDate}
+                                </div>
+
+                                <h2 onclick="openPostModal('${escapeHtml(post.id)}')" class="font-bold text-base sm:text-lg text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors cursor-pointer line-clamp-2">
+                                    ${safeTitle}
+                                </h2>
+
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed">
+                                    ${safeSummary}
+                                </p>
+                            </div>
+
+                            <div class="space-y-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+                                <div class="flex flex-wrap gap-1.5">
+                                    ${post.tags.map(t => `<span class="text-[11px] font-medium text-teal-700 dark:text-teal-300 bg-teal-50 dark:bg-teal-950/40 px-2 py-0.5 rounded-md">${escapeHtml(t)}</span>`).join('')}
+                                </div>
+
+                                <div class="flex items-center justify-between pt-1">
+                                    <button onclick="toggleLike('${escapeHtml(post.id)}', event)" class="flex items-center gap-1.5 text-xs font-semibold ${isLiked ? 'text-red-500' : 'text-slate-400 hover:text-red-500'} transition-colors">
+                                        <i class="${isLiked ? 'fa-solid' : 'fa-regular'} fa-heart text-sm"></i>
+                                        <span>${likeCount}</span>
+                                    </button>
+
+                                    <button onclick="openPostModal('${escapeHtml(post.id)}')" class="text-xs font-bold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 flex items-center gap-1">
+                                        閱讀全文 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        let currentActivePost = null;
+        let currentCarouselIndex = 0;
+        let isFullscreenImage = false;
+
+        function changeCarousel(dir) {
+            if (!currentActivePost || !currentActivePost.images) return;
+            const total = currentActivePost.images.length;
+            currentCarouselIndex = (currentCarouselIndex + dir + total) % total;
+            updateCarouselUI();
+        }
+
+        function setCarouselIndex(idx) {
+            if (!currentActivePost || !currentActivePost.images) return;
+            currentCarouselIndex = idx;
+            updateCarouselUI();
+        }
+
+        function updateCarouselUI() {
+            if (!currentActivePost || !currentActivePost.images) return;
+            const imgElem = document.getElementById('carouselMainImg');
+            const countElem = document.getElementById('carouselCounter');
+            const thumbsContainer = document.getElementById('carouselThumbnails');
+
+            if (imgElem) {
+                imgElem.onerror = () => handleImgError(imgElem, currentActivePost.category);
+                imgElem.src = sanitizeUrl(currentActivePost.images[currentCarouselIndex]);
+            }
+            if (countElem) countElem.innerText = `${currentCarouselIndex + 1} / ${currentActivePost.images.length}`;
+            
+            if (thumbsContainer) {
+                const thumbs = thumbsContainer.querySelectorAll('.thumb-btn');
+                thumbs.forEach((thumb, i) => {
+                    if (i === currentCarouselIndex) {
+                        thumb.classList.add('ring-2', 'ring-teal-500', 'opacity-100');
+                        thumb.classList.remove('opacity-60');
+                        thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    } else {
+                        thumb.classList.remove('ring-2', 'ring-teal-500', 'opacity-100');
+                        thumb.classList.add('opacity-60');
+                    }
+                });
+            }
+        }
+
+        function toggleFullscreenImage() {
+            const container = document.getElementById('carouselImageContainer');
+            const imgWrapper = container ? container.querySelector('.relative.flex.items-center.justify-center') : null;
+            const img = document.getElementById('carouselMainImg');
+            if (!container || !img) return;
+            isFullscreenImage = !isFullscreenImage;
+
+            const btnIcon = document.querySelector('#fullscreenBtn i');
+            if (isFullscreenImage) {
+                container.classList.add('fixed', 'inset-0', 'z-50', 'bg-slate-950/95', 'p-4', 'flex', 'flex-col', 'justify-center');
+                img.classList.remove('max-h-[560px]');
+                img.classList.add('max-h-[90vh]');
+                if (imgWrapper) imgWrapper.classList.add('min-h-0');
+                if (btnIcon) btnIcon.className = 'fa-solid fa-compress';
+            } else {
+                container.classList.remove('fixed', 'inset-0', 'z-50', 'bg-slate-950/95', 'p-4', 'flex', 'flex-col', 'justify-center');
+                img.classList.remove('max-h-[90vh]');
+                img.classList.add('max-h-[560px]');
+                if (btnIcon) btnIcon.className = 'fa-solid fa-expand';
+            }
+        }
+
+        function openPostModal(postId) {
+            const post = postsData.find(p => p.id === postId);
+            if (!post) return;
+            currentActivePost = post;
+            currentCarouselIndex = 0;
+            isFullscreenImage = false;
+
+            const modal = document.getElementById('postModal');
+            const card = document.getElementById('postModalCard');
+            const catElem = document.getElementById('modalCategory');
+            const bodyElem = document.getElementById('modalBody');
+
+            catElem.innerHTML = `<i class="fa-solid fa-tag"></i> ${post.tags.map(t => escapeHtml(t)).join(' ')}`;
+
+            const isLiked = userLikes[post.id];
+            const likeCount = post.likes + (isLiked ? 1 : 0);
+            document.getElementById('modalLikeCount').innerText = likeCount;
+            
+            const likeBtn = document.getElementById('modalLikeBtn');
+            likeBtn.onclick = (e) => {
+                toggleLike(post.id, e);
+                const updatedLiked = userLikes[post.id];
+                document.getElementById('modalLikeCount').innerText = post.likes + (updatedLiked ? 1 : 0);
+            };
+
+            const bookmarkBtn = document.getElementById('modalBookmarkBtn');
+            const isBookmarked = userBookmarks[post.id];
+            bookmarkBtn.innerHTML = `<i class="${isBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark"></i> ${isBookmarked ? '已收藏' : '收藏'}`;
+            bookmarkBtn.onclick = (e) => {
+                toggleBookmark(post.id, e);
+                const updatedBookmarked = userBookmarks[post.id];
+                bookmarkBtn.innerHTML = `<i class="${updatedBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark"></i> ${updatedBookmarked ? '已收藏' : '收藏'}`;
+            };
+
+            // P1 Item: Sanitize igUrl
+            document.getElementById('modalIgLink').href = sanitizeUrl(post.igUrl);
+
+            let imageHtml = '';
+            if (post.images && post.images.length > 0) {
+                imageHtml = `
+                    <div id="carouselImageContainer" class="relative rounded-2xl overflow-hidden bg-slate-950 group shadow-lg transition-all duration-300">
+                        <div class="relative flex items-center justify-center min-h-[280px] sm:min-h-[440px] bg-slate-950 select-none">
+                            <img id="carouselMainImg" src="${sanitizeUrl(post.images[0])}" alt="${escapeHtml(post.title)}" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-auto max-h-[560px] object-contain mx-auto transition-all duration-300">
+                        </div>
+
+                        ${post.images.length > 1 ? `
+                            <span id="carouselCounter" class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-md text-white text-xs font-mono font-bold px-3 py-1.5 rounded-full shadow-md z-10">
+                                1 / ${post.images.length}
+                            </span>
+
+                            <button onclick="changeCarousel(-1)" aria-label="上一張圖片" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white backdrop-blur-md flex items-center justify-center transition-all opacity-90 hover:opacity-100 shadow-lg z-10">
+                                <i class="fa-solid fa-chevron-left text-base"></i>
+                            </button>
+
+                            <button onclick="changeCarousel(1)" aria-label="下一張圖片" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white backdrop-blur-md flex items-center justify-center transition-all opacity-90 hover:opacity-100 shadow-lg z-10">
+                                <i class="fa-solid fa-chevron-right text-base"></i>
+                            </button>
+
+                            <div id="carouselThumbnails" class="flex items-center gap-2 p-2 bg-slate-900/90 overflow-x-auto hide-scrollbar justify-start sm:justify-center border-t border-slate-800">
+                                ${post.images.map((img, idx) => `
+                                    <button onclick="setCarouselIndex(${idx})" aria-label="觀看第 ${idx+1} 張" class="thumb-btn w-12 h-12 rounded-xl overflow-hidden shrink-0 transition-all ${idx === 0 ? 'ring-2 ring-teal-500 opacity-100' : 'opacity-60 hover:opacity-100'}">
+                                        <img src="${sanitizeUrl(img)}" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover">
+                                    </button>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            } else {
+                imageHtml = `
+                    <div class="rounded-2xl overflow-hidden max-h-80 bg-slate-100 dark:bg-slate-800">
+                        <img src="${sanitizeUrl(post.image)}" alt="${escapeHtml(post.title)}" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover">
+                    </div>
+                `;
+            }
+
+            bodyElem.innerHTML = `
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 text-xs text-slate-400">
+                        <span><i class="fa-regular fa-calendar"></i> ${escapeHtml(post.date)}</span>
+                        <span>•</span>
+                        <span>☕ 閱讀時間 ${escapeHtml(post.readTime)}</span>
+                        ${post.images ? `<span>•</span><span class="text-teal-600 dark:text-teal-400 font-semibold"><i class="fa-solid fa-images"></i> 完整 ${post.images.length} 張圖文典藏</span>` : ''}
+                    </div>
+
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight">
+                        ${escapeHtml(post.title)}
+                    </h2>
+                </div>
+
+                ${imageHtml}
+
+                ${post.highlights ? `
+                    <div class="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 p-4 rounded-2xl space-y-2">
+                        <span class="font-bold text-amber-800 dark:text-amber-300 text-xs flex items-center gap-1.5">
+                            <i class="fa-solid fa-bolt"></i> 💡 30 秒重點精華懶人包：
+                        </span>
+                        <ul class="space-y-1 text-xs text-amber-900/90 dark:text-amber-200/90">
+                            ${post.highlights.map(h => `<li>• ${escapeHtml(h)}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+
+                <div class="space-y-4 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-200">
+                    ${post.content}
+                </div>
+            `;
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-95');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setupKeyboardAndTouchEvents() {
+            document.addEventListener('keydown', (e) => {
+                const modal = document.getElementById('postModal');
+                if (modal && !modal.classList.contains('opacity-0')) {
+                    if (e.key === 'ArrowLeft') changeCarousel(-1);
+                    if (e.key === 'ArrowRight') changeCarousel(1);
+                    if (e.key === 'Escape') closePostModal();
+                }
+                const lightbox = document.getElementById('imageLightbox');
+                if (lightbox && !lightbox.classList.contains('opacity-0') && e.key === 'Escape') {
+                    closeImageLightbox();
+                }
+            });
+
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const modalBody = document.getElementById('modalBody');
+
+            modalBody.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            modalBody.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) changeCarousel(1);
+                    else changeCarousel(-1);
+                }
+            }, { passive: true });
+        }
+
+        function closePostModal() {
+            const modal = document.getElementById('postModal');
+            const card = document.getElementById('postModalCard');
+            if (isFullscreenImage) toggleFullscreenImage();
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            card.classList.add('scale-95');
+            document.body.style.overflow = '';
+        }
+
+        let editingPostId = null;
+
+        function openAddPostModal() {
+            editingPostId = null;
+            document.getElementById('addPostModalTitle').textContent = '➕ 匯入 / 新增 IG 圖文貼文';
+            document.getElementById('addPostSubmitBtn').textContent = '儲存並發布至網站';
+            document.getElementById('addPostForm').reset();
+            document.getElementById('uploadPreviewRow').innerHTML = '';
+
+            const modal = document.getElementById('addPostModal');
+            const card = document.getElementById('addPostModalCard');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-95');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openEditPostModal(postId, event) {
+            if (event) event.stopPropagation();
+            const post = customPosts.find(p => p.id === postId);
+            if (!post) return;
+
+            editingPostId = postId;
+            document.getElementById('addPostModalTitle').textContent = '✏️ 編輯圖文貼文';
+            document.getElementById('addPostSubmitBtn').textContent = '儲存更新';
+
+            document.getElementById('newTitle').value = post.title || '';
+            document.getElementById('newCategory').value = post.category || 'nursing';
+            document.getElementById('newReadTime').value = post.readTime || '3 分鐘';
+            document.getElementById('newImages').value = (post.images || []).join(', ');
+            document.getElementById('newIgUrl').value = post.igUrl || '';
+            document.getElementById('newTags').value = (post.tags || []).join(', ');
+            document.getElementById('newSummary').value = post.summary || '';
+            document.getElementById('uploadPreviewRow').innerHTML = '';
+
+            const modal = document.getElementById('addPostModal');
+            const card = document.getElementById('addPostModalCard');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-95');
+            document.body.style.overflow = 'hidden';
+        }
+
+        async function handleDeletePost(postId, event) {
+            if (event) event.stopPropagation();
+            if (!window.fb) return;
+            if (!confirm('確定要刪除這篇貼文嗎？刪除後無法復原。')) return;
+
+            try {
+                const { db, doc, deleteDoc } = window.fb;
+                await deleteDoc(doc(db, 'posts', postId));
+                showToast('🗑️ 貼文已刪除');
+            } catch (err) {
+                console.error('刪除貼文失敗：', err);
+                showToast('❌ 刪除失敗，請確認網路連線或安全規則');
+            }
+        }
+
+        function closeAddPostModal() {
+            editingPostId = null;
+            const modal = document.getElementById('addPostModal');
+            const card = document.getElementById('addPostModalCard');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            card.classList.add('scale-95');
+            document.body.style.overflow = '';
+            const previewRow = document.getElementById('uploadPreviewRow');
+            if (previewRow) previewRow.innerHTML = '';
+        }
+
+        const CLOUDINARY_CLOUD_NAME = 'p6esflub';
+        const CLOUDINARY_UPLOAD_PRESET = 'blog_upload';
+
+        // P2 Item: Front-end Defense-in-depth File Validation for Cloudinary Uploads
+        async function handleImageFileUpload(event) {
+            const files = Array.from(event.target.files || []);
+            if (files.length === 0) return;
+
+            // Type and size validation
+            const validFiles = files.filter(file => {
+                if (!file.type.startsWith('image/')) {
+                    showToast(`⚠️ 「${escapeHtml(file.name)}」不是有效的圖片格式！`);
+                    return false;
+                }
+                if (file.size > 10 * 1024 * 1024) { // 10MB Limit
+                    showToast(`⚠️ 「${escapeHtml(file.name)}」檔案超過 10MB 限制！`);
+                    return false;
+                }
+                return true;
+            });
+
+            if (validFiles.length === 0) return;
+
+            const statusLabel = document.getElementById('uploadStatusLabel');
+            const previewRow = document.getElementById('uploadPreviewRow');
+            const imagesInput = document.getElementById('newImages');
+            const uploadedUrls = [];
+
+            statusLabel.textContent = `上傳中... (0/${validFiles.length})`;
+
+            for (let i = 0; i < validFiles.length; i++) {
+                const file = validFiles[i];
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+                try {
+                    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await res.json();
+                    if (!res.ok) throw new Error(data.error?.message || '上傳失敗');
+
+                    uploadedUrls.push(data.secure_url);
+                    statusLabel.textContent = `上傳中... (${i + 1}/${validFiles.length})`;
+
+                    const thumbWrap = document.createElement('div');
+                    thumbWrap.className = 'relative';
+                    thumbWrap.dataset.url = data.secure_url;
+
+                    const thumb = document.createElement('img');
+                    thumb.src = addWatermark(data.secure_url);
+                    thumb.className = 'w-14 h-14 object-cover rounded-lg border-2 border-slate-200 dark:border-slate-700';
+
+                    const starBtn = document.createElement('button');
+                    starBtn.type = 'button';
+                    starBtn.title = '設為首圖';
+                    starBtn.className = 'absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-white dark:bg-slate-800 text-slate-300 dark:text-slate-600 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-[10px] shadow-sm';
+                    starBtn.innerHTML = '<i class="fa-solid fa-star"></i>';
+                    starBtn.onclick = () => setCoverImage(data.secure_url);
+
+                    thumbWrap.appendChild(thumb);
+                    thumbWrap.appendChild(starBtn);
+                    previewRow.appendChild(thumbWrap);
+                } catch (err) {
+                    console.error('圖片上傳失敗：', err);
+                    showToast(`❌ 「${escapeHtml(file.name)}」上傳失敗，請確認 Cloudinary 設定`);
+                }
+            }
+
+            if (uploadedUrls.length > 0) {
+                const existing = imagesInput.value.trim();
+                const combined = existing ? existing + ', ' + uploadedUrls.join(', ') : uploadedUrls.join(', ');
+                imagesInput.value = combined;
+                showToast(`✅ 成功上傳 ${uploadedUrls.length} 張圖片！`);
+            }
+
+            statusLabel.textContent = '選擇圖片檔案上傳';
+            event.target.value = '';
+        }
+
+        function setCoverImage(url) {
+            const imagesInput = document.getElementById('newImages');
+            let urls = imagesInput.value.split(',').map(s => s.trim()).filter(Boolean);
+            urls = urls.filter(u => u !== url);
+            urls.unshift(url);
+            imagesInput.value = urls.join(', ');
+
+            const previewRow = document.getElementById('uploadPreviewRow');
+            previewRow.querySelectorAll('[data-url]').forEach(wrap => {
+                const star = wrap.querySelector('button i');
+                const isCover = wrap.dataset.url === url;
+                star.parentElement.classList.toggle('text-amber-500', isCover);
+                star.parentElement.classList.toggle('border-amber-400', isCover);
+                star.parentElement.classList.toggle('text-slate-300', !isCover);
+            });
+            showToast('⭐ 已設為文章首圖');
+        }
+
+        async function handleSaveCustomPost(e) {
+            e.preventDefault();
+
+            if (!window.fb) {
+                showToast('⚠️ 尚未連上資料庫，請稍後再試一次');
+                return;
+            }
+
+            const title = document.getElementById('newTitle').value.trim();
+            const category = document.getElementById('newCategory').value;
+            const readTime = document.getElementById('newReadTime').value.trim() || '3 分鐘';
+            const rawImages = document.getElementById('newImages').value.trim();
+            const igUrl = document.getElementById('newIgUrl').value.trim();
+            const rawTags = document.getElementById('newTags').value.trim();
+            const summary = document.getElementById('newSummary').value.trim();
+
+            let imagesArr = rawImages ? rawImages.split(',').map(s => s.trim()) : [];
+            if (imagesArr.length === 0) {
+                imagesArr = [DEFAULT_FALLBACK_IMAGES[category]];
+            }
+            imagesArr = imagesArr.map(addWatermark);
+
+            let tagsArr = rawTags ? rawTags.split(',').map(s => s.trim().startsWith('#') ? s.trim() : '#' + s.trim()) : ['#新圖文'];
+
+            const newPost = {
+                title: title,
+                category: category,
+                tags: tagsArr,
+                date: editingPostId ? (customPosts.find(p => p.id === editingPostId)?.date || new Date().toISOString().split('T')[0]) : new Date().toISOString().split('T')[0],
+                readTime: readTime,
+                likes: editingPostId ? (customPosts.find(p => p.id === editingPostId)?.likes || 0) : 0,
+                featured: false,
+                image: imagesArr[0],
+                images: imagesArr,
+                summary: summary,
+                igUrl: sanitizeUrl(igUrl),
+                content: `<p class="whitespace-pre-line">${escapeHtml(summary)}</p>`
+            };
+
+            try {
+                const { db, collection, addDoc, doc, updateDoc, serverTimestamp } = window.fb;
+                if (editingPostId) {
+                    await updateDoc(doc(db, 'posts', editingPostId), newPost);
+                    closeAddPostModal();
+                    e.target.reset();
+                    showToast('✅ 貼文已更新');
+                } else {
+                    newPost.createdAt = serverTimestamp();
+                    await addDoc(collection(db, 'posts'), newPost);
+                    closeAddPostModal();
+                    e.target.reset();
+                    showToast('✨ 成功新增並發布新圖文貼文！所有訪客都看得到囉');
+                }
+            } catch (err) {
+                console.error('儲存貼文失敗：', err);
+                showToast('❌ 儲存失敗，請確認網路連線或 Firestore 安全規則');
+            }
+        }
+
+        function openAboutModal() {
+            const modal = document.getElementById('aboutModal');
+            const card = document.getElementById('aboutModalCard');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-95');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAboutModal() {
+            const modal = document.getElementById('aboutModal');
+            const card = document.getElementById('aboutModalCard');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            card.classList.add('scale-95');
+            document.body.style.overflow = '';
+        }
+
+        function openCalcModal() {
+            const modal = document.getElementById('calcModal');
+            const card = document.getElementById('calcModalCard');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-95');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCalcModal() {
+            const modal = document.getElementById('calcModal');
+            const card = document.getElementById('calcModalCard');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            card.classList.add('scale-95');
+            document.body.style.overflow = '';
+        }
+
+        function calculateSalary() {
+            const smallDays = parseInt(document.getElementById('nightSmallDays').value) || 0;
+            const bigDays = parseInt(document.getElementById('nightBigDays').value) || 0;
+            const allowance = (smallDays * 500) + (bigDays * 800);
+            document.getElementById('shiftAllowanceResult').innerText = allowance.toLocaleString();
+
+            const monthly = parseFloat(document.getElementById('monthlyInvest').value) || 0;
+            const years = parseInt(document.getElementById('investYears').value) || 5;
+            const rate = 0.06 / 12;
+            const months = years * 12;
+            
+            let total = 0;
+            if (rate > 0) {
+                total = monthly * ((Math.pow(1 + rate, months) - 1) / rate) * (1 + rate);
+            } else {
+                total = monthly * months;
+            }
+            document.getElementById('investResult').innerText = Math.round(total).toLocaleString();
+        }
+
+        function toggleLike(postId, event) {
+            if (event) event.stopPropagation();
+            if (userLikes[postId]) {
+                delete userLikes[postId];
+                showToast('已取消按讚');
+            } else {
+                userLikes[postId] = true;
+                showToast('❤️ 感謝支持 Kai！已按讚');
+            }
+            localStorage.setItem('kai_user_likes', JSON.stringify(userLikes));
+            renderPosts();
+        }
+
+        function toggleBookmark(postId, event) {
+            if (event) event.stopPropagation();
+            if (userBookmarks[postId]) {
+                delete userBookmarks[postId];
+                showToast('已從個人收藏移除');
+            } else {
+                userBookmarks[postId] = true;
+                showToast('🔖 已加入個人書籤庫！');
+            }
+            localStorage.setItem('kai_user_bookmarks', JSON.stringify(userBookmarks));
+            renderPosts();
+        }
+
+        // P2 Item: Modernized Clipboard API with execCommand Fallback
+        async function copyCurrentLink() {
+            const url = window.location.href;
+            if (navigator.clipboard && window.isSecureContext) {
+                try {
+                    await navigator.clipboard.writeText(url);
+                    showToast('📋 已複製文章連結至剪貼簿！');
+                    return;
+                } catch (err) {
+                    console.warn('Clipboard API 呼叫失敗，切換至備援方式');
+                }
+            }
+            const tempInput = document.createElement('input');
+            document.body.appendChild(tempInput);
+            tempInput.value = url;
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast('📋 已複製文章連結至剪貼簿！');
+        }
+
+        function shareToLine() {
+            if (!currentActivePost) return;
+            const text = `${currentActivePost.title} | Kai 護理生活 & 理財投資`;
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://social-plugins.line.me/lineit/share?url=${url}&text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            setCategory('all');
+        }
+
+        function setupScrollListener() {
+            const btn = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    btn.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    btn.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
