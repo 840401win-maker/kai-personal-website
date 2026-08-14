@@ -1,0 +1,15 @@
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.glass-effect {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+}
+.dark .glass-effect {
+    background: rgba(35, 32, 28, 0.88);
+    backdrop-filter: blur(12px);
+}
