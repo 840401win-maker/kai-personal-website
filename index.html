@@ -606,6 +606,7 @@
 
     <script src="js/utils.js"></script>
     <script type="module" src="js/firebase.js"></script>
+    <script src="js/firestore-read.js"></script>
     <script>
         const DEFAULT_FALLBACK_IMAGES = {
             'nursing': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
@@ -765,27 +766,9 @@
         let firestoreReady = false;
         let isAdminLoggedIn = false;
 
-        function rebuildPostsData() {
-            const taggedCustom = customPosts.map(p => ({ ...p, _isCustom: true }));
-            postsData = [...taggedCustom, ...staticPostsData];
-        }
-
-        function startFirestoreSync() {
-            if (!window.fb) return;
-            const { db, collection, onSnapshot, query, orderBy } = window.fb;
-            const postsQuery = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
-
-            onSnapshot(postsQuery, (snapshot) => {
-                customPosts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                rebuildPostsData();
-                renderPosts();
-            }, (error) => {
-                console.error('Firestore 讀取失敗：', error);
-                showToast('⚠️ 貼文資料讀取失敗，請確認 Firestore 安全規則設定');
-            });
-
-            firestoreReady = true;
-        }
+        // rebuildPostsData() 與 startFirestoreSync() 已搬移至 js/firestore-read.js（Phase 2A-3B-2）
+        // customPosts / postsData / firestoreReady 宣告仍留在這裡不動，
+        // 因為它們也被 openEditPostModal() / handleSaveCustomPost() / renderPosts() 讀取使用。
 
         const SITE_LOGO_URL = 'https://res.cloudinary.com/p6esflub/image/upload/v1786270726/14_lfk0rp.png';
 
