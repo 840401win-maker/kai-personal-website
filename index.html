@@ -794,6 +794,57 @@
             inner.innerHTML = `<img src="${sanitizeUrl(SITE_LOGO_URL)}" alt="Kai Logo" class="w-full h-full object-cover rounded-full">`;
         }
 
+        // ================= Phase 2B-2: Independent Article URL (History API Router) =================
+        // 只支援兩種路徑：'/' 與 '/post/:id'。不建立額外的 Firestore listener，
+        // 完全依賴既有的 postsData / renderPosts() 來判斷文章是否已經可以被開啟。
+        let pendingRouteId = null;
+
+        function parseRoute(pathname) {
+            const match = pathname.match(/^\/post\/([^\/]+)\/?$/);
+            return match ? decodeURIComponent(match[1]) : null;
+        }
+
+        // 嘗試把目前待處理的路由（pendingRouteId）對應到 postsData 裡的文章並開啟。
+        // 找到就開啟並回傳 true；找不到（可能是 Firestore 自訂文章尚未同步完成）回傳 false，不做任何 fallback 判斷。
+        function tryResolvePendingRoute() {
+            if (!pendingRouteId) return true;
+            const post = postsData.find(p => p.id === pendingRouteId);
+            if (post) {
+                openPostModal(pendingRouteId);
+                pendingRouteId = null;
+                return true;
+            }
+            return false;
+        }
+
+        // 頁面載入時根據目前網址初始化路由狀態。
+        // - 找得到 → 立即開啟（涵蓋 staticPostsData，一開始就在 postsData 裡）
+        // - 找不到 → 交給 renderPosts() 每次執行時（包含 onSnapshot 第一次帶回資料時）繼續嘗試解析
+        //   同時設一個時間上限，避免文章真的不存在時，網址永遠停在 /post/:id 卡住
+        function initRouting() {
+            const id = parseRoute(location.pathname);
+            if (!id) return;
+            pendingRouteId = id;
+            if (tryResolvePendingRoute()) return;
+
+            setTimeout(() => {
+                if (pendingRouteId === id) {
+                    pendingRouteId = null;
+                    history.replaceState({}, '', '/');
+                }
+            }, 6000);
+        }
+
+        window.addEventListener('popstate', () => {
+            const id = parseRoute(location.pathname);
+            if (id) {
+                pendingRouteId = id;
+                tryResolvePendingRoute();
+            } else {
+                closePostModal();
+            }
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             initTheme();
             renderSubTags();
@@ -802,6 +853,7 @@
             calculateSalary();
             setupKeyboardAndTouchEvents();
             applySiteLogo();
+            initRouting();
 
             if (window.fb) {
                 startFirestoreSync();
@@ -1009,6 +1061,10 @@
                     </article>
                 `;
             }).join('');
+
+            // Phase 2B-2: Independent Article URL — renderPosts() 每次被呼叫都代表 postsData
+            // 可能有變化（包含 onSnapshot 帶回 Firestore 資料的那一次），趁機再嘗試一次解析待處理的路由
+            if (pendingRouteId) tryResolvePendingRoute();
         }
 
         let currentActivePost = null;
@@ -1080,6 +1136,14 @@
         function openPostModal(postId) {
             const post = postsData.find(p => p.id === postId);
             if (!post) return;
+
+            // Phase 2B-2: Independent Article URL — 只有在網址還不是這篇文章的網址時才 push，
+            // 避免「router 已經在 /post/:id 時又再次 push」造成重複的 history 記錄
+            const targetPath = '/post/' + encodeURIComponent(postId);
+            if (location.pathname !== targetPath) {
+                history.pushState({ postId }, '', targetPath);
+            }
+
             currentActivePost = post;
             currentCarouselIndex = 0;
             isFullscreenImage = false;
@@ -1229,6 +1293,12 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
             card.classList.add('scale-95');
             document.body.style.overflow = '';
+
+            // Phase 2B-2: Independent Article URL — 只有在網址還是 /post/:id 時才 push 回首頁，
+            // 若這次呼叫是由 popstate 觸發（瀏覽器已經把網址改回 /），這裡就不會重複 push
+            if (location.pathname !== '/') {
+                history.pushState({}, '', '/');
+            }
         }
 
         let editingPostId = null;
