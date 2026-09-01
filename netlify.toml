@@ -1,0 +1,7 @@
+# Phase 2B-6: Netlify Edge Function 設定
+# 只用來註冊 /post/:id 的 server-side article metadata Edge Function。
+# 沒有 build command、沒有 framework adapter、沒有 SSG、沒有任何其他部署行為變更。
+
+[[edge_functions]]
+  path = "/post/*"
+  function = "article-metadata"
