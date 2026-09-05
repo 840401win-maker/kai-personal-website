@@ -313,7 +313,7 @@
     </button>
 
     <!-- Modal 1: 文章內文與圖文輪播視窗 (Post Modal) -->
-    <div id="postModal" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="postModal" role="dialog" aria-modal="true" aria-labelledby="postModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="bg-white dark:bg-slate-900 w-full max-w-4xl max-h-[92vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="postModalCard">
             <div class="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between sticky top-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md z-20">
                 <div class="flex items-center gap-2 text-xs font-semibold text-teal-600 dark:text-teal-400" id="modalCategory"></div>
@@ -355,10 +355,10 @@
     </div>
 
     <!-- Modal 2: 關於我 (About Modal) -->
-    <div id="aboutModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="bg-white dark:bg-slate-900 w-full max-w-2xl max-h-[90vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="aboutModalCard">
             <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                <h3 class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
+                <h3 id="aboutModalTitle" class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
                     <i class="fa-solid fa-address-card text-teal-600"></i> 關於 Kai (創作者檔案)
                 </h3>
                 <button onclick="closeAboutModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
@@ -368,7 +368,9 @@
 
             <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm leading-relaxed">
                 <div class="flex flex-col items-center text-center -mt-2">
-                    <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/12_qeh4rc.png" alt="Kai 個人形象照" loading="lazy" onclick="openImageLightbox(this.src)" class="w-28 h-28 rounded-full object-cover border-4 border-teal-100 dark:border-teal-900 shadow-md cursor-pointer hover:opacity-90 transition-opacity">
+                    <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/12_qeh4rc.png')" aria-label="放大檢視 Kai 個人形象照" class="block p-0 border-0 bg-transparent rounded-full">
+                        <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/12_qeh4rc.png" alt="Kai 個人形象照" loading="lazy" class="w-28 h-28 rounded-full object-cover border-4 border-teal-100 dark:border-teal-900 shadow-md cursor-pointer hover:opacity-90 transition-opacity">
+                    </button>
                     <p class="mt-2 font-bold text-slate-900 dark:text-white">Kai</p>
                     <p class="text-[11px] text-slate-400">@kai.nursing_life</p>
                 </div>
@@ -427,9 +429,15 @@
                         <i class="fa-solid fa-images text-teal-500"></i> 📸 生活剪影
                     </h4>
                     <div class="grid grid-cols-3 gap-2">
-                        <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/13_sslpzj.png" alt="Kai 生活照" loading="lazy" onclick="openImageLightbox(this.src)" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
-                        <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270901/15_ub1o2u.png" alt="Kai 生活照" loading="lazy" onclick="openImageLightbox(this.src)" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
-                        <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/14_lfk0rp.png" alt="Kai 生活照" loading="lazy" onclick="openImageLightbox(this.src)" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+                        <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/13_sslpzj.png')" aria-label="放大檢視 Kai 生活照 1" class="block p-0 border-0 bg-transparent rounded-xl">
+                            <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/13_sslpzj.png" alt="Kai 生活照" loading="lazy" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+                        </button>
+                        <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270901/15_ub1o2u.png')" aria-label="放大檢視 Kai 生活照 2" class="block p-0 border-0 bg-transparent rounded-xl">
+                            <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270901/15_ub1o2u.png" alt="Kai 生活照" loading="lazy" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+                        </button>
+                        <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/14_lfk0rp.png')" aria-label="放大檢視 Kai 生活照 3" class="block p-0 border-0 bg-transparent rounded-xl">
+                            <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/14_lfk0rp.png" alt="Kai 生活照" loading="lazy" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+                        </button>
                     </div>
                 </div>
             </div>
@@ -443,10 +451,10 @@
     </div>
 
     <!-- Modal 3: 夜班津貼與存股試算器 (Calc Modal) -->
-    <div id="calcModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="calcModal" role="dialog" aria-modal="true" aria-labelledby="calcModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="calcModalCard">
             <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-amber-50/50 dark:bg-amber-950/30">
-                <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                <h3 id="calcModalTitle" class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
                     <i class="fa-solid fa-calculator text-amber-500"></i> 🧮 護理夜班津貼 & 存股試算
                 </h3>
                 <button onclick="closeCalcModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
@@ -495,7 +503,7 @@
     </div>
 
     <!-- Modal 4: 新增/編輯貼文 Modal (Add/Edit Post Modal) -->
-    <div id="addPostModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="addPostModal" role="dialog" aria-modal="true" aria-labelledby="addPostModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="addPostModalCard">
             <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-teal-50/50 dark:bg-teal-950/30">
                 <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
@@ -508,13 +516,13 @@
 
             <form id="addPostForm" onsubmit="handleSaveCustomPost(event)" class="p-6 space-y-4 text-xs overflow-y-auto max-h-[75vh]">
                 <div>
-                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">文章標題 *</label>
+                    <label for="newTitle" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">文章標題 *</label>
                     <input type="text" id="newTitle" required placeholder="例如：【護理日常】臨床夜班小撇步" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">文章分類</label>
+                        <label for="newCategory" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">文章分類</label>
                         <select id="newCategory" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
                             <option value="nursing">🏥 護理類</option>
                             <option value="finance">📊 理財類</option>
@@ -522,7 +530,7 @@
                         </select>
                     </div>
                     <div>
-                        <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">閱讀估算時間</label>
+                        <label for="newReadTime" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">閱讀估算時間</label>
                         <input type="text" id="newReadTime" value="3 分鐘" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
                     </div>
                 </div>
@@ -540,22 +548,22 @@
                 </div>
 
                 <div>
-                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">圖片網址（第一張＝文章首圖；上傳後可點縮圖右上角⭐指定首圖）</label>
+                    <label for="newImages" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">圖片網址（第一張＝文章首圖；上傳後可點縮圖右上角⭐指定首圖）</label>
                     <input type="text" id="newImages" placeholder="例如：1.png, 2.png, 3.png 或 Cloudinary 網址" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
                 </div>
 
                 <div>
-                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">IG 貼文網址 (選填)</label>
+                    <label for="newIgUrl" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">IG 貼文網址 (選填)</label>
                     <input type="url" id="newIgUrl" placeholder="https://www.instagram.com/p/..." class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
                 </div>
 
                 <div>
-                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">標籤 Tags (用逗號隔開)</label>
+                    <label for="newTags" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">標籤 Tags (用逗號隔開)</label>
                     <input type="text" id="newTags" placeholder="#護理日常, #臨床經驗, #心律不整" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
                 </div>
 
                 <div>
-                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">文章內文概要與心得 *</label>
+                    <label for="newSummary" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">文章內文概要與心得 *</label>
                     <textarea id="newSummary" required rows="4" placeholder="在此貼上您在 IG 撰寫的發文內文..." class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none"></textarea>
                 </div>
 
@@ -568,10 +576,10 @@
     </div>
 
     <!-- Modal 5: 管理員登入 Modal -->
-    <div id="loginModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="bg-white dark:bg-slate-900 w-full max-w-sm rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="loginModalCard">
             <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                <h3 id="loginModalTitle" class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
                     <i class="fa-solid fa-user-shield text-teal-600"></i> 管理員登入
                 </h3>
                 <button onclick="closeLoginModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
@@ -580,11 +588,11 @@
             </div>
             <form onsubmit="handleAdminLogin(event)" class="p-6 space-y-4 text-xs">
                 <div>
-                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">Email</label>
+                    <label for="loginEmail" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">Email</label>
                     <input type="email" id="loginEmail" required class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
                 </div>
                 <div>
-                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">密碼</label>
+                    <label for="loginPassword" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">密碼</label>
                     <input type="password" id="loginPassword" required class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
                 </div>
                 <p id="loginError" class="hidden text-red-500 text-[11px]"></p>
@@ -594,9 +602,9 @@
     </div>
 
     <!-- Image Lightbox Modal -->
-    <div id="imageLightbox" onclick="closeImageLightbox()" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 cursor-zoom-out">
+    <div id="imageLightbox" onclick="closeImageLightbox()" role="dialog" aria-modal="true" aria-label="圖片放大檢視" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 cursor-zoom-out">
         <img id="imageLightboxImg" src="" alt="放大檢視" class="max-w-full max-h-[90vh] rounded-2xl shadow-2xl object-contain">
-        <button onclick="closeImageLightbox()" aria-label="關閉大圖" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center">
+        <button onclick="event.stopPropagation(); closeImageLightbox()" aria-label="關閉大圖" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center">
             <i class="fa-solid fa-xmark text-xl"></i>
         </button>
     </div>
@@ -779,11 +787,13 @@
             const img = document.getElementById('imageLightboxImg');
             img.src = sanitizeUrl(src);
             lightbox.classList.remove('opacity-0', 'pointer-events-none');
+            moveFocusIntoModal('imageLightbox');
         }
 
         function closeImageLightbox() {
             const lightbox = document.getElementById('imageLightbox');
             lightbox.classList.add('opacity-0', 'pointer-events-none');
+            restoreFocusAfterModalClose();
         }
 
         function applySiteLogo() {
@@ -792,6 +802,26 @@
             if (!wrap) return;
             const inner = wrap.querySelector('div');
             inner.innerHTML = `<img src="${optimizeCloudinaryUrl(sanitizeUrl(SITE_LOGO_URL))}" alt="Kai Logo" loading="eager" class="w-full h-full object-cover rounded-full">`;
+        }
+
+        // ================= Phase 2C-1: Accessibility — Modal Focus Management =================
+        // 最小必要的 focus 管理：開啟 Modal 時記住觸發來源、把焦點移入 Modal 內第一個可操作元素；
+        // 關閉時把焦點還給原本觸發的元素。不實作完整的 Tab 循環 focus trap（避免大幅重寫既有 Modal 系統）。
+        let lastFocusedElementBeforeModal = null;
+
+        function moveFocusIntoModal(modalId) {
+            lastFocusedElementBeforeModal = document.activeElement;
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            const focusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (focusable) focusable.focus();
+        }
+
+        function restoreFocusAfterModalClose() {
+            if (lastFocusedElementBeforeModal && typeof lastFocusedElementBeforeModal.focus === 'function') {
+                lastFocusedElementBeforeModal.focus();
+            }
+            lastFocusedElementBeforeModal = null;
         }
 
         // ================= Phase 2B-2: Independent Article URL (History API Router) =================
@@ -1237,7 +1267,7 @@
                         ${post.images ? `<span>•</span><span class="text-teal-600 dark:text-teal-400 font-semibold"><i class="fa-solid fa-images"></i> 完整 ${post.images.length} 張圖文典藏</span>` : ''}
                     </div>
 
-                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight">
+                    <h2 id="postModalTitle" class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight">
                         ${escapeHtml(post.title)}
                     </h2>
                 </div>
@@ -1263,19 +1293,40 @@
             modal.classList.remove('opacity-0', 'pointer-events-none');
             card.classList.remove('scale-95');
             document.body.style.overflow = 'hidden';
+            moveFocusIntoModal('postModal');
         }
 
         function setupKeyboardAndTouchEvents() {
             document.addEventListener('keydown', (e) => {
-                const modal = document.getElementById('postModal');
-                if (modal && !modal.classList.contains('opacity-0')) {
-                    if (e.key === 'ArrowLeft') changeCarousel(-1);
-                    if (e.key === 'ArrowRight') changeCarousel(1);
-                    if (e.key === 'Escape') closePostModal();
+                if (e.key !== 'Escape') {
+                    const modal = document.getElementById('postModal');
+                    if (modal && !modal.classList.contains('opacity-0')) {
+                        if (e.key === 'ArrowLeft') changeCarousel(-1);
+                        if (e.key === 'ArrowRight') changeCarousel(1);
+                    }
+                    return;
                 }
-                const lightbox = document.getElementById('imageLightbox');
-                if (lightbox && !lightbox.classList.contains('opacity-0') && e.key === 'Escape') {
+
+                // Phase 2C-1: Escape 應能關閉目前開啟的任何一個 Modal（原本只處理 postModal / lightbox）
+                const postModalEl = document.getElementById('postModal');
+                const lightboxEl = document.getElementById('imageLightbox');
+                const aboutModalEl = document.getElementById('aboutModal');
+                const calcModalEl = document.getElementById('calcModal');
+                const addPostModalEl = document.getElementById('addPostModal');
+                const loginModalEl = document.getElementById('loginModal');
+
+                if (lightboxEl && !lightboxEl.classList.contains('opacity-0')) {
                     closeImageLightbox();
+                } else if (postModalEl && !postModalEl.classList.contains('opacity-0')) {
+                    closePostModal();
+                } else if (aboutModalEl && !aboutModalEl.classList.contains('opacity-0')) {
+                    closeAboutModal();
+                } else if (calcModalEl && !calcModalEl.classList.contains('opacity-0')) {
+                    closeCalcModal();
+                } else if (addPostModalEl && !addPostModalEl.classList.contains('opacity-0')) {
+                    closeAddPostModal();
+                } else if (loginModalEl && !loginModalEl.classList.contains('opacity-0')) {
+                    closeLoginModal();
                 }
             });
 
@@ -1304,6 +1355,7 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
             card.classList.add('scale-95');
             document.body.style.overflow = '';
+            restoreFocusAfterModalClose();
 
             // Phase 2B-2: Independent Article URL — 只有在網址還是 /post/:id 時才 push 回首頁，
             // 若這次呼叫是由 popstate 觸發（瀏覽器已經把網址改回 /），這裡就不會重複 push
@@ -1326,6 +1378,7 @@
             modal.classList.remove('opacity-0', 'pointer-events-none');
             card.classList.remove('scale-95');
             document.body.style.overflow = 'hidden';
+            moveFocusIntoModal('addPostModal');
         }
 
         function openEditPostModal(postId, event) {
@@ -1351,6 +1404,7 @@
             modal.classList.remove('opacity-0', 'pointer-events-none');
             card.classList.remove('scale-95');
             document.body.style.overflow = 'hidden';
+            moveFocusIntoModal('addPostModal');
         }
 
         function closeAddPostModal() {
@@ -1362,6 +1416,7 @@
             document.body.style.overflow = '';
             const previewRow = document.getElementById('uploadPreviewRow');
             if (previewRow) previewRow.innerHTML = '';
+            restoreFocusAfterModalClose();
         }
 
         const CLOUDINARY_CLOUD_NAME = 'p6esflub';
@@ -1470,6 +1525,7 @@
             modal.classList.remove('opacity-0', 'pointer-events-none');
             card.classList.remove('scale-95');
             document.body.style.overflow = 'hidden';
+            moveFocusIntoModal('aboutModal');
         }
 
         function closeAboutModal() {
@@ -1478,6 +1534,7 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
             card.classList.add('scale-95');
             document.body.style.overflow = '';
+            restoreFocusAfterModalClose();
         }
 
         function openCalcModal() {
@@ -1486,6 +1543,7 @@
             modal.classList.remove('opacity-0', 'pointer-events-none');
             card.classList.remove('scale-95');
             document.body.style.overflow = 'hidden';
+            moveFocusIntoModal('calcModal');
         }
 
         function closeCalcModal() {
@@ -1494,6 +1552,7 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
             card.classList.add('scale-95');
             document.body.style.overflow = '';
+            restoreFocusAfterModalClose();
         }
 
         function calculateSalary() {
