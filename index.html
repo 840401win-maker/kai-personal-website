@@ -240,16 +240,16 @@
         <div class="space-y-4 mb-8">
             <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2 hide-scrollbar">
                 <div class="flex items-center gap-2">
-                    <button onclick="setCategory('all')" id="cat-all" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-teal-600 text-white shadow-md shadow-teal-600/20">
+                    <button onclick="setCategory('all')" id="cat-all" aria-pressed="true" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-teal-600 text-white shadow-md shadow-teal-600/20">
                         ✨ 全部文章
                     </button>
-                    <button onclick="setCategory('nursing')" id="cat-nursing" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
+                    <button onclick="setCategory('nursing')" id="cat-nursing" aria-pressed="false" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
                         🏥 護理類
                     </button>
-                    <button onclick="setCategory('finance')" id="cat-finance" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
+                    <button onclick="setCategory('finance')" id="cat-finance" aria-pressed="false" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
                         📊 理財類 (薪資記帳)
                     </button>
-                    <button onclick="setCategory('invest')" id="cat-invest" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
+                    <button onclick="setCategory('invest')" id="cat-invest" aria-pressed="false" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
                         📈 投資類
                     </button>
                 </div>
@@ -274,6 +274,7 @@
         </div>
 
         <!-- 5. 文章卡片牆 (Blog Posts Grid) -->
+        <div id="resultsStatus" role="status" aria-live="polite" class="sr-only"></div>
         <div id="postsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
         <div id="emptyState" class="hidden text-center py-16 space-y-3">
@@ -939,11 +940,13 @@
 
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.className = 'cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700';
+                btn.setAttribute('aria-pressed', 'false');
             });
 
             const activeBtn = document.getElementById(`cat-${cat}`);
             if (activeBtn) {
                 activeBtn.className = 'cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-teal-600 text-white shadow-md shadow-teal-600/20';
+                activeBtn.setAttribute('aria-pressed', 'true');
             }
 
             renderSubTags();
@@ -958,7 +961,7 @@
                 const tagVal = tag === '#全部' ? 'all' : tag;
                 const isActive = currentSubTag === tagVal;
                 return `
-                    <button onclick="setSubTag('${escapeHtml(tagVal)}')" class="px-2.5 py-1 rounded-lg transition-colors ${
+                    <button onclick="setSubTag('${escapeHtml(tagVal)}')" aria-pressed="${isActive}" class="px-2.5 py-1 rounded-lg transition-colors ${
                         isActive 
                         ? 'bg-amber-500 text-white font-bold shadow-sm' 
                         : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
@@ -1006,6 +1009,11 @@
                 filtered.sort((a, b) => (b.likes + (userLikes[b.id] ? 1 : 0)) - (a.likes + (userLikes[a.id] ? 1 : 0)));
             } else {
                 filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+
+            const resultsStatus = document.getElementById('resultsStatus');
+            if (resultsStatus) {
+                resultsStatus.textContent = filtered.length > 0 ? `找到 ${filtered.length} 篇文章` : '沒有符合條件的文章';
             }
 
             if (filtered.length === 0) {

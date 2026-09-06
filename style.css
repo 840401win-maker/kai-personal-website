@@ -1,0 +1,40 @@
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.glass-effect {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+}
+.dark .glass-effect {
+    background: rgba(35, 32, 28, 0.88);
+    backdrop-filter: blur(12px);
+}
+
+/* Phase 2C-2 Task 5: Article Modal Scroll Containment — 降低 mobile Safari/Chrome 的 scroll chaining */
+#modalBody {
+    overscroll-behavior: contain;
+}
+
+/* Phase 2C-2 Task 6: Mobile Touch Target Refinement（360px–414px），只調整 padding/gap/line-height */
+@media (max-width: 420px) {
+    .cat-btn {
+        padding-top: 0.625rem;
+        padding-bottom: 0.625rem;
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
+    }
+    #subTagsContainer {
+        gap: 0.5rem;
+    }
+    #subTagsContainer button {
+        padding-top: 0.375rem;
+        padding-bottom: 0.375rem;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        line-height: 1.4;
+    }
+}
