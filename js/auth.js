@@ -5,13 +5,18 @@ async function handleAdminLogout() {
     showToast('已登出管理員身分');
 }
 
+let loginModalTriggerElement = null;
+
 function openLoginModal() {
+    loginModalTriggerElement = document.activeElement;
     const modal = document.getElementById('loginModal');
     const card = document.getElementById('loginModalCard');
     document.getElementById('loginError').classList.add('hidden');
     modal.classList.remove('opacity-0', 'pointer-events-none');
     card.classList.remove('scale-95');
     document.body.style.overflow = 'hidden';
+    const emailInput = document.getElementById('loginEmail');
+    if (emailInput) emailInput.focus();
 }
 
 function closeLoginModal() {
@@ -20,6 +25,10 @@ function closeLoginModal() {
     modal.classList.add('opacity-0', 'pointer-events-none');
     card.classList.add('scale-95');
     document.body.style.overflow = '';
+    if (loginModalTriggerElement && typeof loginModalTriggerElement.focus === 'function') {
+        loginModalTriggerElement.focus();
+    }
+    loginModalTriggerElement = null;
 }
 
 async function handleAdminLogin(e) {
