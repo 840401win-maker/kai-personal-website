@@ -1141,7 +1141,7 @@
 
             if (imgElem) {
                 imgElem.onerror = () => handleImgError(imgElem, currentActivePost.category);
-                imgElem.src = sanitizeUrl(currentActivePost.images[currentCarouselIndex]);
+                imgElem.src = optimizeCloudinaryUrl(sanitizeUrl(currentActivePost.images[currentCarouselIndex]));
             }
             if (countElem) countElem.innerText = `${currentCarouselIndex + 1} / ${currentActivePost.images.length}`;
             
