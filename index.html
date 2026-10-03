@@ -550,7 +550,7 @@
 
                 <div>
                     <label for="newImages" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">圖片網址（第一張＝文章首圖；上傳後可點縮圖右上角⭐指定首圖）</label>
-                    <input type="text" id="newImages" placeholder="例如：1.png, 2.png, 3.png 或 Cloudinary 網址" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                    <textarea id="newImages" placeholder="每行一個完整圖片網址" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none" rows="3"></textarea>
                 </div>
 
                 <div>
@@ -1406,7 +1406,7 @@
             document.getElementById('newTitle').value = post.title || '';
             document.getElementById('newCategory').value = post.category || 'nursing';
             document.getElementById('newReadTime').value = post.readTime || '3 分鐘';
-            document.getElementById('newImages').value = (post.images || []).join(', ');
+            document.getElementById('newImages').value = (post.images || []).join('\n');
             document.getElementById('newIgUrl').value = post.igUrl || '';
             document.getElementById('newTags').value = (post.tags || []).join(', ');
             document.getElementById('newSummary').value = post.summary || '';
@@ -1504,9 +1504,7 @@
             }
 
             if (uploadedUrls.length > 0) {
-                const existing = imagesInput.value.trim();
-                const combined = existing ? existing + ', ' + uploadedUrls.join(', ') : uploadedUrls.join(', ');
-                imagesInput.value = combined;
+                imagesInput.value = parseImageUrls(imagesInput.value).concat(uploadedUrls).join('\n');
                 showToast(`✅ 成功上傳 ${uploadedUrls.length} 張圖片！`);
             }
 
@@ -1516,10 +1514,10 @@
 
         function setCoverImage(url) {
             const imagesInput = document.getElementById('newImages');
-            let urls = imagesInput.value.split(',').map(s => s.trim()).filter(Boolean);
+            let urls = parseImageUrls(imagesInput.value);
             urls = urls.filter(u => u !== url);
             urls.unshift(url);
-            imagesInput.value = urls.join(', ');
+            imagesInput.value = urls.join('\n');
 
             const previewRow = document.getElementById('uploadPreviewRow');
             previewRow.querySelectorAll('[data-url]').forEach(wrap => {

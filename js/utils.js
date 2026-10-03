@@ -29,9 +29,16 @@ function handleImgError(imgElem, category) {
     imgElem.src = fallback;
 }
 
+// Newline-separated URLs; retain legacy commas only between absolute URLs.
+function parseImageUrls(value) {
+    return String(value || '').split(/\r?\n|,\s*(?=https?:\/\/)/i)
+        .map(url => url.trim()).filter(Boolean);
+}
+
 function addWatermark(url) {
     if (!url || !url.includes('res.cloudinary.com') || !url.includes('/upload/')) return url;
     const mark = 'l_text:Arial_36_bold:%40kai.nursing_life,co_white,o_75,g_south_east,x_18,y_18/';
+    if (url.includes(mark)) return url;
     return url.replace('/upload/', `/upload/${mark}`);
 }
 
