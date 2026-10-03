@@ -613,6 +613,7 @@
     <!-- Toast Notification Container -->
     <div id="toastContainer" class="fixed top-20 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
+    <script src="/js/vendor/purify.min.js"></script>
     <script src="/js/utils.js"></script>
     <script type="module" src="/js/firebase.js"></script>
     <script src="/js/firestore-read.js"></script>
@@ -1299,7 +1300,7 @@
                 ` : ''}
 
                 <div class="space-y-4 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-200">
-                    ${post.content}
+                    ${post._isCustom ? sanitizeArticleContent(post.content) : post.content}
                 </div>
             `;
 
