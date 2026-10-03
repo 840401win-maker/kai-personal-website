@@ -832,7 +832,12 @@
 
         function parseRoute(pathname) {
             const match = pathname.match(/^\/post\/([^\/]+)\/?$/);
-            return match ? decodeURIComponent(match[1]) : null;
+            if (!match) return null;
+            try {
+                return decodeURIComponent(match[1]);
+            } catch (error) {
+                return null;
+            }
         }
 
         // 嘗試把目前待處理的路由（pendingRouteId）對應到 postsData 裡的文章並開啟。
