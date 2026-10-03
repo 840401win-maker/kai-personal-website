@@ -23,8 +23,27 @@ function sanitizeUrl(url) {
     return 'https://www.instagram.com/kai.nursing_life';
 }
 
+// Image URLs must fall back to an image, never a navigation destination.
+function getImageFallback(category) {
+    return Object.prototype.hasOwnProperty.call(DEFAULT_FALLBACK_IMAGES, category)
+        ? DEFAULT_FALLBACK_IMAGES[category]
+        : DEFAULT_FALLBACK_IMAGES.nursing;
+}
+
+function sanitizeImageUrl(url, category) {
+    const fallback = getImageFallback(category);
+    if (typeof url !== 'string' || !url.trim()) return fallback;
+    try {
+        const parsed = new URL(url.trim(), window.location.href);
+        if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return parsed.href;
+    } catch (e) {
+        // Malformed image URL: use the category image immediately.
+    }
+    return fallback;
+}
+
 function handleImgError(imgElem, category) {
-    const fallback = DEFAULT_FALLBACK_IMAGES[category] || DEFAULT_FALLBACK_IMAGES['nursing'];
+    const fallback = getImageFallback(category);
     imgElem.onerror = null;
     imgElem.src = fallback;
 }
