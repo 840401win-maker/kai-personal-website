@@ -66,7 +66,12 @@ export default async (request, context) => {
     return context.next();
   }
 
-  const id = decodeURIComponent(match[1]);
+  let id;
+  try {
+    id = decodeURIComponent(match[1]);
+  } catch (error) {
+    return context.next();
+  }
   const article = STATIC_ARTICLES[id];
 
   // 不是目前已知的 5 篇靜態文章之一（可能是打錯字、或是 Firestore 自訂文章的 id）
