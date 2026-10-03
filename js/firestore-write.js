@@ -29,7 +29,7 @@ async function handleSaveCustomPost(e) {
     const rawTags = document.getElementById('newTags').value.trim();
     const summary = document.getElementById('newSummary').value.trim();
 
-    let imagesArr = rawImages ? rawImages.split(',').map(s => s.trim()) : [];
+    let imagesArr = parseImageUrls(rawImages);
     if (imagesArr.length === 0) {
         imagesArr = [DEFAULT_FALLBACK_IMAGES[category]];
     }
