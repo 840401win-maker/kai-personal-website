@@ -563,6 +563,8 @@
     <script src="/js/firestore-write.js"></script>
     <script src="/js/auth.js"></script>
     <script>
+        const HOME_PAGE_TITLE = "Kai | 護理生活 & 理財投資筆記 🩺💰";
+
         const DEFAULT_FALLBACK_IMAGES = {
             'nursing': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
             'finance': 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&auto=format&fit=crop&q=80',
@@ -1146,6 +1148,7 @@
                 history.pushState({ postId }, '', targetPath);
             }
 
+            document.title = post.title + ' | Kai 護理生活 & 理財投資筆記';
             currentActivePost = post;
             currentCarouselIndex = 0;
             isFullscreenImage = false;
@@ -1310,6 +1313,7 @@
         }
 
         function closePostModal() {
+            document.title = HOME_PAGE_TITLE;
             const modal = document.getElementById('postModal');
             const card = document.getElementById('postModalCard');
             if (isFullscreenImage) toggleFullscreenImage();
