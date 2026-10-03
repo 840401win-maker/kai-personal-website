@@ -90,7 +90,7 @@ export default async (request, context) => {
 
   let html = await response.text();
 
-  const articleUrl = `https://kainursinglife.com/post/${encodeURIComponent(id)}`;
+  const articleUrl = `https://kai-personal-website.netlify.app/post/${encodeURIComponent(id)}`;
   const safeTitle = escapeForHtml(article.title);
   const safeSummary = escapeForHtml(article.summary);
   const safePageTitle = escapeForHtml(`${article.title} | Kai 護理生活 & 理財投資筆記`);
