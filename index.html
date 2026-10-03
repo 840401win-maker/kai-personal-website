@@ -121,7 +121,7 @@
             <div class="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8 relative z-10">
                 <div class="relative group cursor-pointer" onclick="openAboutModal()">
                     <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-teal-500 via-amber-400 to-teal-600 shadow-xl group-hover:scale-105 transition-transform duration-300">
-                        <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/11_skvgrb.png" alt="Kai 大頭貼" loading="eager" class="w-full h-full object-cover rounded-full border-2 border-white dark:border-slate-900">
+                        <img src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png" width="256" height="256" alt="Kai 大頭貼" loading="eager" class="w-full h-full object-cover rounded-full border-2 border-white dark:border-slate-900">
                     </div>
                     <span class="absolute bottom-1 right-1 bg-teal-600 text-white p-1.5 rounded-full text-xs shadow-lg border-2 border-white dark:border-slate-900" title="公職護理師 & N4">
                         <i class="fa-solid fa-user-nurse"></i>
@@ -312,7 +312,7 @@
             <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm leading-relaxed">
                 <div class="flex flex-col items-center text-center -mt-2">
                     <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/12_qeh4rc.png')" aria-label="放大檢視 Kai 個人形象照" class="block p-0 border-0 bg-transparent rounded-full">
-                        <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/12_qeh4rc.png" alt="Kai 個人形象照" loading="lazy" class="w-28 h-28 rounded-full object-cover border-4 border-teal-100 dark:border-teal-900 shadow-md cursor-pointer hover:opacity-90 transition-opacity">
+                        <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270726/12_qeh4rc.png" width="480" height="480" alt="Kai 個人形象照" loading="lazy" class="w-28 h-28 rounded-full object-cover border-4 border-teal-100 dark:border-teal-900 shadow-md cursor-pointer hover:opacity-90 transition-opacity">
                     </button>
                     <p class="mt-2 font-bold text-slate-900 dark:text-white">Kai</p>
                     <p class="text-[11px] text-slate-600 dark:text-slate-400">@kai.nursing_life</p>
@@ -373,13 +373,13 @@
                     </h4>
                     <div class="grid grid-cols-3 gap-2">
                         <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/13_sslpzj.png')" aria-label="放大檢視 Kai 生活照 1" class="block p-0 border-0 bg-transparent rounded-xl">
-                            <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/13_sslpzj.png" alt="Kai 生活照" loading="lazy" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+                            <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270726/13_sslpzj.png" width="480" height="480" alt="Kai 生活照" loading="lazy" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
                         </button>
                         <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270901/15_ub1o2u.png')" aria-label="放大檢視 Kai 生活照 2" class="block p-0 border-0 bg-transparent rounded-xl">
-                            <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270901/15_ub1o2u.png" alt="Kai 生活照" loading="lazy" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+                            <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270901/15_ub1o2u.png" width="480" height="480" alt="Kai 生活照" loading="lazy" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
                         </button>
                         <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/14_lfk0rp.png')" aria-label="放大檢視 Kai 生活照 3" class="block p-0 border-0 bg-transparent rounded-xl">
-                            <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/14_lfk0rp.png" alt="Kai 生活照" loading="lazy" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+                            <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270726/14_lfk0rp.png" width="480" height="480" alt="Kai 生活照" loading="lazy" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
                         </button>
                     </div>
                 </div>
@@ -745,7 +745,7 @@
             const wrap = document.getElementById('brandLogoWrap');
             if (!wrap) return;
             const inner = wrap.querySelector('div');
-            inner.innerHTML = `<img src="${optimizeCloudinaryUrl(sanitizeUrl(SITE_LOGO_URL))}" alt="Kai Logo" loading="eager" class="w-full h-full object-cover rounded-full">`;
+            inner.innerHTML = `<img src="${optimizeCloudinaryUrl(sanitizeUrl(SITE_LOGO_URL), 96)}" alt="Kai Logo" loading="eager" class="w-full h-full object-cover rounded-full">`;
         }
 
         // ================= Phase 2C-1: Accessibility — Modal Focus Management =================
@@ -1478,6 +1478,10 @@
         }
 
         function openAboutModal() {
+            document.querySelectorAll('#aboutModal img[data-src]').forEach(img => {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+            });
             const modal = document.getElementById('aboutModal');
             const card = document.getElementById('aboutModalCard');
             modal.classList.remove('opacity-0', 'pointer-events-none');
