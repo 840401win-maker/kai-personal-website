@@ -14,10 +14,8 @@ const STATIC_ARTICLES = {
     title: '【我 30 歲了】30 歲的心路歷程與下個十年展望：從國北護畢業到公職護理師',
     summary: '2026.04.01 我滿 30 歲了！自 22 歲從國立臺北護理健康大學畢業後，回到南部公立醫院服務至今已滿 8 年。經歷風雨與挫折，如今考取公職護理師、晉升 N4 職級並成為臨床教師。內含 16 張完整圖文全典藏與下個十年藍圖...',
     date: '2026-04-01',
-    // 原始值為 '1.jpg'，不是完整 http/https 網址。依規則，凡非完整網址一律不輸出
-    // article-level image metadata（og:image / twitter:image / JSON-LD image），
-    // 不猜測、不補完、不當成 https://kainursinglife.com/1.jpg 這種可能錯誤的網址。
-    image: '1.jpg'
+    // 使用已確認的 Cloudinary 首圖，與 staticPostsData 保持一致。
+    image: 'https://res.cloudinary.com/p6esflub/image/upload/v1790988449/1_ykf8js.png'
   },
   'ig-post-DSzZGbLknAR': {
     title: '【IG 最新貼文】Kai 的護理與理財圖文筆記實錄',
@@ -140,8 +138,7 @@ export default async (request, context) => {
     () => `<meta name="twitter:description" content="${safeSummary}">`
   );
 
-  // 6. image（只有確認是完整 http/https URL 時才輸出；post-30years 的 "1.jpg" 會被跳過，
-  //    維持首頁預設圖片，不產生錯誤或猜測的網址）
+  // 6. image（只有確認是完整 http/https URL 時才輸出）
   if (hasValidImage) {
     html = html.replace(
       /<meta property="og:image" content="[^"]*">/,
