@@ -60,3 +60,14 @@ function showToast(message) {
         setTimeout(() => toast.remove(), 300);
     }, 2500);
 }
+
+// Firestore HTML is untrusted; static article markup stays unchanged.
+function sanitizeArticleContent(content) {
+    const html = String(content || '');
+    if (!window.DOMPurify || !window.DOMPurify.isSupported) return escapeHtml(html);
+    return window.DOMPurify.sanitize(html, {
+        USE_PROFILES: { html: true },
+        FORBID_TAGS: ['style', 'form', 'input', 'button', 'textarea', 'select'],
+        FORBID_ATTR: ['style']
+    });
+}
