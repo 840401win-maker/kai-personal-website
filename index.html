@@ -138,7 +138,7 @@
                 </div>
                 <div>
                     <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-teal-700 to-amber-600 dark:from-teal-400 dark:to-amber-400 bg-clip-text text-transparent">Kai 護理 & 理財</span>
-                    <span class="block text-[10px] text-slate-500 dark:text-slate-400 font-medium">@kai.nursing_life</span>
+                    <span class="block text-[10px] text-slate-600 dark:text-slate-400 dark:text-slate-400 font-medium">@kai.nursing_life</span>
                 </div>
             </a>
 
@@ -149,7 +149,7 @@
                     <span class="hidden sm:inline">匯入/新增</span>貼文
                 </button>
 
-                <button id="logoutBtn" onclick="handleAdminLogout()" class="hidden px-2.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors items-center gap-1.5" title="登出管理員身分">
+                <button id="logoutBtn" onclick="handleAdminLogout()" class="hidden px-2.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors items-center gap-1.5" title="登出管理員身分">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </button>
 
@@ -218,16 +218,16 @@
 
                     <div class="grid grid-cols-3 gap-2 sm:gap-4 pt-3 border-t border-slate-100 dark:border-slate-800 max-w-md mx-auto md:mx-0">
                         <div class="text-center md:text-left">
-                            <span class="text-xs text-slate-400">臨床資歷</span>
-                            <p class="text-sm sm:text-base font-bold text-teal-600 dark:text-teal-400">9 年 + <span class="text-xs font-normal text-slate-500">公職/N4</span></p>
+                            <span class="text-xs text-slate-600 dark:text-slate-400">臨床資歷</span>
+                            <p class="text-sm sm:text-base font-bold text-teal-600 dark:text-teal-400">9 年 + <span class="text-xs font-normal text-slate-600 dark:text-slate-400">公職/N4</span></p>
                         </div>
                         <div class="text-center md:text-left">
-                            <span class="text-xs text-slate-400">薪資里程碑</span>
-                            <p class="text-sm sm:text-base font-bold text-amber-600 dark:text-amber-400">年薪百萬 <span class="text-xs font-normal text-slate-500">連續2年</span></p>
+                            <span class="text-xs text-slate-600 dark:text-slate-400">薪資里程碑</span>
+                            <p class="text-sm sm:text-base font-bold text-amber-600 dark:text-amber-400">年薪百萬 <span class="text-xs font-normal text-slate-600 dark:text-slate-400">連續2年</span></p>
                         </div>
                         <div class="text-center md:text-left">
-                            <span class="text-xs text-slate-400">夢想進度</span>
-                            <p class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-200">Model Y <span class="text-xs font-normal text-slate-500">2030🎯</span></p>
+                            <span class="text-xs text-slate-600 dark:text-slate-400">夢想進度</span>
+                            <p class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-200">Model Y <span class="text-xs font-normal text-slate-600 dark:text-slate-400">2030🎯</span></p>
                         </div>
                     </div>
                 </div>
@@ -255,7 +255,7 @@
                 </div>
 
                 <div class="flex items-center gap-2 shrink-0">
-                    <span class="text-xs text-slate-400 hidden sm:inline"><i class="fa-solid fa-arrow-down-wide-short"></i> 排序：</span>
+                    <span class="text-xs text-slate-600 dark:text-slate-400 hidden sm:inline"><i class="fa-solid fa-arrow-down-wide-short"></i> 排序：</span>
                     <select aria-label="文章排序" id="sortSelect" onchange="renderPosts()" class="bg-white dark:bg-slate-800 text-xs text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-teal-500">
                         <option value="newest">最新發布</option>
                         <option value="popular">最高熱門度 (按讚)</option>
@@ -265,7 +265,7 @@
 
             <div class="bg-white dark:bg-warmbg-cardDark p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 space-y-3">
                 <div class="relative">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-600 dark:text-slate-400 text-sm"></i>
                     <input type="text" id="searchInput" oninput="renderPosts()" placeholder="搜尋關鍵字（例如：國北護、30歲、16張圖文、年薪百萬、夜班津貼、Model Y...）" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 dark:text-white placeholder-slate-400">
                 </div>
 
@@ -279,7 +279,7 @@
 
         <div id="emptyState" class="hidden text-center py-16 space-y-3">
             <i class="fa-solid fa-folder-open text-4xl text-slate-300 dark:text-slate-600"></i>
-            <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">找不到符合條件的文章，請試試其他關鍵字或分類！</p>
+            <p class="text-slate-600 dark:text-slate-400 dark:text-slate-400 text-sm font-medium">找不到符合條件的文章，請試試其他關鍵字或分類！</p>
             <button onclick="resetFilters()" class="text-xs text-teal-600 dark:text-teal-400 font-semibold underline hover:text-teal-700">重設所有篩選條件</button>
         </div>
     </main>
@@ -292,7 +292,7 @@
                 本網站為 Kai 個人經驗分享與學習紀錄（包含護理衛教知識、個人薪資記帳與投資觀察），內容不構成任何醫療診斷建議或金融投資邀約。醫療相關問題請諮詢專業醫師，投資理財請審慎評估風險。本站無公開 Telegram / LINE 群組，亦不進行任何推銷行為。
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600 dark:text-slate-400 dark:text-slate-400">
                 <p>© 2026 Kai | 護理生活 & 理財投資 (@kai.nursing_life). All rights reserved.</p>
                 <div class="flex items-center gap-4">
                     <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="hover:text-pink-500 transition-colors flex items-center gap-1">
@@ -319,10 +319,10 @@
             <div class="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between sticky top-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md z-20">
                 <div class="flex items-center gap-2 text-xs font-semibold text-teal-600 dark:text-teal-400" id="modalCategory"></div>
                 <div class="flex items-center gap-2">
-                    <button onclick="toggleFullscreenImage()" id="fullscreenBtn" title="全螢幕放大圖片" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors text-xs">
+                    <button onclick="toggleFullscreenImage()" id="fullscreenBtn" title="全螢幕放大圖片" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors text-xs">
                         <i class="fa-solid fa-expand"></i>
                     </button>
-                    <button onclick="closePostModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
+                    <button onclick="closePostModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
                         <i class="fa-solid fa-xmark text-lg"></i>
                     </button>
                 </div>
@@ -362,7 +362,7 @@
                 <h3 id="aboutModalTitle" class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
                     <i class="fa-solid fa-address-card text-teal-600"></i> 關於 Kai (創作者檔案)
                 </h3>
-                <button onclick="closeAboutModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
+                <button onclick="closeAboutModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
@@ -373,7 +373,7 @@
                         <img src="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/12_qeh4rc.png" alt="Kai 個人形象照" loading="lazy" class="w-28 h-28 rounded-full object-cover border-4 border-teal-100 dark:border-teal-900 shadow-md cursor-pointer hover:opacity-90 transition-opacity">
                     </button>
                     <p class="mt-2 font-bold text-slate-900 dark:text-white">Kai</p>
-                    <p class="text-[11px] text-slate-400">@kai.nursing_life</p>
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400">@kai.nursing_life</p>
                 </div>
 
                 <div class="bg-teal-50 dark:bg-teal-950/40 p-4 rounded-2xl border border-teal-200/60 dark:border-teal-800/40 space-y-2">
@@ -458,7 +458,7 @@
                 <h3 id="calcModalTitle" class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
                     <i class="fa-solid fa-calculator text-amber-500"></i> 🧮 護理夜班津貼 & 存股試算
                 </h3>
-                <button onclick="closeCalcModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
+                <button onclick="closeCalcModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
@@ -468,11 +468,11 @@
                     <span class="font-bold text-slate-800 dark:text-slate-200 block text-sm">🌙 本月夜班津貼試算</span>
                     <div class="grid grid-cols-2 gap-3">
                         <div>
-                            <label for="nightSmallDays" class="text-slate-500 block mb-1">小夜班天數 ($500/天)</label>
+                            <label for="nightSmallDays" class="text-slate-600 dark:text-slate-400 block mb-1">小夜班天數 ($500/天)</label>
                             <input type="number" id="nightSmallDays" value="8" min="0" oninput="calculateSalary()" class="w-full p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-bold">
                         </div>
                         <div>
-                            <label for="nightBigDays" class="text-slate-500 block mb-1">大夜班天數 ($800/天)</label>
+                            <label for="nightBigDays" class="text-slate-600 dark:text-slate-400 block mb-1">大夜班天數 ($800/天)</label>
                             <input type="number" id="nightBigDays" value="5" min="0" oninput="calculateSalary()" class="w-full p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-bold">
                         </div>
                     </div>
@@ -484,11 +484,11 @@
                 <div class="space-y-3 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-700">
                     <span class="font-bold text-slate-800 dark:text-slate-200 block text-sm">📈 每月定期定額複利試算 (年報酬6%)</span>
                     <div>
-                        <label for="monthlyInvest" class="text-slate-500 block mb-1">每月投入金額 (TWD)</label>
+                        <label for="monthlyInvest" class="text-slate-600 dark:text-slate-400 block mb-1">每月投入金額 (TWD)</label>
                         <input type="number" id="monthlyInvest" value="15000" step="1000" oninput="calculateSalary()" class="w-full p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-bold">
                     </div>
                     <div>
-                        <label for="investYears" class="text-slate-500 block mb-1">投資年限</label>
+                        <label for="investYears" class="text-slate-600 dark:text-slate-400 block mb-1">投資年限</label>
                         <select id="investYears" onchange="calculateSalary()" class="w-full p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-bold">
                             <option value="3">3 年 (短期累積)</option>
                             <option value="5" selected>5 年 (Model Y 夢想進度)</option>
@@ -510,7 +510,7 @@
                 <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
                     <i class="fa-solid fa-plus-circle text-teal-600"></i> <span id="addPostModalTitle">➕ 匯入 / 新增 IG 圖文貼文</span>
                 </h3>
-                <button onclick="closeAddPostModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
+                <button onclick="closeAddPostModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
@@ -583,7 +583,7 @@
                 <h3 id="loginModalTitle" class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
                     <i class="fa-solid fa-user-shield text-teal-600"></i> 管理員登入
                 </h3>
-                <button onclick="closeLoginModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
+                <button onclick="closeLoginModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
@@ -969,7 +969,7 @@
                 return `
                     <button onclick="setSubTag('${escapeHtml(tagVal)}')" aria-pressed="${isActive}" class="px-2.5 py-1 rounded-lg transition-colors ${
                         isActive 
-                        ? 'bg-amber-500 text-white font-bold shadow-sm' 
+                        ? 'bg-amber-700 text-white font-bold shadow-sm' 
                         : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
                     }">
                         ${escapeHtml(tag)}
@@ -1068,7 +1068,7 @@
                                         <i class="fa-solid fa-trash text-xs"></i>
                                     </button>
                                 ` : ''}
-                                <button onclick="toggleBookmark('${escapeHtml(post.id)}', event)" aria-label="收藏文章" class="w-8 h-8 rounded-full ${isBookmarked ? 'bg-amber-500 text-white' : 'bg-slate-900/40 text-white hover:bg-slate-900/70'} backdrop-blur-md flex items-center justify-center transition-colors">
+                                <button onclick="toggleBookmark('${escapeHtml(post.id)}', event)" aria-label="收藏文章" class="w-8 h-8 rounded-full ${isBookmarked ? 'bg-amber-700 text-white' : 'bg-slate-900/40 text-white hover:bg-slate-900/70'} backdrop-blur-md flex items-center justify-center transition-colors">
                                     <i class="${isBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark text-xs"></i>
                                 </button>
                             </div>
@@ -1087,7 +1087,7 @@
 
                         <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
                             <div class="space-y-2">
-                                <div class="flex items-center gap-2 text-xs text-slate-400">
+                                <div class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
                                     <i class="fa-regular fa-calendar"></i> ${safeDate}
                                 </div>
 
@@ -1106,7 +1106,7 @@
                                 </div>
 
                                 <div class="flex items-center justify-between pt-1">
-                                    <button onclick="toggleLike('${escapeHtml(post.id)}', event)" class="flex items-center gap-1.5 text-xs font-semibold ${isLiked ? 'text-red-500' : 'text-slate-400 hover:text-red-500'} transition-colors">
+                                    <button onclick="toggleLike('${escapeHtml(post.id)}', event)" class="flex items-center gap-1.5 text-xs font-semibold ${isLiked ? 'text-red-500' : 'text-slate-600 dark:text-slate-400 hover:text-red-500'} transition-colors">
                                         <i class="${isLiked ? 'fa-solid' : 'fa-regular'} fa-heart text-sm"></i>
                                         <span>${likeCount}</span>
                                     </button>
@@ -1278,7 +1278,7 @@
 
             bodyElem.innerHTML = `
                 <div class="space-y-3">
-                    <div class="flex items-center gap-3 text-xs text-slate-400">
+                    <div class="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-400">
                         <span><i class="fa-regular fa-calendar"></i> ${escapeHtml(post.date)}</span>
                         <span>•</span>
                         <span>☕ 閱讀時間 ${escapeHtml(post.readTime)}</span>
