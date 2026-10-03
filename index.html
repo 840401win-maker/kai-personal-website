@@ -49,7 +49,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <!-- Firebase (CDN 版本) — 初始化邏輯已搬移至 js/firebase.js -->
 
@@ -256,7 +256,7 @@
 
                 <div class="flex items-center gap-2 shrink-0">
                     <span class="text-xs text-slate-400 hidden sm:inline"><i class="fa-solid fa-arrow-down-wide-short"></i> 排序：</span>
-                    <select id="sortSelect" onchange="renderPosts()" class="bg-white dark:bg-slate-800 text-xs text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-teal-500">
+                    <select aria-label="文章排序" id="sortSelect" onchange="renderPosts()" class="bg-white dark:bg-slate-800 text-xs text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-teal-500">
                         <option value="newest">最新發布</option>
                         <option value="popular">最高熱門度 (按讚)</option>
                     </select>
@@ -314,7 +314,7 @@
     </button>
 
     <!-- Modal 1: 文章內文與圖文輪播視窗 (Post Modal) -->
-    <div id="postModal" role="dialog" aria-modal="true" aria-labelledby="postModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="postModal" role="dialog" aria-modal="true" aria-label="文章內容" aria-labelledby="postModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="bg-white dark:bg-slate-900 w-full max-w-4xl max-h-[92vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="postModalCard">
             <div class="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between sticky top-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md z-20">
                 <div class="flex items-center gap-2 text-xs font-semibold text-teal-600 dark:text-teal-400" id="modalCategory"></div>
@@ -988,11 +988,15 @@
         // 只針對 res.cloudinary.com 的網址加上 f_auto,q_auto（自動選擇最佳格式/壓縮品質）。
         // 非 Cloudinary 網址、空值、或已經帶有 f_auto/q_auto 的網址一律原樣返回，不重複處理。
         // 這裡只處理「前端渲染時實際顯示用的網址」，不會、也不需要更動 Firestore 裡儲存的原始網址。
-        function optimizeCloudinaryUrl(url) {
+        function optimizeCloudinaryUrl(url, width = null) {
             if (!url) return url;
             if (!url.includes('res.cloudinary.com') || !url.includes('/upload/')) return url;
-            if (url.includes('f_auto') || url.includes('q_auto')) return url;
-            return url.replace('/upload/', '/upload/f_auto,q_auto/');
+            let optimized = url;
+            if (!url.includes('f_auto') && !url.includes('q_auto')) {
+                optimized = url.replace('/upload/', '/upload/f_auto,q_auto/');
+            }
+            if (width) optimized = optimized.replace('/upload/', `/upload/c_limit,w_${width}/`);
+            return optimized;
         }
 
         function renderPosts() {
@@ -1037,7 +1041,7 @@
 
                 const safeTitle = escapeHtml(post.title);
                 const safeSummary = escapeHtml(post.summary);
-                const safeImage = optimizeCloudinaryUrl(sanitizeUrl(post.image));
+                const safeImage = optimizeCloudinaryUrl(sanitizeUrl(post.image), 800);
                 const safeDate = escapeHtml(post.date);
                 const safeReadTime = escapeHtml(post.readTime);
 
@@ -1257,7 +1261,7 @@
                             <div id="carouselThumbnails" class="flex items-center gap-2 p-2 bg-slate-900/90 overflow-x-auto hide-scrollbar justify-start sm:justify-center border-t border-slate-800">
                                 ${post.images.map((img, idx) => `
                                     <button onclick="setCarouselIndex(${idx})" aria-label="觀看第 ${idx+1} 張" class="thumb-btn w-12 h-12 rounded-xl overflow-hidden shrink-0 transition-all ${idx === 0 ? 'ring-2 ring-teal-500 opacity-100' : 'opacity-60 hover:opacity-100'}">
-                                        <img src="${optimizeCloudinaryUrl(sanitizeUrl(img))}" alt="${escapeHtml(post.title)} - 縮圖 ${idx + 1}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover">
+                                        <img src="${optimizeCloudinaryUrl(sanitizeUrl(img), 160)}" alt="${escapeHtml(post.title)} - 縮圖 ${idx + 1}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover">
                                     </button>
                                 `).join('')}
                             </div>
