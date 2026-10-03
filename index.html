@@ -730,7 +730,7 @@
         function openImageLightbox(src) {
             const lightbox = document.getElementById('imageLightbox');
             const img = document.getElementById('imageLightboxImg');
-            img.src = sanitizeUrl(src);
+            img.src = sanitizeImageUrl(src);
             lightbox.classList.remove('opacity-0', 'pointer-events-none');
             moveFocusIntoModal('imageLightbox');
         }
@@ -746,7 +746,7 @@
             const wrap = document.getElementById('brandLogoWrap');
             if (!wrap) return;
             const inner = wrap.querySelector('div');
-            inner.innerHTML = `<img src="${optimizeCloudinaryUrl(sanitizeUrl(SITE_LOGO_URL), 96)}" alt="Kai Logo" loading="eager" class="w-full h-full object-cover rounded-full">`;
+            inner.innerHTML = `<img src="${optimizeCloudinaryUrl(sanitizeImageUrl(SITE_LOGO_URL), 96)}" alt="Kai Logo" loading="eager" class="w-full h-full object-cover rounded-full">`;
         }
 
         // ================= Phase 2C-1: Accessibility — Modal Focus Management =================
@@ -984,7 +984,7 @@
 
                 const safeTitle = escapeHtml(post.title);
                 const safeSummary = escapeHtml(post.summary);
-                const safeImage = optimizeCloudinaryUrl(sanitizeUrl(post.image), 800);
+                const safeImage = optimizeCloudinaryUrl(sanitizeImageUrl(post.image, post.category), 800);
                 const safeDate = escapeHtml(post.date);
                 const safeReadTime = escapeHtml(post.readTime);
 
@@ -1094,7 +1094,7 @@
 
             if (imgElem) {
                 imgElem.onerror = () => handleImgError(imgElem, currentActivePost.category);
-                imgElem.src = optimizeCloudinaryUrl(sanitizeUrl(currentActivePost.images[currentCarouselIndex]));
+                imgElem.src = optimizeCloudinaryUrl(sanitizeImageUrl(currentActivePost.images[currentCarouselIndex], currentActivePost.category));
             }
             if (countElem) countElem.innerText = `${currentCarouselIndex + 1} / ${currentActivePost.images.length}`;
             
@@ -1185,7 +1185,7 @@
                 imageHtml = `
                     <div id="carouselImageContainer" class="relative rounded-2xl overflow-hidden bg-slate-950 group shadow-lg transition-all duration-300">
                         <div class="relative flex items-center justify-center min-h-[280px] sm:min-h-[440px] bg-slate-950 select-none">
-                            <img id="carouselMainImg" src="${optimizeCloudinaryUrl(sanitizeUrl(post.images[0]))}" alt="${escapeHtml(post.title)}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-auto max-h-[560px] object-contain mx-auto transition-all duration-300">
+                            <img id="carouselMainImg" src="${optimizeCloudinaryUrl(sanitizeImageUrl(post.images[0], post.category))}" alt="${escapeHtml(post.title)}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-auto max-h-[560px] object-contain mx-auto transition-all duration-300">
                         </div>
 
                         ${post.images.length > 1 ? `
@@ -1204,7 +1204,7 @@
                             <div id="carouselThumbnails" class="flex items-center gap-2 p-2 bg-slate-900/90 overflow-x-auto hide-scrollbar justify-start sm:justify-center border-t border-slate-800">
                                 ${post.images.map((img, idx) => `
                                     <button onclick="setCarouselIndex(${idx})" aria-label="觀看第 ${idx+1} 張" class="thumb-btn w-12 h-12 rounded-xl overflow-hidden shrink-0 transition-all ${idx === 0 ? 'ring-2 ring-teal-500 opacity-100' : 'opacity-60 hover:opacity-100'}">
-                                        <img src="${optimizeCloudinaryUrl(sanitizeUrl(img), 160)}" alt="${escapeHtml(post.title)} - 縮圖 ${idx + 1}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover">
+                                        <img src="${optimizeCloudinaryUrl(sanitizeImageUrl(img, post.category), 160)}" alt="${escapeHtml(post.title)} - 縮圖 ${idx + 1}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover">
                                     </button>
                                 `).join('')}
                             </div>
@@ -1214,7 +1214,7 @@
             } else {
                 imageHtml = `
                     <div class="rounded-2xl overflow-hidden max-h-80 bg-slate-100 dark:bg-slate-800">
-                        <img src="${optimizeCloudinaryUrl(sanitizeUrl(post.image))}" alt="${escapeHtml(post.title)}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover">
+                        <img src="${optimizeCloudinaryUrl(sanitizeImageUrl(post.image, post.category))}" alt="${escapeHtml(post.title)}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover">
                     </div>
                 `;
             }
