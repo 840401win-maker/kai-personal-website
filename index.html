@@ -1385,7 +1385,6 @@
         }
 
         const CLOUDINARY_CLOUD_NAME = 'p6esflub';
-        const CLOUDINARY_UPLOAD_PRESET = 'blog_upload';
 
         // P2 Item: Front-end Defense-in-depth File Validation for Cloudinary Uploads
         async function handleImageFileUpload(event) {
@@ -1418,9 +1417,29 @@
                 const file = validFiles[i];
                 const formData = new FormData();
                 formData.append('file', file);
-                formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
 
                 try {
+                    const user = window.fb?.auth?.currentUser;
+                    if (!user) throw new Error('請先登入管理員再上傳');
+                    const idToken = await user.getIdToken();
+                    const signatureResponse = await fetch('/.netlify/functions/upload-signature', {
+                        method: 'POST',
+                        headers: { Authorization: 'Bearer ' + idToken }
+                    });
+                    if (!signatureResponse.ok) {
+                        throw new Error(signatureResponse.status === 503
+                            ? '安全上傳尚未設定完成，請稍後再試'
+                            : '登入已失效或沒有上傳權限，請重新登入');
+                    }
+                    const signedUpload = await signatureResponse.json();
+                    if (signedUpload.cloud_name !== CLOUDINARY_CLOUD_NAME || !signedUpload.signature || !signedUpload.api_key) {
+                        throw new Error('上傳授權回應無效');
+                    }
+                    formData.append('api_key', signedUpload.api_key);
+                    formData.append('signature', signedUpload.signature);
+                    for (const [key, value] of Object.entries(signedUpload.params)) {
+                        formData.append(key, String(value));
+                    }
                     const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
                         method: 'POST',
                         body: formData
@@ -1451,7 +1470,7 @@
                     previewRow.appendChild(thumbWrap);
                 } catch (err) {
                     console.error('圖片上傳失敗：', err);
-                    showToast(`❌ 「${escapeHtml(file.name)}」上傳失敗，請確認 Cloudinary 設定`);
+                    showToast(`❌ 「${escapeHtml(file.name)}」上傳失敗：${err.message || '請確認上傳設定'}`);
                 }
             }
 
