@@ -38,3 +38,9 @@
         line-height: 1.4;
     }
 }
+
+/* Reserve one card row while the initial grid is still empty.
+   An actual empty search result keeps its existing compact layout. */
+#postsGrid:empty:has(+ #emptyState.hidden) {
+    min-height: 32rem;
+}
