@@ -828,13 +828,9 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            initTheme();
-            renderSubTags();
-            renderPosts();
             setupScrollListener();
             calculateSalary();
             setupKeyboardAndTouchEvents();
-            applySiteLogo();
             initRouting();
 
             if (window.fb) {
@@ -1630,6 +1626,11 @@
                 }
             });
         }
+        // Render the public shell before module downloads delay DOMContentLoaded.
+        initTheme();
+        renderSubTags();
+        renderPosts();
+        applySiteLogo();
     </script>
 </body>
 </html>
