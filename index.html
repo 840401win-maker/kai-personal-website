@@ -946,24 +946,25 @@
 
         function prioritizeVisiblePostImage(grid) {
             if (window.location.pathname.startsWith('/post/')) return;
-            const viewportWidth = document.documentElement.clientWidth;
-            const viewportHeight = document.documentElement.clientHeight;
-            let priorityImage = null;
-            let largestVisibleArea = 0;
-            grid.querySelectorAll('article img').forEach(img => {
-                const rect = img.getBoundingClientRect();
-                const visibleWidth = Math.max(0, Math.min(rect.right, viewportWidth) - Math.max(rect.left, 0));
-                const visibleHeight = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
-                const visibleArea = visibleWidth * visibleHeight;
-                if (visibleArea > largestVisibleArea) {
-                    priorityImage = img;
-                    largestVisibleArea = visibleArea;
+            const images = grid.querySelectorAll('article img');
+            if (!images.length || !('IntersectionObserver' in window)) return;
+            const observer = new IntersectionObserver(entries => {
+                let priorityImage = null;
+                let largestVisibleArea = 0;
+                entries.forEach(entry => {
+                    const visibleArea = entry.intersectionRect.width * entry.intersectionRect.height;
+                    if (entry.isIntersecting && visibleArea > largestVisibleArea) {
+                        priorityImage = entry.target;
+                        largestVisibleArea = visibleArea;
+                    }
+                });
+                if (priorityImage) {
+                    priorityImage.loading = 'eager';
+                    priorityImage.fetchPriority = 'high';
                 }
+                observer.disconnect();
             });
-            if (priorityImage) {
-                priorityImage.loading = 'eager';
-                priorityImage.fetchPriority = 'high';
-            }
+            images.forEach(img => observer.observe(img));
         }
 
         function renderPosts() {
