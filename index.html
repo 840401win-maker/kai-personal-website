@@ -944,6 +944,28 @@
             return optimized;
         }
 
+        function prioritizeVisiblePostImage(grid) {
+            if (window.location.pathname.startsWith('/post/')) return;
+            const viewportWidth = document.documentElement.clientWidth;
+            const viewportHeight = document.documentElement.clientHeight;
+            let priorityImage = null;
+            let largestVisibleArea = 0;
+            grid.querySelectorAll('article img').forEach(img => {
+                const rect = img.getBoundingClientRect();
+                const visibleWidth = Math.max(0, Math.min(rect.right, viewportWidth) - Math.max(rect.left, 0));
+                const visibleHeight = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
+                const visibleArea = visibleWidth * visibleHeight;
+                if (visibleArea > largestVisibleArea) {
+                    priorityImage = img;
+                    largestVisibleArea = visibleArea;
+                }
+            });
+            if (priorityImage) {
+                priorityImage.loading = 'eager';
+                priorityImage.fetchPriority = 'high';
+            }
+        }
+
         function renderPosts() {
             const grid = document.getElementById('postsGrid');
             const emptyState = document.getElementById('emptyState');
@@ -1065,6 +1087,8 @@
                     </article>
                 `;
             }).join('');
+
+            prioritizeVisiblePostImage(grid);
 
             // Phase 2B-2: Independent Article URL — renderPosts() 每次被呼叫都代表 postsData
             // 可能有變化（包含 onSnapshot 帶回 Firestore 資料的那一次），趁機再嘗試一次解析待處理的路由
