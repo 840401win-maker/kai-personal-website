@@ -38,3 +38,15 @@
         line-height: 1.4;
     }
 }
+
+/* Closed dialogs keep their DOM state without rendering their contents.
+   Unsupported browsers retain the existing opacity transition. */
+@supports (content-visibility: hidden) and (transition-behavior: allow-discrete) {
+    :is(#postModal, #aboutModal, #calcModal, #addPostModal, #loginModal, #imageLightbox) {
+        transition-property: opacity, content-visibility;
+        transition-behavior: allow-discrete;
+    }
+    :is(#postModal, #aboutModal, #calcModal, #addPostModal, #loginModal, #imageLightbox).opacity-0 {
+        content-visibility: hidden;
+    }
+}
