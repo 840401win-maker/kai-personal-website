@@ -39,6 +39,12 @@
     }
 }
 
+/* Reserve one card row while the initial grid is still empty.
+   An actual empty search result keeps its existing compact layout. */
+#postsGrid:empty:has(+ #emptyState.hidden) {
+    min-height: 32rem;
+}
+
 /* Closed dialogs keep their DOM state without rendering their contents.
    The existing opacity transition still controls the backdrop. */
 @supports (content-visibility: hidden) {
