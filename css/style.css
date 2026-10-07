@@ -44,3 +44,11 @@
 #postsGrid:empty:has(+ #emptyState.hidden) {
     min-height: 32rem;
 }
+
+/* Closed dialogs keep their DOM state without rendering their contents.
+   The existing opacity transition still controls the backdrop. */
+@supports (content-visibility: hidden) {
+    :is(#postModal, #aboutModal, #calcModal, #addPostModal, #loginModal, #imageLightbox).opacity-0 {
+        content-visibility: hidden;
+    }
+}
