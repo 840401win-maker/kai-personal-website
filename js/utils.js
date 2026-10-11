@@ -1,3 +1,36 @@
+// Browser preferences are optional; damaged or blocked storage must not stop the page.
+function readStoredPreference(key) {
+    try {
+        return localStorage.getItem(key);
+    } catch (error) {
+        return null;
+    }
+}
+
+function writeStoredPreference(key, value) {
+    try {
+        localStorage.setItem(key, value);
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+function readStoredFlags(key) {
+    const flags = Object.create(null);
+    try {
+        const value = JSON.parse(readStoredPreference(key) || '{}');
+        if (value && typeof value === 'object' && !Array.isArray(value)) {
+            Object.keys(value).forEach(id => {
+                if (value[id] === true) flags[id] = true;
+            });
+        }
+    } catch (error) {
+        // Keep a usable in-memory state without deleting the stored data.
+    }
+    return flags;
+}
+
 // P1 Item: Comprehensive XSS Escaping Helper
 function escapeHtml(str) {
     if (str === null || str === undefined) return '';
