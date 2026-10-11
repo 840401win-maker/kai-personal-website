@@ -715,8 +715,8 @@
 
         let currentCategory = 'all';
         let currentSubTag = 'all';
-        let userLikes = JSON.parse(localStorage.getItem('kai_user_likes') || '{}');
-        let userBookmarks = JSON.parse(localStorage.getItem('kai_user_bookmarks') || '{}');
+        let userLikes = readStoredFlags('kai_user_likes');
+        let userBookmarks = readStoredFlags('kai_user_bookmarks');
 
         let customPosts = [];
         let postsData = [...staticPostsData];
@@ -862,7 +862,8 @@
         });
 
         function initTheme() {
-            const isDark = localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            const storedTheme = readStoredPreference('theme');
+            const isDark = storedTheme === 'dark' || (storedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches);
             if (isDark) {
                 document.documentElement.classList.add('dark');
                 document.getElementById('themeIcon').className = 'fa-solid fa-sun text-amber-400 text-lg';
@@ -873,7 +874,7 @@
 
             document.getElementById('themeToggle').addEventListener('click', () => {
                 const darkNow = document.documentElement.classList.toggle('dark');
-                localStorage.setItem('theme', darkNow ? 'dark' : 'light');
+                writeStoredPreference('theme', darkNow ? 'dark' : 'light');
                 document.getElementById('themeIcon').className = darkNow ? 'fa-solid fa-sun text-amber-400 text-lg' : 'fa-solid fa-moon text-slate-600 text-lg';
             });
         }
@@ -1570,7 +1571,7 @@
                 userLikes[postId] = true;
                 showToast('❤️ 感謝支持 Kai！已按讚');
             }
-            localStorage.setItem('kai_user_likes', JSON.stringify(userLikes));
+            writeStoredPreference('kai_user_likes', JSON.stringify(userLikes));
             renderPosts();
         }
 
@@ -1583,7 +1584,7 @@
                 userBookmarks[postId] = true;
                 showToast('🔖 已加入個人書籤庫！');
             }
-            localStorage.setItem('kai_user_bookmarks', JSON.stringify(userBookmarks));
+            writeStoredPreference('kai_user_bookmarks', JSON.stringify(userBookmarks));
             renderPosts();
         }
 
