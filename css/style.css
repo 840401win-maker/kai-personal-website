@@ -112,7 +112,7 @@
         gap: 0.5rem;
     }
     #postModalFooter > div:last-child {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     #postModalFooter button, #postModalFooter a {
         min-width: 0;
@@ -202,3 +202,14 @@
 #modalBody .article-prose {
     font-size: var(--article-font-size, 1rem);
 }
+
+/* Browse controls remain reachable with touch and keyboard. */
+.browse-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.browse-action { min-height: 44px; padding: 0.5rem 0.75rem; border: 1px solid #94a3b8; border-radius: 0.75rem; font-size: 0.875rem; color: #334155; }
+.dark .browse-action { color: #e2e8f0; }
+.browse-action[aria-pressed="true"] { background: #0f766e; border-color: #0f766e; color: white; }
+.search-clear-button { position: absolute; right: 0.25rem; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 0.75rem; color: #475569; }
+.dark .search-clear-button { color: #cbd5e1; }
+.search-clear-button[hidden] { display: none; }
+:is(.browse-action, .search-clear-button):focus-visible { outline: 2px solid #0d9488; outline-offset: 2px; }
+@media (max-width: 639px) { #searchInput { font-size: 1rem; } }
