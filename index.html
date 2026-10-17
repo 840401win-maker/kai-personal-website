@@ -271,6 +271,19 @@
                 </div>
             </div>
 
+            <div id="articleReadingTools" class="article-reading-tools">
+                <div class="article-font-controls" role="group" aria-label="文章內文字級">
+                    <span class="article-tools-label">字級</span>
+                    <button type="button" data-reader-size="standard" aria-pressed="true" onclick="setArticleFontSize('standard')">標準</button>
+                    <button type="button" data-reader-size="large" aria-pressed="false" onclick="setArticleFontSize('large')">大字</button>
+                    <button type="button" data-reader-size="largest" aria-pressed="false" onclick="setArticleFontSize('largest')">特大</button>
+                </div>
+                <button type="button" id="articleReadingTop" aria-label="回到文章頂端" title="回到文章頂端" onclick="scrollArticleToTop()">
+                    <span aria-hidden="true">↑</span><span id="articleReadingProgressText" aria-hidden="true">0%</span>
+                </button>
+            </div>
+            <progress id="articleReadingProgress" max="100" value="0" aria-label="文章捲動位置">0%</progress>
+
             <div class="p-4 sm:p-8 overflow-y-auto space-y-6 text-slate-800 dark:text-slate-100" id="modalBody"></div>
 
             <div id="postModalFooter" class="p-4 sm:p-5 border-t border-slate-100 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/80 flex flex-wrap items-center justify-between gap-3">
@@ -717,6 +730,13 @@
         let currentSubTag = 'all';
         let userLikes = readStoredFlags('kai_user_likes');
         let userBookmarks = readStoredFlags('kai_user_bookmarks');
+        const ARTICLE_FONT_SIZES = { standard: '1rem', large: '1.125rem', largest: '1.25rem' };
+        const savedArticleFontSize = readStoredPreference('kai_article_font_size');
+        let articleFontSize = Object.prototype.hasOwnProperty.call(ARTICLE_FONT_SIZES, savedArticleFontSize)
+            ? savedArticleFontSize : 'standard';
+        let articleReadingControlsReady = false;
+        let articleProgressFrame = null;
+        let articleContentObserver = null;
 
         let customPosts = [];
         let postsData = [...staticPostsData];
@@ -1269,13 +1289,78 @@
             `;
 
             bodyElem.scrollTop = 0;
+            setArticleFontSize(articleFontSize, false);
+            observeArticleReadingContent();
             modal.classList.remove('opacity-0', 'pointer-events-none');
             card.classList.remove('scale-95');
             document.body.style.overflow = 'hidden';
             moveFocusIntoModal('postModal');
         }
 
+
+        function updateArticleReadingProgress() {
+            const modal = document.getElementById('postModal');
+            if (modal.classList.contains('opacity-0')) return;
+            const body = document.getElementById('modalBody');
+            const range = Math.max(0, body.scrollHeight - body.clientHeight);
+            const percent = body.clientHeight <= 0 ? 0 : range === 0 ? 100
+                : Math.round(Math.min(1, Math.max(0, body.scrollTop / range)) * 100);
+            const progress = document.getElementById('articleReadingProgress');
+            const label = document.getElementById('articleReadingProgressText');
+            if (progress.value !== percent) {
+                progress.value = percent;
+                progress.textContent = percent + '%';
+            }
+            if (label.textContent !== percent + '%') label.textContent = percent + '%';
+        }
+
+        function scheduleArticleReadingProgress() {
+            if (articleProgressFrame !== null) return;
+            articleProgressFrame = requestAnimationFrame(() => {
+                articleProgressFrame = null;
+                updateArticleReadingProgress();
+            });
+        }
+
+        function setArticleFontSize(size, persist = true) {
+            if (!Object.prototype.hasOwnProperty.call(ARTICLE_FONT_SIZES, size)) size = 'standard';
+            articleFontSize = size;
+            document.getElementById('modalBody').style.setProperty('--article-font-size', ARTICLE_FONT_SIZES[size]);
+            document.querySelectorAll('#articleReadingTools [data-reader-size]').forEach(button => {
+                button.setAttribute('aria-pressed', String(button.dataset.readerSize === size));
+            });
+            if (persist) writeStoredPreference('kai_article_font_size', size);
+            scheduleArticleReadingProgress();
+        }
+
+        function observeArticleReadingContent() {
+            if (!articleContentObserver) return;
+            const body = document.getElementById('modalBody');
+            articleContentObserver.disconnect();
+            articleContentObserver.observe(body);
+            Array.from(body.children).forEach(child => articleContentObserver.observe(child));
+        }
+
+        function setupArticleReadingControls() {
+            if (articleReadingControlsReady) return;
+            articleReadingControlsReady = true;
+            const body = document.getElementById('modalBody');
+            body.addEventListener('scroll', scheduleArticleReadingProgress, { passive: true });
+            body.addEventListener('load', scheduleArticleReadingProgress, true);
+            window.addEventListener('resize', scheduleArticleReadingProgress, { passive: true });
+            if (typeof ResizeObserver === 'function') {
+                articleContentObserver = new ResizeObserver(scheduleArticleReadingProgress);
+            }
+            setArticleFontSize(articleFontSize, false);
+        }
+
+        function scrollArticleToTop() {
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            document.getElementById('modalBody').scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+        }
+
         function setupKeyboardAndTouchEvents() {
+            setupArticleReadingControls();
             document.addEventListener('keydown', (e) => {
                 if (e.key !== 'Escape') {
                     const modal = document.getElementById('postModal');
