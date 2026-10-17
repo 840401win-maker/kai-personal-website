@@ -857,13 +857,7 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            initTheme();
-            renderSubTags();
-            renderPosts();
-            setupScrollListener();
-            calculateSalary();
-            setupKeyboardAndTouchEvents();
-            applySiteLogo();
+            // Keep route timeout and Firestore startup at their existing lifecycle point.
             initRouting();
 
             if (window.fb) {
@@ -1163,14 +1157,14 @@
             const btnIcon = document.querySelector('#fullscreenBtn i');
             if (isFullscreenImage) {
                 container.classList.add('fixed', 'inset-0', 'z-50', 'bg-slate-950/95', 'p-4', 'flex', 'flex-col', 'justify-center');
-                img.classList.remove('max-h-[560px]');
-                img.classList.add('max-h-[90vh]');
+                img.classList.remove('max-h-[560px]', 'cursor-zoom-in');
+                img.classList.add('max-h-[90vh]', 'cursor-zoom-out');
                 if (imgWrapper) imgWrapper.classList.add('min-h-0');
                 if (btnIcon) btnIcon.className = 'fa-solid fa-compress';
             } else {
                 container.classList.remove('fixed', 'inset-0', 'z-50', 'bg-slate-950/95', 'p-4', 'flex', 'flex-col', 'justify-center');
-                img.classList.remove('max-h-[90vh]');
-                img.classList.add('max-h-[560px]');
+                img.classList.remove('max-h-[90vh]', 'cursor-zoom-out');
+                img.classList.add('max-h-[560px]', 'cursor-zoom-in');
                 if (btnIcon) btnIcon.className = 'fa-solid fa-expand';
             }
             const fullscreenButton = document.getElementById('fullscreenBtn');
@@ -1237,7 +1231,7 @@
                 imageHtml = `
                     <div id="carouselImageContainer" class="relative rounded-2xl overflow-hidden bg-slate-950 group shadow-lg transition-all duration-300">
                         <div class="relative flex items-center justify-center min-h-[280px] sm:min-h-[440px] bg-slate-950 select-none">
-                            <img id="carouselMainImg" src="${optimizeCloudinaryUrl(sanitizeImageUrl(post.images[0], post.category))}" alt="${escapeHtml(post.title)}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-auto max-h-[560px] object-contain mx-auto transition-all duration-300">
+                            <img id="carouselMainImg" onclick="toggleFullscreenImage()" src="${optimizeCloudinaryUrl(sanitizeImageUrl(post.images[0], post.category))}" alt="${escapeHtml(post.title)}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-auto max-h-[560px] object-contain mx-auto transition-all duration-300 cursor-zoom-in">
                         </div>
 
                         <button id="exitFullscreenImageBtn" onclick="toggleFullscreenImage()" aria-label="結束圖片放大" class="hidden absolute top-3 right-3 z-20 rounded-full bg-slate-900/80 text-white flex items-center justify-center">
@@ -1400,6 +1394,8 @@
 
                 if (lightboxEl && !lightboxEl.classList.contains('opacity-0')) {
                     closeImageLightbox();
+                } else if (typeof isFullscreenImage !== 'undefined' && isFullscreenImage) {
+                    toggleFullscreenImage();
                 } else if (postModalEl && !postModalEl.classList.contains('opacity-0')) {
                     closePostModal();
                 } else if (aboutModalEl && !aboutModalEl.classList.contains('opacity-0')) {
@@ -1804,6 +1800,15 @@
                 }
             });
         }
+        // All page elements and handlers above are ready here. Public UI must not
+        // wait for the deferred Firebase module downloads that delay DOMContentLoaded.
+        initTheme();
+        renderSubTags();
+        renderPosts();
+        setupScrollListener();
+        calculateSalary();
+        setupKeyboardAndTouchEvents();
+        applySiteLogo();
     </script>
 </body>
 </html>
