@@ -828,13 +828,7 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            initTheme();
-            renderSubTags();
-            renderPosts();
-            setupScrollListener();
-            calculateSalary();
-            setupKeyboardAndTouchEvents();
-            applySiteLogo();
+            // Keep route timeout and Firestore startup at their existing lifecycle point.
             initRouting();
 
             if (window.fb) {
@@ -1631,6 +1625,15 @@
                 }
             });
         }
+        // All page elements and handlers above are ready here. Public UI must not
+        // wait for the deferred Firebase module downloads that delay DOMContentLoaded.
+        initTheme();
+        renderSubTags();
+        renderPosts();
+        setupScrollListener();
+        calculateSalary();
+        setupKeyboardAndTouchEvents();
+        applySiteLogo();
     </script>
 </body>
 </html>
