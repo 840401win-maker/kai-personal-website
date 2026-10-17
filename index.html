@@ -1136,9 +1136,14 @@
                 img.classList.add('max-h-[560px]');
                 if (btnIcon) btnIcon.className = 'fa-solid fa-expand';
             }
-            document.getElementById('fullscreenBtn').setAttribute('aria-pressed', String(isFullscreenImage));
+            const fullscreenButton = document.getElementById('fullscreenBtn');
+            fullscreenButton.setAttribute('aria-pressed', String(isFullscreenImage));
             const exitButton = document.getElementById('exitFullscreenImageBtn');
-            if (exitButton) exitButton.classList.toggle('hidden', !isFullscreenImage);
+            if (exitButton) {
+                exitButton.classList.toggle('hidden', !isFullscreenImage);
+                if (isFullscreenImage) exitButton.focus();
+                else if (exitButton.contains(document.activeElement)) fullscreenButton.focus();
+            }
         }
 
         function openPostModal(postId) {
