@@ -259,7 +259,7 @@
     <!-- Modal 1: 文章內文與圖文輪播視窗 (Post Modal) -->
     <div id="postModal" role="dialog" aria-modal="true" aria-label="文章內容" aria-labelledby="postModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="bg-white dark:bg-slate-900 w-full max-w-4xl max-h-[92vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="postModalCard">
-            <div class="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between sticky top-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md z-20">
+            <div id="postModalHeader" class="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between sticky top-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md z-20">
                 <div class="flex items-center gap-2 text-xs font-semibold text-teal-600 dark:text-teal-400" id="modalCategory"></div>
                 <div class="flex items-center gap-2">
                     <button onclick="toggleFullscreenImage()" id="fullscreenBtn" title="全螢幕放大圖片" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors text-xs">
@@ -273,7 +273,7 @@
 
             <div class="p-4 sm:p-8 overflow-y-auto space-y-6 text-slate-800 dark:text-slate-100" id="modalBody"></div>
 
-            <div class="p-4 sm:p-5 border-t border-slate-100 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/80 flex flex-wrap items-center justify-between gap-3">
+            <div id="postModalFooter" class="p-4 sm:p-5 border-t border-slate-100 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/80 flex flex-wrap items-center justify-between gap-3">
                 <div class="flex items-center gap-2">
                     <button id="modalLikeBtn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/60 transition-colors flex items-center gap-1.5">
                         <i class="fa-solid fa-heart"></i> <span id="modalLikeCount">0</span> 按讚
@@ -1250,11 +1250,12 @@
                     </div>
                 ` : ''}
 
-                <div class="space-y-4 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-200">
+                <div class="article-prose space-y-4 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-200">
                     ${post._isCustom ? sanitizeArticleContent(post.content) : post.content}
                 </div>
             `;
 
+            bodyElem.scrollTop = 0;
             modal.classList.remove('opacity-0', 'pointer-events-none');
             card.classList.remove('scale-95');
             document.body.style.overflow = 'hidden';
@@ -1295,21 +1296,33 @@
                 }
             });
 
-            let touchStartX = 0;
-            let touchEndX = 0;
+            let carouselTouch = null;
             const modalBody = document.getElementById('modalBody');
 
             modalBody.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
+                carouselTouch = null;
+                if (e.touches.length !== 1 || !e.target.closest('#carouselImageContainer')) return;
+                // Let thumbnail scrolling, links and button taps retain native behavior.
+                if (e.target.closest('#carouselThumbnails, button, a, input, textarea, select')) return;
+                const touch = e.touches[0];
+                carouselTouch = { id: touch.identifier, x: touch.clientX, y: touch.clientY };
             }, { passive: true });
 
             modalBody.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                const diff = touchStartX - touchEndX;
-                if (Math.abs(diff) > 40) {
-                    if (diff > 0) changeCarousel(1);
-                    else changeCarousel(-1);
+                const start = carouselTouch;
+                carouselTouch = null;
+                if (!start || e.touches.length) return;
+                const touch = Array.from(e.changedTouches).find(t => t.identifier === start.id);
+                if (!touch) return;
+                const dx = start.x - touch.clientX;
+                const dy = start.y - touch.clientY;
+                if (Math.abs(dx) >= 48 && Math.abs(dx) > Math.abs(dy) * 1.25) {
+                    changeCarousel(dx > 0 ? 1 : -1);
                 }
+            }, { passive: true });
+
+            modalBody.addEventListener('touchcancel', () => {
+                carouselTouch = null;
             }, { passive: true });
         }
 
