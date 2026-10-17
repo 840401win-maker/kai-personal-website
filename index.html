@@ -1177,6 +1177,110 @@
             }
         }
 
+        const SERIES_DEFINITIONS = [
+            {
+                id: 'nursing-journey',
+                title: '臨床護理 9 年成長與公職心路',
+                badge: '🏥 護理職涯系列',
+                match: (p) => p.category === 'nursing'
+            },
+            {
+                id: 'million-salary',
+                title: '護理師年薪百萬與薪資記帳實戰',
+                badge: '📊 百萬年薪系列',
+                match: (p) => p.category === 'finance'
+            },
+            {
+                id: 'model-y-2030',
+                title: '2030 Model Y 圓夢與指數化存股計畫',
+                badge: '📈 圓夢投資系列',
+                match: (p) => p.category === 'invest'
+            }
+        ];
+
+        function buildArticleBottomNav(post) {
+            if (!Array.isArray(postsData) || postsData.length <= 1) return '';
+            const sortedAll = [...postsData].sort((a, b) => new Date(b.date) - new Date(a.date));
+            const series = SERIES_DEFINITIONS.find(s => s.match(post)) || SERIES_DEFINITIONS[0];
+            const seriesPosts = sortedAll.filter(p => series.match(p));
+            const seriesIndex = seriesPosts.findIndex(p => p.id === post.id);
+
+            const allIndex = sortedAll.findIndex(p => p.id === post.id);
+            const prevPost = (seriesIndex > 0 ? seriesPosts[seriesIndex - 1] : null)
+                || (allIndex > 0 ? sortedAll[allIndex - 1] : null);
+            const nextPost = (seriesIndex >= 0 && seriesIndex < seriesPosts.length - 1 ? seriesPosts[seriesIndex + 1] : null)
+                || (allIndex >= 0 && allIndex < sortedAll.length - 1 ? sortedAll[allIndex + 1] : null);
+
+            const excludedIds = new Set([post.id, prevPost?.id, nextPost?.id].filter(Boolean));
+            const relatedPool = [
+                ...seriesPosts.filter(p => !excludedIds.has(p.id)),
+                ...sortedAll.filter(p => !excludedIds.has(p.id) && !series.match(p))
+            ];
+            const relatedPosts = relatedPool.slice(0, 2);
+
+            const renderNavCard = (targetPost, dirLabel, isNext) => {
+                if (!targetPost) return '';
+                const safeId = escapeHtml(targetPost.id);
+                const safeTitle = escapeHtml(targetPost.title);
+                const safeDate = escapeHtml(targetPost.date || '');
+                const safeReadTime = escapeHtml(targetPost.readTime || '3 分鐘');
+                return `
+                    <button type="button" onclick="openPostModal('${safeId}')" class="article-nav-card ${isNext ? 'article-nav-next' : 'article-nav-prev'}">
+                        <span class="article-nav-dir">${dirLabel}</span>
+                        <span class="article-nav-title">${safeTitle}</span>
+                        <span class="article-nav-meta"><i class="fa-regular fa-calendar"></i> ${safeDate} · ☕ ${safeReadTime}</span>
+                    </button>
+                `;
+            };
+
+            const renderRelatedCard = (rPost) => {
+                const safeId = escapeHtml(rPost.id);
+                const safeTitle = escapeHtml(rPost.title);
+                const safeImg = optimizeCloudinaryUrl(sanitizeImageUrl(rPost.image, rPost.category), 320);
+                const safeReadTime = escapeHtml(rPost.readTime || '3 分鐘');
+                const catLabel = rPost.category === 'finance' ? '📊 理財類' : (rPost.category === 'invest' ? '📈 投資類' : '🏥 護理類');
+                return `
+                    <button type="button" onclick="openPostModal('${safeId}')" class="article-related-card">
+                        <img src="${safeImg}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(rPost.category)}')" class="article-related-thumb">
+                        <div class="article-related-info">
+                            <span class="article-related-cat">${catLabel} · ☕ ${safeReadTime}</span>
+                            <span class="article-related-title">${safeTitle}</span>
+                        </div>
+                    </button>
+                `;
+            };
+
+            return `
+                <section class="article-bottom-section" aria-label="系列文章與延伸閱讀">
+                    <div class="article-series-banner">
+                        <div class="article-series-info">
+                            <span class="article-series-badge">${series.badge}</span>
+                            <span class="article-series-name">收錄於《${escapeHtml(series.title)}》專欄（共 ${seriesPosts.length} 篇）</span>
+                        </div>
+                        <button type="button" onclick="closePostModal(); setCategory('${escapeHtml(post.category || 'all')}');" class="article-series-link">
+                            查看同系列全部文章 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+
+                    ${(prevPost || nextPost) ? `
+                        <div class="article-prev-next-grid">
+                            ${renderNavCard(prevPost, '← 上一篇（較新發布）', false)}
+                            ${renderNavCard(nextPost, '下一篇推薦閱讀 →', true)}
+                        </div>
+                    ` : ''}
+
+                    ${relatedPosts.length > 0 ? `
+                        <div class="article-related-wrap">
+                            <h3 class="article-related-heading"><i class="fa-solid fa-compass text-teal-600 dark:text-teal-400"></i> 更多 Kai 的精選筆記</h3>
+                            <div class="article-related-grid">
+                                ${relatedPosts.map(renderRelatedCard).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                </section>
+            `;
+        }
+
         function openPostModal(postId) {
             const post = postsData.find(p => p.id === postId);
             if (!post) return;
@@ -1299,6 +1403,8 @@
                 <div class="article-prose space-y-4 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-200">
                     ${post._isCustom ? sanitizeArticleContent(post.content) : post.content}
                 </div>
+
+                ${buildArticleBottomNav(post)}
             `;
 
             bodyElem.scrollTop = 0;
