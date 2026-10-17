@@ -209,9 +209,14 @@
             <div class="bg-white dark:bg-warmbg-cardDark p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 space-y-3">
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-600 dark:text-slate-400 text-sm"></i>
-                    <input type="text" id="searchInput" oninput="renderPosts()" placeholder="搜尋關鍵字（例如：國北護、30歲、16張圖文、年薪百萬、夜班津貼、Model Y...）" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 dark:text-white placeholder-slate-400">
+                    <input type="text" id="searchInput" aria-label="搜尋文章" role="searchbox" enterkeyhint="search" oninput="renderPosts()" placeholder="搜尋關鍵字（例如：國北護、30歲、16張圖文、年薪百萬、夜班津貼、Model Y...）" class="w-full pl-10 pr-14 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 dark:text-white placeholder-slate-400">
+                    <button type="button" id="clearSearchBtn" class="search-clear-button" hidden aria-label="清除搜尋" onclick="clearArticleSearch()"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
                 </div>
 
+                <div class="browse-tools">
+                    <button type="button" id="bookmarksFilter" class="browse-action" aria-pressed="false" onclick="toggleBookmarksFilter()"><i class="fa-regular fa-bookmark" aria-hidden="true"></i> 只看收藏（<span id="bookmarkTotal">0</span>）</button>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">收藏儲存在此瀏覽器</span>
+                </div>
                 <div class="flex flex-wrap items-center gap-1.5 text-xs" id="subTagsContainer"></div>
             </div>
         </div>
@@ -222,7 +227,7 @@
 
         <div id="emptyState" class="hidden text-center py-16 space-y-3">
             <i class="fa-solid fa-folder-open text-4xl text-slate-300 dark:text-slate-600"></i>
-            <p class="text-slate-600 dark:text-slate-400 dark:text-slate-400 text-sm font-medium">找不到符合條件的文章，請試試其他關鍵字或分類！</p>
+            <p id="emptyStateMessage" class="text-slate-600 dark:text-slate-400 text-sm font-medium">找不到符合條件的文章，請試試其他關鍵字或分類！</p>
             <button onclick="resetFilters()" class="text-xs text-teal-600 dark:text-teal-400 font-semibold underline hover:text-teal-700">重設所有篩選條件</button>
         </div>
     </main>
@@ -299,6 +304,9 @@
                 <div class="flex items-center gap-2">
                     <button onclick="copyCurrentLink()" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors flex items-center gap-1.5">
                         <i class="fa-solid fa-link text-xs"></i> 複製連結
+                    </button>
+                    <button type="button" onclick="shareCurrentArticle()" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-teal-700 hover:bg-teal-800 text-white transition-colors flex items-center gap-1.5">
+                        <i class="fa-solid fa-share-nodes text-xs" aria-hidden="true"></i> 分享
                     </button>
                     <button onclick="shareToLine()" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-emerald-500 hover:bg-emerald-600 text-white transition-colors flex items-center gap-1.5">
                         <i class="fa-brands fa-line text-base"></i> LINE 分享
@@ -726,6 +734,7 @@
             }
         ];
 
+        let showOnlyBookmarks = false;
         let currentCategory = 'all';
         let currentSubTag = 'all';
         let userLikes = readStoredFlags('kai_user_likes');
@@ -970,6 +979,13 @@
             const emptyState = document.getElementById('emptyState');
             const searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
             const sortBy = document.getElementById('sortSelect').value;
+            document.getElementById('clearSearchBtn').hidden = !document.getElementById('searchInput').value;
+            document.getElementById('bookmarksFilter').setAttribute('aria-pressed', String(showOnlyBookmarks));
+            const savedCount = postsData.filter(post => userBookmarks[post.id] === true).length;
+            document.getElementById('bookmarkTotal').textContent = savedCount;
+            document.getElementById('emptyStateMessage').textContent = showOnlyBookmarks
+                ? (savedCount ? '收藏中找不到符合條件的文章，請調整關鍵字或分類。' : '還沒有收藏文章。點文章右上角的書籤，即可加入收藏。')
+                : '找不到符合條件的文章，請試試其他關鍵字或分類！';
 
             let filtered = postsData.filter(post => {
                 const matchCat = currentCategory === 'all' || post.category === currentCategory;
@@ -978,7 +994,7 @@
                     (post.title && post.title.toLowerCase().includes(searchQuery)) || 
                     (post.summary && post.summary.toLowerCase().includes(searchQuery)) ||
                     (post.tags && post.tags.some(t => t.toLowerCase().includes(searchQuery)));
-                return matchCat && matchTag && matchSearch;
+                return matchCat && matchTag && matchSearch && (!showOnlyBookmarks || userBookmarks[post.id] === true);
             });
 
             if (sortBy === 'popular') {
@@ -989,12 +1005,13 @@
 
             const resultsStatus = document.getElementById('resultsStatus');
             if (resultsStatus) {
-                resultsStatus.textContent = filtered.length > 0 ? `找到 ${filtered.length} 篇文章` : '沒有符合條件的文章';
+                resultsStatus.textContent = filtered.length > 0 ? `${showOnlyBookmarks ? '收藏中' : ''}找到 ${filtered.length} 篇文章` : (showOnlyBookmarks ? '收藏中沒有符合條件的文章' : '沒有符合條件的文章');
             }
 
             if (filtered.length === 0) {
                 grid.innerHTML = '';
                 emptyState.classList.remove('hidden');
+                if (pendingRouteId) tryResolvePendingRoute();
                 return;
             }
             emptyState.classList.add('hidden');
@@ -1034,7 +1051,7 @@
                                         <i class="fa-solid fa-trash text-xs"></i>
                                     </button>
                                 ` : ''}
-                                <button onclick="toggleBookmark('${escapeHtml(post.id)}', event)" aria-label="收藏文章" class="w-8 h-8 rounded-full ${isBookmarked ? 'bg-amber-700 text-white' : 'bg-slate-900/40 text-white hover:bg-slate-900/70'} backdrop-blur-md flex items-center justify-center transition-colors">
+                                <button onclick="toggleBookmark('${escapeHtml(post.id)}', event)" aria-label="收藏文章" aria-pressed="${!!isBookmarked}" class="w-11 h-11 rounded-full ${isBookmarked ? 'bg-amber-700 text-white' : 'bg-slate-900/40 text-white hover:bg-slate-900/70'} backdrop-blur-md flex items-center justify-center transition-colors">
                                     <i class="${isBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark text-xs"></i>
                                 </button>
                             </div>
@@ -1203,10 +1220,12 @@
 
             const bookmarkBtn = document.getElementById('modalBookmarkBtn');
             const isBookmarked = userBookmarks[post.id];
+            bookmarkBtn.setAttribute('aria-pressed', String(!!isBookmarked));
             bookmarkBtn.innerHTML = `<i class="${isBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark"></i> ${isBookmarked ? '已收藏' : '收藏'}`;
             bookmarkBtn.onclick = (e) => {
                 toggleBookmark(post.id, e);
                 const updatedBookmarked = userBookmarks[post.id];
+                bookmarkBtn.setAttribute('aria-pressed', String(!!updatedBookmarked));
                 bookmarkBtn.innerHTML = `<i class="${updatedBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark"></i> ${updatedBookmarked ? '已收藏' : '收藏'}`;
             };
 
@@ -1688,6 +1707,8 @@
 
         function toggleBookmark(postId, event) {
             if (event) event.stopPropagation();
+            const gridHadFocus = document.getElementById('postsGrid').contains(document.activeElement);
+            const removing = userBookmarks[postId] === true;
             if (userBookmarks[postId]) {
                 delete userBookmarks[postId];
                 showToast('已從個人收藏移除');
@@ -1697,27 +1718,55 @@
             }
             writeStoredPreference('kai_user_bookmarks', JSON.stringify(userBookmarks));
             renderPosts();
+            if (showOnlyBookmarks && removing && gridHadFocus) {
+                document.getElementById('bookmarksFilter').focus({ preventScroll: true });
+            }
         }
 
         // P2 Item: Modernized Clipboard API with execCommand Fallback
         async function copyCurrentLink() {
             const url = window.location.href;
-            if (navigator.clipboard && window.isSecureContext) {
-                try {
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
                     await navigator.clipboard.writeText(url);
                     showToast('📋 已複製文章連結至剪貼簿！');
-                    return;
-                } catch (err) {
-                    console.warn('Clipboard API 呼叫失敗，切換至備援方式');
+                    return true;
+                }
+            } catch (_) { /* Try the selection-based fallback below. */ }
+            const previousFocus = document.activeElement;
+            const tempInput = document.createElement('textarea');
+            tempInput.value = url;
+            tempInput.readOnly = true;
+            tempInput.style.cssText = 'position:fixed;top:0;left:-9999px;opacity:0;';
+            let copied = false;
+            try {
+                const modal = document.getElementById('postModal');
+                const host = modal && !modal.classList.contains('opacity-0') ? modal : document.body;
+                host.appendChild(tempInput);
+                tempInput.select();
+                tempInput.setSelectionRange(0, url.length);
+                copied = document.execCommand('copy') === true;
+            } catch (_) {
+                copied = false;
+            } finally {
+                tempInput.remove();
+                if (previousFocus && previousFocus.isConnected) previousFocus.focus({ preventScroll: true });
+            }
+            showToast(copied ? '📋 已複製文章連結至剪貼簿！' : '無法自動複製，請從網址列複製文章連結。');
+            return copied;
+        }
+
+        async function shareCurrentArticle() {
+            if (!currentActivePost) return false;
+            if (typeof navigator.share === 'function' && window.isSecureContext) {
+                try {
+                    await navigator.share({ title: currentActivePost.title, url: window.location.href });
+                    return true;
+                } catch (error) {
+                    if (error && error.name === 'AbortError') return false;
                 }
             }
-            const tempInput = document.createElement('input');
-            document.body.appendChild(tempInput);
-            tempInput.value = url;
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            showToast('📋 已複製文章連結至剪貼簿！');
+            return copyCurrentLink();
         }
 
         function shareToLine() {
@@ -1727,7 +1776,20 @@
             window.open(`https://social-plugins.line.me/lineit/share?url=${url}&text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
         }
 
+        function toggleBookmarksFilter() {
+            showOnlyBookmarks = !showOnlyBookmarks;
+            renderPosts();
+        }
+
+        function clearArticleSearch() {
+            const input = document.getElementById('searchInput');
+            input.value = '';
+            renderPosts();
+            input.focus({ preventScroll: true });
+        }
+
         function resetFilters() {
+            showOnlyBookmarks = false;
             document.getElementById('searchInput').value = '';
             setCategory('all');
         }
