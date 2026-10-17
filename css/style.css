@@ -121,3 +121,13 @@
         padding: 0.5rem;
     }
 }
+
+/* The image overlay needs its own reachable exit control on touch devices. */
+#exitFullscreenImageBtn {
+    width: 44px;
+    height: 44px;
+}
+#carouselImageContainer.fixed #carouselCounter {
+    left: 0.75rem;
+    right: auto;
+}
