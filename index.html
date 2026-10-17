@@ -262,7 +262,7 @@
             <div id="postModalHeader" class="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between sticky top-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md z-20">
                 <div class="flex items-center gap-2 text-xs font-semibold text-teal-600 dark:text-teal-400" id="modalCategory"></div>
                 <div class="flex items-center gap-2">
-                    <button onclick="toggleFullscreenImage()" id="fullscreenBtn" title="全螢幕放大圖片" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors text-xs">
+                    <button onclick="toggleFullscreenImage()" id="fullscreenBtn" title="全螢幕放大圖片" aria-label="切換圖片放大" aria-pressed="false" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors text-xs">
                         <i class="fa-solid fa-expand"></i>
                     </button>
                     <button onclick="closePostModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
@@ -1136,6 +1136,9 @@
                 img.classList.add('max-h-[560px]');
                 if (btnIcon) btnIcon.className = 'fa-solid fa-expand';
             }
+            document.getElementById('fullscreenBtn').setAttribute('aria-pressed', String(isFullscreenImage));
+            const exitButton = document.getElementById('exitFullscreenImageBtn');
+            if (exitButton) exitButton.classList.toggle('hidden', !isFullscreenImage);
         }
 
         function openPostModal(postId) {
@@ -1153,6 +1156,7 @@
             currentActivePost = post;
             currentCarouselIndex = 0;
             isFullscreenImage = false;
+            document.getElementById('fullscreenBtn').setAttribute('aria-pressed', 'false');
 
             const modal = document.getElementById('postModal');
             const card = document.getElementById('postModalCard');
@@ -1191,6 +1195,10 @@
                         <div class="relative flex items-center justify-center min-h-[280px] sm:min-h-[440px] bg-slate-950 select-none">
                             <img id="carouselMainImg" src="${optimizeCloudinaryUrl(sanitizeImageUrl(post.images[0], post.category))}" alt="${escapeHtml(post.title)}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-auto max-h-[560px] object-contain mx-auto transition-all duration-300">
                         </div>
+
+                        <button id="exitFullscreenImageBtn" onclick="toggleFullscreenImage()" aria-label="結束圖片放大" class="hidden absolute top-3 right-3 z-20 rounded-full bg-slate-900/80 text-white flex items-center justify-center">
+                            <i class="fa-solid fa-compress"></i>
+                        </button>
 
                         ${post.images.length > 1 ? `
                             <span id="carouselCounter" class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-md text-white text-xs font-mono font-bold px-3 py-1.5 rounded-full shadow-md z-10">
