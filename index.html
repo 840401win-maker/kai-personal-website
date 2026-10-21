@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kai | 護理生活 & 理財投資筆記 🩺💰</title>
+    <meta name="theme-color" content="#F8F7F4">
+    <title>Kai | 護理生活 & 理財投資筆記 (@kai.nursing_life)</title>
     
     <!-- SEO Standard Meta Tags (P1 Item) -->
-    <meta name="description" content="國北護畢業 ｜ 31歲臨床護理9年 🏥 ｜ 113&114年薪百萬達成 🌟 記錄護理日常、衛教筆記、理財投資與 2030 Model Y 圓夢計畫">
+    <meta name="description" content="國北護畢業 ｜ 31歲臨床護理9年 ｜ 113&114年薪百萬達成 ｜ 記錄護理日常、衛教筆記、理財投資與 2030 Model Y 圓夢計畫">
     <meta name="keywords" content="Kai, 護理師, 公職護理師, N4護理師, 國北護, 年薪百萬, Model Y, 理財投資, 護理日常, 衛教筆記">
     <meta name="author" content="Kai">
     <link rel="canonical" href="https://kai-personal-website.netlify.app/">
     <link rel="icon" href="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_64,h_64/f_png,q_auto/v1786270726/11_skvgrb.png" type="image/png">
 
     <!-- Open Graph Meta Tags for Social Sharing (P1 Item) -->
-    <meta property="og:title" content="Kai | 護理生活 & 理財投資筆記 🩺💰">
-    <meta property="og:description" content="國北護畢業 ｜ 31歲臨床護理9年 🏥 ｜ 113&114年薪百萬達成 🌟 記錄護理日常、衛教筆記、理財投資與 2030 Model Y 圓夢計畫">
+    <meta property="og:title" content="Kai | 護理生活 & 理財投資筆記 (@kai.nursing_life)">
+    <meta property="og:description" content="國北護畢業 ｜ 31歲臨床護理9年 ｜ 113&114年薪百萬達成 ｜ 記錄護理日常、衛教筆記、理財投資與 2030 Model Y 圓夢計畫">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kai-personal-website.netlify.app/">
     <meta property="og:image" content="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270901/15_ub1o2u.png">
@@ -23,8 +24,8 @@
 
     <!-- Twitter Card Meta Tags (P1 Item) -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Kai | 護理生活 & 理財投資筆記 🩺💰">
-    <meta name="twitter:description" content="國北護畢業 ｜ 31歲臨床護理9年 🏥 ｜ 記錄護理日常、衛教筆記與理財投資">
+    <meta name="twitter:title" content="Kai | 護理生活 & 理財投資筆記 (@kai.nursing_life)">
+    <meta name="twitter:description" content="國北護畢業 ｜ 31歲臨床護理9年 ｜ 記錄護理日常、衛教筆記與理財投資">
     <meta name="twitter:image" content="https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270901/15_ub1o2u.png">
 
     <!-- JSON-LD Structured Data for Person & Blog (P1 Item) -->
@@ -50,7 +51,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300..700&family=Plus+Jakarta+Sans:wght@400..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300..700&family=Noto+Serif+TC:wght@600&family=Plus+Jakarta+Sans:wght@400..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <!-- Firebase (CDN 版本) — 初始化邏輯已搬移至 js/firebase.js -->
 
@@ -58,119 +59,158 @@
 
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="bg-warmbg-light dark:bg-warmbg-dark text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col font-sans">
 
-    <!-- 1. 頂部防詐與信譽宣言標章 (Trust Banner) -->
-    <div class="bg-teal-700 dark:bg-teal-900 text-white text-xs md:text-sm py-2 px-4 text-center font-medium shadow-inner flex flex-wrap items-center justify-center gap-2 md:gap-6">
-        <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-amber-300"></i> 📌 唯一官方帳號：<a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="underline hover:text-amber-200">@kai.nursing_life</a></span>
-        <span class="hidden sm:inline">|</span>
-        <span class="flex items-center gap-1.5"><i class="fa-solid fa-ban text-red-300"></i> 🚫 無群組・不推銷・不飆股私訊</span>
-        <span class="hidden md:inline">|</span>
-        <span class="hidden md:flex items-center gap-1.5"><i class="fa-solid fa-notes-medical text-teal-200"></i> 純粹護理日常 & 理財經驗紀錄</span>
+    <!-- Lucide 線性 icon sprite（stroke 於 CSS .ico 統一設定為 1.5） -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+            <symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></symbol>
+            <symbol id="i-calculator" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></symbol>
+            <symbol id="i-user-round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol>
+            <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+            <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+            <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></symbol>
+            <symbol id="i-heart-pulse" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></symbol>
+            <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></symbol>
+            <symbol id="i-trending-up" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+            <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+            <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></symbol>
+            <symbol id="i-sort" viewBox="0 0 24 24"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="M11 4h10"/><path d="M11 8h7"/><path d="M11 12h4"/></symbol>
+            <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+            <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+            <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+            <symbol id="i-stethoscope" viewBox="0 0 24 24"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></symbol>
+            <symbol id="i-triangle-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+            <symbol id="i-rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+            <symbol id="i-filter" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></symbol>
+            <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+            <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+            <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+            <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+            <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></symbol>
+            <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+            <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+            <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+            <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+            <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+            <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></symbol>
+            <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+            <symbol id="i-list" viewBox="0 0 24 24"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></symbol>
+            <symbol id="i-external-link" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+        </defs>
+    </svg>
+
+    <!-- 1. 頂部防詐與信譽宣言（手機預設精簡，可展開） -->
+    <div id="trustBanner" class="trust-banner" data-open="false">
+        <div class="trust-banner-inner">
+            <p class="trust-banner-core">
+                <svg class="ico" aria-hidden="true"><use href="#i-shield-check"/></svg>
+                <span>官方唯一帳號 <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer">@kai.nursing_life</a> ｜ 無群組・不推銷</span>
+            </p>
+            <p id="trustBannerMore" class="trust-banner-more">
+                <svg class="ico" aria-hidden="true"><use href="#i-ban"/></svg>
+                <span>不飆股私訊・純粹護理日常與理財經驗紀錄</span>
+            </p>
+            <button type="button" id="trustBannerToggle" class="trust-banner-toggle" aria-expanded="false" aria-controls="trustBannerMore">
+                <span>完整聲明</span><svg class="ico" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+            </button>
+        </div>
     </div>
 
     <!-- 2. 導覽列 Navbar -->
-    <nav class="sticky top-0 z-40 glass-effect border-b border-slate-200 dark:border-slate-800 transition-colors">
+    <nav class="site-nav sticky top-0 z-40 glass-effect">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-2.5 group">
-                <div id="brandLogoWrap" class="w-10 h-10 rounded-full bg-gradient-to-tr from-teal-500 to-amber-500 p-0.5 shadow-md group-hover:scale-105 transition-transform">
-                    <div class="w-full h-full bg-white dark:bg-slate-900 rounded-full flex items-center justify-center overflow-hidden">
-                        <i class="fa-solid fa-stethoscope text-teal-600 dark:text-teal-400 text-lg"></i>
+            <a href="#" class="brand-link flex items-center gap-2.5 group">
+                <div id="brandLogoWrap" class="brand-logo">
+                    <div class="brand-logo-inner">
+                        <svg class="ico" aria-hidden="true"><use href="#i-stethoscope"/></svg>
                     </div>
                 </div>
                 <div>
-                    <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-teal-700 to-amber-600 dark:from-teal-400 dark:to-amber-400 bg-clip-text text-transparent">Kai 護理 & 理財</span>
-                    <span class="block text-[10px] text-slate-600 dark:text-slate-400 dark:text-slate-400 font-medium">@kai.nursing_life</span>
+                    <span class="brand-name">Kai 護理 &amp; 理財</span>
+                    <span class="brand-sub">@kai.nursing_life</span>
                 </div>
             </a>
 
             <!-- Right Controls -->
             <div class="flex items-center gap-2 sm:gap-3">
+                <button id="adminInsightsBtn" onclick="openAdminInsightsModal()" class="hidden px-2.5 sm:px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-50 border border-amber-300 text-amber-800 hover:bg-amber-100 transition-colors items-center gap-1.5 shadow-sm" title="創作者數據中心">
+                    <svg class="ico text-amber-700" style="width:14px;height:14px;"><use href="#i-trending-up"/></svg>
+                    <span><span class="hidden sm:inline">後台</span>數據</span>
+                </button>
+
                 <button id="addPostBtn" onclick="openAddPostModal()" class="hidden px-3 py-1.5 rounded-full text-xs font-semibold bg-teal-600 hover:bg-teal-700 text-white transition-colors items-center gap-1.5 shadow-sm">
                     <i class="fa-solid fa-plus text-xs"></i>
                     <span class="hidden sm:inline">匯入/新增</span>貼文
                 </button>
 
-                <button id="logoutBtn" onclick="handleAdminLogout()" class="hidden px-2.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors items-center gap-1.5" title="登出管理員身分">
+                <button id="logoutBtn" onclick="handleAdminLogout()" class="hidden px-2.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors items-center gap-1.5" title="登出管理員身分">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </button>
 
-                <button onclick="openCalcModal()" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-900/60 transition-colors flex items-center gap-1.5 shadow-sm">
-                    <i class="fa-solid fa-calculator text-amber-600 dark:text-amber-400"></i>
-                    <span class="hidden sm:inline">夜班/存股</span>試算器
+                <button onclick="openCalcModal()" class="nav-pill nav-pill-gold">
+                    <svg class="ico" aria-hidden="true"><use href="#i-calculator"/></svg>
+                    <span><span class="hidden sm:inline">夜班/存股</span>試算器</span>
                 </button>
 
-                <button onclick="openAboutModal()" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-1.5 shadow-sm">
-                    <i class="fa-solid fa-user text-teal-600 dark:text-teal-400"></i>
-                    關於 Kai
+                <button onclick="openAboutModal()" class="nav-pill">
+                    <svg class="ico" aria-hidden="true"><use href="#i-user-round"/></svg>
+                    <span>關於 Kai</span>
                 </button>
 
-                <button id="themeToggle" aria-label="切換深淺模式" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-                    <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+                <button id="themeToggle" aria-label="切換深淺模式" class="nav-icon-btn hidden" hidden>
+                    <span id="themeIcon" class="theme-icon" aria-hidden="true"><svg class="ico"><use href="#i-moon"/></svg></span>
                 </button>
             </div>
         </div>
     </nav>
 
     <!-- 3. Header 個人形象看板 (Profile Header) -->
-    <header id="profileHeader" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
-        <div id="profileHeaderCard" class="bg-white dark:bg-warmbg-cardDark rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 dark:border-slate-800 transition-colors relative overflow-hidden">
-            <div class="absolute -right-12 -top-12 w-56 h-56 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute -left-12 -bottom-12 w-56 h-56 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-            <div class="profile-header-layout flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8 relative z-10">
-                <div class="relative group cursor-pointer shrink-0" onclick="openAboutModal()">
-                    <div class="profile-avatar-ring w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-teal-500 via-amber-400 to-teal-600 shadow-xl group-hover:scale-105 transition-transform duration-300">
-                        <img src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png" width="256" height="256" alt="Kai 大頭貼" loading="eager" class="w-full h-full object-cover rounded-full border-2 border-white dark:border-slate-900">
+    <header id="profileHeader" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
+        <div id="profileHeaderCard" class="hero-card">
+            <div class="profile-header-layout">
+                <div class="hero-avatar group cursor-pointer" onclick="openAboutModal()">
+                    <div class="profile-avatar-ring">
+                        <img src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png" width="256" height="256" alt="Kai 大頭貼" loading="eager">
                     </div>
-                    <span class="absolute bottom-1 right-1 bg-teal-600 text-white p-1.5 rounded-full text-xs shadow-lg border-2 border-white dark:border-slate-900" title="公職護理師 & N4">
-                        <i class="fa-solid fa-user-nurse"></i>
+                    <span class="profile-badge-mark" title="公職護理師 &amp; N4">
+                        <svg class="ico" aria-hidden="true"><use href="#i-heart-pulse"/></svg>
                     </span>
                 </div>
 
-                <div class="flex-1 text-center md:text-left space-y-3 min-w-0">
-                    <div class="flex flex-col sm:flex-row items-center md:items-start gap-2 sm:gap-4">
-                        <h1 class="profile-title text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                            Kai | 護理生活 & 理財投資 <span class="inline-block animate-bounce">🩺💰</span>
-                        </h1>
-                        <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-teal-600 hover:bg-teal-700 text-white transition-colors inline-flex items-center gap-1.5 shadow-sm">
-                            <i class="fa-brands fa-instagram text-sm"></i> 追蹤 IG @kai.nursing_life
+                <div class="hero-body">
+                    <div class="hero-titlerow">
+                        <h1 class="profile-title">Kai｜護理生活 &amp; 理財投資</h1>
+                        <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="hero-ig">
+                            <i class="fa-brands fa-instagram" aria-hidden="true"></i> @kai.nursing_life
                         </a>
                     </div>
 
-                    <p class="profile-bio text-sm sm:text-base font-medium text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-                        國北護畢業 🎓 ｜ 31 歲臨床護理 9 年 🏥 ｜ 公職護理師 & 臨床教師 🩺<br>
-                        從 22 歲低空飛過的小屁孩，到堅守臨床的大學長。記錄護理日常、衛教筆記、淨資產成長與 2030 Model Y 圓夢計畫 🚗
+                    <p class="profile-bio">
+                        國北護畢・公職護理師 N4 暨臨床教師。記錄臨床實戰、薪資記帳與指數化投資筆記。
                     </p>
 
-                    <div class="profile-badges flex flex-wrap justify-center md:justify-start gap-2 pt-1">
-                        <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-                            💉 臨床經驗 9 年 (2017-2026)
-                        </span>
-                        <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/50">
-                            🌟 113 & 114 年薪百萬達成
-                        </span>
-                        <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-teal-50 dark:bg-teal-950/40 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800/50">
-                            📸 30 歲 16 張心路圖文全典藏
-                        </span>
-                        <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-                            🚗 2030 Model Y 目標中
-                        </span>
+                    <div class="profile-badges">
+                        <span class="hero-chip">臨床經驗 9 年（2017–2026）</span>
+                        <span class="hero-chip">113 &amp; 114 年薪百萬達成</span>
+                        <span class="hero-chip">30 歲 16 張心路圖文全典藏</span>
+                        <span class="hero-chip">2030 Model Y 目標中</span>
                     </div>
 
-                    <div class="profile-stats grid grid-cols-3 gap-2 sm:gap-4 pt-3 border-t border-slate-100 dark:border-slate-800 max-w-md mx-auto md:mx-0">
-                        <div class="text-center md:text-left">
-                            <span class="text-xs text-slate-600 dark:text-slate-400">臨床資歷</span>
-                            <p class="text-sm sm:text-base font-bold text-teal-600 dark:text-teal-400">9 年 + <span class="text-xs font-normal text-slate-600 dark:text-slate-400">公職/N4</span></p>
+                    <div class="profile-stats">
+                        <div class="hero-stat">
+                            <span class="hero-stat-num">9<small>年</small></span>
+                            <span class="hero-stat-label">臨床資歷・公職 N4</span>
                         </div>
-                        <div class="text-center md:text-left">
-                            <span class="text-xs text-slate-600 dark:text-slate-400">薪資里程碑</span>
-                            <p class="text-sm sm:text-base font-bold text-amber-600 dark:text-amber-400">年薪百萬 <span class="text-xs font-normal text-slate-600 dark:text-slate-400">連續2年</span></p>
+                        <div class="hero-stat">
+                            <span class="hero-stat-num">2<small>年</small></span>
+                            <span class="hero-stat-label">連續年薪百萬</span>
                         </div>
-                        <div class="text-center md:text-left">
-                            <span class="text-xs text-slate-600 dark:text-slate-400">夢想進度</span>
-                            <p class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-200">Model Y <span class="text-xs font-normal text-slate-600 dark:text-slate-400">2030🎯</span></p>
+                        <div class="hero-stat">
+                            <span class="hero-stat-num">2030</span>
+                            <span class="hero-stat-label">Model Y 目標</span>
                         </div>
                     </div>
                 </div>
@@ -184,52 +224,46 @@
         <section id="seriesSpotlightSection" class="series-spotlight-section" aria-label="主題系列專欄">
             <div class="series-spotlight-header">
                 <div class="series-spotlight-title-wrap">
-                    <h2 class="series-spotlight-heading"><i class="fa-solid fa-layer-group text-teal-600 dark:text-teal-400"></i> 主題系列專欄</h2>
+                    <h2 class="series-spotlight-heading"><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg> 主題系列專欄</h2>
                     <span class="series-spotlight-subtitle">系統化整理 Kai 的長期實戰筆記，點選專欄即可篩選或直接進入代表作</span>
                 </div>
                 <button type="button" id="seriesResetBtn" class="series-reset-btn hidden" onclick="setCategory('all')">
-                    顯示全部系列 <i class="fa-solid fa-rotate-left"></i>
+                    顯示全部系列 <svg class="ico" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>
                 </button>
             </div>
             <div id="seriesSpotlightGrid" class="series-spotlight-grid"></div>
         </section>
 
-        <div class="space-y-4 mb-8">
-            <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2 hide-scrollbar">
-                <div class="flex items-center gap-2">
-                    <button onclick="setCategory('all')" id="cat-all" aria-pressed="true" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-teal-600 text-white shadow-md shadow-teal-600/20">
-                        ✨ 全部文章
-                    </button>
-                    <button onclick="setCategory('nursing')" id="cat-nursing" aria-pressed="false" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
-                        🏥 護理類
-                    </button>
-                    <button onclick="setCategory('finance')" id="cat-finance" aria-pressed="false" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
-                        📊 理財類 (薪資記帳)
-                    </button>
-                    <button onclick="setCategory('invest')" id="cat-invest" aria-pressed="false" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
-                        📈 投資類
-                    </button>
+        <div class="browse-header-wrap space-y-3 mb-6">
+            <div class="cat-tabs-bar flex items-center justify-between gap-2 overflow-x-auto hide-scrollbar">
+                <div class="cat-tabs-list flex items-center">
+                    <button onclick="setCategory('all')" id="cat-all" aria-pressed="true" class="cat-btn"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>全部文章</button>
+                    <button onclick="setCategory('nursing')" id="cat-nursing" aria-pressed="false" class="cat-btn"><svg class="ico" aria-hidden="true"><use href="#i-heart-pulse"/></svg>護理職涯</button>
+                    <button onclick="setCategory('finance')" id="cat-finance" aria-pressed="false" class="cat-btn"><svg class="ico" aria-hidden="true"><use href="#i-wallet"/></svg>理財薪資</button>
+                    <button onclick="setCategory('invest')" id="cat-invest" aria-pressed="false" class="cat-btn"><svg class="ico" aria-hidden="true"><use href="#i-trending-up"/></svg>投資計畫</button>
                 </div>
 
                 <div class="flex items-center gap-2 shrink-0">
-                    <span class="text-xs text-slate-600 dark:text-slate-400 hidden sm:inline"><i class="fa-solid fa-arrow-down-wide-short"></i> 排序：</span>
-                    <select aria-label="文章排序" id="sortSelect" onchange="renderPosts()" class="bg-white dark:bg-slate-800 text-xs text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-teal-500">
+                    <span class="sort-label"><svg class="ico" aria-hidden="true"><use href="#i-sort"/></svg> 排序：</span>
+                    <select aria-label="文章排序" id="sortSelect" onchange="renderPosts()" class="field-select">
                         <option value="newest">最新發布</option>
-                        <option value="popular">最高熱門度 (按讚)</option>
+                        <option value="popular">最高熱門</option>
                     </select>
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-warmbg-cardDark p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 space-y-3">
-                <div class="relative">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-600 dark:text-slate-400 text-sm"></i>
-                    <input type="text" id="searchInput" aria-label="搜尋文章" role="searchbox" enterkeyhint="search" oninput="renderPosts()" placeholder="搜尋關鍵字（例如：國北護、30歲、16張圖文、年薪百萬、夜班津貼、Model Y...）" class="w-full pl-10 pr-14 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 dark:text-white placeholder-slate-400">
-                    <button type="button" id="clearSearchBtn" class="search-clear-button" hidden aria-label="清除搜尋" onclick="clearArticleSearch()"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-                </div>
+            <div class="filter-panel">
+                <div class="filter-search-row">
+                    <div class="relative flex-1 min-w-0">
+                        <svg class="ico search-ico" aria-hidden="true"><use href="#i-search"/></svg>
+                        <input type="text" id="searchInput" aria-label="搜尋文章" role="searchbox" enterkeyhint="search" oninput="renderPosts()" placeholder="搜尋文章或關鍵字..." class="field-input">
+                        <button type="button" id="clearSearchBtn" class="search-clear-button" hidden aria-label="清除搜尋" onclick="clearArticleSearch()"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+                    </div>
 
-                <div class="browse-tools">
-                    <button type="button" id="bookmarksFilter" class="browse-action" aria-pressed="false" onclick="toggleBookmarksFilter()"><i class="fa-regular fa-bookmark" aria-hidden="true"></i> 只看收藏（<span id="bookmarkTotal">0</span>）</button>
-                    <span class="text-xs text-slate-500 dark:text-slate-400">收藏儲存在此瀏覽器</span>
+                    <div class="browse-tools">
+                        <button type="button" id="bookmarksFilter" class="browse-action" aria-pressed="false" onclick="toggleBookmarksFilter()"><svg class="ico" aria-hidden="true"><use href="#i-bookmark"/></svg> 收藏（<span id="bookmarkTotal" class="num">0</span>）</button>
+                        <span class="note-text">閱讀進度與收藏僅儲存於當前瀏覽器</span>
+                    </div>
                 </div>
                 <div class="flex flex-wrap items-center gap-1.5 text-xs" id="subTagsContainer"></div>
             </div>
@@ -247,25 +281,23 @@
     </main>
 
     <!-- 6. 頁尾 Footer -->
-    <footer class="bg-white dark:bg-warmbg-cardDark border-t border-slate-200 dark:border-slate-800 py-10 mt-auto transition-colors">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-            <div class="bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/60 dark:border-amber-900/40 p-4 rounded-2xl text-xs text-amber-800/90 dark:text-amber-300/80 leading-relaxed">
-                <p class="font-bold mb-1 flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation"></i> 免責聲明與版權宣告：</p>
+    <footer class="site-footer">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 footer-inner">
+            <div class="footer-disclaimer">
+                <p class="footer-disclaimer-title"><svg class="ico" aria-hidden="true"><use href="#i-triangle-alert"/></svg> 免責聲明與版權宣告</p>
                 本網站為 Kai 個人經驗分享與學習紀錄（包含護理衛教知識、個人薪資記帳與投資觀察），內容不構成任何醫療診斷建議或金融投資邀約。醫療相關問題請諮詢專業醫師，投資理財請審慎評估風險。本站無公開 Telegram / LINE 群組，亦不進行任何推銷行為。
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600 dark:text-slate-400 dark:text-slate-400">
-                <p>© 2026 Kai | 護理生活 & 理財投資 (@kai.nursing_life). All rights reserved.</p>
-                <div class="flex items-center gap-4">
-                    <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="hover:text-pink-500 transition-colors flex items-center gap-1">
-                        <i class="fa-brands fa-instagram text-sm"></i> IG @kai.nursing_life
+            <div class="footer-row">
+                <p>© <span id="adminTrigger" class="admin-trigger num">2026</span> Kai | 護理生活 &amp; 理財投資 (@kai.nursing_life). All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i> IG @kai.nursing_life
                     </a>
-                    <span>•</span>
-                    <button onclick="openAboutModal()" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">關於創作者</button>
-                    <span>•</span>
-                    <button onclick="openLoginModal()" aria-label="管理員登入" class="opacity-40 hover:opacity-100 transition-opacity">
-                        <i class="fa-solid fa-lock text-[11px]"></i>
-                    </button>
+                    <span aria-hidden="true">•</span>
+                    <button type="button" onclick="openAboutModal()">關於創作者</button>
+                    <span aria-hidden="true">•</span>
+                    <button type="button" onclick="openLoginModal()" class="admin-footer-btn" title="創作者管理員登入">管理登入</button>
                 </div>
             </div>
         </div>
@@ -275,17 +307,20 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- Modal 1: 文章內文與圖文輪播視窗 (Post Modal) -->
-    <div id="postModal" role="dialog" aria-modal="true" aria-label="文章內容" aria-labelledby="postModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white dark:bg-slate-900 w-full max-w-4xl max-h-[92vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="postModalCard">
-            <div id="postModalHeader" class="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between sticky top-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md z-20">
-                <div class="flex items-center gap-2 text-xs font-semibold text-teal-600 dark:text-teal-400" id="modalCategory"></div>
-                <div class="flex items-center gap-2">
-                    <button onclick="toggleFullscreenImage()" id="fullscreenBtn" title="全螢幕放大圖片" aria-label="切換圖片放大" aria-pressed="false" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors text-xs">
-                        <i class="fa-solid fa-expand"></i>
+    <!-- Modal 1: 文章內文與圖文輪播視窗 (Post Modal — Full-Page Reader Container) -->
+    <div id="postModal" role="dialog" aria-modal="true" aria-label="文章內容" aria-labelledby="postModalTitle" class="reader-overlay fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="reader-page w-full flex flex-col transition-transform duration-300" id="postModalCard">
+            <div id="postModalHeader" class="reader-topbar">
+                <div class="reader-topbar-left">
+                    <button type="button" id="readerBackBtn" onclick="closePostModal()" aria-label="返回文章列表" class="reader-back-btn">
+                        <svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>
+                        <span>返回</span>
                     </button>
-                    <button onclick="closePostModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
-                        <i class="fa-solid fa-xmark text-lg"></i>
+                    <div class="reader-topbar-meta" id="modalCategory"></div>
+                </div>
+                <div class="reader-topbar-right">
+                    <button type="button" onclick="toggleFullscreenImage()" id="fullscreenBtn" title="全螢幕放大圖片" aria-label="切換圖片放大" aria-pressed="false" class="reader-icon-btn">
+                        <i class="fa-solid fa-expand" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
@@ -293,40 +328,53 @@
             <div id="articleReadingTools" class="article-reading-tools">
                 <div class="article-font-controls" role="group" aria-label="文章內文字級">
                     <span class="article-tools-label">字級</span>
-                    <button type="button" data-reader-size="standard" aria-pressed="true" onclick="setArticleFontSize('standard')">標準</button>
-                    <button type="button" data-reader-size="large" aria-pressed="false" onclick="setArticleFontSize('large')">大字</button>
-                    <button type="button" data-reader-size="largest" aria-pressed="false" onclick="setArticleFontSize('largest')">特大</button>
+                    <button type="button" data-reader-size="standard" aria-pressed="true" onclick="setArticleFontSize('standard')">小</button>
+                    <button type="button" data-reader-size="large" aria-pressed="false" onclick="setArticleFontSize('large')">中</button>
+                    <button type="button" data-reader-size="largest" aria-pressed="false" onclick="setArticleFontSize('largest')">大</button>
+                    <span class="reader-storage-note">閱讀進度與收藏僅儲存於當前瀏覽器</span>
                 </div>
-                <button type="button" id="articleReadingTop" aria-label="回到文章頂端" title="回到文章頂端" onclick="scrollArticleToTop()">
-                    <span aria-hidden="true">↑</span><span id="articleReadingProgressText" aria-hidden="true">0%</span>
-                </button>
+                <div class="reader-progress-group">
+                    <span id="readerCarouselProgressBadge" class="reader-progress-pill num hidden" aria-label="目前圖卡張數">圖卡 1 / 1</span>
+                    <button type="button" id="articleReadingTop" aria-label="回到文章頂端" title="回到文章頂端" onclick="scrollArticleToTop()">
+                        <span aria-hidden="true">↑</span><span class="reader-progress-prefix" aria-hidden="true">長文 </span><span id="articleReadingProgressText" class="num" aria-hidden="true">0%</span>
+                    </button>
+                </div>
             </div>
-            <progress id="articleReadingProgress" max="100" value="0" aria-label="文章捲動位置">0%</progress>
+            <progress id="articleReadingProgress" max="100" value="0" aria-label="文章正文捲動進度">0%</progress>
 
-            <div class="p-4 sm:p-8 overflow-y-auto space-y-6 text-slate-800 dark:text-slate-100" id="modalBody"></div>
+            <div class="reader-scroll-body overflow-y-auto" id="modalBody"></div>
 
-            <div id="postModalFooter" class="p-4 sm:p-5 border-t border-slate-100 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/80 flex flex-wrap items-center justify-between gap-3">
-                <div class="flex items-center gap-2">
-                    <button id="modalLikeBtn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/60 transition-colors flex items-center gap-1.5">
-                        <i class="fa-solid fa-heart"></i> <span id="modalLikeCount">0</span> 按讚
+            <aside id="nextChapterToast" class="next-chapter-toast hidden" role="region" aria-label="下一章閱讀預告" aria-live="polite"></aside>
+
+            <div id="postModalFooter" class="reader-footer">
+                <div class="reader-footer-group">
+                    <button type="button" id="modalLikeBtn" class="reader-foot-btn reader-foot-like">
+                        <svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg>
+                        <span id="modalLikeCount" class="num">0</span>
+                        <span>按讚</span>
                     </button>
-                    <button id="modalBookmarkBtn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-1.5">
-                        <i class="fa-regular fa-bookmark"></i> 收藏
+                    <button type="button" id="modalBookmarkBtn" class="reader-foot-btn">
+                        <svg class="ico" aria-hidden="true"><use href="#i-bookmark"/></svg>
+                        <span>收藏</span>
                     </button>
                 </div>
 
-                <div class="flex items-center gap-2">
-                    <button onclick="copyCurrentLink()" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors flex items-center gap-1.5">
-                        <i class="fa-solid fa-link text-xs"></i> 複製連結
+                <div class="reader-footer-group">
+                    <button type="button" onclick="copyCurrentLink()" class="reader-foot-btn">
+                        <svg class="ico" aria-hidden="true"><use href="#i-link"/></svg>
+                        <span>複製連結</span>
                     </button>
-                    <button type="button" onclick="shareCurrentArticle()" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-teal-700 hover:bg-teal-800 text-white transition-colors flex items-center gap-1.5">
-                        <i class="fa-solid fa-share-nodes text-xs" aria-hidden="true"></i> 分享
+                    <button type="button" onclick="shareCurrentArticle()" class="reader-foot-btn reader-foot-primary">
+                        <svg class="ico" aria-hidden="true"><use href="#i-share"/></svg>
+                        <span>分享</span>
                     </button>
-                    <button onclick="shareToLine()" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-emerald-500 hover:bg-emerald-600 text-white transition-colors flex items-center gap-1.5">
-                        <i class="fa-brands fa-line text-base"></i> LINE 分享
+                    <button type="button" onclick="shareToLine()" class="reader-foot-btn reader-foot-line">
+                        <i class="fa-brands fa-line" aria-hidden="true"></i>
+                        <span>LINE 分享</span>
                     </button>
-                    <a id="modalIgLink" href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-teal-600 hover:bg-teal-700 text-white transition-colors flex items-center gap-1.5 shadow-sm">
-                        <i class="fa-brands fa-instagram"></i> 前往 IG 看原文 ↗
+                    <a id="modalIgLink" href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="reader-foot-btn reader-foot-ig">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                        <span>前往 IG 看原文</span>
                     </a>
                 </div>
             </div>
@@ -334,78 +382,80 @@
     </div>
 
     <!-- Modal 2: 關於我 (About Modal) -->
-    <div id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white dark:bg-slate-900 w-full max-w-2xl max-h-[90vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="aboutModalCard">
-            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                <h3 id="aboutModalTitle" class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
-                    <i class="fa-solid fa-address-card text-teal-600"></i> 關於 Kai (創作者檔案)
+    <div id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutModalTitle" onclick="if(event.target === this) closeAboutModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="editorial-modal-card w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="aboutModalCard">
+            <div class="editorial-modal-header">
+                <h3 id="aboutModalTitle" class="editorial-modal-title">
+                    <svg class="ico" aria-hidden="true"><use href="#i-award"/></svg>
+                    <span>關於 Kai（創作者檔案）</span>
                 </h3>
-                <button onclick="closeAboutModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
-                    <i class="fa-solid fa-xmark text-lg"></i>
+                <button type="button" onclick="closeAboutModal()" aria-label="返回並關閉視窗" class="reader-back-btn">
+                    <svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>
+                    <span>返回</span>
                 </button>
             </div>
 
             <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm leading-relaxed">
                 <div class="flex flex-col items-center text-center -mt-2">
                     <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/12_qeh4rc.png')" aria-label="放大檢視 Kai 個人形象照" class="block p-0 border-0 bg-transparent rounded-full">
-                        <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270726/12_qeh4rc.png" width="480" height="480" alt="Kai 個人形象照" loading="lazy" class="w-28 h-28 rounded-full object-cover border-4 border-teal-100 dark:border-teal-900 shadow-md cursor-pointer hover:opacity-90 transition-opacity">
+                        <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270726/12_qeh4rc.png" width="480" height="480" alt="Kai 個人形象照" loading="lazy" class="w-28 h-28 rounded-full object-cover border-2 border-slate-200 shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
                     </button>
-                    <p class="mt-2 font-bold text-slate-900 dark:text-white">Kai</p>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400">@kai.nursing_life</p>
+                    <p class="mt-2 font-bold text-slate-900">Kai</p>
+                    <p class="text-[11px] text-slate-600">@kai.nursing_life</p>
                 </div>
 
-                <div class="bg-teal-50 dark:bg-teal-950/40 p-4 rounded-2xl border border-teal-200/60 dark:border-teal-800/40 space-y-2">
-                    <div class="flex items-center gap-2 font-bold text-teal-800 dark:text-teal-300">
-                        <i class="fa-solid fa-badge-check text-teal-600"></i> Kai 的核心理念
+                <div class="callout callout--nursing">
+                    <div class="callout-title">
+                        <svg class="ico" aria-hidden="true"><use href="#i-shield-check"/></svg> Kai 的核心理念
                     </div>
-                    <p class="text-xs text-teal-900/80 dark:text-teal-200/80">
-                        「一個喜歡做圖文的護理師。」畢業於國立臺北護理健康大學，返鄉至公立醫院服務滿 9 年。這裡公開分享醫護職場心得、衛教學理與小資理財投資紀錄。堅持純粹分享，無私人群組、不推銷。
+                    <p class="text-xs leading-relaxed">
+                        「一個喜歡做圖文的護理師。」畢業於國立臺北護理健康大學，返鄉至公立醫院服務滿 <span class="num">9</span> 年。這裡公開分享醫護職場心得、衛教學理與小資理財投資紀錄。堅持純粹分享，無私人群組、不推銷。
                     </p>
                 </div>
 
                 <div class="space-y-4">
-                    <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b pb-2 dark:border-slate-800">
-                        <i class="fa-solid fa-user-nurse text-amber-500"></i> 🏥 護理專業與職場資歷 (2017 - 2026)
+                    <h4 class="font-bold text-slate-900 flex items-center gap-2 border-b pb-2 border-slate-200">
+                        <svg class="ico" aria-hidden="true"><use href="#i-heart-pulse"/></svg> 護理專業與職場資歷 (<span class="num">2017 - 2026</span>)
                     </h4>
-                    <ul class="space-y-2.5 text-xs text-slate-600 dark:text-slate-300">
+                    <ul class="space-y-2.5 text-xs text-slate-700">
                         <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-teal-500 mt-0.5"></i>
+                            <i class="fa-solid fa-check text-teal-700 mt-0.5" aria-hidden="true"></i>
                             <span><b>學歷與公職：</b> 國立臺北護理健康大學畢業，考取公職護理師，現服務於南部公立醫院。</span>
                         </li>
                         <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-teal-500 mt-0.5"></i>
+                            <i class="fa-solid fa-check text-teal-700 mt-0.5" aria-hidden="true"></i>
                             <span><b>專業晉升：</b> 取得 <b>N4 職級</b>，榮獲<b>績優護理師</b>與<b>臨床教師</b>殊榮，參加 QCC 競賽與海報發表。</span>
                         </li>
                         <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-teal-500 mt-0.5"></i>
+                            <i class="fa-solid fa-check text-teal-700 mt-0.5" aria-hidden="true"></i>
                             <span><b>臨床考驗：</b> 經歷數百次急救生死離別、撐過 COVID-19 黑暗期，陪伴無數實習生與新人獨立。</span>
                         </li>
                     </ul>
                 </div>
 
                 <div class="space-y-4">
-                    <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b pb-2 dark:border-slate-800">
-                        <i class="fa-solid fa-chart-line text-teal-500"></i> 📈 理財投資與夢想地圖
+                    <h4 class="font-bold text-slate-900 flex items-center gap-2 border-b pb-2 border-slate-200">
+                        <svg class="ico" aria-hidden="true"><use href="#i-trending-up"/></svg> 理財投資與夢想地圖
                     </h4>
-                    <ul class="space-y-2.5 text-xs text-slate-600 dark:text-slate-300">
+                    <ul class="space-y-2.5 text-xs text-slate-700">
                         <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-amber-500 mt-0.5"></i>
-                            <span><b>薪資里程碑：</b> 護理師也能達成年薪百萬（113 年、114 年連續達成）。</span>
+                            <i class="fa-solid fa-check text-amber-700 mt-0.5" aria-hidden="true"></i>
+                            <span><b>薪資里程碑：</b> 護理師也能達成年薪百萬（<span class="num">113</span> 年、<span class="num">114</span> 年連續達成）。</span>
                         </li>
                         <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-amber-500 mt-0.5"></i>
-                            <span><b>資產成長實錄：</b> 實測淨資產 90 天成長百萬，公開指數化投資與記帳心法。</span>
+                            <i class="fa-solid fa-check text-amber-700 mt-0.5" aria-hidden="true"></i>
+                            <span><b>資產成長實錄：</b> 實測淨資產 <span class="num">90</span> 天成長百萬，公開指數化投資與記帳心法。</span>
                         </li>
                         <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-amber-500 mt-0.5"></i>
-                            <span><b>2030 夢想清單：</b> 目標於 2030 年靠自己的能力擁有一台 Tesla Model Y ⚡</span>
+                            <i class="fa-solid fa-check text-amber-700 mt-0.5" aria-hidden="true"></i>
+                            <span><b><span class="num">2030</span> 夢想清單：</b> 目標於 <span class="num">2030</span> 年靠自己的能力擁有一台 Tesla Model Y。</span>
                         </li>
                     </ul>
                 </div>
 
                 <div class="space-y-3">
-                    <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b pb-2 dark:border-slate-800">
-                        <i class="fa-solid fa-images text-teal-500"></i> 📸 生活剪影
+                    <h4 class="font-bold text-slate-900 flex items-center gap-2 border-b pb-2 border-slate-200">
+                        <svg class="ico" aria-hidden="true"><use href="#i-image"/></svg> 生活剪影
                     </h4>
                     <div class="grid grid-cols-3 gap-2">
                         <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/13_sslpzj.png')" aria-label="放大檢視 Kai 生活照 1" class="block p-0 border-0 bg-transparent rounded-xl">
@@ -421,62 +471,150 @@
                 </div>
             </div>
 
-            <div class="p-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-center">
-                <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-full text-xs font-bold bg-teal-600 hover:bg-teal-700 text-white transition-colors inline-flex items-center gap-2">
-                    <i class="fa-brands fa-instagram"></i> 追蹤 Kai 的 IG @kai.nursing_life
+            <div class="editorial-modal-footer flex-col gap-2">
+                <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="reader-foot-btn reader-foot-primary w-full justify-center">
+                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                    <span>追蹤 Kai 的 IG @kai.nursing_life</span>
                 </a>
+                <button type="button" onclick="closeAboutModal(); openLoginModal();" class="admin-footer-btn py-1" title="前往管理員登入">
+                    創作者管理員登入入口
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Modal 3: 夜班津貼與存股試算器 (Calc Modal) -->
-    <div id="calcModal" role="dialog" aria-modal="true" aria-labelledby="calcModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="calcModalCard">
-            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-amber-50/50 dark:bg-amber-950/30">
-                <h3 id="calcModalTitle" class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
-                    <i class="fa-solid fa-calculator text-amber-500"></i> 🧮 護理夜班津貼 & 存股試算
-                </h3>
-                <button onclick="closeCalcModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
-                    <i class="fa-solid fa-xmark text-lg"></i>
+    <!-- Modal 3: 夜班津貼與存股試算器 (Calc Modal — Stage 4 Content Conversion Engine) -->
+    <div id="calcModal" role="dialog" aria-modal="true" aria-labelledby="calcModalTitle" onclick="if(event.target === this) closeCalcModal()" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="editorial-modal-card calc-modal-card w-full max-w-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="calcModalCard">
+            <div class="editorial-modal-header">
+                <div class="calc-header-copy">
+                    <span class="calc-header-kicker"><svg class="ico" aria-hidden="true"><use href="#i-calculator"/></svg> 護理臨床 × 指數理財工具</span>
+                    <h3 id="calcModalTitle" class="editorial-modal-title leading-snug">
+                        <span>護理夜班津貼 &amp;</span>
+                        <span class="inline-block whitespace-nowrap">定期定額存股試算</span>
+                    </h3>
+                </div>
+                <button type="button" id="closeCalcModalBtn" onclick="closeCalcModal()" aria-label="返回並關閉試算視窗" class="reader-back-btn">
+                    <svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>
+                    <span>返回</span>
                 </button>
             </div>
 
-            <div class="p-6 space-y-5 text-xs">
-                <div class="space-y-3 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-700">
-                    <span class="font-bold text-slate-800 dark:text-slate-200 block text-sm">🌙 本月夜班津貼試算</span>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label for="nightSmallDays" class="text-slate-600 dark:text-slate-400 block mb-1">小夜班天數 ($500/天)</label>
-                            <input type="number" id="nightSmallDays" value="8" min="0" oninput="calculateSalary()" class="w-full p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-bold">
-                        </div>
-                        <div>
-                            <label for="nightBigDays" class="text-slate-600 dark:text-slate-400 block mb-1">大夜班天數 ($800/天)</label>
-                            <input type="number" id="nightBigDays" value="5" min="0" oninput="calculateSalary()" class="w-full p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-bold">
-                        </div>
+            <div class="calc-modal-body overflow-y-auto">
+                <!-- 1. 本月夜班津貼試算 -->
+                <section class="calc-panel" aria-labelledby="calcShiftHeading">
+                    <div class="calc-panel-head">
+                        <h4 id="calcShiftHeading" class="calc-panel-title">
+                            <svg class="ico" aria-hidden="true"><use href="#i-heart-pulse"/></svg>
+                            <span>本月夜班津貼試算（可自訂各院所大小夜單價）</span>
+                        </h4>
                     </div>
-                    <div class="text-right font-bold text-amber-600 dark:text-amber-400 text-sm">
-                        預估夜班津貼：+$<span id="shiftAllowanceResult">8,000</span> 元
-                    </div>
-                </div>
 
-                <div class="space-y-3 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-700">
-                    <span class="font-bold text-slate-800 dark:text-slate-200 block text-sm">📈 每月定期定額複利試算 (年報酬6%)</span>
-                    <div>
-                        <label for="monthlyInvest" class="text-slate-600 dark:text-slate-400 block mb-1">每月投入金額 (TWD)</label>
-                        <input type="number" id="monthlyInvest" value="15000" step="1000" oninput="calculateSalary()" class="w-full p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-bold">
+                    <div class="calc-input-grid calc-input-grid--4">
+                        <div class="calc-field">
+                            <label for="nightSmallDays" class="calc-label">小夜班天數 (天)</label>
+                            <input type="number" id="nightSmallDays" value="8" min="0" max="31" oninput="calculateSalary()" class="calc-input num">
+                        </div>
+                        <div class="calc-field">
+                            <label for="nightSmallRate" class="calc-label">小夜單價 (元/天)</label>
+                            <input type="number" id="nightSmallRate" value="500" min="0" step="50" oninput="calculateSalary()" class="calc-input num">
+                        </div>
+                        <div class="calc-field">
+                            <label for="nightBigDays" class="calc-label">大夜班天數 (天)</label>
+                            <input type="number" id="nightBigDays" value="5" min="0" max="31" oninput="calculateSalary()" class="calc-input num">
+                        </div>
+                        <div class="calc-field">
+                            <label for="nightBigRate" class="calc-label">大夜單價 (元/天)</label>
+                            <input type="number" id="nightBigRate" value="800" min="0" step="50" oninput="calculateSalary()" class="calc-input num">
+                        </div>
                     </div>
-                    <div>
-                        <label for="investYears" class="text-slate-600 dark:text-slate-400 block mb-1">投資年限</label>
-                        <select id="investYears" onchange="calculateSalary()" class="w-full p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-bold">
-                            <option value="3">3 年 (短期累積)</option>
-                            <option value="5" selected>5 年 (Model Y 夢想進度)</option>
-                            <option value="10">10 年 (資產翻倍目標)</option>
-                        </select>
+
+                    <div class="calc-result-box" aria-live="polite" aria-atomic="true">
+                        <div class="calc-result-meta">
+                            <span class="calc-result-label">預估本月夜班津貼總計</span>
+                            <span id="shiftFormulaBreakdown" class="calc-result-sub num">小夜 8 天 × $500 + 大夜 5 天 × $800</span>
+                        </div>
+                        <div class="calc-result-figure">
+                            <span class="calc-currency">+$</span>
+                            <span id="shiftAllowanceResult" class="calc-amount num">8,000</span>
+                            <span class="calc-unit">元 / 月</span>
+                        </div>
                     </div>
-                    <div class="text-right font-bold text-teal-600 dark:text-teal-400 text-sm">
-                        預估累積本利和：$<span id="investResult">1,046,550</span> 元
+                </section>
+
+                <!-- 2. 每月定期定額複利試算 + 同屏並列風險聲明 Callout -->
+                <section class="calc-panel" aria-labelledby="calcInvestHeading">
+                    <div class="calc-panel-head">
+                        <h4 id="calcInvestHeading" class="calc-panel-title">
+                            <svg class="ico" aria-hidden="true"><use href="#i-trending-up"/></svg>
+                            <span>每月<span class="inline-block whitespace-nowrap">定期定額</span>複利試算（年化報酬 <span id="calcRateLabel" class="num">6</span>% 情境）</span>
+                        </h4>
                     </div>
-                </div>
+
+                    <div class="calc-input-grid calc-input-grid--3">
+                        <div class="calc-field">
+                            <label for="monthlyInvest" class="calc-label">每月投入金額 (TWD)</label>
+                            <input type="number" id="monthlyInvest" value="15000" min="0" step="1000" oninput="calculateSalary()" class="calc-input num">
+                        </div>
+                        <div class="calc-field">
+                            <label for="investRate" class="calc-label">預估年化報酬率 (%)</label>
+                            <div class="relative">
+                                <input type="number" id="investRate" value="6" min="0" max="25" step="0.5" oninput="calculateSalary()" class="calc-input num pr-8">
+                                <span class="absolute right-3 top-2.5 text-xs font-bold text-slate-400 select-none">%</span>
+                            </div>
+                            <div class="flex items-center gap-1.5 mt-1.5">
+                                <button type="button" onclick="setInvestRatePreset(4)" class="calc-pill-btn">保守 4%</button>
+                                <button type="button" onclick="setInvestRatePreset(6)" class="calc-pill-btn is-active">基準 6%</button>
+                                <button type="button" onclick="setInvestRatePreset(8)" class="calc-pill-btn">積極 8%</button>
+                            </div>
+                        </div>
+                        <div class="calc-field">
+                            <label for="investYears" class="calc-label">投資持續年限 (年)</label>
+                            <input type="number" id="investYears" value="5" min="1" max="50" step="1" oninput="calculateSalary()" class="calc-input num">
+                            <div class="flex items-center gap-1.5 mt-1.5">
+                                <button type="button" onclick="setInvestYearsPreset(3)" class="calc-pill-btn">3年</button>
+                                <button type="button" onclick="setInvestYearsPreset(5)" class="calc-pill-btn is-active">5年</button>
+                                <button type="button" onclick="setInvestYearsPreset(10)" class="calc-pill-btn">10年</button>
+                                <button type="button" onclick="setInvestYearsPreset(20)" class="calc-pill-btn">20年</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calc-outcome-grid">
+                        <div class="calc-result-box calc-result-box--gold" aria-live="polite" aria-atomic="true">
+                            <div class="calc-result-meta">
+                                <span class="calc-result-label">預估期滿累積本利和</span>
+                                <span id="investPrincipalBreakdown" class="calc-result-sub num">累積投入本金 $900,000 · 預估複利增值 +$151,783</span>
+                            </div>
+                            <div class="calc-result-figure">
+                                <span class="calc-currency">NT$</span>
+                                <span id="investResult" class="calc-amount num">1,051,783</span>
+                                <span class="calc-unit">元</span>
+                            </div>
+                        </div>
+
+                        <aside class="callout callout--money calc-risk-callout" role="note" aria-label="理財情境假設與風險聲明">
+                            <div class="callout-title">
+                                <svg class="ico" aria-hidden="true"><use href="#i-triangle-alert"/></svg>
+                                <span>理財風險與情境聲明</span>
+                            </div>
+                            <p class="calc-risk-copy">
+                                本試算之 <b><span id="calcRiskRateText" class="num">6%</span> 等年化報酬率為情境假設，非保證收益</b>。市場指數具歷史波動風險，投入前請先備妥個人緊急預備金，切勿借貸投資。
+                            </p>
+                        </aside>
+                    </div>
+                </section>
+
+                <!-- 3. 真實已發布相關文章導流入口 -->
+                <section class="calc-conversion-section" aria-labelledby="calcConversionHeading">
+                    <div class="calc-conversion-head">
+                        <h4 id="calcConversionHeading" class="calc-conversion-title">
+                            <svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>
+                            <span>延伸實戰筆記：看 Kai 如何把夜班津貼轉化為百萬資產</span>
+                        </h4>
+                    </div>
+                    <div id="calcRelatedPosts" class="calc-related-grid"></div>
+                </section>
             </div>
         </div>
     </div>
@@ -580,6 +718,86 @@
         </div>
     </div>
 
+    <!-- Modal 6: 創作者數據中心 (Admin Insights Modal — IG 專業主控板風格) -->
+    <div id="adminInsightsModal" role="dialog" aria-modal="true" aria-labelledby="adminInsightsModalTitle" onclick="if(event.target === this) closeAdminInsightsModal()" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="editorial-modal-card calc-modal-card w-full max-w-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="adminInsightsModalCard">
+            <div class="editorial-modal-header">
+                <div class="calc-header-copy">
+                    <span class="calc-header-kicker"><svg class="ico" aria-hidden="true"><use href="#i-trending-up"/></svg> 創作者專業數據中心</span>
+                    <h3 id="adminInsightsModalTitle" class="editorial-modal-title leading-snug">
+                        <span>網站數據與文章成效分析</span>
+                    </h3>
+                </div>
+                <button type="button" onclick="closeAdminInsightsModal()" aria-label="返回並關閉數據視窗" class="reader-back-btn">
+                    <svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>
+                    <span>返回</span>
+                </button>
+            </div>
+
+            <div class="calc-modal-body overflow-y-auto space-y-4" id="adminInsightsModalBody">
+                <!-- 1. 四大核心指標（IG 專業主控板卡片） -->
+                <div class="insights-stats-grid">
+                    <div class="insights-stat-card">
+                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#d97706;"><use href="#i-layers"/></svg> 全部文章數</span>
+                        <span id="insightsTotalPosts" class="insights-stat-val num">0</span>
+                        <span class="text-[11px] text-slate-400">已公開發布</span>
+                    </div>
+                    <div class="insights-stat-card">
+                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#f43f5e;"><use href="#i-heart"/></svg> 累計獲得愛心</span>
+                        <span id="insightsTotalLikes" class="insights-stat-val num">0</span>
+                        <span class="text-[11px] text-slate-400">真實讀者互動</span>
+                    </div>
+                    <div class="insights-stat-card">
+                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#2563eb;"><use href="#i-bookmark"/></svg> 讀者總收藏</span>
+                        <span id="insightsTotalBookmarks" class="insights-stat-val num">0</span>
+                        <span class="text-[11px] text-slate-400">加入個人書籤</span>
+                    </div>
+                    <div class="insights-stat-card">
+                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#059669;"><use href="#i-clock"/></svg> 預估閱讀量</span>
+                        <span id="insightsTotalViews" class="insights-stat-val num">0</span>
+                        <span class="text-[11px] text-slate-400">瀏覽與閱讀次數</span>
+                    </div>
+                </div>
+
+                <!-- 2. 熱門文章排行榜 Top 5 -->
+                <section class="calc-panel">
+                    <div class="calc-panel-head">
+                        <h4 class="calc-panel-title">
+                            <svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>
+                            <span>最受歡迎文章排行榜（Top 5 熱門推薦）</span>
+                        </h4>
+                    </div>
+                    <div id="insightsRankingList" class="insights-ranking-list">
+                        <!-- 動態渲染 Top 5 文章 -->
+                    </div>
+                </section>
+
+                <!-- 3. 各專欄發布分佈與熱度 -->
+                <section class="calc-panel">
+                    <div class="calc-panel-head">
+                        <h4 class="calc-panel-title">
+                            <svg class="ico" aria-hidden="true"><use href="#i-filter"/></svg>
+                            <span>專欄文章表現與互動概覽</span>
+                        </h4>
+                    </div>
+                    <div id="insightsCategoryList" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <!-- 動態渲染 護理 / 理財 / 投資 數據 -->
+                    </div>
+                </section>
+            </div>
+
+            <div class="editorial-modal-footer flex items-center justify-between gap-3">
+                <button type="button" onclick="closeAdminInsightsModal(); openAddPostModal();" class="reader-foot-btn reader-foot-primary">
+                    <svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>
+                    <span>發布新文章</span>
+                </button>
+                <button type="button" onclick="closeAdminInsightsModal(); handleAdminLogout();" class="reader-foot-btn">
+                    <span>登出管理員</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Image Lightbox Modal -->
     <div id="imageLightbox" onclick="closeImageLightbox()" role="dialog" aria-modal="true" aria-label="圖片放大檢視" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 cursor-zoom-out">
         <img id="imageLightboxImg" src="" alt="放大檢視" class="max-w-full max-h-[90vh] rounded-2xl shadow-2xl object-contain">
@@ -598,7 +816,7 @@
     <script src="/js/firestore-write.js"></script>
     <script src="/js/auth.js"></script>
     <script>
-        const HOME_PAGE_TITLE = "Kai | 護理生活 & 理財投資筆記 🩺💰";
+        const HOME_PAGE_TITLE = "Kai | 護理生活 & 理財投資筆記 (@kai.nursing_life)";
 
         const DEFAULT_FALLBACK_IMAGES = {
             'nursing': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
@@ -614,7 +832,7 @@
                 tags: ['#30歲', '#人生階段紀錄', '#護理師', '#公職護理', '#16張圖文全典藏'],
                 date: '2026-04-01',
                 readTime: '6 分鐘',
-                likes: 452,
+                likes: 0,
                 featured: true,
                 image: 'https://res.cloudinary.com/p6esflub/image/upload/v1790988449/1_ykf8js.png',
                 images: ['https://res.cloudinary.com/p6esflub/image/upload/v1790988449/1_ykf8js.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988449/2_ruymde.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988448/3_hz5gne.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988448/4_w4o4si.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988448/5_wldlt9.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988450/6_sfxbx3.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988450/7_frqafy.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988450/8_veonyo.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988452/9_zkxlg0.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988449/10_eab3ie.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988453/11_rhxvac.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988453/12_qkusll.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988455/13_ylkahv.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988452/14_zlx9xm.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988452/15_wgybsj.png', 'https://res.cloudinary.com/p6esflub/image/upload/v1790988454/16_rtvhi0.png'],
@@ -629,32 +847,38 @@
                     '🎯 下個十年展望 (40歲前)：考取碩士、資產達千萬、維持健身羽球、成為專業創作者！'
                 ],
                 content: `
-                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">📌 2026.04.01 我滿 30 歲了 (回顧及下一段旅程)</h3>
+                    <h2 id="sec-30-overview">📌 2026.04.01 我滿 30 歲了：回顧臨床八年與下一段旅程</h2>
                     <p>自 22 歲從國立臺北護理健康大學畢業後，我回到南部家鄉，進到家人建議的公立醫院服務至今已滿 8 年。經歷各種風風雨雨及挫折，曾多次想逃離，但最後還是撐了下來，漸漸找到自信及獲得成就感，不知不覺間，也成為了別人的老師。接下來，讓我來回顧及分享這 8 年來的種種與下個十年展望！</p>
-                    
-                    <h4 class="font-bold text-base text-slate-900 dark:text-white mt-4 mb-2">🏥 回顧臨床歲月的四大維度</h4>
-                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-200">
+
+                    <h2 id="sec-30-dimensions">🏥 回顧臨床歲月的四大維度</h2>
+                    <ul>
                         <li><b>工作及專業成長：</b>從懵懵懂懂的新人護理師，晉升至層級最高的 N4 護理師；參與品質管理競賽獲獎三次並發表學術文章。獲得績優護理師與優良臨床教師殊榮！考取公職護理師雖然失敗 3 年，但堅持不放棄，最終成功考取正取公職！大聲說：「我還留在臨床第一線！」</li>
                         <li><b>財務成熟及獨立：</b>28 歲擁有第一台車、29 歲擁有自己的房子，30 歲淨資產達成近 300 萬！</li>
-                        <li><b>健康認知與轉變：</b>22 歲時常包攬大小夜班、每月換時差；28 歲後拒絕大夜班。29-30歲經歷右手脫臼及右眼創傷性暫時失明（目前已痊癒）。體會到<b>「健康不是成本，而是所有夢想的起點」</b>，身體才是最大的本錢！</li>
+                        <li><b>健康認知與轉變：</b>22 歲時常包攬大小夜班、每月換時差；28 歲後拒絕大夜班。29–30 歲經歷右手脫臼及右眼創傷性暫時失明（目前已痊癒）。體會到<b>「健康不是成本，而是所有夢想的起點」</b>，身體才是最大的本錢！</li>
                         <li><b>創作興趣：</b>自 2024 年 1 月踏進自媒體領域，學習作圖與撰寫文章。創作之路，沒有極限，沒有終點！</li>
                     </ul>
 
-                    <h4 class="font-bold text-base text-slate-900 dark:text-white mt-4 mb-2">🎯 我的下個十年 (40 歲前目標藍圖)</h4>
-                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-200">
+                    <div class="callout callout--nursing">
+                        <div class="callout-title">🩺 臨床提醒：排班與健康界線</div>
+                        <p>年輕時總以為體力可以無限透支，直到經歷右手脫臼與右眼創傷性暫時失明，才真正明白：<b>健康不是成本，而是所有夢想的起點</b>。設定明確的排班界線，才能在臨床走得長遠。</p>
+                    </div>
+
+                    <h2 id="sec-30-next10">🎯 我的下個十年（40 歲前目標藍圖）</h2>
+                    <ul>
                         <li><b>🎓 自我提升：</b>31 歲考取研究所，適應在職就學生活；目標 34 歲前順利畢業取得碩士學位。</li>
                         <li><b>🏥 事業規劃：</b>成為更加專業成熟的護理人員！保持年薪百萬、獲得病人及家屬好評。</li>
-                        <li><b>📈 財務計畫：</b>投資理財及心態修練！階段一：33歲淨資產500萬 ➔ 階段二：36歲淨資產700萬 ➔ 階段三：40歲淨資產1,000萬！</li>
+                        <li><b>📈 財務計畫：</b>投資理財及心態修練！階段一：33 歲淨資產 500 萬 ➔ 階段二：36 歲淨資產 700 萬 ➔ 階段三：40 歲淨資產 1,000 萬！</li>
                         <li><b>🏋️ 健康保健：</b>規律健身強健體魄，維持打羽球與籃球習慣，保持良好心態。</li>
-                        <li><b>🎨 創作者藍圖：</b>持續不間斷創作、IG & Thread 粉絲破萬、開發創新收入，成為真正的專業創作者！</li>
+                        <li><b>🎨 創作者藍圖：</b>持續不間斷創作、IG &amp; Threads 粉絲破萬、開發創新收入，成為真正的專業創作者！</li>
                     </ul>
 
-                    <div class="bg-teal-50 dark:bg-teal-950/40 p-4 rounded-xl border border-teal-200 dark:border-teal-800 my-4 text-xs leading-relaxed">
-                        <p class="font-semibold text-teal-800 dark:text-teal-300">💬 結語與感悟：</p>
-                        <p class="text-slate-700 dark:text-slate-200 mt-1">
-                            從懵懵懂懂學生蛻變成職場新鮮人，到現在中生代的老鳥，一步一步走來經歷許多辛酸，但也收穫許多美好的回憶及成果。感謝那些離開我卻帶給我許多種種的人們，讓我成長，造就今天的我。感謝這些年來努力的自己，感謝自己好好的活著，努力的充實度過每一天，每天給自己一個鼓勵及擁抱。<br><br>
-                            在接下來的日子，一樣要好好的活著，好好的度過每一天，去邂逅新的人事物，以及繼續喜愛每一天，喜愛愛著我的每個人。Thank you! ❤️
-                        </p>
+                    <blockquote>
+                        「感謝這些年來努力的自己，感謝自己好好的活著，努力充實度過每一天，每天給自己一個鼓勵及擁抱。」
+                    </blockquote>
+
+                    <div class="callout callout--note">
+                        <div class="callout-title">💬 結語與感悟</div>
+                        <p>從懵懵懂懂學生蛻變成職場新鮮人，到現在中生代的老鳥，一步一步走來經歷許多辛酸，但也收穫許多美好的回憶及成果。在接下來的日子，一樣要好好的活著，好好的度過每一天，去邂逅新的人事物，以及繼續喜愛每一天，喜愛愛著我的每個人。Thank you! ❤️</p>
                     </div>
                 `
             },
@@ -665,7 +889,7 @@
                 tags: ['#IG原文', '#最新貼文', '#護理職場', '#經驗分享'],
                 date: '2026-08-08',
                 readTime: '3 分鐘',
-                likes: 198,
+                likes: 0,
                 featured: false,
                 image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
                 summary: '這是一篇來自 IG @kai.nursing_life (DSzZGbLknAR) 的最新圖文分享！點擊展開觀看詳細心得與摘要，亦可直接點擊連結跳轉至 IG 看原文圖文討論...',
@@ -676,8 +900,12 @@
                     '💡 將 IG 圖文沉澱的優質內容長效保存於個人網站'
                 ],
                 content: `
-                    <p class="font-semibold text-teal-700 dark:text-teal-300">歡迎來到 Kai 的圖文典藏區！</p>
-                    <p>這篇文章同步來自 Instagram 帳號 <a href="https://www.instagram.com/p/DSzZGbLknAR/" target="_blank" rel="noopener noreferrer" class="underline text-pink-600 font-bold">@kai.nursing_life 的最新貼文 (點此觀看 IG 原文)</a>。</p>
+                    <h2 id="sec-ig-archive">歡迎來到 Kai 的圖文典藏區</h2>
+                    <p>這篇文章同步來自 Instagram 帳號 <a href="https://www.instagram.com/p/DSzZGbLknAR/" target="_blank" rel="noopener noreferrer" class="underline font-bold">@kai.nursing_life 的最新貼文（點此觀看 IG 原文）</a>。</p>
+                    <div class="callout callout--note">
+                        <div class="callout-title">💡 網站典藏說明</div>
+                        <p>IG 貼文容易隨演算法流逝，因此我將核心臨床經驗與理財筆記同步整理於本站，方便學弟妹與讀者隨時檢索、調整字級舒適閱讀。</p>
+                    </div>
                 `
             },
             {
@@ -687,7 +915,7 @@
                 tags: ['#護理日常', '#臨床經驗', '#公職護理', '#大齡學長'],
                 date: '2026-08-01',
                 readTime: '4 分鐘',
-                likes: 412,
+                likes: 0,
                 featured: true,
                 image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&auto=format&fit=crop&q=80',
                 summary: '2026.08.01 是我擔任護理師的第 9 年，今年我 31 歲，我還在！22 歲成績倒數的小屁孩，如今取得 N4 職級、公職護理師與臨床教師殊榮。只要還能行，我就會繼續堅守下去...',
@@ -698,8 +926,20 @@
                     '⚓ 目送新人獨立與師父光榮退休，為身為「護理師」感到無比驕傲'
                 ],
                 content: `
-                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">🌟 2026.08.01 — 我擔任護理師的第 9 年，我還在！</h3>
-                    <p>今年我 31 歲。22 歲的我，曾經是那個成績總是倒數、低空飛過畢業的小屁孩，絕對沒想過自己能一路堅持到現在，並且從未離開。</p>
+                    <h2 id="sec-9y-start">🌟 擔任護理師的第 9 年，我還在臨床第一線</h2>
+                    <p>今年我 31 歲。22 歲的我，曾經是那個成績總是倒數、低空飛過畢業的小屁孩，絕對沒想過自己能一路堅持到現在，並且從未離開臨床。這九年裡，看過無數次急救與生死離別，也和戰友們一起撐過 COVID-19 疫情最緊繃的歲月。</p>
+
+                    <h2 id="sec-9y-turning">🏆 從新人到 N4 臨床教師與公職護理師的轉折</h2>
+                    <p>剛進醫院的前兩年，我也曾懷疑自己適不適合護理。但透過把每一次交班、每一項技術拆解成可重複檢核的筆記，慢慢累積出底氣。歷經三次公職考試失利後終於正取公職護理師，並完成 N4 進階與臨床教師訓練。</p>
+
+                    <div class="callout callout--nursing">
+                        <div class="callout-title">🩺 給臨床學弟妹的真心話</div>
+                        <p>不要用前三個月的挫折否定自己十年的可能性。把臨床知識系統化記錄下來，每一次帶新人、每一次回答家屬問題，都會成為你最穩固的專業護城河。</p>
+                    </div>
+
+                    <blockquote>
+                        「目送一屆屆新人能夠獨當一面，也見證帶我長大的師父光榮退休——只要還能行，我就會繼續堅守下去。」
+                    </blockquote>
                 `
             },
             {
@@ -709,7 +949,7 @@
                 tags: ['#薪資公開', '#年薪百萬', '#公職護理', '#夜班津貼'],
                 date: '2026-02-15',
                 readTime: '6 分鐘',
-                likes: 520,
+                likes: 0,
                 featured: false,
                 image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&auto=format&fit=crop&q=80',
                 summary: '護理師真的能領到年薪百萬嗎？公開公職護理師的薪資結構：本薪、專業加給、夜班津貼、年終與績效獎金，以及如何透過理性排班與存股打造百萬年收入...',
@@ -720,8 +960,21 @@
                     '📈 結合定期定額高股息/指數 ETF 被動加薪'
                 ],
                 content: `
-                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">📊 護理師年薪百萬的真實結構拆解</h3>
-                    <p>許多護理系學弟妹常問我：「護理師真的有機會領到年薪百萬嗎？」答案是肯定的！我在 113 年與 114 年連續兩年達成了年薪百萬里程碑。</p>
+                    <h2 id="sec-sal-structure">📊 護理師年薪百萬的真實結構拆解</h2>
+                    <p>許多護理系學弟妹常問我：「護理師真的有機會領到年薪百萬嗎？」答案是肯定的！我在 113 年與 114 年連續兩年達成了年薪百萬里程碑。公立醫院公職護理師的年收入主要由「本俸＋專業加給」、「夜班津貼」、「獎勵金（績效）」與「年終考績獎金」四大塊組成。</p>
+
+                    <h2 id="sec-sal-shift">🌙 理性排班與記帳系統：守住健康與現金流</h2>
+                    <p>年輕時可以靠全包大夜衝高月薪，但長期下來會耗損健康。28 歲之後我轉為固定小夜或白班搭配適量夜班，把每月固定結餘透過「發薪日先扣投資、再留生活費」的記帳紀律，轉化為穩定增長的資產部位。</p>
+
+                    <div class="callout callout--nursing">
+                        <div class="callout-title">🩺 臨床提醒：別讓夜班津貼變成醫療支出</div>
+                        <p>排班的目標是「可持續的現金流」。維持規律作息與運動習慣，才能讓本業收入穩定成為長期投資的後盾。</p>
+                    </div>
+
+                    <div class="callout callout--money">
+                        <div class="callout-title">⚠️ 理財風險聲明</div>
+                        <p>本文公開之薪資結構為個人於公立醫院服務之實際年度紀錄，各院區層級、年資與績效獎金制度皆有差異；文中提及之 ETF 與存股配置僅為個人紀律分享，不構成任何投資建議。</p>
+                    </div>
                 `
             },
             {
@@ -731,7 +984,7 @@
                 tags: ['#ModelY', '#資產規劃', '#定額存股', '#ETF配置'],
                 date: '2026-06-10',
                 readTime: '4 分鐘',
-                likes: 389,
+                likes: 0,
                 featured: false,
                 image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&auto=format&fit=crop&q=80',
                 summary: '設定目標是實現夢想的第一步！分享我的 2030 買車目標：如何透過「淨資產 90 天成長百萬」的紀律記帳與指數化投資，按部就班往 Tesla Model Y 邁進...',
@@ -742,8 +995,16 @@
                     '🛡️ 保留足夠緊急預備金，絕不開高槓桿開玩笑'
                 ],
                 content: `
-                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">🚗 2030 Model Y 購車計畫與資產配置</h3>
-                    <p>理財最忌諱沒有具體的目標。為了讓自己更有動力，我設定了 2030 年擁有一台 Tesla Model Y 的圓夢計畫。</p>
+                    <h2 id="sec-my-goal">🚗 為什麼設定 2030 Tesla Model Y 圓夢目標？</h2>
+                    <p>理財最忌諱沒有具體的目標。為了讓自己更有動力，我設定了 2030 年擁有一台 Tesla Model Y 的圓夢計畫——不是靠衝動貸款買車，而是先建立能夠持續產生複利效應的資產池，在淨資產穩步達標後從容實現夢想。</p>
+
+                    <h2 id="sec-my-allocation">📈 不盯盤的醫療人員指數化資產配置</h2>
+                    <p>輪班護理師最寶貴的是下班後的休息時間，沒有精力每天盯盤殺進殺出。因此我採取市值型與大盤指數 ETF 定期定額為主軸，保留至少 6 個月緊急預備金，不開高槓桿、不聽信明牌群組，讓時間與紀律替自己工作。</p>
+
+                    <div class="callout callout--money">
+                        <div class="callout-title">⚠️ 理財風險聲明</div>
+                        <p>過去之資產成長紀錄與年化報酬率試算（如 6% 情境假設）僅供個人財務規劃參考，非未來投資收益之保證。投資前請務必評估自身風險承受度與緊急預備金水位。</p>
+                    </div>
                 `
             }
         ];
@@ -753,7 +1014,28 @@
         let currentSubTag = 'all';
         let userLikes = readStoredFlags('kai_user_likes');
         let userBookmarks = readStoredFlags('kai_user_bookmarks');
+        function readReadingProgressMap() {
+            const map = Object.create(null);
+            try {
+                const raw = JSON.parse(readStoredPreference('kai_reading_progress') || '{}');
+                if (raw && typeof raw === 'object' && !Array.isArray(raw)) {
+                    Object.keys(raw).forEach(id => {
+                        const entry = raw[id];
+                        if (entry && typeof entry === 'object') {
+                            map[id] = {
+                                percent: Math.min(100, Math.max(0, Number(entry.percent) || 0)),
+                                slide: Math.max(0, Number(entry.slide) || 0),
+                                updatedAt: Number(entry.updatedAt) || 0
+                            };
+                        }
+                    });
+                }
+            } catch (e) {}
+            return map;
+        }
+        let userReadingProgress = readReadingProgressMap();
         const ARTICLE_FONT_SIZES = { standard: '1rem', large: '1.125rem', largest: '1.25rem' };
+        const READER_SCALES = { standard: '0.9', large: '1', largest: '1.15' };
         const savedArticleFontSize = readStoredPreference('kai_article_font_size');
         let articleFontSize = Object.prototype.hasOwnProperty.call(ARTICLE_FONT_SIZES, savedArticleFontSize)
             ? savedArticleFontSize : 'standard';
@@ -866,7 +1148,26 @@
                 pendingRouteId = id;
                 tryResolvePendingRoute();
             } else {
-                closePostModal();
+                // If post modal is open, close it cleanly without extra history pushes
+                const postModal = document.getElementById('postModal');
+                if (postModal && !postModal.classList.contains('opacity-0')) {
+                    closePostModal(true);
+                }
+                // Check hash-based modals
+                if (location.hash === '#calc') {
+                    openCalcModal();
+                } else if (location.hash === '#about') {
+                    openAboutModal();
+                } else {
+                    const calcModal = document.getElementById('calcModal');
+                    if (calcModal && !calcModal.classList.contains('opacity-0')) {
+                        closeCalcModal(true);
+                    }
+                    const aboutModal = document.getElementById('aboutModal');
+                    if (aboutModal && !aboutModal.classList.contains('opacity-0')) {
+                        closeAboutModal(true);
+                    }
+                }
             }
         });
 
@@ -886,6 +1187,11 @@
             isAdminLoggedIn = isAdmin;
             const btn = document.getElementById('addPostBtn');
             const logoutBtn = document.getElementById('logoutBtn');
+            const insightsBtn = document.getElementById('adminInsightsBtn');
+            if (insightsBtn) {
+                insightsBtn.classList.toggle('hidden', !isAdmin);
+                insightsBtn.classList.toggle('flex', isAdmin);
+            }
             if (btn) {
                 btn.classList.toggle('hidden', !isAdmin);
                 btn.classList.toggle('flex', isAdmin);
@@ -898,22 +1204,14 @@
             renderPosts();
         });
 
-        function initTheme() {
-            const storedTheme = readStoredPreference('theme');
-            const isDark = storedTheme === 'dark' || (storedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches);
-            if (isDark) {
-                document.documentElement.classList.add('dark');
-                document.getElementById('themeIcon').className = 'fa-solid fa-sun text-amber-400 text-lg';
-            } else {
-                document.documentElement.classList.remove('dark');
-                document.getElementById('themeIcon').className = 'fa-solid fa-moon text-slate-600 text-lg';
-            }
+        function setThemeIcon() {
+            const holder = document.getElementById('themeIcon');
+            if (holder) holder.innerHTML = '<svg class="ico"><use href="#i-moon"/></svg>';
+        }
 
-            document.getElementById('themeToggle').addEventListener('click', () => {
-                const darkNow = document.documentElement.classList.toggle('dark');
-                writeStoredPreference('theme', darkNow ? 'dark' : 'light');
-                document.getElementById('themeIcon').className = darkNow ? 'fa-solid fa-sun text-amber-400 text-lg' : 'fa-solid fa-moon text-slate-600 text-lg';
-            });
+        function initTheme() {
+            document.documentElement.classList.remove('dark');
+            setThemeIcon(false);
         }
 
         const subTagsMap = {
@@ -928,13 +1226,13 @@
             currentSubTag = 'all';
 
             document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.className = 'cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700';
+                btn.className = 'cat-btn';
                 btn.setAttribute('aria-pressed', 'false');
             });
 
             const activeBtn = document.getElementById(`cat-${cat}`);
             if (activeBtn) {
-                activeBtn.className = 'cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 bg-teal-600 text-white shadow-md shadow-teal-600/20';
+                activeBtn.className = 'cat-btn';
                 activeBtn.setAttribute('aria-pressed', 'true');
             }
 
@@ -950,11 +1248,7 @@
                 const tagVal = tag === '#全部' ? 'all' : tag;
                 const isActive = currentSubTag === tagVal;
                 return `
-                    <button onclick="setSubTag('${escapeHtml(tagVal)}')" aria-pressed="${isActive}" class="px-2.5 py-1 rounded-lg transition-colors ${
-                        isActive 
-                        ? 'bg-amber-700 text-white font-bold shadow-sm' 
-                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
-                    }">
+                    <button onclick="setSubTag('${escapeHtml(tagVal)}')" aria-pressed="${isActive}" class="tag-btn">
                         ${escapeHtml(tag)}
                     </button>
                 `;
@@ -987,7 +1281,7 @@
                 id: 'nursing-journey',
                 category: 'nursing',
                 title: '臨床護理 9 年成長與公職心路',
-                badge: '🏥 護理職涯系列',
+                badge: '護理職涯系列', icon: 'heart-pulse', theme: 'nursing',
                 desc: '從 22 歲國北護畢業低空飛過，到公職護理師與臨床教師的 9 年實戰歷程與 30 歲圖文全典藏。',
                 match: (p) => p.category === 'nursing'
             },
@@ -995,7 +1289,7 @@
                 id: 'million-salary',
                 category: 'finance',
                 title: '護理師年薪百萬與薪資記帳實戰',
-                badge: '📊 百萬年薪系列',
+                badge: '百萬年薪系列', icon: 'wallet', theme: 'finance',
                 desc: '真實公開公職護理師夜班津貼、考績獎金結構與 113–114 連續兩年達成年薪百萬的記帳系統。',
                 match: (p) => p.category === 'finance'
             },
@@ -1003,7 +1297,7 @@
                 id: 'model-y-2030',
                 category: 'invest',
                 title: '2030 Model Y 圓夢與指數化存股計畫',
-                badge: '📈 圓夢投資系列',
+                badge: '圓夢投資系列', icon: 'trending-up', theme: 'finance',
                 desc: '不盯盤的醫療人員理財法：結合大盤指數 ETF 定期定額、資產配置與 2030 特斯拉圓夢藍圖。',
                 match: (p) => p.category === 'invest'
             }
@@ -1028,20 +1322,20 @@
                 const safeLeadTitle = leadPost ? escapeHtml(leadPost.title) : '';
 
                 return `
-                    <div class="series-card ${isActive ? 'series-card-active' : ''}" role="region" aria-label="${escapeHtml(series.title)}">
+                    <div data-theme="${series.theme}" class="series-card ${isActive ? 'series-card-active' : ''}" role="region" aria-label="${escapeHtml(series.title)}">
                         <div class="series-card-top">
-                            <span class="series-card-badge">${series.badge}</span>
-                            <span class="series-card-count">共 ${count} 篇筆記</span>
+                            <span class="series-card-badge"><svg class="ico" aria-hidden="true"><use href="#i-${series.icon}"/></svg>${series.badge}</span>
+                            <span class="series-card-count num">共 ${count} 篇筆記</span>
                         </div>
                         <h3 class="series-card-title" onclick="setCategory('${escapeHtml(series.category)}')">${escapeHtml(series.title)}</h3>
                         <p class="series-card-desc">${escapeHtml(series.desc)}</p>
                         <div class="series-card-actions">
                             <button type="button" onclick="setCategory('${escapeHtml(currentCategory === series.category ? 'all' : series.category)}')" aria-pressed="${isActive}" class="series-filter-btn ${isActive ? 'series-filter-btn-active' : ''}">
-                                <i class="fa-solid ${isActive ? 'fa-check' : 'fa-filter'}"></i> ${isActive ? '目前篩選中' : '篩選本系列'}
+                                <svg class="ico" aria-hidden="true"><use href="#i-${isActive ? 'check' : 'filter'}"/></svg> ${isActive ? '目前篩選中' : '篩選本系列'}
                             </button>
                             ${leadPost ? `
                                 <button type="button" onclick="openPostModal('${safeLeadId}')" class="series-read-btn" title="閱讀代表作：${safeLeadTitle}">
-                                    讀代表作 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                    讀代表作 <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg>
                                 </button>
                             ` : ''}
                         </div>
@@ -1105,17 +1399,24 @@
                 const safeDate = escapeHtml(post.date);
                 const safeReadTime = escapeHtml(post.readTime);
 
+                // 雙主題映射：nursing → 醫療藍；finance / invest → 深金；其餘 → 中性。類別另以 icon 與文字標示，不只靠顏色。
+                const theme = post.category === 'nursing' ? 'nursing' : ((post.category === 'finance' || post.category === 'invest') ? 'finance' : 'neutral');
+                const catIcon = post.category === 'nursing' ? 'heart-pulse' : (post.category === 'finance' ? 'wallet' : (post.category === 'invest' ? 'trending-up' : 'sparkles'));
+                const catName = post.category === 'nursing' ? '護理' : (post.category === 'finance' ? '理財' : (post.category === 'invest' ? '投資' : '文章'));
+                const savedProg = (typeof userReadingProgress === 'object' && userReadingProgress && userReadingProgress[post.id]) ? userReadingProgress[post.id] : null;
+                const progBadgeHtml = (savedProg && savedProg.percent > 0)
+                    ? `<span class="post-read-prog num" title="上次閱讀進度（僅儲存於當前瀏覽器）">${savedProg.percent >= 95 ? '✓ 已讀完' : `已讀 ${savedProg.percent}%`}</span>`
+                    : '';
+
                 return `
-                    <article class="post-card bg-white dark:bg-warmbg-cardDark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100 dark:border-slate-800 transition-all duration-300 flex flex-col group ${post.featured ? 'post-card-featured md:col-span-2 lg:col-span-2 border-teal-500/30 dark:border-teal-500/30 ring-1 ring-teal-500/20' : ''}">
-                        <div class="post-card-media relative overflow-hidden ${post.featured ? 'h-56 sm:h-72' : 'h-48'} bg-slate-100 dark:bg-slate-800 cursor-pointer" onclick="openPostModal('${escapeHtml(post.id)}')">
+                    <article class="post-card flex flex-col group ${post.featured ? 'post-card-featured md:col-span-2 lg:col-span-2' : ''}" data-theme="${theme}">
+                        <div class="post-card-media relative overflow-hidden ${post.featured ? 'h-56 sm:h-72' : 'h-48'} cursor-pointer" onclick="openPostModal('${escapeHtml(post.id)}')">
                             <img src="${safeImage}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/20 transition-colors flex items-center justify-center">
-                                <i class="fa-solid fa-expand text-white text-lg opacity-0 group-hover:opacity-90 transition-opacity drop-shadow-md"></i>
-                            </div>
-                            
+                            <div class="media-scrim"></div>
+
                             ${post.featured ? `
-                                <span class="absolute top-3 left-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1 z-10">
-                                    <i class="fa-solid fa-fire"></i> 精選主打貼文
+                                <span class="badge-featured">
+                                    <svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg> 精選主打貼文
                                 </span>
                             ` : ''}
 
@@ -1128,51 +1429,53 @@
                                         <i class="fa-solid fa-trash text-xs"></i>
                                     </button>
                                 ` : ''}
-                                <button onclick="toggleBookmark('${escapeHtml(post.id)}', event)" aria-label="收藏文章" aria-pressed="${!!isBookmarked}" class="w-11 h-11 rounded-full ${isBookmarked ? 'bg-amber-700 text-white' : 'bg-slate-900/40 text-white hover:bg-slate-900/70'} backdrop-blur-md flex items-center justify-center transition-colors">
-                                    <i class="${isBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark text-xs"></i>
+                                <button onclick="toggleBookmark('${escapeHtml(post.id)}', event)" aria-label="收藏文章" aria-pressed="${!!isBookmarked}" class="card-bookmark">
+                                    <svg class="ico" aria-hidden="true"><use href="#i-bookmark"/></svg>
                                 </button>
                             </div>
 
                             <div class="absolute bottom-3 left-3 flex items-center gap-2 z-10">
-                                <span class="bg-slate-900/60 backdrop-blur-md text-white text-[10px] font-medium px-2.5 py-1 rounded-lg">
-                                    ☕ ${safeReadTime}
+                                <span class="media-badge">
+                                    <svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg> ${safeReadTime}
                                 </span>
                                 ${imageCount > 1 ? `
-                                    <span class="bg-teal-600/90 backdrop-blur-md text-white text-[10px] font-bold px-2 py-1 rounded-lg flex items-center gap-1 shadow-md">
-                                        <i class="fa-solid fa-images"></i> ${imageCount} 張圖文典藏
+                                    <span class="media-badge">
+                                        <svg class="ico" aria-hidden="true"><use href="#i-image"/></svg> <span class="num">${imageCount}</span> 張圖文典藏
                                     </span>
                                 ` : ''}
                             </div>
                         </div>
 
-                        <div class="post-card-body p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
-                            <div class="space-y-2">
-                                <div class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
-                                    <i class="fa-regular fa-calendar"></i> ${safeDate}
+                        <div class="post-card-body">
+                            <div class="post-card-main">
+                                <div class="post-card-meta">
+                                    <span class="post-cat"><svg class="ico" aria-hidden="true"><use href="#i-${catIcon}"/></svg> ${catName}</span>
+                                    <span class="post-card-date num"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg> ${safeDate}</span>
+                                    ${progBadgeHtml}
                                 </div>
 
-                                <h2 onclick="openPostModal('${escapeHtml(post.id)}')" class="font-bold text-base sm:text-lg text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors cursor-pointer line-clamp-2">
+                                <h2 onclick="openPostModal('${escapeHtml(post.id)}')" class="post-card-title line-clamp-2">
                                     ${safeTitle}
                                 </h2>
 
-                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed">
+                                <p class="post-card-summary line-clamp-3">
                                     ${safeSummary}
                                 </p>
                             </div>
 
-                            <div class="space-y-3 pt-2 border-t border-slate-100 dark:border-slate-800">
-                                <div class="flex flex-wrap gap-1.5">
-                                    ${post.tags.map(t => `<span class="text-[11px] font-medium text-teal-700 dark:text-teal-300 bg-teal-50 dark:bg-teal-950/40 px-2 py-0.5 rounded-md">${escapeHtml(t)}</span>`).join('')}
+                            <div class="post-card-foot">
+                                <div class="post-card-tags">
+                                    ${post.tags.map(t => `<span class="post-tag">${escapeHtml(t)}</span>`).join('')}
                                 </div>
 
-                                <div class="flex items-center justify-between pt-1">
-                                    <button onclick="toggleLike('${escapeHtml(post.id)}', event)" class="flex items-center gap-1.5 text-xs font-semibold ${isLiked ? 'text-red-500' : 'text-slate-600 dark:text-slate-400 hover:text-red-500'} transition-colors">
-                                        <i class="${isLiked ? 'fa-solid' : 'fa-regular'} fa-heart text-sm"></i>
-                                        <span>${likeCount}</span>
+                                <div class="post-card-actions">
+                                    <button onclick="toggleLike('${escapeHtml(post.id)}', event)" aria-pressed="${!!isLiked}" class="post-like ${isLiked ? 'is-liked' : ''}">
+                                        <svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg>
+                                        <span class="num">${likeCount}</span>
                                     </button>
 
-                                    <button onclick="openPostModal('${escapeHtml(post.id)}')" class="text-xs font-bold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 flex items-center gap-1">
-                                        閱讀全文 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                    <button onclick="openPostModal('${escapeHtml(post.id)}')" class="post-readmore">
+                                        閱讀全文 <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg>
                                     </button>
                                 </div>
                             </div>
@@ -1189,16 +1492,39 @@
         let currentActivePost = null;
         let currentCarouselIndex = 0;
         let isFullscreenImage = false;
+        let isShowingTailPreview = false;
 
         function changeCarousel(dir) {
             if (!currentActivePost || !currentActivePost.images) return;
             const total = currentActivePost.images.length;
+            const tailElem = document.getElementById('carouselTailPreview');
+            if (total > 1 && tailElem) {
+                if (isShowingTailPreview) {
+                    if (dir < 0) {
+                        isShowingTailPreview = false;
+                        currentCarouselIndex = total - 1;
+                        updateCarouselUI();
+                    }
+                    // 在尾頁再往右滑保持在尾頁預覽，不循環回第 0 張
+                    return;
+                }
+                if (dir > 0 && currentCarouselIndex === total - 1) {
+                    isShowingTailPreview = true;
+                    updateCarouselUI();
+                    return;
+                }
+            }
+            if (dir < 0 && currentCarouselIndex === 0) {
+                // 首張往前滑不循環至最後一張，防止意外爆雷
+                return;
+            }
             currentCarouselIndex = (currentCarouselIndex + dir + total) % total;
             updateCarouselUI();
         }
 
         function setCarouselIndex(idx) {
             if (!currentActivePost || !currentActivePost.images) return;
+            isShowingTailPreview = false;
             currentCarouselIndex = idx;
             updateCarouselUI();
         }
@@ -1208,29 +1534,58 @@
             const imgElem = document.getElementById('carouselMainImg');
             const countElem = document.getElementById('carouselCounter');
             const thumbsContainer = document.getElementById('carouselThumbnails');
+            const tailElem = document.getElementById('carouselTailPreview');
+            const carouselBadge = document.getElementById('readerCarouselProgressBadge');
+            const total = currentActivePost.images.length;
+
+            if (tailElem && tailElem.classList) {
+                tailElem.classList.toggle('hidden', !isShowingTailPreview);
+            }
 
             if (imgElem) {
-                imgElem.onerror = () => handleImgError(imgElem, currentActivePost.category);
-                imgElem.src = optimizeCloudinaryUrl(sanitizeImageUrl(currentActivePost.images[currentCarouselIndex], currentActivePost.category));
+                const rawCurrentUrl = sanitizeImageUrl(currentActivePost.images[currentCarouselIndex], currentActivePost.category);
+                if (imgElem.classList) imgElem.classList.add('is-loading');
+                imgElem.onload = () => { if (imgElem.classList) imgElem.classList.remove('is-loading'); };
+                imgElem.onerror = () => {
+                    if (imgElem.classList) imgElem.classList.remove('is-loading');
+                    handleImgError(imgElem, currentActivePost.category);
+                };
+                if (typeof getCloudinaryLqipUrl === 'function' && imgElem.parentElement && imgElem.parentElement.style) {
+                    imgElem.parentElement.style.backgroundImage = `url('${getCloudinaryLqipUrl(rawCurrentUrl)}')`;
+                }
+                imgElem.src = optimizeCloudinaryUrl(rawCurrentUrl);
+                if (imgElem.complete && imgElem.classList) imgElem.classList.remove('is-loading');
             }
-            if (countElem) countElem.innerText = `${currentCarouselIndex + 1} / ${currentActivePost.images.length}`;
+            if (countElem) {
+                countElem.innerText = isShowingTailPreview
+                    ? `下篇預告`
+                    : `${currentCarouselIndex + 1} / ${total}`;
+            }
+            if (carouselBadge) {
+                carouselBadge.textContent = isShowingTailPreview
+                    ? `圖卡 尾頁預告`
+                    : `圖卡 ${currentCarouselIndex + 1} / ${total}`;
+            }
             
             if (thumbsContainer) {
                 const thumbs = thumbsContainer.querySelectorAll('.thumb-btn');
                 thumbs.forEach((thumb, i) => {
-                    if (i === currentCarouselIndex) {
-                        thumb.classList.add('ring-2', 'ring-teal-500', 'opacity-100');
+                    if (!isShowingTailPreview && i === currentCarouselIndex) {
+                        thumb.classList.add('ring-2', 'ring-teal-500', 'opacity-100', 'is-active');
                         thumb.classList.remove('opacity-60');
                         thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                     } else {
-                        thumb.classList.remove('ring-2', 'ring-teal-500', 'opacity-100');
+                        thumb.classList.remove('ring-2', 'ring-teal-500', 'opacity-100', 'is-active');
                         thumb.classList.add('opacity-60');
                     }
                 });
             }
 
+            if (typeof saveReadingProgressState === 'function') {
+                saveReadingProgressState(currentActivePost.id, null, currentCarouselIndex);
+            }
+
             // Preload adjacent carousel images for instant swipe/arrow switching
-            const total = currentActivePost.images.length;
             if (total > 1 && typeof Image !== 'undefined') {
                 const nextIdx = (currentCarouselIndex + 1) % total;
                 const prevIdx = (currentCarouselIndex - 1 + total) % total;
@@ -1304,7 +1659,7 @@
                     <button type="button" onclick="openPostModal('${safeId}')" class="article-nav-card ${isNext ? 'article-nav-next' : 'article-nav-prev'}">
                         <span class="article-nav-dir">${dirLabel}</span>
                         <span class="article-nav-title">${safeTitle}</span>
-                        <span class="article-nav-meta"><i class="fa-regular fa-calendar"></i> ${safeDate} · ☕ ${safeReadTime}</span>
+                        <span class="article-nav-meta num">${safeDate} · ${safeReadTime}</span>
                     </button>
                 `;
             };
@@ -1314,40 +1669,90 @@
                 const safeTitle = escapeHtml(rPost.title);
                 const safeImg = optimizeCloudinaryUrl(sanitizeImageUrl(rPost.image, rPost.category), 320);
                 const safeReadTime = escapeHtml(rPost.readTime || '3 分鐘');
-                const catLabel = rPost.category === 'finance' ? '📊 理財類' : (rPost.category === 'invest' ? '📈 投資類' : '🏥 護理類');
+                const catLabel = rPost.category === 'finance' ? '理財類' : (rPost.category === 'invest' ? '投資類' : '護理類');
                 return `
                     <button type="button" onclick="openPostModal('${safeId}')" class="article-related-card">
                         <img src="${safeImg}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(rPost.category)}')" class="article-related-thumb">
                         <div class="article-related-info">
-                            <span class="article-related-cat">${catLabel} · ☕ ${safeReadTime}</span>
+                            <span class="article-related-cat">${catLabel} · ${safeReadTime}</span>
                             <span class="article-related-title">${safeTitle}</span>
                         </div>
                     </button>
                 `;
             };
 
+            const heroNextTarget = nextPost || prevPost;
+            const renderNextHeroCard = (targetPost) => {
+                if (!targetPost) return '';
+                const safeId = escapeHtml(targetPost.id);
+                const safeTitle = escapeHtml(targetPost.title);
+                const safeSummary = escapeHtml(targetPost.summary || '');
+                const safeImg = optimizeCloudinaryUrl(sanitizeImageUrl(targetPost.image, targetPost.category), 480);
+                const safeReadTime = escapeHtml(targetPost.readTime || '3 分鐘');
+                const targetSeries = SERIES_DEFINITIONS.find(s => s.match(targetPost)) || series;
+                const seriesBadgeText = targetSeries ? `${targetSeries.badge} · ${escapeHtml(targetSeries.title)}` : '專欄推薦';
+                return `
+                    <div class="article-next-hero-card">
+                        <div class="article-next-hero-media">
+                            <img src="${safeImg}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(targetPost.category)}')" class="article-next-hero-img">
+                        </div>
+                        <div class="article-next-hero-body">
+                            <div class="article-next-hero-kicker">
+                                <span class="article-next-hero-ep">${seriesBadgeText}</span>
+                                <span class="article-next-hero-time num"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg> 閱讀 ${safeReadTime}</span>
+                            </div>
+                            <h3 class="article-next-hero-title">${safeTitle}</h3>
+                            ${safeSummary ? `<p class="article-next-hero-desc">${safeSummary}</p>` : ''}
+                            <button type="button" onclick="openPostModal('${safeId}')" class="article-next-hero-cta">
+                                <span>繼續閱讀 →</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            };
+
+            // 去重：若 heroNextTarget 已經顯示了該篇，下方導覽網格不再重複呈現同一篇
+            const navNextPost = (nextPost && nextPost.id !== heroNextTarget?.id) ? nextPost : null;
+            const navPrevPost = (prevPost && prevPost.id !== heroNextTarget?.id) ? prevPost : null;
+
             return `
-                <section class="article-bottom-section" aria-label="系列文章與延伸閱讀">
+                <section id="articleBottomSection" class="article-bottom-section" aria-label="系列文章與延伸閱讀">
+                    ${heroNextTarget ? renderNextHeroCard(heroNextTarget) : ''}
+
+                    <!-- 文末專屬 IG 追蹤與交流 CTA 區塊（附 UTM 追蹤標籤） -->
+                    <div class="article-ig-cta-banner">
+                        <div class="article-ig-cta-left">
+                            <span class="article-ig-cta-tag"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram 專欄</span>
+                            <h4 class="article-ig-cta-title">喜歡 Kai 的圖文筆記嗎？</h4>
+                            <p class="article-ig-cta-desc">日常臨床隨筆、即時理財記帳與問答互動，都在 IG 首發更新。</p>
+                        </div>
+                        <a href="https://www.instagram.com/kai.nursing_life?utm_source=website&utm_medium=article_footer&utm_campaign=creator_cta" target="_blank" rel="noopener noreferrer" class="article-ig-cta-btn">
+                            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                            <span>追蹤 @kai.nursing_life</span>
+                            <svg class="ico" aria-hidden="true"><use href="#i-external-link"/></svg>
+                        </a>
+                    </div>
+
                     <div class="article-series-banner">
                         <div class="article-series-info">
                             <span class="article-series-badge">${series.badge}</span>
-                            <span class="article-series-name">收錄於《${escapeHtml(series.title)}》專欄（共 ${seriesPosts.length} 篇）</span>
+                            <span class="article-series-name">收錄於《${escapeHtml(series.title)}》專欄（共 <span class="num">${seriesPosts.length}</span> 篇）</span>
                         </div>
                         <button type="button" onclick="closePostModal(); setCategory('${escapeHtml(post.category || 'all')}');" class="article-series-link">
-                            查看同系列全部文章 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            查看同系列全部文章 <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg>
                         </button>
                     </div>
 
-                    ${(prevPost || nextPost) ? `
+                    ${(navPrevPost || navNextPost) ? `
                         <div class="article-prev-next-grid">
-                            ${renderNavCard(prevPost, '← 上一篇（較新發布）', false)}
-                            ${renderNavCard(nextPost, '下一篇推薦閱讀 →', true)}
+                            ${renderNavCard(navPrevPost, '← 上一篇（較新發布）', false)}
+                            ${renderNavCard(navNextPost, '下一篇推薦閱讀 →', true)}
                         </div>
                     ` : ''}
 
                     ${relatedPosts.length > 0 ? `
                         <div class="article-related-wrap">
-                            <h3 class="article-related-heading"><i class="fa-solid fa-compass text-teal-600 dark:text-teal-400"></i> 更多 Kai 的精選筆記</h3>
+                            <h3 class="article-related-heading"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg> 更多 Kai 的精選筆記</h3>
                             <div class="article-related-grid">
                                 ${relatedPosts.map(renderRelatedCard).join('')}
                             </div>
@@ -1355,6 +1760,121 @@
                     ` : ''}
                 </section>
             `;
+        }
+
+        let reader85Observer = null;
+        let nextChapterToastDismissedForId = null;
+        let currentNextChapterPost = null;
+        let lastReaderScrollTop = 0;
+
+        function resolveNextChapterPost(post) {
+            if (!post || !Array.isArray(postsData) || postsData.length <= 1) return null;
+            const sortedAll = [...postsData].sort((a, b) => new Date(b.date) - new Date(a.date));
+            const series = SERIES_DEFINITIONS.find(s => s.match(post)) || SERIES_DEFINITIONS[0];
+            const seriesPosts = sortedAll.filter(p => series.match(p));
+            const seriesIndex = seriesPosts.findIndex(p => p.id === post.id);
+            const allIndex = sortedAll.findIndex(p => p.id === post.id);
+            return (seriesIndex >= 0 && seriesIndex < seriesPosts.length - 1 ? seriesPosts[seriesIndex + 1] : null)
+                || (allIndex >= 0 && allIndex < sortedAll.length - 1 ? sortedAll[allIndex + 1] : null)
+                || (seriesIndex > 0 ? seriesPosts[seriesIndex - 1] : null)
+                || (allIndex > 0 ? sortedAll[allIndex - 1] : null);
+        }
+
+        function saveReadingProgressState(postId, percent, slideIndex) {
+            if (!postId) return;
+            const progressMap = (typeof userReadingProgress === 'object' && userReadingProgress) ? userReadingProgress : {};
+            const prev = progressMap[postId] || { percent: 0, slide: 0, scrollTop: 0 };
+            const nextPercent = typeof percent === 'number' ? Math.max(prev.percent || 0, Math.min(100, Math.round(percent))) : (prev.percent || 0);
+            const nextSlide = typeof slideIndex === 'number' ? Math.max(0, slideIndex) : (prev.slide || 0);
+            const body = document.getElementById('modalBody');
+            const nextScrollTop = (body && typeof percent === 'number' && body.scrollTop > 40) ? Math.round(body.scrollTop) : (prev.scrollTop || 0);
+            progressMap[postId] = {
+                percent: nextPercent,
+                slide: nextSlide,
+                scrollTop: nextScrollTop,
+                updatedAt: Date.now()
+            };
+            if (typeof writeStoredPreference === 'function') {
+                writeStoredPreference('kai_reading_progress', JSON.stringify(progressMap));
+            }
+        }
+
+        function showNextChapterToast() {
+            if (!currentActivePost || !currentNextChapterPost) return;
+            if (nextChapterToastDismissedForId === currentActivePost.id) return;
+            const toast = document.getElementById('nextChapterToast');
+            if (!toast) return;
+            toast.classList.remove('hidden');
+        }
+
+        function dismissNextChapterToast(event) {
+            if (event) event.stopPropagation();
+            if (currentActivePost) nextChapterToastDismissedForId = currentActivePost.id;
+            const toast = document.getElementById('nextChapterToast');
+            if (toast) toast.classList.add('hidden');
+        }
+
+        function setupReader85Observer() {
+            if (reader85Observer) {
+                reader85Observer.disconnect();
+                reader85Observer = null;
+            }
+            const sentinel = document.getElementById('reader85Sentinel');
+            const body = document.getElementById('modalBody');
+            if (!sentinel || !body || typeof IntersectionObserver !== 'function') return;
+            reader85Observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        showNextChapterToast();
+                    }
+                });
+            }, {
+                root: body,
+                threshold: 0.1
+            });
+            reader85Observer.observe(sentinel);
+        }
+
+        function resumeArticleReadingProgress() {
+            if (!currentActivePost) return;
+            const saved = userReadingProgress[currentActivePost.id];
+            if (!saved) return;
+            const banner = document.getElementById('readerResumeBanner');
+            if (banner) banner.remove();
+            if (typeof saved.slide === 'number' && Array.isArray(currentActivePost.images) && saved.slide < currentActivePost.images.length && saved.slide > 0) {
+                setCarouselIndex(saved.slide);
+            }
+            const body = document.getElementById('modalBody');
+            if (body && saved.scrollTop > 40) {
+                const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                body.scrollTo({ top: saved.scrollTop, behavior: reducedMotion ? 'auto' : 'smooth' });
+            }
+        }
+
+        function onReaderScrollProgressUpdate(percent, scrollTop, clientH, scrollH) {
+            if (!currentActivePost) return;
+            const bottomSection = document.getElementById('articleBottomSection');
+            const excludedH = (bottomSection && typeof bottomSection.offsetHeight === 'number') ? bottomSection.offsetHeight : 0;
+            const isScrollable = (scrollH - excludedH) > (clientH * 1.25);
+            if (percent >= 85 && (scrollTop > 60 || !isScrollable && percent === 100 && scrollTop > 0)) {
+                showNextChapterToast();
+            }
+            if (scrollTop > 20 || percent > 0) {
+                saveReadingProgressState(currentActivePost.id, percent, currentCarouselIndex);
+            }
+            const footer = document.getElementById('postModalFooter');
+            if (footer && footer.classList) {
+                const delta = scrollTop - lastReaderScrollTop;
+                const nearBottom = (scrollTop + clientH) >= (scrollH - 80);
+                if (scrollTop <= 48 || nearBottom) {
+                    footer.classList.remove('is-toolbar-hidden');
+                } else if (delta > 10) {
+                    footer.classList.add('is-toolbar-hidden');
+                } else if (delta < -8) {
+                    footer.classList.remove('is-toolbar-hidden');
+                }
+                lastReaderScrollTop = Math.max(0, scrollTop);
+            }
         }
 
         function openPostModal(postId) {
@@ -1372,133 +1892,365 @@
             currentActivePost = post;
             currentCarouselIndex = 0;
             isFullscreenImage = false;
-            document.getElementById('fullscreenBtn').setAttribute('aria-pressed', 'false');
+            isShowingTailPreview = false;
+            nextChapterToastDismissedForId = null;
+            lastReaderScrollTop = 0;
+            currentNextChapterPost = resolveNextChapterPost(post);
+
+            const hasImages = Array.isArray(post.images) && post.images.length > 0;
+            const theme = post.category === 'nursing' ? 'nursing' : ((post.category === 'finance' || post.category === 'invest') ? 'finance' : 'neutral');
+            const catIcon = post.category === 'nursing' ? 'heart-pulse' : (post.category === 'finance' ? 'wallet' : (post.category === 'invest' ? 'trending-up' : 'sparkles'));
+            const catName = post.category === 'nursing' ? '護理臨床' : (post.category === 'finance' ? '理財記帳' : (post.category === 'invest' ? '指數投資' : '專欄筆記'));
+
+            const fsBtn = document.getElementById('fullscreenBtn');
+            if (fsBtn) {
+                fsBtn.setAttribute('aria-pressed', 'false');
+                fsBtn.classList.toggle('hidden', !hasImages);
+            }
+
+            const carouselBadge = document.getElementById('readerCarouselProgressBadge');
+            if (carouselBadge) {
+                if (hasImages) {
+                    carouselBadge.textContent = `圖卡 1 / ${post.images.length}`;
+                    carouselBadge.classList.remove('hidden');
+                } else {
+                    carouselBadge.classList.add('hidden');
+                }
+            }
+
+            const footerEl = document.getElementById('postModalFooter');
+            if (footerEl && footerEl.classList) {
+                footerEl.classList.remove('is-toolbar-hidden');
+            }
+
+            const toastEl = document.getElementById('nextChapterToast');
+            if (toastEl) {
+                toastEl.classList.add('hidden');
+                if (currentNextChapterPost) {
+                    const nextSafeId = escapeHtml(currentNextChapterPost.id);
+                    const nextSafeTitle = escapeHtml(currentNextChapterPost.title);
+                    const nextSeries = SERIES_DEFINITIONS.find(s => s.match(currentNextChapterPost)) || SERIES_DEFINITIONS[0];
+                    toastEl.innerHTML = `
+                        <div class="next-chapter-toast-inner">
+                            <div class="next-chapter-toast-copy">
+                                <span class="next-chapter-toast-kicker"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg> 下一章預告 · ${nextSeries.badge}</span>
+                                <span class="next-chapter-toast-title">${nextSafeTitle}</span>
+                            </div>
+                            <div class="next-chapter-toast-actions">
+                                <button type="button" onclick="openPostModal('${nextSafeId}')" class="next-chapter-toast-go">
+                                    <span>繼續閱讀</span>
+                                    <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                                </button>
+                                <button type="button" onclick="dismissNextChapterToast(event)" class="next-chapter-toast-close" aria-label="關閉下一章預告">
+                                    <svg class="ico" aria-hidden="true"><use href="#i-x"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    toastEl.innerHTML = '';
+                }
+            }
 
             const modal = document.getElementById('postModal');
             const card = document.getElementById('postModalCard');
             const catElem = document.getElementById('modalCategory');
             const bodyElem = document.getElementById('modalBody');
 
-            catElem.innerHTML = `<i class="fa-solid fa-tag"></i> ${post.tags.map(t => escapeHtml(t)).join(' ')}`;
+            if (card) card.setAttribute('data-theme', theme);
+            if (bodyElem) bodyElem.setAttribute('data-has-images', String(hasImages));
+
+            catElem.innerHTML = `
+                <span class="reader-top-cat"><svg class="ico" aria-hidden="true"><use href="#i-${catIcon}"/></svg> ${catName}</span>
+                <span class="reader-top-sep" aria-hidden="true">·</span>
+                <span class="reader-top-title">${escapeHtml(post.title)}</span>
+            `;
 
             const isLiked = userLikes[post.id];
             const likeCount = post.likes + (isLiked ? 1 : 0);
             document.getElementById('modalLikeCount').innerText = likeCount;
             
             const likeBtn = document.getElementById('modalLikeBtn');
+            likeBtn.classList.toggle('is-liked', !!isLiked);
             likeBtn.onclick = (e) => {
                 toggleLike(post.id, e);
                 const updatedLiked = userLikes[post.id];
+                likeBtn.classList.toggle('is-liked', !!updatedLiked);
                 document.getElementById('modalLikeCount').innerText = post.likes + (updatedLiked ? 1 : 0);
             };
 
             const bookmarkBtn = document.getElementById('modalBookmarkBtn');
             const isBookmarked = userBookmarks[post.id];
             bookmarkBtn.setAttribute('aria-pressed', String(!!isBookmarked));
-            bookmarkBtn.innerHTML = `<i class="${isBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark"></i> ${isBookmarked ? '已收藏' : '收藏'}`;
+            bookmarkBtn.innerHTML = `<svg class="ico" aria-hidden="true"><use href="#i-bookmark"/></svg> <span>${isBookmarked ? '已收藏' : '收藏'}</span>`;
             bookmarkBtn.onclick = (e) => {
                 toggleBookmark(post.id, e);
                 const updatedBookmarked = userBookmarks[post.id];
                 bookmarkBtn.setAttribute('aria-pressed', String(!!updatedBookmarked));
-                bookmarkBtn.innerHTML = `<i class="${updatedBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark"></i> ${updatedBookmarked ? '已收藏' : '收藏'}`;
+                bookmarkBtn.innerHTML = `<svg class="ico" aria-hidden="true"><use href="#i-bookmark"/></svg> <span>${updatedBookmarked ? '已收藏' : '收藏'}</span>`;
             };
 
             // P1 Item: Sanitize igUrl
             document.getElementById('modalIgLink').href = sanitizeUrl(post.igUrl);
 
-            let imageHtml = '';
-            if (post.images && post.images.length > 0) {
-                imageHtml = `
-                    <div id="carouselImageContainer" class="relative rounded-2xl overflow-hidden bg-slate-950 group shadow-lg transition-all duration-300">
-                        <div class="relative flex items-center justify-center min-h-[280px] sm:min-h-[440px] bg-slate-950 select-none">
-                            <img id="carouselMainImg" onclick="toggleFullscreenImage()" src="${optimizeCloudinaryUrl(sanitizeImageUrl(post.images[0], post.category))}" alt="${escapeHtml(post.title)}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-auto max-h-[560px] object-contain mx-auto transition-all duration-300 cursor-zoom-in">
+            const articleBodyHtml = post._isCustom ? sanitizeArticleContent(post.content) : (post.content || '');
+            const tocHtml = buildReaderTocHtml(articleBodyHtml);
+
+            const savedProgress = userReadingProgress[post.id];
+            const hasResumeState = savedProgress && ((savedProgress.percent >= 10 && savedProgress.percent < 95) || (hasImages && savedProgress.slide > 0));
+            const resumeBannerHtml = hasResumeState ? `
+                <div id="readerResumeBanner" class="reader-resume-banner" role="status">
+                    <span class="reader-resume-text num">
+                        <svg class="ico" aria-hidden="true"><use href="#i-bookmark"/></svg>
+                        上次閱讀紀錄：長文 ${savedProgress.percent || 0}%${hasImages && savedProgress.slide > 0 ? ` · 圖卡第 ${savedProgress.slide + 1} 張` : ''}（僅存於此瀏覽器）
+                    </span>
+                    <div class="reader-resume-actions">
+                        <button type="button" onclick="resumeArticleReadingProgress()" class="reader-resume-btn">繼續上次位置</button>
+                        <button type="button" onclick="this.closest('#readerResumeBanner').remove()" class="reader-resume-dismiss" aria-label="關閉提示">略過</button>
+                    </div>
+                </div>
+            ` : '';
+
+            const highlightsCalloutHtml = (Array.isArray(post.highlights) && post.highlights.length > 0) ? `
+                <aside class="callout callout--note reader-highlights-box" aria-label="文章重點整理">
+                    <div class="callout-title"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg> 30 秒重點精華整理</div>
+                    <ul class="callout-list">
+                        ${post.highlights.map(h => `<li>${escapeHtml(h)}</li>`).join('')}
+                    </ul>
+                </aside>
+            ` : '';
+
+            const tailPreviewHtml = (hasImages && post.images.length > 1 && currentNextChapterPost) ? (() => {
+                const nextSafeId = escapeHtml(currentNextChapterPost.id);
+                const nextSafeTitle = escapeHtml(currentNextChapterPost.title);
+                const nextFirstRaw = (Array.isArray(currentNextChapterPost.images) && currentNextChapterPost.images[0])
+                    ? currentNextChapterPost.images[0]
+                    : currentNextChapterPost.image;
+                const nextImgUrl = optimizeCloudinaryUrl(sanitizeImageUrl(nextFirstRaw, currentNextChapterPost.category), 640);
+                const nextReadTime = escapeHtml(currentNextChapterPost.readTime || '3 分鐘');
+                const nextSeries = SERIES_DEFINITIONS.find(s => s.match(currentNextChapterPost)) || SERIES_DEFINITIONS[0];
+                return `
+                    <div id="carouselTailPreview" class="carousel-tail-preview hidden" role="region" aria-label="下一篇圖卡尾頁預覽">
+                        <div class="carousel-tail-card">
+                            <span class="carousel-tail-badge"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg> 已滑至最後一張 · 下一篇首張預覽</span>
+                            <div class="carousel-tail-thumb-wrap">
+                                <img src="${nextImgUrl}" alt="${nextSafeTitle}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(currentNextChapterPost.category)}')" class="carousel-tail-thumb">
+                            </div>
+                            <span class="carousel-tail-meta num">${nextSeries.badge} · 閱讀 ${nextReadTime}</span>
+                            <h3 class="carousel-tail-title">${nextSafeTitle}</h3>
+                            <div class="carousel-tail-actions">
+                                <button type="button" onclick="openPostModal('${nextSafeId}')" class="carousel-tail-cta">
+                                    <span>點擊進入下一篇</span>
+                                    <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                                </button>
+                                <button type="button" onclick="setCarouselIndex(${post.images.length - 1})" class="carousel-tail-back">
+                                    ← 回到最後一張圖卡
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            })() : '';
+
+            if (hasImages) {
+                const rawFirstImg = sanitizeImageUrl(post.images[0], post.category);
+                const firstMainUrl = optimizeCloudinaryUrl(rawFirstImg);
+                const firstLqipUrl = getCloudinaryLqipUrl(rawFirstImg);
+
+                bodyElem.innerHTML = `
+                    <div class="reader-shell reader-shell--dual">
+                        ${resumeBannerHtml}
+                        <div class="reader-hero-grid">
+                            <header class="reader-meta-col">
+                                <div class="reader-kicker-row">
+                                    <span class="reader-cat-pill"><svg class="ico" aria-hidden="true"><use href="#i-${catIcon}"/></svg> ${catName}</span>
+                                    <span class="reader-meta-item num"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg> ${escapeHtml(post.date)}</span>
+                                    <span class="reader-meta-item"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg> 閱讀 ${escapeHtml(post.readTime)}</span>
+                                    <span class="reader-meta-item num"><svg class="ico" aria-hidden="true"><use href="#i-image"/></svg> ${post.images.length} 張圖卡</span>
+                                </div>
+
+                                <h1 id="postModalTitle" class="reader-title">
+                                    ${escapeHtml(post.title)}
+                                </h1>
+
+                                ${post.summary ? `<p class="reader-standfirst">${escapeHtml(post.summary)}</p>` : ''}
+
+                                <div class="reader-tags-row">
+                                    ${(post.tags || []).map(t => `<span class="reader-tag">${escapeHtml(t)}</span>`).join('')}
+                                </div>
+
+                                <div class="reader-quick-actions">
+                                    <a href="#readerProseStart" onclick="scrollToReaderSection(event, 'readerProseStart')" class="reader-jump-btn">
+                                        <svg class="ico" aria-hidden="true"><use href="#i-arrow-down"/></svg>
+                                        <span>跳至正文</span>
+                                    </a>
+                                    ${post.igUrl ? `
+                                        <a href="${sanitizeUrl(post.igUrl)}" target="_blank" rel="noopener noreferrer" class="reader-ig-btn">
+                                            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                            <span>IG 原文</span>
+                                            <svg class="ico" aria-hidden="true"><use href="#i-external-link"/></svg>
+                                        </a>
+                                    ` : ''}
+                                </div>
+
+                                ${tocHtml}
+                            </header>
+
+                            <section class="reader-carousel-col" aria-label="IG 圖卡輪播">
+                                <div id="carouselImageContainer" class="reader-carousel-card group transition-all duration-300">
+                                    <div class="reader-carousel-stage relative flex items-center justify-center select-none" style="background-image: url('${firstLqipUrl}')">
+                                        <img id="carouselMainImg" onclick="toggleFullscreenImage()" src="${firstMainUrl}" alt="${escapeHtml(post.title)}" loading="eager" onload="this.classList.remove('is-loading')" onerror="this.classList.remove('is-loading'); handleImgError(this, '${escapeHtml(post.category)}')" class="reader-carousel-img lqip-img is-loading w-full h-auto max-h-[560px] object-contain mx-auto transition-all duration-300 cursor-zoom-in">
+                                        ${tailPreviewHtml}
+                                    </div>
+
+                                    <button type="button" id="exitFullscreenImageBtn" onclick="toggleFullscreenImage()" aria-label="結束圖片放大" class="hidden absolute top-3 right-3 z-20 rounded-full bg-slate-900/80 text-white flex items-center justify-center">
+                                        <i class="fa-solid fa-compress" aria-hidden="true"></i>
+                                    </button>
+
+                                    ${post.images.length > 1 ? `
+                                        <span id="carouselCounter" class="reader-carousel-counter num">
+                                            1 / ${post.images.length}
+                                        </span>
+
+                                        <button type="button" onclick="changeCarousel(-1)" aria-label="上一張圖片" class="reader-carousel-nav reader-carousel-prev">
+                                            <svg class="ico" aria-hidden="true"><use href="#i-chevron-left"/></svg>
+                                        </button>
+
+                                        <button type="button" onclick="changeCarousel(1)" aria-label="下一張圖片" class="reader-carousel-nav reader-carousel-next">
+                                            <svg class="ico" aria-hidden="true"><use href="#i-chevron-right"/></svg>
+                                        </button>
+
+                                        <div id="carouselThumbnails" class="reader-carousel-thumbs hide-scrollbar">
+                                            ${post.images.map((img, idx) => `
+                                                <button type="button" onclick="setCarouselIndex(${idx})" aria-label="觀看第 ${idx+1} 張" class="thumb-btn reader-thumb-btn ${idx === 0 ? 'ring-2 ring-teal-500 opacity-100 is-active' : 'opacity-60 hover:opacity-100'}">
+                                                    <img src="${optimizeCloudinaryUrl(sanitizeImageUrl(img, post.category), 160)}" alt="${escapeHtml(post.title)} - 縮圖 ${idx + 1}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover">
+                                                </button>
+                                            `).join('')}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </section>
                         </div>
 
-                        <button id="exitFullscreenImageBtn" onclick="toggleFullscreenImage()" aria-label="結束圖片放大" class="hidden absolute top-3 right-3 z-20 rounded-full bg-slate-900/80 text-white flex items-center justify-center">
-                            <i class="fa-solid fa-compress"></i>
-                        </button>
-
-                        ${post.images.length > 1 ? `
-                            <span id="carouselCounter" class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-md text-white text-xs font-mono font-bold px-3 py-1.5 rounded-full shadow-md z-10">
-                                1 / ${post.images.length}
-                            </span>
-
-                            <button onclick="changeCarousel(-1)" aria-label="上一張圖片" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white backdrop-blur-md flex items-center justify-center transition-all opacity-90 hover:opacity-100 shadow-lg z-10">
-                                <i class="fa-solid fa-chevron-left text-base"></i>
-                            </button>
-
-                            <button onclick="changeCarousel(1)" aria-label="下一張圖片" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white backdrop-blur-md flex items-center justify-center transition-all opacity-90 hover:opacity-100 shadow-lg z-10">
-                                <i class="fa-solid fa-chevron-right text-base"></i>
-                            </button>
-
-                            <div id="carouselThumbnails" class="flex items-center gap-2 p-2 bg-slate-900/90 overflow-x-auto hide-scrollbar justify-start sm:justify-center border-t border-slate-800">
-                                ${post.images.map((img, idx) => `
-                                    <button onclick="setCarouselIndex(${idx})" aria-label="觀看第 ${idx+1} 張" class="thumb-btn w-12 h-12 rounded-xl overflow-hidden shrink-0 transition-all ${idx === 0 ? 'ring-2 ring-teal-500 opacity-100' : 'opacity-60 hover:opacity-100'}">
-                                        <img src="${optimizeCloudinaryUrl(sanitizeImageUrl(img, post.category), 160)}" alt="${escapeHtml(post.title)} - 縮圖 ${idx + 1}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover">
-                                    </button>
-                                `).join('')}
+                        <div id="readerProseStart" class="reader-prose-section">
+                            ${highlightsCalloutHtml}
+                            <div class="article-prose">
+                                ${articleBodyHtml}
+                                <div id="reader85Sentinel" class="reader-85-sentinel" aria-hidden="true"></div>
                             </div>
-                        ` : ''}
+                            ${buildArticleBottomNav(post)}
+                        </div>
                     </div>
                 `;
             } else {
-                imageHtml = `
-                    <div class="rounded-2xl overflow-hidden max-h-80 bg-slate-100 dark:bg-slate-800">
-                        <img src="${optimizeCloudinaryUrl(sanitizeImageUrl(post.image, post.category))}" alt="${escapeHtml(post.title)}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover">
+                bodyElem.innerHTML = `
+                    <div class="reader-shell reader-shell--single">
+                        ${resumeBannerHtml}
+                        <header class="reader-single-header">
+                            <div class="reader-kicker-row">
+                                <span class="reader-cat-pill"><svg class="ico" aria-hidden="true"><use href="#i-${catIcon}"/></svg> ${catName}</span>
+                                <span class="reader-meta-item num"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg> ${escapeHtml(post.date)}</span>
+                                <span class="reader-meta-item"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg> 閱讀 ${escapeHtml(post.readTime)}</span>
+                            </div>
+
+                            <h1 id="postModalTitle" class="reader-title">
+                                ${escapeHtml(post.title)}
+                            </h1>
+
+                            ${post.summary ? `<p class="reader-standfirst">${escapeHtml(post.summary)}</p>` : ''}
+
+                            <div class="reader-tags-row">
+                                ${(post.tags || []).map(t => `<span class="reader-tag">${escapeHtml(t)}</span>`).join('')}
+                            </div>
+
+                            ${post.igUrl ? `
+                                <div class="reader-quick-actions">
+                                    <a href="${sanitizeUrl(post.igUrl)}" target="_blank" rel="noopener noreferrer" class="reader-ig-btn">
+                                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                        <span>IG 原文貼文</span>
+                                        <svg class="ico" aria-hidden="true"><use href="#i-external-link"/></svg>
+                                    </a>
+                                </div>
+                            ` : ''}
+                        </header>
+
+                        <div id="readerProseStart" class="reader-prose-section">
+                            ${highlightsCalloutHtml}
+                            <div class="article-prose">
+                                ${articleBodyHtml}
+                                <div id="reader85Sentinel" class="reader-85-sentinel" aria-hidden="true"></div>
+                            </div>
+                            ${buildArticleBottomNav(post)}
+                        </div>
                     </div>
                 `;
             }
 
-            bodyElem.innerHTML = `
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-400">
-                        <span><i class="fa-regular fa-calendar"></i> ${escapeHtml(post.date)}</span>
-                        <span>•</span>
-                        <span>☕ 閱讀時間 ${escapeHtml(post.readTime)}</span>
-                        ${post.images ? `<span>•</span><span class="text-teal-600 dark:text-teal-400 font-semibold"><i class="fa-solid fa-images"></i> 完整 ${post.images.length} 張圖文典藏</span>` : ''}
-                    </div>
-
-                    <h2 id="postModalTitle" class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight">
-                        ${escapeHtml(post.title)}
-                    </h2>
-                </div>
-
-                ${imageHtml}
-
-                ${post.highlights ? `
-                    <div class="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 p-4 rounded-2xl space-y-2">
-                        <span class="font-bold text-amber-800 dark:text-amber-300 text-xs flex items-center gap-1.5">
-                            <i class="fa-solid fa-bolt"></i> 💡 30 秒重點精華懶人包：
-                        </span>
-                        <ul class="space-y-1 text-xs text-amber-900/90 dark:text-amber-200/90">
-                            ${post.highlights.map(h => `<li>• ${escapeHtml(h)}</li>`).join('')}
-                        </ul>
-                    </div>
-                ` : ''}
-
-                <div class="article-prose space-y-4 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-200">
-                    ${post._isCustom ? sanitizeArticleContent(post.content) : post.content}
-                </div>
-
-                ${buildArticleBottomNav(post)}
-            `;
-
             bodyElem.scrollTop = 0;
             setArticleFontSize(articleFontSize, false);
             observeArticleReadingContent();
+            setupReader85Observer();
             modal.classList.remove('opacity-0', 'pointer-events-none');
             card.classList.remove('scale-95');
             document.body.style.overflow = 'hidden';
             moveFocusIntoModal('postModal');
         }
 
+        function getCloudinaryLqipUrl(url) {
+            if (!url || typeof url !== 'string') return '';
+            if (!url.includes('res.cloudinary.com') || !url.includes('/upload/')) return url;
+            return url.replace('/upload/', '/upload/c_limit,w_48,e_blur:800,q_20,f_auto/');
+        }
+
+        function buildReaderTocHtml(contentHtml) {
+            if (!contentHtml || typeof contentHtml !== 'string') return '';
+            const items = [];
+            const regex = /<h([23])\s+[^>]*id=["']([^"']+)["'][^>]*>([\s\S]*?)<\/h\1>/gi;
+            let match;
+            while ((match = regex.exec(contentHtml)) !== null) {
+                const id = match[2];
+                const text = match[3].replace(/<[^>]+>/g, '').trim();
+                if (id && text) items.push({ id, text });
+            }
+            if (items.length === 0) return '';
+            return `
+                <nav class="reader-toc" aria-label="文章章節錨點">
+                    <span class="reader-toc-label"><svg class="ico" aria-hidden="true"><use href="#i-list"/></svg> 章節導覽</span>
+                    <ul class="reader-toc-list">
+                        ${items.map(item => `
+                            <li>
+                                <a href="#${escapeHtml(item.id)}" onclick="scrollToReaderSection(event, '${escapeHtml(item.id)}')" class="reader-toc-link">
+                                    ${escapeHtml(item.text)}
+                                </a>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </nav>
+            `;
+        }
+
+        function scrollToReaderSection(event, targetId) {
+            if (event) event.preventDefault();
+            const target = document.getElementById(targetId);
+            const body = document.getElementById('modalBody');
+            if (!target || !body) return;
+            const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const bodyRect = body.getBoundingClientRect();
+            const targetRect = target.getBoundingClientRect();
+            const offsetTop = body.scrollTop + (targetRect.top - bodyRect.top) - 16;
+            body.scrollTo({ top: Math.max(0, offsetTop), behavior: reducedMotion ? 'auto' : 'smooth' });
+        }
 
         function updateArticleReadingProgress() {
             const modal = document.getElementById('postModal');
             if (modal.classList.contains('opacity-0')) return;
             const body = document.getElementById('modalBody');
-            const range = Math.max(0, body.scrollHeight - body.clientHeight);
-            const percent = body.clientHeight <= 0 ? 0 : range === 0 ? 100
+            const clientH = body.clientHeight;
+            const scrollH = body.scrollHeight;
+            const bottomSection = document.getElementById('articleBottomSection');
+            const excludedH = (bottomSection && typeof bottomSection.offsetHeight === 'number') ? bottomSection.offsetHeight : 0;
+            const range = Math.max(0, scrollH - excludedH - clientH);
+            const percent = clientH <= 0 ? 0 : range === 0 ? 100
                 : Math.round(Math.min(1, Math.max(0, body.scrollTop / range)) * 100);
             const progress = document.getElementById('articleReadingProgress');
             const label = document.getElementById('articleReadingProgressText');
@@ -1507,6 +2259,9 @@
                 progress.textContent = percent + '%';
             }
             if (label.textContent !== percent + '%') label.textContent = percent + '%';
+            if (typeof onReaderScrollProgressUpdate === 'function') {
+                onReaderScrollProgressUpdate(percent, body.scrollTop, clientH, scrollH);
+            }
         }
 
         function scheduleArticleReadingProgress() {
@@ -1520,7 +2275,9 @@
         function setArticleFontSize(size, persist = true) {
             if (!Object.prototype.hasOwnProperty.call(ARTICLE_FONT_SIZES, size)) size = 'standard';
             articleFontSize = size;
-            document.getElementById('modalBody').style.setProperty('--article-font-size', ARTICLE_FONT_SIZES[size]);
+            const modalBodyEl = document.getElementById('modalBody');
+            modalBodyEl.style.setProperty('--article-font-size', ARTICLE_FONT_SIZES[size]);
+            modalBodyEl.style.setProperty('--reader-scale', READER_SCALES[size] || '1');
             document.querySelectorAll('#articleReadingTools [data-reader-size]').forEach(button => {
                 button.setAttribute('aria-pressed', String(button.dataset.readerSize === size));
             });
@@ -1573,6 +2330,7 @@
                 const calcModalEl = document.getElementById('calcModal');
                 const addPostModalEl = document.getElementById('addPostModal');
                 const loginModalEl = document.getElementById('loginModal');
+                const adminInsightsModalEl = document.getElementById('adminInsightsModal');
 
                 if (lightboxEl && !lightboxEl.classList.contains('opacity-0')) {
                     closeImageLightbox();
@@ -1584,6 +2342,8 @@
                     closeAboutModal();
                 } else if (calcModalEl && !calcModalEl.classList.contains('opacity-0')) {
                     closeCalcModal();
+                } else if (adminInsightsModalEl && !adminInsightsModalEl.classList.contains('opacity-0')) {
+                    if (typeof closeAdminInsightsModal === 'function') closeAdminInsightsModal();
                 } else if (addPostModalEl && !addPostModalEl.classList.contains('opacity-0')) {
                     closeAddPostModal();
                 } else if (loginModalEl && !loginModalEl.classList.contains('opacity-0')) {
@@ -1622,19 +2382,36 @@
         }
 
         function closePostModal() {
+            const fromHistory = arguments[0] === true;
             document.title = HOME_PAGE_TITLE;
             const modal = document.getElementById('postModal');
             const card = document.getElementById('postModalCard');
             if (isFullscreenImage) toggleFullscreenImage();
+            isShowingTailPreview = false;
+            if (reader85Observer) {
+                reader85Observer.disconnect();
+                reader85Observer = null;
+            }
+            const toastEl = document.getElementById('nextChapterToast');
+            if (toastEl && toastEl.classList) toastEl.classList.add('hidden');
+            const footerEl = document.getElementById('postModalFooter');
+            if (footerEl && footerEl.classList) footerEl.classList.remove('is-toolbar-hidden');
             modal.classList.add('opacity-0', 'pointer-events-none');
             card.classList.add('scale-95');
             document.body.style.overflow = '';
+            if (typeof renderPosts === 'function' && document.getElementById('postsGrid')) {
+                renderPosts();
+            }
             restoreFocusAfterModalClose();
 
-            // Phase 2B-2: Independent Article URL — 只有在網址還是 /post/:id 時才 push 回首頁，
-            // 若這次呼叫是由 popstate 觸發（瀏覽器已經把網址改回 /），這裡就不會重複 push
-            if (location.pathname !== '/') {
-                history.pushState({}, '', '/');
+            // Phase 1 / D1: 若不是由 popstate 觸發且目前在 /post/:id，優先使用 history.back() 乾淨彈出歷史堆疊，
+            // 避免留下多餘的 '/' 導致按手機返回鍵又重新打開剛關掉的文章！
+            if (!fromHistory && location.pathname !== '/') {
+                if (window.history.length > 1) {
+                    history.back();
+                } else {
+                    history.replaceState({}, '', '/');
+                }
             }
         }
 
@@ -1690,6 +2467,123 @@
             document.body.style.overflow = '';
             const previewRow = document.getElementById('uploadPreviewRow');
             if (previewRow) previewRow.innerHTML = '';
+            restoreFocusAfterModalClose();
+        }
+
+        function renderAdminInsights() {
+            const totalPostsEl = document.getElementById('insightsTotalPosts');
+            const totalLikesEl = document.getElementById('insightsTotalLikes');
+            const totalBookmarksEl = document.getElementById('insightsTotalBookmarks');
+            const totalViewsEl = document.getElementById('insightsTotalViews');
+            const rankingListEl = document.getElementById('insightsRankingList');
+            const categoryListEl = document.getElementById('insightsCategoryList');
+
+            if (!totalPostsEl || !rankingListEl) return;
+
+            const totalPosts = postsData.length;
+            let totalLikes = 0;
+            postsData.forEach(p => {
+                totalLikes += (p.likes || 0) + (userLikes[p.id] ? 1 : 0);
+            });
+            const bookmarkCount = Object.keys(userBookmarks || {}).filter(id => userBookmarks[id]).length;
+            
+            // 閱讀人次估算（依據閱讀進度紀錄與文章基礎熱度）
+            const progressKeys = Object.keys(userReadingProgress || {});
+            const totalEstimatedReads = Math.max(progressKeys.length, totalPosts * 8 + totalLikes * 3);
+
+            totalPostsEl.textContent = totalPosts;
+            totalLikesEl.textContent = totalLikes.toLocaleString();
+            totalBookmarksEl.textContent = bookmarkCount.toLocaleString();
+            totalViewsEl.textContent = totalEstimatedReads.toLocaleString();
+
+            const categoryLabels = { nursing: '臨床護理', finance: '理財筆記', invest: '存股投資' };
+
+            // 文章排行：按愛心量 + 是否為精選與日期權重
+            const sorted = [...postsData].sort((a, b) => {
+                const likesA = (a.likes || 0) + (userLikes[a.id] ? 1 : 0);
+                const likesB = (b.likes || 0) + (userLikes[b.id] ? 1 : 0);
+                if (likesB !== likesA) return likesB - likesA;
+                return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+            });
+
+            const top5 = sorted.slice(0, 5);
+            const medals = ['🥇', '🥈', '🥉', '4', '5'];
+            rankingListEl.innerHTML = top5.map((p, idx) => {
+                const likes = (p.likes || 0) + (userLikes[p.id] ? 1 : 0);
+                const isBookmarked = userBookmarks[p.id] === true;
+                const badgeClass = idx === 0 ? 'insights-rank-badge--1' : (idx === 1 ? 'insights-rank-badge--2' : (idx === 2 ? 'insights-rank-badge--3' : 'insights-rank-badge--sub'));
+                return `
+                    <div class="insights-rank-item cursor-pointer" onclick="closeAdminInsightsModal(); openPostModal('${escapeHtml(p.id)}');">
+                        <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                            <span class="insights-rank-badge ${badgeClass}">${medals[idx]}</span>
+                            <div class="flex flex-col min-w-0">
+                                <span class="font-bold text-xs sm:text-sm text-slate-800 truncate">${escapeHtml(p.title)}</span>
+                                <div class="flex items-center gap-1.5 text-[11px] text-slate-400 mt-0.5">
+                                    <span class="font-semibold text-slate-600">${categoryLabels[p.category] || p.category}</span>
+                                    <span>•</span>
+                                    <span>${p.date || ''}</span>
+                                    <span>•</span>
+                                    <span>${p.readTime || ''}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 flex-shrink-0 text-xs">
+                            <span class="inline-flex items-center gap-1 font-bold text-rose-500">
+                                <svg class="ico" style="width:12px;height:12px;"><use href="#i-heart"/></svg>
+                                <span class="num">${likes}</span>
+                            </span>
+                            ${isBookmarked ? `<span class="text-blue-600" title="已收藏"><svg class="ico" style="width:12px;height:12px;"><use href="#i-bookmark"/></svg></span>` : ''}
+                            <button type="button" class="reader-back-btn py-1 px-2 text-xs">查看</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // 專欄分類統計
+            const catStats = {
+                nursing: { count: 0, likes: 0, name: '臨床護理' },
+                finance: { count: 0, likes: 0, name: '理財薪資' },
+                invest: { count: 0, likes: 0, name: '存股投資' }
+            };
+            postsData.forEach(p => {
+                const cat = catStats[p.category];
+                if (cat) {
+                    cat.count++;
+                    cat.likes += (p.likes || 0) + (userLikes[p.id] ? 1 : 0);
+                }
+            });
+
+            if (categoryListEl) {
+                categoryListEl.innerHTML = Object.entries(catStats).map(([key, data]) => `
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col gap-1">
+                        <span class="font-bold text-xs text-slate-700">${data.name} 專欄</span>
+                        <div class="flex items-baseline justify-between mt-1">
+                            <span class="text-lg font-bold text-slate-900 num">${data.count} <span class="text-xs font-normal text-slate-400">篇</span></span>
+                            <span class="text-xs text-rose-500 font-semibold num">❤️ ${data.likes} 讚</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function openAdminInsightsModal() {
+            renderAdminInsights();
+            const modal = document.getElementById('adminInsightsModal');
+            const card = document.getElementById('adminInsightsModalCard');
+            if (!modal || !card) return;
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-95');
+            document.body.style.overflow = 'hidden';
+            moveFocusIntoModal('adminInsightsModal');
+        }
+
+        function closeAdminInsightsModal() {
+            const modal = document.getElementById('adminInsightsModal');
+            const card = document.getElementById('adminInsightsModalCard');
+            if (!modal || !card) return;
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            card.classList.add('scale-95');
+            document.body.style.overflow = '';
             restoreFocusAfterModalClose();
         }
 
@@ -1810,6 +2704,38 @@
             showToast('⭐ 已設為文章首圖');
         }
 
+        let isModalPushed = false;
+
+        function openCalcModal() {
+            calculateSalary();
+            renderCalcRelatedPosts();
+            const modal = document.getElementById('calcModal');
+            const card = document.getElementById('calcModalCard');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-95');
+            document.body.style.overflow = 'hidden';
+            moveFocusIntoModal('calcModal');
+            if (location.pathname === '/' && !isModalPushed) {
+                history.pushState({ modal: 'calc' }, '', '/#calc');
+                isModalPushed = true;
+            }
+        }
+
+        function closeCalcModal(fromHistory = false) {
+            const modal = document.getElementById('calcModal');
+            const card = document.getElementById('calcModalCard');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            card.classList.add('scale-95');
+            document.body.style.overflow = '';
+            restoreFocusAfterModalClose();
+            if (isModalPushed && !fromHistory) {
+                isModalPushed = false;
+                if (location.hash === '#calc') history.back();
+            } else {
+                isModalPushed = false;
+            }
+        }
+
         function openAboutModal() {
             document.querySelectorAll('#aboutModal img[data-src]').forEach(img => {
                 img.src = img.dataset.src;
@@ -1821,53 +2747,150 @@
             card.classList.remove('scale-95');
             document.body.style.overflow = 'hidden';
             moveFocusIntoModal('aboutModal');
+            if (location.pathname === '/' && !isModalPushed) {
+                history.pushState({ modal: 'about' }, '', '/#about');
+                isModalPushed = true;
+            }
         }
 
-        function closeAboutModal() {
+        function closeAboutModal(fromHistory = false) {
             const modal = document.getElementById('aboutModal');
             const card = document.getElementById('aboutModalCard');
             modal.classList.add('opacity-0', 'pointer-events-none');
             card.classList.add('scale-95');
             document.body.style.overflow = '';
             restoreFocusAfterModalClose();
+            if (isModalPushed && !fromHistory) {
+                isModalPushed = false;
+                if (location.hash === '#about') history.back();
+            } else {
+                isModalPushed = false;
+            }
         }
 
-        function openCalcModal() {
+        function openPostFromCalc(postId) {
             const modal = document.getElementById('calcModal');
             const card = document.getElementById('calcModalCard');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            card.classList.remove('scale-95');
-            document.body.style.overflow = 'hidden';
-            moveFocusIntoModal('calcModal');
+            if (modal) modal.classList.add('opacity-0', 'pointer-events-none');
+            if (card) card.classList.add('scale-95');
+            openPostModal(postId);
         }
 
-        function closeCalcModal() {
-            const modal = document.getElementById('calcModal');
-            const card = document.getElementById('calcModalCard');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            card.classList.add('scale-95');
-            document.body.style.overflow = '';
-            restoreFocusAfterModalClose();
+        function renderCalcRelatedPosts() {
+            const container = document.getElementById('calcRelatedPosts');
+            if (!container || !Array.isArray(postsData) || postsData.length === 0) return;
+
+            const salaryPost = postsData.find(p => p.id === 'post-salary100')
+                || postsData.find(p => p.category === 'finance')
+                || postsData[0];
+            const investPost = postsData.find(p => p.id === 'post-asset100' && p.id !== salaryPost?.id)
+                || postsData.find(p => (p.category === 'invest' || p.id === 'post-modely') && p.id !== salaryPost?.id)
+                || postsData.find(p => p.id !== salaryPost?.id);
+
+            const entries = [
+                { post: salaryPost, topic: '關聯主題：護理薪資結構', icon: 'wallet' },
+                { post: investPost, topic: '關聯主題：指數化投資實錄', icon: 'trending-up' }
+            ].filter(item => item.post);
+
+            container.innerHTML = entries.map(({ post, topic, icon }) => {
+                const safeId = escapeHtml(post.id);
+                const safeTitle = escapeHtml(post.title);
+                const safeReadTime = escapeHtml(post.readTime || '3 分鐘');
+                const safeImg = optimizeCloudinaryUrl(sanitizeImageUrl(post.image, post.category), 240);
+                return `
+                    <button type="button" onclick="openPostFromCalc('${safeId}')" class="calc-related-card">
+                        <img src="${safeImg}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="calc-related-thumb">
+                        <div class="calc-related-body">
+                            <span class="calc-related-topic"><svg class="ico" aria-hidden="true"><use href="#i-${icon}"/></svg> ${topic}</span>
+                            <span class="calc-related-title">${safeTitle}</span>
+                            <span class="calc-related-cta num">閱讀 ${safeReadTime} · 點擊閱讀全文 <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function setInvestRatePreset(rate) {
+            const input = document.getElementById('investRate');
+            if (input) {
+                input.value = rate;
+                calculateSalary();
+            }
+        }
+
+        function setInvestYearsPreset(years) {
+            const input = document.getElementById('investYears');
+            if (input) {
+                input.value = years;
+                calculateSalary();
+            }
         }
 
         function calculateSalary() {
-            const smallDays = parseInt(document.getElementById('nightSmallDays').value) || 0;
-            const bigDays = parseInt(document.getElementById('nightBigDays').value) || 0;
-            const allowance = (smallDays * 500) + (bigDays * 800);
-            document.getElementById('shiftAllowanceResult').innerText = allowance.toLocaleString();
+            const smallDaysEl = document.getElementById('nightSmallDays');
+            const bigDaysEl = document.getElementById('nightBigDays');
+            const smallRateEl = document.getElementById('nightSmallRate');
+            const bigRateEl = document.getElementById('nightBigRate');
 
-            const monthly = parseFloat(document.getElementById('monthlyInvest').value) || 0;
-            const years = parseInt(document.getElementById('investYears').value) || 5;
-            const rate = 0.06 / 12;
+            const smallDays = Math.max(0, parseInt(smallDaysEl ? smallDaysEl.value : 0) || 0);
+            const bigDays = Math.max(0, parseInt(bigDaysEl ? bigDaysEl.value : 0) || 0);
+            const smallRate = (smallRateEl && smallRateEl.value !== '') ? Math.max(0, parseInt(smallRateEl.value) || 0) : 500;
+            const bigRate = (bigRateEl && bigRateEl.value !== '') ? Math.max(0, parseInt(bigRateEl.value) || 0) : 800;
+
+            const allowance = (smallDays * smallRate) + (bigDays * bigRate);
+            const shiftResultEl = document.getElementById('shiftAllowanceResult');
+            if (shiftResultEl) shiftResultEl.innerText = allowance.toLocaleString();
+
+            const shiftBreakdownEl = document.getElementById('shiftFormulaBreakdown');
+            if (shiftBreakdownEl) {
+                shiftBreakdownEl.textContent = `小夜 ${smallDays} 天 × $${smallRate.toLocaleString()} + 大夜 ${bigDays} 天 × $${bigRate.toLocaleString()}`;
+            }
+
+            const monthlyEl = document.getElementById('monthlyInvest');
+            const rateEl = document.getElementById('investRate');
+            const yearsEl = document.getElementById('investYears');
+
+            const monthly = Math.max(0, parseFloat(monthlyEl ? monthlyEl.value : 0) || 0);
+            const rawRate = rateEl && rateEl.value !== '' ? Math.max(0, Math.min(25, parseFloat(rateEl.value) || 0)) : 6;
+            const years = yearsEl && yearsEl.value !== '' ? Math.max(1, Math.min(50, parseInt(yearsEl.value) || 0)) : 5;
+            
+            const rateLabel = document.getElementById('calcRateLabel');
+            if (rateLabel) rateLabel.textContent = rawRate;
+            const riskRateText = document.getElementById('calcRiskRateText');
+            if (riskRateText) riskRateText.textContent = rawRate + '%';
+
+            // Update preset pill active states
+            document.querySelectorAll('#calcModal .calc-pill-btn').forEach(btn => {
+                const text = btn.textContent.trim();
+                if (text.includes('%')) {
+                    btn.classList.toggle('is-active', text.includes(`${rawRate}%`));
+                } else if (text.includes('年')) {
+                    btn.classList.toggle('is-active', text.includes(`${years}年`));
+                }
+            });
+
+            const monthlyRate = (rawRate / 100) / 12;
             const months = years * 12;
             
             let total = 0;
-            if (rate > 0) {
-                total = monthly * ((Math.pow(1 + rate, months) - 1) / rate) * (1 + rate);
+            if (monthlyRate > 0) {
+                total = monthly * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
             } else {
                 total = monthly * months;
             }
-            document.getElementById('investResult').innerText = Math.round(total).toLocaleString();
+            const roundedTotal = Math.round(total);
+            const principal = Math.round(monthly * months);
+            const gain = Math.max(0, roundedTotal - principal);
+
+            const investResultEl = document.getElementById('investResult');
+            if (investResultEl) investResultEl.innerText = roundedTotal.toLocaleString();
+
+            const investBreakdownEl = document.getElementById('investPrincipalBreakdown');
+            if (investBreakdownEl) {
+                investBreakdownEl.textContent = `累積投入本金 $${principal.toLocaleString()} · 預估複利增值 +$${gain.toLocaleString()}`;
+            }
+
+            renderCalcRelatedPosts();
         }
 
         function toggleLike(postId, event) {
@@ -1982,6 +3005,37 @@
                 }
             });
         }
+        // Stage 1: 公告列展開 + 隱藏的管理入口（3 秒內連點頁尾版權年份 5 次，喚醒既有登入彈窗）
+        // 使用單一 document click 委派，不新增 DOM 依賴；權限仍由 Firestore Rules 與 Auth 把關。
+        (function setupTrustBannerAndAdminTrigger() {
+            let adminTaps = [];
+            document.addEventListener('click', (e) => {
+                const target = e.target && typeof e.target.closest === 'function' ? e.target : null;
+                if (!target) return;
+
+                const toggle = target.closest('#trustBannerToggle');
+                if (toggle) {
+                    const banner = document.getElementById('trustBanner');
+                    const open = toggle.getAttribute('aria-expanded') !== 'true';
+                    toggle.setAttribute('aria-expanded', String(open));
+                    if (banner) banner.setAttribute('data-open', String(open));
+                    const label = toggle.querySelector('span');
+                    if (label) label.textContent = open ? '收合' : '完整聲明';
+                    return;
+                }
+
+                if (target.closest('#adminTrigger')) {
+                    const now = Date.now();
+                    adminTaps = adminTaps.filter(t => now - t < 3000);
+                    adminTaps.push(now);
+                    if (adminTaps.length >= 5) {
+                        adminTaps = [];
+                        if (typeof openLoginModal === 'function') openLoginModal();
+                    }
+                }
+            });
+        })();
+
         // All page elements and handlers above are ready here. Public UI must not
         // wait for the deferred Firebase module downloads that delay DOMContentLoaded.
         initTheme();
