@@ -506,7 +506,7 @@
                     <div class="calc-panel-head">
                         <h4 id="calcShiftHeading" class="calc-panel-title">
                             <svg class="ico" aria-hidden="true"><use href="#i-heart-pulse"/></svg>
-                            <span>本月夜班津貼試算（可自訂各院所大小夜單價）</span>
+                            <span>本月夜班津貼試算 <span class="inline-block whitespace-nowrap text-xs font-normal opacity-75">（可自訂各院所大小夜單價）</span></span>
                         </h4>
                     </div>
 
@@ -559,23 +559,23 @@
                         <div class="calc-field">
                             <label for="investRate" class="calc-label">預估年化報酬率 (%)</label>
                             <div class="relative">
-                                <input type="number" id="investRate" value="6" min="0" max="25" step="0.5" oninput="calculateSalary()" class="calc-input num pr-8">
-                                <span class="absolute right-3 top-2.5 text-xs font-bold text-slate-400 select-none">%</span>
+                                <input type="number" id="investRate" value="6" min="0" max="20" step="0.5" oninput="calculateSalary()" class="calc-input num pr-8">
+                                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 select-none pointer-events-none">%</span>
                             </div>
                             <div class="flex items-center gap-1.5 mt-1.5">
-                                <button type="button" onclick="setInvestRatePreset(4)" class="calc-pill-btn">保守 4%</button>
-                                <button type="button" onclick="setInvestRatePreset(6)" class="calc-pill-btn is-active">基準 6%</button>
-                                <button type="button" onclick="setInvestRatePreset(8)" class="calc-pill-btn">積極 8%</button>
+                                <button type="button" data-rate="4" onclick="setInvestRatePreset(4)" class="calc-pill-btn">保守 4%</button>
+                                <button type="button" data-rate="6" onclick="setInvestRatePreset(6)" class="calc-pill-btn is-active">基準 6%</button>
+                                <button type="button" data-rate="8" onclick="setInvestRatePreset(8)" class="calc-pill-btn">積極 8%</button>
                             </div>
                         </div>
                         <div class="calc-field">
                             <label for="investYears" class="calc-label">投資持續年限 (年)</label>
                             <input type="number" id="investYears" value="5" min="1" max="50" step="1" oninput="calculateSalary()" class="calc-input num">
                             <div class="flex items-center gap-1.5 mt-1.5">
-                                <button type="button" onclick="setInvestYearsPreset(3)" class="calc-pill-btn">3年</button>
-                                <button type="button" onclick="setInvestYearsPreset(5)" class="calc-pill-btn is-active">5年</button>
-                                <button type="button" onclick="setInvestYearsPreset(10)" class="calc-pill-btn">10年</button>
-                                <button type="button" onclick="setInvestYearsPreset(20)" class="calc-pill-btn">20年</button>
+                                <button type="button" data-years="3" onclick="setInvestYearsPreset(3)" class="calc-pill-btn">3年</button>
+                                <button type="button" data-years="5" onclick="setInvestYearsPreset(5)" class="calc-pill-btn is-active">5年</button>
+                                <button type="button" data-years="10" onclick="setInvestYearsPreset(10)" class="calc-pill-btn">10年</button>
+                                <button type="button" data-years="20" onclick="setInvestYearsPreset(20)" class="calc-pill-btn">20年</button>
                             </div>
                         </div>
                     </div>
@@ -603,6 +603,7 @@
                             </p>
                         </aside>
                     </div>
+                    <p class="text-[11px] text-slate-500 mt-2.5 leading-relaxed">※ 試算假設：採「每月初固定投入」、年利率除以 12 計算月複利（實際複利略高於單利年化），數字僅供財務規劃參考。</p>
                 </section>
 
                 <!-- 3. 真實已發布相關文章導流入口 -->
@@ -693,27 +694,29 @@
     </div>
 
     <!-- Modal 5: 管理員登入 Modal -->
-    <div id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white dark:bg-slate-900 w-full max-w-sm rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="loginModalCard">
-            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                <h3 id="loginModalTitle" class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
-                    <i class="fa-solid fa-user-shield text-teal-600"></i> 管理員登入
+    <div id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle" onclick="if(event.target === this) closeLoginModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="editorial-modal-card w-full max-w-sm overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="loginModalCard">
+            <div class="editorial-modal-header">
+                <h3 id="loginModalTitle" class="editorial-modal-title">
+                    <svg class="ico" style="width:16px;height:16px;color:var(--gold-text);"><use href="#i-shield-check"/></svg>
+                    <span>創作者管理員登入</span>
                 </h3>
-                <button onclick="closeLoginModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
-                    <i class="fa-solid fa-xmark text-lg"></i>
+                <button type="button" onclick="closeLoginModal()" aria-label="關閉視窗" class="reader-back-btn">
+                    <svg class="ico" aria-hidden="true"><use href="#i-x"/></svg>
+                    <span>關閉</span>
                 </button>
             </div>
-            <form onsubmit="handleAdminLogin(event)" class="p-6 space-y-4 text-xs">
+            <form onsubmit="handleAdminLogin(event)" class="p-5 space-y-4 text-xs">
                 <div>
-                    <label for="loginEmail" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">Email</label>
-                    <input type="email" id="loginEmail" required class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                    <label for="loginEmail" class="font-bold text-slate-700 block mb-1">管理員 Email</label>
+                    <input type="email" id="loginEmail" name="username" autocomplete="username" required class="calc-input w-full">
                 </div>
                 <div>
-                    <label for="loginPassword" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">密碼</label>
-                    <input type="password" id="loginPassword" required class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                    <label for="loginPassword" class="font-bold text-slate-700 block mb-1">登入密碼</label>
+                    <input type="password" id="loginPassword" name="password" autocomplete="current-password" required class="calc-input w-full">
                 </div>
-                <p id="loginError" class="hidden text-red-500 text-[11px]"></p>
-                <button type="submit" class="w-full px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold shadow-md">登入</button>
+                <p id="loginError" class="hidden text-rose-600 text-xs font-semibold"></p>
+                <button type="submit" class="reader-foot-btn reader-foot-primary w-full justify-center py-2.5">登入管理後台</button>
             </form>
         </div>
     </div>
@@ -735,7 +738,7 @@
             </div>
 
             <div class="calc-modal-body overflow-y-auto space-y-4" id="adminInsightsModalBody">
-                <!-- 1. 四大核心指標（IG 專業主控板卡片） -->
+                <!-- 1. 四大核心指標（IG 專業主控板卡片，誠信統計標示） -->
                 <div class="insights-stats-grid">
                     <div class="insights-stat-card">
                         <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#d97706;"><use href="#i-layers"/></svg> 全部文章數</span>
@@ -743,19 +746,19 @@
                         <span class="text-[11px] text-slate-400">已公開發布</span>
                     </div>
                     <div class="insights-stat-card">
-                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#f43f5e;"><use href="#i-heart"/></svg> 累計獲得愛心</span>
+                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#f43f5e;"><use href="#i-heart"/></svg> 文章獲得愛心</span>
                         <span id="insightsTotalLikes" class="insights-stat-val num">0</span>
-                        <span class="text-[11px] text-slate-400">真實讀者互動</span>
+                        <span class="text-[11px] text-slate-400">讀者互動累積</span>
                     </div>
                     <div class="insights-stat-card">
-                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#2563eb;"><use href="#i-bookmark"/></svg> 讀者總收藏</span>
+                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#2563eb;"><use href="#i-bookmark"/></svg> 本裝置收藏</span>
                         <span id="insightsTotalBookmarks" class="insights-stat-val num">0</span>
-                        <span class="text-[11px] text-slate-400">加入個人書籤</span>
+                        <span class="text-[11px] text-slate-400">儲存於當前瀏覽器</span>
                     </div>
                     <div class="insights-stat-card">
-                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#059669;"><use href="#i-clock"/></svg> 預估閱讀量</span>
+                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#059669;"><use href="#i-clock"/></svg> 本機已讀紀錄</span>
                         <span id="insightsTotalViews" class="insights-stat-val num">0</span>
-                        <span class="text-[11px] text-slate-400">瀏覽與閱讀次數</span>
+                        <span class="text-[11px] text-slate-400" title="全站不重複訪客瀏覽統計需串接獨立分析服務，此處誠實標示本機紀錄">當前瀏覽器紀錄</span>
                     </div>
                 </div>
 
@@ -1799,9 +1802,28 @@
             }
         }
 
+        function canShowNextChapterToast() {
+            if (!currentActivePost || !currentNextChapterPost) return false;
+            if (nextChapterToastDismissedForId === currentActivePost.id) return false;
+            const body = document.getElementById('modalBody');
+            if (!body) return false;
+            const clientH = body.clientHeight;
+            const scrollH = body.scrollHeight;
+            const bottomSection = document.getElementById('articleBottomSection');
+            const excludedH = (bottomSection && typeof bottomSection.offsetHeight === 'number') ? bottomSection.offsetHeight : 0;
+            // 排除極短文章誤觸：正文捲動空間需大於視窗 1.25 倍
+            const isScrollable = (scrollH - excludedH) > (clientH * 1.25);
+            if (!isScrollable) return false;
+            // 讀者必須實際往下閱讀超過 60px
+            if (body.scrollTop < 60) return false;
+            // 閱讀進度必須達 85%
+            const range = Math.max(0, scrollH - excludedH - clientH);
+            const percent = range === 0 ? 100 : Math.round(Math.min(1, Math.max(0, body.scrollTop / range)) * 100);
+            return percent >= 85;
+        }
+
         function showNextChapterToast() {
-            if (!currentActivePost || !currentNextChapterPost) return;
-            if (nextChapterToastDismissedForId === currentActivePost.id) return;
+            if (!canShowNextChapterToast()) return;
             const toast = document.getElementById('nextChapterToast');
             if (!toast) return;
             toast.classList.remove('hidden');
@@ -1853,12 +1875,7 @@
 
         function onReaderScrollProgressUpdate(percent, scrollTop, clientH, scrollH) {
             if (!currentActivePost) return;
-            const bottomSection = document.getElementById('articleBottomSection');
-            const excludedH = (bottomSection && typeof bottomSection.offsetHeight === 'number') ? bottomSection.offsetHeight : 0;
-            const isScrollable = (scrollH - excludedH) > (clientH * 1.25);
-            if (percent >= 85 && (scrollTop > 60 || !isScrollable && percent === 100 && scrollTop > 0)) {
-                showNextChapterToast();
-            }
+            showNextChapterToast();
             if (scrollTop > 20 || percent > 0) {
                 saveReadingProgressState(currentActivePost.id, percent, currentCarouselIndex);
             }
@@ -1882,10 +1899,11 @@
             if (!post) return;
 
             // Phase 2B-2: Independent Article URL — 只有在網址還不是這篇文章的網址時才 push，
-            // 避免「router 已經在 /post/:id 時又再次 push」造成重複的 history 記錄
+            // 避免「router 已經在 /post/:id 時又再次 push」造成重複的 history 記錄。
+            // 標記 isInternal: true，讓深連結直入讀者在按返回時能正確回到首頁而非跳離網站！
             const targetPath = '/post/' + encodeURIComponent(postId);
             if (location.pathname !== targetPath) {
-                history.pushState({ postId }, '', targetPath);
+                history.pushState({ postId, isInternal: true }, '', targetPath);
             }
 
             document.title = post.title + ' | Kai 護理生活 & 理財投資筆記';
@@ -2404,13 +2422,14 @@
             }
             restoreFocusAfterModalClose();
 
-            // Phase 1 / D1: 若不是由 popstate 觸發且目前在 /post/:id，優先使用 history.back() 乾淨彈出歷史堆疊，
-            // 避免留下多餘的 '/' 導致按手機返回鍵又重新打開剛關掉的文章！
+            // 若不是由 popstate 觸發且目前在 /post/:id：
+            // 若為站內點擊開啟（具有 isInternal 標記），使用 history.back() 乾淨彈出歷史堆疊；
+            // 若由外部深連結（IG、Google）直接進入，使用 replaceState 回首頁，確保讀者留在本站瀏覽！
             if (!fromHistory && location.pathname !== '/') {
-                if (window.history.length > 1) {
+                if (history.state && history.state.isInternal) {
                     history.back();
                 } else {
-                    history.replaceState({}, '', '/');
+                    history.replaceState({ page: 'home' }, '', '/');
                 }
             }
         }
@@ -2485,55 +2504,69 @@
             postsData.forEach(p => {
                 totalLikes += (p.likes || 0) + (userLikes[p.id] ? 1 : 0);
             });
-            const bookmarkCount = Object.keys(userBookmarks || {}).filter(id => userBookmarks[id]).length;
+
+            // A2: 只計算目前有效存在文章的本機收藏
+            const bookmarkCount = Object.keys(userBookmarks || {}).filter(id => userBookmarks[id] && postsData.some(p => p.id === id)).length;
             
-            // 閱讀人次估算（依據閱讀進度紀錄與文章基礎熱度）
-            const progressKeys = Object.keys(userReadingProgress || {});
-            const totalEstimatedReads = Math.max(progressKeys.length, totalPosts * 8 + totalLikes * 3);
+            // A1: 移除捏造公式！誠實呈現本機已讀文章數
+            const progressKeys = Object.keys(userReadingProgress || {}).filter(id => userReadingProgress[id] && postsData.some(p => p.id === id));
+            const localReadCount = progressKeys.length;
 
             totalPostsEl.textContent = totalPosts;
             totalLikesEl.textContent = totalLikes.toLocaleString();
             totalBookmarksEl.textContent = bookmarkCount.toLocaleString();
-            totalViewsEl.textContent = totalEstimatedReads.toLocaleString();
+            totalViewsEl.textContent = localReadCount.toLocaleString();
 
             const categoryLabels = { nursing: '臨床護理', finance: '理財筆記', invest: '存股投資' };
 
-            // 文章排行：按愛心量 + 是否為精選與日期權重
+            // B3: 嚴格 4 級排序法（愛心 > 精選 > 日期 > 穩定 ID）
             const sorted = [...postsData].sort((a, b) => {
                 const likesA = (a.likes || 0) + (userLikes[a.id] ? 1 : 0);
                 const likesB = (b.likes || 0) + (userLikes[b.id] ? 1 : 0);
                 if (likesB !== likesA) return likesB - likesA;
-                return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+                if (b.featured !== a.featured) return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+                const dateA = new Date(a.date || 0).getTime();
+                const dateB = new Date(b.date || 0).getTime();
+                if (dateB !== dateA) return dateB - dateA;
+                return String(a.id || '').localeCompare(String(b.id || ''));
             });
 
+            const hasAnyLikes = totalLikes > 0;
             const top5 = sorted.slice(0, 5);
             const medals = ['🥇', '🥈', '🥉', '4', '5'];
-            rankingListEl.innerHTML = top5.map((p, idx) => {
+            
+            const hintBanner = !hasAnyLikes ? `
+                <div class="p-2.5 rounded-lg bg-amber-50/70 border border-amber-200/60 text-xs text-amber-800 flex items-center gap-2 mb-2">
+                    <span>💡 尚無足夠讀者按讚互動，目前依編輯精選與發布日期推薦展示</span>
+                </div>
+            ` : '';
+
+            rankingListEl.innerHTML = hintBanner + top5.map((p, idx) => {
                 const likes = (p.likes || 0) + (userLikes[p.id] ? 1 : 0);
                 const isBookmarked = userBookmarks[p.id] === true;
                 const badgeClass = idx === 0 ? 'insights-rank-badge--1' : (idx === 1 ? 'insights-rank-badge--2' : (idx === 2 ? 'insights-rank-badge--3' : 'insights-rank-badge--sub'));
                 return `
                     <div class="insights-rank-item cursor-pointer" onclick="closeAdminInsightsModal(); openPostModal('${escapeHtml(p.id)}');">
-                        <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
-                            <span class="insights-rank-badge ${badgeClass}">${medals[idx]}</span>
-                            <div class="flex flex-col min-w-0">
-                                <span class="font-bold text-xs sm:text-sm text-slate-800 truncate">${escapeHtml(p.title)}</span>
-                                <div class="flex items-center gap-1.5 text-[11px] text-slate-400 mt-0.5">
-                                    <span class="font-semibold text-slate-600">${categoryLabels[p.category] || p.category}</span>
-                                    <span>•</span>
-                                    <span>${p.date || ''}</span>
-                                    <span>•</span>
-                                    <span>${p.readTime || ''}</span>
-                                </div>
+                        <div class="insights-rank-main">
+                            <div class="insights-rank-head">
+                                <span class="insights-rank-badge ${badgeClass}">${medals[idx]}</span>
+                                <span class="insights-rank-title">${escapeHtml(p.title)}</span>
+                            </div>
+                            <div class="insights-rank-meta">
+                                <span class="font-semibold text-slate-600">${categoryLabels[p.category] || p.category}</span>
+                                <span class="text-slate-300">•</span>
+                                <span>${p.date || ''}</span>
+                                <span class="text-slate-300">•</span>
+                                <span>${p.readTime || ''}</span>
                             </div>
                         </div>
-                        <div class="flex items-center gap-2 flex-shrink-0 text-xs">
-                            <span class="inline-flex items-center gap-1 font-bold text-rose-500">
+                        <div class="insights-rank-actions">
+                            <span class="inline-flex items-center gap-1 font-bold text-rose-500 text-xs">
                                 <svg class="ico" style="width:12px;height:12px;"><use href="#i-heart"/></svg>
                                 <span class="num">${likes}</span>
                             </span>
-                            ${isBookmarked ? `<span class="text-blue-600" title="已收藏"><svg class="ico" style="width:12px;height:12px;"><use href="#i-bookmark"/></svg></span>` : ''}
-                            <button type="button" class="reader-back-btn py-1 px-2 text-xs">查看</button>
+                            ${isBookmarked ? `<span class="text-blue-600" title="本裝置已收藏"><svg class="ico" style="width:12px;height:12px;"><use href="#i-bookmark"/></svg></span>` : ''}
+                            <button type="button" class="reader-back-btn py-1 px-2.5 text-xs">查看</button>
                         </div>
                     </div>
                 `;
@@ -2851,21 +2884,47 @@
             const yearsEl = document.getElementById('investYears');
 
             const monthly = Math.max(0, parseFloat(monthlyEl ? monthlyEl.value : 0) || 0);
-            const rawRate = rateEl && rateEl.value !== '' ? Math.max(0, Math.min(25, parseFloat(rateEl.value) || 0)) : 6;
-            const years = yearsEl && yearsEl.value !== '' ? Math.max(1, Math.min(50, parseInt(yearsEl.value) || 0)) : 5;
+            
+            // B1: 嚴格數值夾限與一致性（上限 20%，超過 12% 給予高風險提示）
+            let rawRate = 6;
+            if (rateEl && rateEl.value.trim() !== '') {
+                let parsedRate = parseFloat(rateEl.value);
+                if (isNaN(parsedRate) || parsedRate < 0) parsedRate = 0;
+                if (parsedRate > 20) {
+                    parsedRate = 20;
+                    rateEl.value = 20;
+                }
+                rawRate = parsedRate;
+            }
+
+            let years = 5;
+            if (yearsEl && yearsEl.value.trim() !== '') {
+                let parsedYears = parseInt(yearsEl.value, 10);
+                if (isNaN(parsedYears) || parsedYears < 1) parsedYears = 1;
+                if (parsedYears > 50) {
+                    parsedYears = 50;
+                    yearsEl.value = 50;
+                }
+                years = parsedYears;
+            }
             
             const rateLabel = document.getElementById('calcRateLabel');
             if (rateLabel) rateLabel.textContent = rawRate;
             const riskRateText = document.getElementById('calcRiskRateText');
             if (riskRateText) riskRateText.textContent = rawRate + '%';
 
-            // Update preset pill active states
+            // B2: 快捷膠囊使用精確數值比對 (data-rate, data-years) 與 aria-pressed
             document.querySelectorAll('#calcModal .calc-pill-btn').forEach(btn => {
-                const text = btn.textContent.trim();
-                if (text.includes('%')) {
-                    btn.classList.toggle('is-active', text.includes(`${rawRate}%`));
-                } else if (text.includes('年')) {
-                    btn.classList.toggle('is-active', text.includes(`${years}年`));
+                if (btn.dataset.rate) {
+                    const r = parseFloat(btn.dataset.rate);
+                    const isActive = r === rawRate;
+                    btn.classList.toggle('is-active', isActive);
+                    btn.setAttribute('aria-pressed', String(isActive));
+                } else if (btn.dataset.years) {
+                    const y = parseInt(btn.dataset.years, 10);
+                    const isActive = y === years;
+                    btn.classList.toggle('is-active', isActive);
+                    btn.setAttribute('aria-pressed', String(isActive));
                 }
             });
 

@@ -2192,16 +2192,25 @@ main { display: flex; flex-direction: column; }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: .2rem .5rem;
+    min-height: 32px;
+    padding: .35rem .75rem;
     border-radius: var(--r-pill);
     border: 1px solid var(--line-strong);
     background: var(--surface);
     color: var(--ink-2);
-    font-size: .6875rem;
+    font-size: .75rem;
     font-weight: 600;
     line-height: 1;
     cursor: pointer;
+    position: relative;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
     transition: all var(--t-fast) var(--ease);
+}
+.calc-pill-btn::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
 }
 .calc-pill-btn:hover {
     border-color: var(--blue);
@@ -2501,18 +2510,61 @@ iframe[src*="netlify"] {
 }
 .insights-rank-item {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: .75rem;
+    flex-direction: column;
+    gap: .45rem;
     padding: .75rem .9rem;
     border-radius: var(--r-md);
     background: var(--surface);
     border: 1px solid var(--line);
     transition: transform var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
 }
+@media (min-width: 640px) {
+    .insights-rank-item {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: .75rem;
+    }
+}
 .insights-rank-item:hover {
     border-color: var(--line-strong);
     transform: translateY(-1px);
+}
+.insights-rank-main {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    min-width: 0;
+}
+.insights-rank-head {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    min-width: 0;
+}
+.insights-rank-title {
+    font-size: .8125rem;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.insights-rank-meta {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    font-size: .6875rem;
+    color: var(--ink-3);
+    padding-left: 2rem;
+    white-space: nowrap;
+}
+.insights-rank-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .625rem;
+    flex-shrink: 0;
 }
 .insights-rank-badge {
     width: 26px;
