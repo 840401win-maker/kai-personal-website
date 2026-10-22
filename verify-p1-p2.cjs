@@ -4,29 +4,16 @@ const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
 
-// 100% Portable Root Resolution: works anywhere whether run from root or review package
-function resolveRepoRoot() {
-  const candidates = [
-    process.env.REPO_PATH,
-    'C:\\Users\\88697\\.gemini\\antigravity\\scratch\\kai-personal-website',
-    path.join(__dirname, '..', 'kai-personal-website'),
-    path.join(__dirname, '..', '..', 'scratch', 'kai-personal-website'),
-    path.join(__dirname, 'kai-personal-website'),
-    process.cwd(),
-    __dirname
-  ].filter(Boolean);
-  for (const c of candidates) {
-    if (fs.existsSync(path.join(c, 'index.html')) && fs.existsSync(path.join(c, 'css', 'style.css'))) {
-      return path.resolve(c);
-    }
-  }
-  return path.resolve(__dirname);
-}
-
-const repo = resolveRepoRoot();
+// C1b: 預設為本腳本所在目錄，僅在使用者明確指定 REPO_PATH 時才覆寫（無任何硬編碼路徑）
+const repo = process.env.REPO_PATH ? path.resolve(process.env.REPO_PATH) : __dirname;
 console.log('Project root resolved to:', repo);
 
-const outDir = fs.existsSync(path.join(__dirname, 'v2.1_audit_resolution_report.md')) ? __dirname : repo;
+if (!fs.existsSync(path.join(repo, 'index.html')) || !fs.existsSync(path.join(repo, 'css', 'style.css'))) {
+  console.error(`FATAL: Required project files ("index.html", "css/style.css") not found in "${repo}".`);
+  process.exit(1);
+}
+
+const outDir = __dirname;
 const edge = process.env.EDGE_PATH || 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -71,8 +58,9 @@ const srv = http.createServer((req, res) => {
       const shot = await send('Page.captureScreenshot', { format: 'png' });
       const buf = Buffer.from(shot.data, 'base64');
       fs.writeFileSync(path.join(outDir, name + '.png'), buf);
-      const brainDir = 'C:\\Users\\88697\\.gemini\\antigravity\\brain\\916575d0-e43d-43c0-b40b-2f8492a08ddc\\';
-      if (fs.existsSync(brainDir)) fs.writeFileSync(path.join(brainDir, name + '.png'), buf);
+      if (process.env.ARTIFACT_DIR && fs.existsSync(process.env.ARTIFACT_DIR)) {
+        fs.writeFileSync(path.join(process.env.ARTIFACT_DIR, name + '.png'), buf);
+      }
     };
     await send('Page.enable'); await send('Runtime.enable');
     await send('Emulation.setDeviceMetricsOverride', { width: w, height: h, deviceScaleFactor: 2, mobile: !!mobile });
