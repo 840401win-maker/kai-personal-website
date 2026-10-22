@@ -146,7 +146,7 @@
                     <span class="hidden sm:inline">匯入/新增</span>貼文
                 </button>
 
-                <button id="logoutBtn" onclick="handleAdminLogout()" class="hidden px-2.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors items-center gap-1.5" title="登出管理員身分">
+                <button id="logoutBtn" onclick="handleAdminLogout()" class="hidden px-2.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors items-center gap-1.5" title="登出管理員身分">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </button>
 
@@ -274,9 +274,9 @@
         <div id="postsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
         <div id="emptyState" class="hidden text-center py-16 space-y-3">
-            <i class="fa-solid fa-folder-open text-4xl text-slate-300 dark:text-slate-600"></i>
-            <p id="emptyStateMessage" class="text-slate-600 dark:text-slate-400 text-sm font-medium">找不到符合條件的文章，請試試其他關鍵字或分類！</p>
-            <button onclick="resetFilters()" class="text-xs text-teal-600 dark:text-teal-400 font-semibold underline hover:text-teal-700">重設所有篩選條件</button>
+            <i class="fa-solid fa-folder-open text-4xl text-slate-300"></i>
+            <p id="emptyStateMessage" class="text-slate-600 text-sm font-medium">找不到符合條件的文章，請試試其他關鍵字或分類！</p>
+            <button onclick="resetFilters()" class="text-xs text-teal-600 font-semibold underline hover:text-teal-700">重設所有篩選條件</button>
         </div>
     </main>
 
@@ -547,19 +547,19 @@
                     <div class="calc-panel-head">
                         <h4 id="calcInvestHeading" class="calc-panel-title">
                             <svg class="ico" aria-hidden="true"><use href="#i-trending-up"/></svg>
-                            <span>每月<span class="inline-block whitespace-nowrap">定期定額</span>複利試算（年化報酬 <span id="calcRateLabel" class="num">6</span>% 情境）</span>
+                            <span>每月<span class="inline-block whitespace-nowrap">定期定額複利試算</span><span class="inline-block whitespace-nowrap">（年化報酬 <span id="calcRateLabel" class="num">6</span>% 情境）</span></span>
                         </h4>
                     </div>
 
                     <div class="calc-input-grid calc-input-grid--3">
                         <div class="calc-field">
                             <label for="monthlyInvest" class="calc-label">每月投入金額 (TWD)</label>
-                            <input type="number" id="monthlyInvest" value="15000" min="0" step="1000" oninput="calculateSalary()" class="calc-input num">
+                            <input type="number" id="monthlyInvest" value="15000" min="0" step="1000" oninput="calculateSalary()" onblur="normalizeCalculatorInputs()" class="calc-input num">
                         </div>
                         <div class="calc-field">
                             <label for="investRate" class="calc-label">預估年化報酬率 (%)</label>
                             <div class="relative">
-                                <input type="number" id="investRate" value="6" min="0" max="20" step="0.5" oninput="calculateSalary()" class="calc-input num pr-8">
+                                <input type="number" id="investRate" value="6" min="0" max="20" step="0.5" oninput="calculateSalary()" onblur="normalizeCalculatorInputs()" class="calc-input num pr-8">
                                 <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 select-none pointer-events-none">%</span>
                             </div>
                             <div class="flex items-center gap-1.5 mt-1.5">
@@ -570,7 +570,7 @@
                         </div>
                         <div class="calc-field">
                             <label for="investYears" class="calc-label">投資持續年限 (年)</label>
-                            <input type="number" id="investYears" value="5" min="1" max="50" step="1" oninput="calculateSalary()" class="calc-input num">
+                            <input type="number" id="investYears" value="5" min="1" max="50" step="1" oninput="calculateSalary()" onblur="normalizeCalculatorInputs()" class="calc-input num">
                             <div class="flex items-center gap-1.5 mt-1.5">
                                 <button type="button" data-years="3" onclick="setInvestYearsPreset(3)" class="calc-pill-btn">3年</button>
                                 <button type="button" data-years="5" onclick="setInvestYearsPreset(5)" class="calc-pill-btn is-active">5年</button>
@@ -601,6 +601,12 @@
                             <p class="calc-risk-copy">
                                 本試算之 <b><span id="calcRiskRateText" class="num">6%</span> 等年化報酬率為情境假設，非保證收益</b>。市場指數具歷史波動風險，投入前請先備妥個人緊急預備金，切勿借貸投資。
                             </p>
+                            <p id="calcHighRiskNotice" class="hidden mt-2 text-xs font-semibold text-rose-700 bg-rose-50/80 p-2 rounded-lg border border-rose-200/60 leading-relaxed">
+                                ⚠️ 預估報酬率超過 12% 屬高風險積極型配置，市場波動劇烈，歷史高報酬不保證未來獲利。
+                            </p>
+                            <p id="calcExtremeNotice" class="hidden mt-2 text-xs font-medium text-amber-800 bg-amber-50/80 p-2 rounded-lg border border-amber-200/60 leading-relaxed">
+                                ※ 此為長期月複利之理論數學模型（複利在長年限下呈幾何級數放大），實際投資伴隨市場波動、通膨折現與實質購買力風險。
+                            </p>
                         </aside>
                     </div>
                     <p class="text-[11px] text-slate-500 mt-2.5 leading-relaxed">※ 試算假設：採「每月初固定投入」、年利率除以 12 計算月複利（實際複利略高於單利年化），數字僅供財務規劃參考。</p>
@@ -622,41 +628,41 @@
 
     <!-- Modal 4: 新增/編輯貼文 Modal (Add/Edit Post Modal) -->
     <div id="addPostModal" role="dialog" aria-modal="true" aria-labelledby="addPostModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="addPostModalCard">
-            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-teal-50/50 dark:bg-teal-950/30">
-                <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="addPostModalCard">
+            <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-teal-50/50">
+                <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
                     <i class="fa-solid fa-plus-circle text-teal-600"></i> <span id="addPostModalTitle">➕ 匯入 / 新增 IG 圖文貼文</span>
                 </h3>
-                <button onclick="closeAddPostModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
+                <button onclick="closeAddPostModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
 
             <form id="addPostForm" onsubmit="handleSaveCustomPost(event)" class="p-6 space-y-4 text-xs overflow-y-auto max-h-[75vh]">
                 <div>
-                    <label for="newTitle" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">文章標題 *</label>
-                    <input type="text" id="newTitle" required placeholder="例如：【護理日常】臨床夜班小撇步" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                    <label for="newTitle" class="font-bold text-slate-700 block mb-1">文章標題 *</label>
+                    <input type="text" id="newTitle" required placeholder="例如：【護理日常】臨床夜班小撇步" class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none">
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label for="newCategory" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">文章分類</label>
-                        <select id="newCategory" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                        <label for="newCategory" class="font-bold text-slate-700 block mb-1">文章分類</label>
+                        <select id="newCategory" class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none">
                             <option value="nursing">🏥 護理類</option>
                             <option value="finance">📊 理財類</option>
                             <option value="invest">📈 投資類</option>
                         </select>
                     </div>
                     <div>
-                        <label for="newReadTime" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">閱讀估算時間</label>
-                        <input type="text" id="newReadTime" value="3 分鐘" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                        <label for="newReadTime" class="font-bold text-slate-700 block mb-1">閱讀估算時間</label>
+                        <input type="text" id="newReadTime" value="3 分鐘" class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none">
                     </div>
                 </div>
 
                 <div>
-                    <label class="font-bold text-slate-700 dark:text-slate-300 block mb-1">上傳圖片（可一次選多張，會自動加浮水印並填入下方欄位）</label>
+                    <label class="font-bold text-slate-700 block mb-1">上傳圖片（可一次選多張，會自動加浮水印並填入下方欄位）</label>
                     <div class="flex items-center gap-2">
-                        <label for="imageFileInput" class="cursor-pointer flex-1 flex items-center justify-center gap-2 p-2.5 rounded-xl border-2 border-dashed border-teal-300 dark:border-teal-700 text-teal-600 dark:text-teal-400 font-semibold text-xs hover:bg-teal-50 dark:hover:bg-teal-950/30 transition-colors">
+                        <label for="imageFileInput" class="cursor-pointer flex-1 flex items-center justify-center gap-2 p-2.5 rounded-xl border-2 border-dashed border-teal-300 text-teal-600 font-semibold text-xs hover:bg-teal-50 transition-colors">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                             <span id="uploadStatusLabel">選擇圖片檔案上傳</span>
                         </label>
@@ -666,27 +672,27 @@
                 </div>
 
                 <div>
-                    <label for="newImages" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">圖片網址（第一張＝文章首圖；上傳後可點縮圖右上角⭐指定首圖）</label>
-                    <textarea id="newImages" placeholder="每行一個完整圖片網址" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none" rows="3"></textarea>
+                    <label for="newImages" class="font-bold text-slate-700 block mb-1">圖片網址（第一張＝文章首圖；上傳後可點縮圖右上角⭐指定首圖）</label>
+                    <textarea id="newImages" placeholder="每行一個完整圖片網址" class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none" rows="3"></textarea>
                 </div>
 
                 <div>
-                    <label for="newIgUrl" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">IG 貼文網址 (選填)</label>
-                    <input type="url" id="newIgUrl" placeholder="https://www.instagram.com/p/..." class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                    <label for="newIgUrl" class="font-bold text-slate-700 block mb-1">IG 貼文網址 (選填)</label>
+                    <input type="url" id="newIgUrl" placeholder="https://www.instagram.com/p/..." class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none">
                 </div>
 
                 <div>
-                    <label for="newTags" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">標籤 Tags (用逗號隔開)</label>
-                    <input type="text" id="newTags" placeholder="#護理日常, #臨床經驗, #心律不整" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                    <label for="newTags" class="font-bold text-slate-700 block mb-1">標籤 Tags (用逗號隔開)</label>
+                    <input type="text" id="newTags" placeholder="#護理日常, #臨床經驗, #心律不整" class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none">
                 </div>
 
                 <div>
-                    <label for="newSummary" class="font-bold text-slate-700 dark:text-slate-300 block mb-1">文章內文概要與心得 *</label>
-                    <textarea id="newSummary" required rows="4" placeholder="在此貼上您在 IG 撰寫的發文內文..." class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none"></textarea>
+                    <label for="newSummary" class="font-bold text-slate-700 block mb-1">文章內文概要與心得 *</label>
+                    <textarea id="newSummary" required rows="4" placeholder="在此貼上您在 IG 撰寫的發文內文..." class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none"></textarea>
                 </div>
 
                 <div class="pt-2 flex items-center justify-end gap-2">
-                    <button type="button" onclick="closeAddPostModal()" class="px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold">取消</button>
+                    <button type="button" onclick="closeAddPostModal()" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-semibold">取消</button>
                     <button type="submit" id="addPostSubmitBtn" class="px-5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold shadow-md">儲存並發布至網站</button>
                 </div>
             </form>
@@ -748,7 +754,7 @@
                     <div class="insights-stat-card">
                         <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#f43f5e;"><use href="#i-heart"/></svg> 文章獲得愛心</span>
                         <span id="insightsTotalLikes" class="insights-stat-val num">0</span>
-                        <span class="text-[11px] text-slate-400">讀者互動累積</span>
+                        <span class="text-[11px] text-slate-400">文章基底累計（全站跨訪客需獨立集合）</span>
                     </div>
                     <div class="insights-stat-card">
                         <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#2563eb;"><use href="#i-bookmark"/></svg> 本裝置收藏</span>
@@ -758,14 +764,14 @@
                     <div class="insights-stat-card">
                         <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#059669;"><use href="#i-clock"/></svg> 本機已讀紀錄</span>
                         <span id="insightsTotalViews" class="insights-stat-val num">0</span>
-                        <span class="text-[11px] text-slate-400" title="全站不重複訪客瀏覽統計需串接獨立分析服務，此處誠實標示本機紀錄">當前瀏覽器紀錄</span>
+                        <span class="text-[11px] text-slate-400">當前瀏覽器紀錄（全站瀏覽需串接外部分析）</span>
                     </div>
                 </div>
 
                 <!-- 2. 熱門文章排行榜 Top 5 -->
                 <section class="calc-panel">
                     <div class="calc-panel-head">
-                        <h4 class="calc-panel-title">
+                        <h4 id="insightsRankingTitle" class="calc-panel-title">
                             <svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>
                             <span>最受歡迎文章排行榜（Top 5 熱門推薦）</span>
                         </h4>
@@ -1474,7 +1480,7 @@
                                 <div class="post-card-actions">
                                     <button onclick="toggleLike('${escapeHtml(post.id)}', event)" aria-pressed="${!!isLiked}" class="post-like ${isLiked ? 'is-liked' : ''}">
                                         <svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg>
-                                        <span class="num">${likeCount}</span>
+                                        <span class="num">${likeCount > 0 ? likeCount : '讚'}</span>
                                     </button>
 
                                     <button onclick="openPostModal('${escapeHtml(post.id)}')" class="post-readmore">
@@ -1986,7 +1992,7 @@
 
             const isLiked = userLikes[post.id];
             const likeCount = post.likes + (isLiked ? 1 : 0);
-            document.getElementById('modalLikeCount').innerText = likeCount;
+            document.getElementById('modalLikeCount').innerText = likeCount > 0 ? likeCount : '讚';
             
             const likeBtn = document.getElementById('modalLikeBtn');
             likeBtn.classList.toggle('is-liked', !!isLiked);
@@ -1994,7 +2000,8 @@
                 toggleLike(post.id, e);
                 const updatedLiked = userLikes[post.id];
                 likeBtn.classList.toggle('is-liked', !!updatedLiked);
-                document.getElementById('modalLikeCount').innerText = post.likes + (updatedLiked ? 1 : 0);
+                const curLikes = post.likes + (updatedLiked ? 1 : 0);
+                document.getElementById('modalLikeCount').innerText = curLikes > 0 ? curLikes : '讚';
             };
 
             const bookmarkBtn = document.getElementById('modalBookmarkBtn');
@@ -2519,25 +2526,42 @@
 
             const categoryLabels = { nursing: '臨床護理', finance: '理財筆記', invest: '存股投資' };
 
-            // B3: 嚴格 4 級排序法（愛心 > 精選 > 日期 > 穩定 ID）
+            // B3: 嚴格 4 級排序法（愛心 > 精選 > 日期 > 穩定 ID），先正規化以防提早終止或 NaN
             const sorted = [...postsData].sort((a, b) => {
                 const likesA = (a.likes || 0) + (userLikes[a.id] ? 1 : 0);
                 const likesB = (b.likes || 0) + (userLikes[b.id] ? 1 : 0);
                 if (likesB !== likesA) return likesB - likesA;
-                if (b.featured !== a.featured) return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
-                const dateA = new Date(a.date || 0).getTime();
-                const dateB = new Date(b.date || 0).getTime();
+
+                const featA = a.featured ? 1 : 0;
+                const featB = b.featured ? 1 : 0;
+                if (featB !== featA) return featB - featA;
+
+                const parseDateMs = (d) => {
+                    if (!d) return 0;
+                    const ms = new Date(d).getTime();
+                    return Number.isFinite(ms) ? ms : 0;
+                };
+                const dateA = parseDateMs(a.date);
+                const dateB = parseDateMs(b.date);
                 if (dateB !== dateA) return dateB - dateA;
+
                 return String(a.id || '').localeCompare(String(b.id || ''));
             });
 
             const hasAnyLikes = totalLikes > 0;
             const top5 = sorted.slice(0, 5);
-            const medals = ['🥇', '🥈', '🥉', '4', '5'];
-            
+            const medals = hasAnyLikes ? ['🥇', '🥈', '🥉', '4', '5'] : ['1', '2', '3', '4', '5'];
+
+            const rankingTitleEl = document.getElementById('insightsRankingTitle');
+            if (rankingTitleEl) {
+                rankingTitleEl.innerHTML = hasAnyLikes
+                    ? `<svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg><span>最受歡迎文章排行榜（讀者點讚熱門）</span>`
+                    : `<svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg><span>精選推薦文章排序（依編輯精選與發布）</span>`;
+            }
+
             const hintBanner = !hasAnyLikes ? `
                 <div class="p-2.5 rounded-lg bg-amber-50/70 border border-amber-200/60 text-xs text-amber-800 flex items-center gap-2 mb-2">
-                    <span>💡 尚無足夠讀者按讚互動，目前依編輯精選與發布日期推薦展示</span>
+                    <span>💡 目前尚無讀者按讚互動記錄，榜單依「編輯精選」與「最新發布時間」推薦展示</span>
                 </div>
             ` : '';
 
@@ -2692,12 +2716,12 @@
 
                     const thumb = document.createElement('img');
                     thumb.src = addWatermark(data.secure_url);
-                    thumb.className = 'w-14 h-14 object-cover rounded-lg border-2 border-slate-200 dark:border-slate-700';
+                    thumb.className = 'w-14 h-14 object-cover rounded-lg border-2 border-slate-200';
 
                     const starBtn = document.createElement('button');
                     starBtn.type = 'button';
                     starBtn.title = '設為首圖';
-                    starBtn.className = 'absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-white dark:bg-slate-800 text-slate-300 dark:text-slate-600 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-[10px] shadow-sm';
+                    starBtn.className = 'absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-white text-slate-400 border border-slate-200 flex items-center justify-center text-[10px] shadow-sm';
                     starBtn.innerHTML = '<i class="fa-solid fa-star"></i>';
                     starBtn.onclick = () => setCoverImage(data.secure_url);
 
@@ -2883,53 +2907,81 @@
             const rateEl = document.getElementById('investRate');
             const yearsEl = document.getElementById('investYears');
 
-            const monthly = Math.max(0, parseFloat(monthlyEl ? monthlyEl.value : 0) || 0);
-            
-            // B1: 嚴格數值夾限與一致性（上限 20%，超過 12% 給予高風險提示）
-            let rawRate = 6;
-            if (rateEl && rateEl.value.trim() !== '') {
-                let parsedRate = parseFloat(rateEl.value);
-                if (isNaN(parsedRate) || parsedRate < 0) parsedRate = 0;
-                if (parsedRate > 20) {
-                    parsedRate = 20;
-                    rateEl.value = 20;
-                }
-                rawRate = parsedRate;
+            const monthlyStr = monthlyEl ? monthlyEl.value.trim() : '';
+            const rateStr = rateEl ? rateEl.value.trim() : '';
+            const yearsStr = yearsEl ? yearsEl.value.trim() : '';
+
+            const investResultEl = document.getElementById('investResult');
+            const investBreakdownEl = document.getElementById('investPrincipalBreakdown');
+            const rateLabel = document.getElementById('calcRateLabel');
+            const riskRateText = document.getElementById('calcRiskRateText');
+            const highRiskNotice = document.getElementById('calcHighRiskNotice');
+            const extremeNotice = document.getElementById('calcExtremeNotice');
+
+            // 數值邊界與空值處理：輸入未完成時不假造有效試算
+            if (monthlyStr === '' || rateStr === '' || yearsStr === '') {
+                if (investResultEl) investResultEl.innerText = '--';
+                if (investBreakdownEl) investBreakdownEl.textContent = '請輸入每月投入金額、預估年化報酬率與年限';
+                if (rateLabel) rateLabel.textContent = rateStr || '--';
+                if (riskRateText) riskRateText.textContent = (rateStr || '--') + '%';
+                if (highRiskNotice) highRiskNotice.classList.add('hidden');
+                if (extremeNotice) extremeNotice.classList.add('hidden');
+                document.querySelectorAll('#calcModal .calc-pill-btn').forEach(btn => {
+                    btn.classList.remove('is-active');
+                    btn.setAttribute('aria-pressed', 'false');
+                });
+                renderCalcRelatedPosts();
+                return;
             }
 
-            let years = 5;
-            if (yearsEl && yearsEl.value.trim() !== '') {
-                let parsedYears = parseInt(yearsEl.value, 10);
-                if (isNaN(parsedYears) || parsedYears < 1) parsedYears = 1;
-                if (parsedYears > 50) {
-                    parsedYears = 50;
-                    yearsEl.value = 50;
-                }
-                years = parsedYears;
+            const monthly = parseFloat(monthlyStr);
+            const rawRate = parseFloat(rateStr);
+            const rawYears = parseFloat(yearsStr);
+
+            if (isNaN(monthly) || isNaN(rawRate) || isNaN(rawYears) || monthly < 0 || rawRate < 0 || rawYears <= 0) {
+                if (investResultEl) investResultEl.innerText = '--';
+                if (investBreakdownEl) investBreakdownEl.textContent = '金額與報酬率不可為負數，年限至少為 1 年';
+                if (rateLabel) rateLabel.textContent = !isNaN(rawRate) ? rawRate : '--';
+                if (riskRateText) riskRateText.textContent = (!isNaN(rawRate) ? rawRate : '--') + '%';
+                if (highRiskNotice) highRiskNotice.classList.add('hidden');
+                if (extremeNotice) extremeNotice.classList.add('hidden');
+                document.querySelectorAll('#calcModal .calc-pill-btn').forEach(btn => {
+                    btn.classList.remove('is-active');
+                    btn.setAttribute('aria-pressed', 'false');
+                });
+                renderCalcRelatedPosts();
+                return;
             }
-            
-            const rateLabel = document.getElementById('calcRateLabel');
-            if (rateLabel) rateLabel.textContent = rawRate;
-            const riskRateText = document.getElementById('calcRiskRateText');
-            if (riskRateText) riskRateText.textContent = rawRate + '%';
+
+            // B1: 嚴格數值夾限與一致性（打字中不強制中斷改寫輸入框，計算採用箝位值）
+            const effectiveRate = Math.min(20, Math.max(0, rawRate));
+            const effectiveYears = Math.min(50, Math.max(1, Math.round(rawYears)));
+
+            if (rateLabel) rateLabel.textContent = effectiveRate;
+            if (riskRateText) riskRateText.textContent = effectiveRate + '%';
+
+            // 高風險提示（> 12%）
+            if (highRiskNotice) {
+                highRiskNotice.classList.toggle('hidden', effectiveRate <= 12);
+            }
 
             // B2: 快捷膠囊使用精確數值比對 (data-rate, data-years) 與 aria-pressed
             document.querySelectorAll('#calcModal .calc-pill-btn').forEach(btn => {
                 if (btn.dataset.rate) {
                     const r = parseFloat(btn.dataset.rate);
-                    const isActive = r === rawRate;
+                    const isActive = (r === rawRate) && (rawRate <= 20);
                     btn.classList.toggle('is-active', isActive);
                     btn.setAttribute('aria-pressed', String(isActive));
                 } else if (btn.dataset.years) {
                     const y = parseInt(btn.dataset.years, 10);
-                    const isActive = y === years;
+                    const isActive = (y === rawYears) && (rawYears <= 50) && (Number.isInteger(rawYears));
                     btn.classList.toggle('is-active', isActive);
                     btn.setAttribute('aria-pressed', String(isActive));
                 }
             });
 
-            const monthlyRate = (rawRate / 100) / 12;
-            const months = years * 12;
+            const monthlyRate = (effectiveRate / 100) / 12;
+            const months = effectiveYears * 12;
             
             let total = 0;
             if (monthlyRate > 0) {
@@ -2941,15 +2993,54 @@
             const principal = Math.round(monthly * months);
             const gain = Math.max(0, roundedTotal - principal);
 
-            const investResultEl = document.getElementById('investResult');
+            // 極端複利結果警語（超過 10 億或 15% 30 年以上）
+            if (extremeNotice) {
+                const isExtreme = roundedTotal >= 1000000000 || (effectiveRate >= 15 && effectiveYears >= 30);
+                extremeNotice.classList.toggle('hidden', !isExtreme);
+            }
+
             if (investResultEl) investResultEl.innerText = roundedTotal.toLocaleString();
 
-            const investBreakdownEl = document.getElementById('investPrincipalBreakdown');
             if (investBreakdownEl) {
                 investBreakdownEl.textContent = `累積投入本金 $${principal.toLocaleString()} · 預估複利增值 +$${gain.toLocaleString()}`;
             }
 
             renderCalcRelatedPosts();
+        }
+
+        // 失焦時同步正規化數值與修復小數年限
+        function normalizeCalculatorInputs() {
+            const rateEl = document.getElementById('investRate');
+            const yearsEl = document.getElementById('investYears');
+            const monthlyEl = document.getElementById('monthlyInvest');
+
+            if (monthlyEl && (monthlyEl.value.trim() === '' || parseFloat(monthlyEl.value) < 0)) {
+                monthlyEl.value = '15000';
+            }
+
+            if (rateEl) {
+                if (rateEl.value.trim() === '') {
+                    rateEl.value = '6';
+                } else {
+                    let r = parseFloat(rateEl.value);
+                    if (isNaN(r) || r < 0) r = 0;
+                    if (r > 20) r = 20;
+                    rateEl.value = r;
+                }
+            }
+
+            if (yearsEl) {
+                if (yearsEl.value.trim() === '') {
+                    yearsEl.value = '5';
+                } else {
+                    let y = parseFloat(yearsEl.value);
+                    if (isNaN(y) || y < 1) y = 1;
+                    if (y > 50) y = 50;
+                    yearsEl.value = Math.round(y);
+                }
+            }
+
+            calculateSalary();
         }
 
         function toggleLike(postId, event) {
