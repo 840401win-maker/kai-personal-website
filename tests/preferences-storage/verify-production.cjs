@@ -1,0 +1,16 @@
+const fs = require('node:fs');
+const assert = require('node:assert/strict');
+const path = require('node:path');
+const read = file => fs.readFileSync(path.join(__dirname, file), 'utf8').replace(/\r\n/g, '\n').trimEnd();
+const expected = read('index.html');
+const raw = read('production-index.html');
+const hostedComment = /<!-- This site is hosted on Netlify\.[\s\S]*?-->\n/;
+const hostedHud = /<script async src="\/\.netlify\/scripts\/hud\?variant=public"[^>]*><\/script>$/;
+assert.equal((raw.match(hostedComment) || []).length > 0, true);
+assert.equal((raw.match(hostedHud) || []).length > 0, true);
+const normalized = raw.replace(hostedComment, '').replace(hostedHud, '').trimEnd();
+assert.equal(normalized, expected);
+assert.equal(read('production-utils.js'), read('utils.js'));
+new (require('node:vm').Script)(read('production-utils.js'));
+console.log('PASS: production HTML equals tested HTML after removing the two observed Netlify hosting insertions.');
+console.log('PASS: production utility code equals tested utility code (ignoring terminal newlines). Syntax valid.');

@@ -1,0 +1,15 @@
+HTTP/1.1 401 Unauthorized
+Age: 1
+Cache-Control: no-store
+Cache-Status: "Netlify Durable"; fwd=bypass
+Cache-Status: "Netlify Edge"; fwd=miss; fwd-status=401
+Content-Type: application/json
+Date: Sun, 04 Oct 2026 14:05:04 GMT
+Netlify-Vary: query
+Server: Netlify
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+X-Content-Type-Options: nosniff
+X-Nf-Request-Id: 01M43KQ0QTX30G92G91C9D4M70
+X-Robots-Tag: noindex
+Transfer-Encoding: chunked
+

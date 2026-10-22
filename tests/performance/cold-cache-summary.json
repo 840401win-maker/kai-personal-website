@@ -1,0 +1,779 @@
+{
+  "metadata": {
+    "source": "DevTools",
+    "startTime": "2026-10-06T17:02:23.081Z",
+    "emulatedDeviceTitle": "Responsive",
+    "dataOrigin": "TraceEvents",
+    "hostDPR": 1.25,
+    "modifications": {
+      "entriesModifications": {
+        "hiddenEntries": [],
+        "expandableEntries": []
+      },
+      "initialBreadcrumb": {
+        "window": {
+          "min": 1227623124196,
+          "max": 1227640910624,
+          "range": 17786428
+        },
+        "child": null
+      },
+      "annotations": {
+        "entryLabels": [],
+        "labelledTimeRanges": [],
+        "linksBetweenEntries": []
+      }
+    }
+  },
+  "events": 44657,
+  "paints": [
+    {
+      "event": "firstContentfulPaint",
+      "ms": 830.84,
+      "data": {
+        "navigationId": "D42AA27AD9FE0469809F337C4DEB31E8"
+      }
+    },
+    {
+      "event": "largestContentfulPaint::Candidate",
+      "ms": 830.84,
+      "data": {
+        "candidateIndex": 1,
+        "isMainFrame": true,
+        "isOutermostMainFrame": true,
+        "navigationId": "D42AA27AD9FE0469809F337C4DEB31E8",
+        "nodeId": 34,
+        "nodeName": "P class='text-sm sm:text-base font-medium text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl'",
+        "performanceTimelineNavigationId": 6400,
+        "size": 46308,
+        "type": "text"
+      }
+    },
+    {
+      "event": "largestContentfulPaint::Candidate",
+      "ms": 1931.02,
+      "data": {
+        "candidateIndex": 2,
+        "imageDiscoveryTime": 1686.799999952316,
+        "imageLoadEnd": 1862.799999952316,
+        "imageLoadStart": 1759.799999952316,
+        "isMainFrame": true,
+        "isOutermostMainFrame": true,
+        "loadingAttr": "lazy",
+        "navigationId": "D42AA27AD9FE0469809F337C4DEB31E8",
+        "nodeId": 256,
+        "nodeName": "IMG class='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500'",
+        "performanceTimelineNavigationId": 6400,
+        "size": 54593,
+        "type": "image"
+      }
+    },
+    {
+      "event": "largestContentfulPaint::Candidate",
+      "ms": 2147.72,
+      "data": {
+        "candidateIndex": 3,
+        "imageDiscoveryTime": 1688.199999809265,
+        "imageLoadEnd": 1875.399999856949,
+        "imageLoadStart": 1759.099999904633,
+        "isMainFrame": true,
+        "isOutermostMainFrame": true,
+        "loadingAttr": "lazy",
+        "navigationId": "D42AA27AD9FE0469809F337C4DEB31E8",
+        "nodeId": 263,
+        "nodeName": "IMG class='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500'",
+        "performanceTimelineNavigationId": 6400,
+        "size": 113223,
+        "type": "image"
+      }
+    }
+  ],
+  "longTasks": [
+    {
+      "startMs": 293.18,
+      "durationMs": 335.15
+    },
+    {
+      "startMs": 636.34,
+      "durationMs": 78.05
+    },
+    {
+      "startMs": 834.58,
+      "durationMs": 228.43
+    },
+    {
+      "startMs": 1070.05,
+      "durationMs": 238.98
+    },
+    {
+      "startMs": 1310.93,
+      "durationMs": 67.5
+    },
+    {
+      "startMs": 1440.68,
+      "durationMs": 155.69
+    },
+    {
+      "startMs": 1597.11,
+      "durationMs": 93.23
+    },
+    {
+      "startMs": 1904.82,
+      "durationMs": 102.9
+    },
+    {
+      "startMs": 2237.63,
+      "durationMs": 92.9
+    },
+    {
+      "startMs": 2335.94,
+      "durationMs": 59.32
+    },
+    {
+      "startMs": 2454.86,
+      "durationMs": 87.13
+    }
+  ],
+  "requests": [
+    {
+      "url": "https://kai-personal-website.netlify.app/",
+      "id": "D42AA27AD9FE0469809F337C4DEB31E8",
+      "startMs": 106.0,
+      "endMs": 714.97,
+      "status": 200,
+      "cache": false,
+      "bytes": 24343,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://kai-personal-website.netlify.app/css/tailwind.css",
+      "id": "9072.2",
+      "startMs": 114.23,
+      "endMs": 292.35,
+      "status": 200,
+      "cache": false,
+      "bytes": 6109,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://kai-personal-website.netlify.app/css/style.css",
+      "id": "9072.3",
+      "startMs": 115.48,
+      "endMs": 291.62,
+      "status": 200,
+      "cache": false,
+      "bytes": 1077,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png",
+      "id": "9072.4",
+      "startMs": 115.71,
+      "endMs": 190.26,
+      "status": 200,
+      "cache": false,
+      "bytes": 19027,
+      "priority": "Medium"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      "id": "9072.6",
+      "startMs": 117.9,
+      "endMs": 260.13,
+      "status": 200,
+      "cache": false,
+      "bytes": 19413,
+      "priority": "VeryLow"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2",
+      "id": "9072.7",
+      "startMs": 118.07,
+      "endMs": 291.28,
+      "status": 200,
+      "cache": false,
+      "bytes": 34928,
+      "priority": "VeryLow"
+    },
+    {
+      "url": "https://kai-personal-website.netlify.app/js/vendor/purify.min.js",
+      "id": "9072.10",
+      "startMs": 288.3,
+      "endMs": 630.62,
+      "status": 200,
+      "cache": false,
+      "bytes": 11111,
+      "priority": "High"
+    },
+    {
+      "url": "https://kai-personal-website.netlify.app/js/utils.js",
+      "id": "9072.12",
+      "startMs": 288.95,
+      "endMs": 630.39,
+      "status": 200,
+      "cache": false,
+      "bytes": 1454,
+      "priority": "Medium"
+    },
+    {
+      "url": "https://kai-personal-website.netlify.app/js/firebase.js",
+      "id": "9072.13",
+      "startMs": 289.07,
+      "endMs": 635.98,
+      "status": 200,
+      "cache": false,
+      "bytes": 647,
+      "priority": "High"
+    },
+    {
+      "url": "https://kai-personal-website.netlify.app/js/firestore-read.js",
+      "id": "9072.14",
+      "startMs": 289.13,
+      "endMs": 636.07,
+      "status": 200,
+      "cache": false,
+      "bytes": 823,
+      "priority": "Medium"
+    },
+    {
+      "url": "https://kai-personal-website.netlify.app/js/firestore-write.js",
+      "id": "9072.15",
+      "startMs": 289.19,
+      "endMs": 630.5,
+      "status": 200,
+      "cache": false,
+      "bytes": 1167,
+      "priority": "Medium"
+    },
+    {
+      "url": "https://kai-personal-website.netlify.app/js/auth.js",
+      "id": "9072.16",
+      "startMs": 289.24,
+      "endMs": 635.84,
+      "status": 200,
+      "cache": false,
+      "bytes": 653,
+      "priority": "Medium"
+    },
+    {
+      "url": "https://kai-personal-website.netlify.app/.netlify/scripts/hud",
+      "id": "9072.17",
+      "startMs": 292.96,
+      "endMs": 635.58,
+      "status": 200,
+      "cache": false,
+      "bytes": 10199,
+      "priority": "Low"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+      "id": "9072.22",
+      "startMs": 352.7,
+      "endMs": 629.66,
+      "status": 200,
+      "cache": false,
+      "bytes": 150818,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2",
+      "id": "9072.18",
+      "startMs": 353.02,
+      "endMs": 629.11,
+      "status": 200,
+      "cache": false,
+      "bytes": 108670,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-regular-400.woff2",
+      "id": "9072.20",
+      "startMs": 353.26,
+      "endMs": 628.72,
+      "status": 200,
+      "cache": false,
+      "bytes": 25589,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9i1OCEKIfVZ1w.woff2",
+      "id": "9072.145",
+      "startMs": 639.17,
+      "endMs": 1063.34,
+      "status": 200,
+      "cache": false,
+      "bytes": 24965,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.123.woff2",
+      "id": "9072.141",
+      "startMs": 639.29,
+      "endMs": 1063.64,
+      "status": 200,
+      "cache": false,
+      "bytes": 36336,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.122.woff2",
+      "id": "9072.140",
+      "startMs": 639.33,
+      "endMs": 1067.89,
+      "status": 200,
+      "cache": false,
+      "bytes": 60186,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.120.woff2",
+      "id": "9072.138",
+      "startMs": 639.36,
+      "endMs": 1068.33,
+      "status": 200,
+      "cache": false,
+      "bytes": 71421,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.116.woff2",
+      "id": "9072.134",
+      "startMs": 639.38,
+      "endMs": 1067.33,
+      "status": 200,
+      "cache": false,
+      "bytes": 73301,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.121.woff2",
+      "id": "9072.139",
+      "startMs": 640.52,
+      "endMs": 1068.62,
+      "status": 200,
+      "cache": false,
+      "bytes": 65242,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.118.woff2",
+      "id": "9072.136",
+      "startMs": 640.58,
+      "endMs": 1310.56,
+      "status": 200,
+      "cache": false,
+      "bytes": 84955,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.112.woff2",
+      "id": "9072.130",
+      "startMs": 640.6,
+      "endMs": 1064.9,
+      "status": 200,
+      "cache": false,
+      "bytes": 72429,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.117.woff2",
+      "id": "9072.135",
+      "startMs": 640.78,
+      "endMs": 1065.77,
+      "status": 200,
+      "cache": false,
+      "bytes": 71297,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.110.woff2",
+      "id": "9072.128",
+      "startMs": 640.83,
+      "endMs": 1310.78,
+      "status": 200,
+      "cache": false,
+      "bytes": 72289,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.119.woff2",
+      "id": "9072.137",
+      "startMs": 646.39,
+      "endMs": 1069.96,
+      "status": 200,
+      "cache": false,
+      "bytes": 74133,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.114.woff2",
+      "id": "9072.132",
+      "startMs": 652.3,
+      "endMs": 1066.92,
+      "status": 200,
+      "cache": false,
+      "bytes": 79101,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.111.woff2",
+      "id": "9072.129",
+      "startMs": 654.58,
+      "endMs": 1310.2,
+      "status": 200,
+      "cache": false,
+      "bytes": 72893,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.108.woff2",
+      "id": "9072.126",
+      "startMs": 656.57,
+      "endMs": 1309.86,
+      "status": 200,
+      "cache": false,
+      "bytes": 68601,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.115.woff2",
+      "id": "9072.133",
+      "startMs": 661.08,
+      "endMs": 1066.66,
+      "status": 200,
+      "cache": false,
+      "bytes": 74715,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.94.woff2",
+      "id": "9072.116",
+      "startMs": 665.34,
+      "endMs": 1063.8,
+      "status": 200,
+      "cache": false,
+      "bytes": 9327,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.113.woff2",
+      "id": "9072.131",
+      "startMs": 678.31,
+      "endMs": 1064.01,
+      "status": 200,
+      "cache": false,
+      "bytes": 71807,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.91.woff2",
+      "id": "9072.113",
+      "startMs": 681.77,
+      "endMs": 827.93,
+      "status": 200,
+      "cache": false,
+      "bytes": 5771,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.10.woff2",
+      "id": "9072.42",
+      "startMs": 686.51,
+      "endMs": 823.01,
+      "status": 200,
+      "cache": false,
+      "bytes": 15298,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.109.woff2",
+      "id": "9072.127",
+      "startMs": 689.23,
+      "endMs": 1066.23,
+      "status": 200,
+      "cache": false,
+      "bytes": 67945,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.90.woff2",
+      "id": "9072.112",
+      "startMs": 693.16,
+      "endMs": 825.32,
+      "status": 200,
+      "cache": false,
+      "bytes": 12131,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js",
+      "id": "9072.156",
+      "startMs": 764.73,
+      "endMs": 1380.44,
+      "status": 200,
+      "cache": false,
+      "bytes": 22568,
+      "priority": "High"
+    },
+    {
+      "url": "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js",
+      "id": "9072.157",
+      "startMs": 765.03,
+      "endMs": 1383.29,
+      "status": 200,
+      "cache": false,
+      "bytes": 111687,
+      "priority": "High"
+    },
+    {
+      "url": "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js",
+      "id": "9072.158",
+      "startMs": 765.34,
+      "endMs": 1381.14,
+      "status": 200,
+      "cache": false,
+      "bytes": 40060,
+      "priority": "High"
+    },
+    {
+      "url": "https://kai-personal-website.netlify.app/.netlify/scripts/hud",
+      "id": "9072.159",
+      "startMs": 765.66,
+      "endMs": 1069.58,
+      "status": 200,
+      "cache": false,
+      "bytes": 10290,
+      "priority": "VeryLow"
+    },
+    {
+      "url": "about:srcdoc",
+      "id": "0C8588A9E8721917B626D1E37478C36E",
+      "startMs": 775.23,
+      "endMs": 780.94,
+      "status": 0,
+      "cache": false,
+      "bytes": 10835,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_96/f_auto,q_auto/v1786270726/14_lfk0rp.png",
+      "id": "9072.166",
+      "startMs": 1479.7,
+      "endMs": 1596.8,
+      "status": 200,
+      "cache": false,
+      "bytes": 2547,
+      "priority": "Low"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.92.woff2",
+      "id": "9072.114",
+      "startMs": 1513.95,
+      "endMs": 1597.06,
+      "status": 200,
+      "cache": false,
+      "bytes": 7663,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d",
+      "id": "9072.161",
+      "startMs": 1686.47,
+      "endMs": 1864.85,
+      "status": 200,
+      "cache": false,
+      "bytes": 23025,
+      "priority": "Low"
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514",
+      "id": "9072.162",
+      "startMs": 1688.0,
+      "endMs": 2007.91,
+      "status": 200,
+      "cache": false,
+      "bytes": 34366,
+      "priority": "Low"
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89",
+      "id": "9072.163",
+      "startMs": 1688.46,
+      "endMs": 2008.03,
+      "status": 200,
+      "cache": false,
+      "bytes": 63043,
+      "priority": "Low"
+    },
+    {
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png",
+      "id": "9072.164",
+      "startMs": 1688.72,
+      "endMs": 1774.92,
+      "status": 200,
+      "cache": false,
+      "bytes": 42064,
+      "priority": "Low"
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c",
+      "id": "9072.165",
+      "startMs": 1689.13,
+      "endMs": 1854.55,
+      "status": 200,
+      "cache": false,
+      "bytes": 20855,
+      "priority": "Low"
+    },
+    {
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/11_skvgrb.png",
+      "id": "9072.172",
+      "startMs": 1723.57,
+      "endMs": 2007.45,
+      "status": 200,
+      "cache": false,
+      "bytes": 252146,
+      "priority": "High"
+    },
+    {
+      "url": "https://apis.google.com/js/api.js",
+      "id": "9072.173",
+      "startMs": 1743.83,
+      "endMs": 1894.83,
+      "status": 200,
+      "cache": false,
+      "bytes": 5905,
+      "priority": "Low"
+    },
+    {
+      "url": "https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.zh_TW.QLpgzi_o1qM.O/m=gapi_iframes/rt=j/sv=1/d=1/ed=1/rs=AHpOoo9DhHrMZAVhuKJcG8YnS3qR_vrC1A/cb=gapi.loaded_0",
+      "id": "9072.174",
+      "startMs": 1904.42,
+      "endMs": 2008.54,
+      "status": 200,
+      "cache": false,
+      "bytes": 34951,
+      "priority": "Low"
+    },
+    {
+      "url": "https://apis.google.com/js/gen_204",
+      "id": "9072.175",
+      "startMs": 2038.24,
+      "endMs": null,
+      "status": 200,
+      "cache": false,
+      "bytes": null,
+      "priority": "High"
+    },
+    {
+      "url": "https://www.google.com/images/cleardot.gif",
+      "id": "9072.175",
+      "startMs": 2102.26,
+      "endMs": null,
+      "status": 200,
+      "cache": false,
+      "bytes": null,
+      "priority": "High"
+    },
+    {
+      "url": "https://firestore.googleapis.com/google.firestore.v1.Firestore/Listen/channel",
+      "id": "9072.186",
+      "startMs": 2121.09,
+      "endMs": 2185.23,
+      "status": 200,
+      "cache": false,
+      "bytes": 94,
+      "priority": "High"
+    },
+    {
+      "url": "https://firestore.googleapis.com/google.firestore.v1.Firestore/Listen/channel",
+      "id": "9072.187",
+      "startMs": 2188.72,
+      "endMs": null,
+      "status": 200,
+      "cache": false,
+      "bytes": null,
+      "priority": "High"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.105.woff2",
+      "id": "9072.123",
+      "startMs": 2260.9,
+      "endMs": 2332.09,
+      "status": 200,
+      "cache": false,
+      "bytes": 62426,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.106.woff2",
+      "id": "9072.124",
+      "startMs": 2267.43,
+      "endMs": 2333.72,
+      "status": 200,
+      "cache": false,
+      "bytes": 63166,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.47.woff2",
+      "id": "9072.69",
+      "startMs": 2288.36,
+      "endMs": 2334.84,
+      "status": 200,
+      "cache": false,
+      "bytes": 40136,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/l_text:Arial_36_bold:%40kai.nursing_life,co_white,o_75,g_south_east,x_18,y_18/v1786260835/eohl0urvzqnm9p6uffq4.png",
+      "id": "9072.193",
+      "startMs": 2330.12,
+      "endMs": 2422.97,
+      "status": 200,
+      "cache": false,
+      "bytes": 105001,
+      "priority": "Low"
+    },
+    {
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/l_text:Arial_36_bold:%40kai.nursing_life,co_white,o_75,g_south_east,x_18,y_18/v1786221349/10_fu35wr.png",
+      "id": "9072.194",
+      "startMs": 2330.27,
+      "endMs": 2424.08,
+      "status": 404,
+      "cache": false,
+      "bytes": 412,
+      "priority": "Low"
+    },
+    {
+      "url": "https://kainursinglife.firebaseapp.com/__/auth/iframe",
+      "id": "AED03A8C7C52668B655AC181660DE1C4",
+      "startMs": 3217.17,
+      "endMs": 3234.99,
+      "status": 200,
+      "cache": false,
+      "bytes": 520,
+      "priority": "VeryHigh"
+    },
+    {
+      "url": "https://kainursinglife.firebaseapp.com/__/auth/iframe.js",
+      "id": "32428.2",
+      "startMs": 3228.38,
+      "endMs": 3261.6,
+      "status": 200,
+      "cache": true,
+      "bytes": 0,
+      "priority": "High"
+    },
+    {
+      "url": "https://www.googleapis.com/identitytoolkit/v3/relyingparty/getProjectConfig",
+      "id": "32428.4",
+      "startMs": 3318.41,
+      "endMs": 3844.75,
+      "status": 200,
+      "cache": false,
+      "bytes": 177,
+      "priority": "High"
+    }
+  ]
+}

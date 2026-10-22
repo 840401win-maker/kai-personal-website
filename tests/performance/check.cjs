@@ -1,0 +1,15 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const {JSDOM}=require('../security-test/node_modules/jsdom');
+const html=fs.readFileSync(__dirname+'/updated-index.html','utf8');
+const doc=new JSDOM(html).window.document;
+for(const script of doc.querySelectorAll('script:not([src])')) if(script.type!=='application/ld+json')new vm.Script(script.textContent);
+const fn=html.match(/function optimizeCloudinaryUrl\(url, width = null\) \{[\s\S]*?\n        \}/)[0];
+const sandbox={};vm.createContext(sandbox);vm.runInContext(fn,sandbox);
+const u='https://res.cloudinary.com/demo/image/upload/l_text:Arial:Kai,co_white/v123/image.png';
+assert.equal(sandbox.optimizeCloudinaryUrl(u,800),'https://res.cloudinary.com/demo/image/upload/c_limit,w_800/f_auto,q_auto/l_text:Arial:Kai,co_white/v123/image.png');
+assert.equal(sandbox.optimizeCloudinaryUrl('https://example.com/image.png',800),'https://example.com/image.png');
+assert(sandbox.optimizeCloudinaryUrl(u).includes('/upload/f_auto,q_auto/'));
+assert.equal(doc.querySelector('#sortSelect').getAttribute('aria-label'),'文章排序');
+assert.equal(doc.querySelector('#postModal').getAttribute('aria-label'),'文章內容');
+assert.equal(doc.querySelector('link[href^="https://fonts.googleapis.com/css2"]').media,'print');
+console.log('PASS: syntax, sized delivery, watermark preservation, non-Cloudinary URLs and labels');

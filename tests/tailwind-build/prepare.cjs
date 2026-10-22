@@ -1,0 +1,13 @@
+const fs=require('fs'),vm=require('vm');
+const html=fs.readFileSync(__dirname+'/source.html','utf8');
+const match=html.match(/<script>\s*(tailwind.config = [\s\S]*?)<\/script>/);
+if(!match)throw Error('Tailwind config not found');
+const sandbox={tailwind:{}};vm.runInNewContext(match[1],sandbox);
+const config=sandbox.tailwind.config;
+config.content=['./index.html','./js/**/*.js'];
+config.safelist=['whitespace-pre-line'];
+fs.writeFileSync(__dirname+'/tailwind.config.cjs','module.exports = '+JSON.stringify(config,null,2)+';\n');
+fs.writeFileSync(__dirname+'/input.css','@tailwind base;\n@tailwind components;\n@tailwind utilities;\n');
+const updated=html.replace('    <!-- Tailwind CSS CDN -->\n    <script src="https://cdn.tailwindcss.com"></script>','    <!-- Precompiled Tailwind utilities -->\n    <link rel="stylesheet" href="/css/tailwind.css">').replace(match[0],'');
+if(updated.includes('tailwind.config')||updated.includes('cdn.tailwindcss.com'))throw Error('CDN removal failed');
+fs.writeFileSync(__dirname+'/index.html',updated);

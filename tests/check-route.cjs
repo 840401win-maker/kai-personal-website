@@ -1,0 +1,9 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const html=fs.readFileSync('review/route/index.html','utf8');
+const fn=html.match(/function parseRoute\(pathname\) \{[\s\S]*?\n        \}/)[0];
+const ctx={};vm.createContext(ctx);vm.runInContext(fn,ctx);
+for(const [path,want] of [['/',null],['/post/post-30years','post-30years'],['/post/post-9years/','post-9years'],['/post/%70ost-9years','post-9years'],['/post/does-not-exist','does-not-exist'],['/post/%',null],['/post/%E0%A4%A',null],['/post/%FF',null],['/post/a/b',null]]){assert.equal(ctx.parseRoute(path),want);console.log('PASS frontend',path);}
+for(const m of html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)){if(!m[1].includes('ld+json')&&!m[1].includes('src='))new vm.Script(m[2]);}
+(async()=>{const load=async p=>(await import('data:text/javascript;base64,'+Buffer.from(fs.readFileSync(p,'utf8')).toString('base64'))).default;const edge=await load('review/route/article-metadata.js'),prev=await load('review/proposed/article-metadata.js');
+for(const path of ['/post/post-30years','/post/ig-post-DSzZGbLknAR','/post/post-9years','/post/post-salary100','/post/post-modely','/post/%70ost-9years','/post/does-not-exist','/']){const next=()=>({next:async()=>new Response(html,{headers:{'content-type':'text/html'}})});assert.equal(await(await edge(new Request('https://example.com'+path),next())).text(),await(await prev(new Request('https://example.com'+path),next())).text());console.log('PASS Edge unchanged',path);}
+for(const path of ['/post/%','/post/%E0%A4%A','/post/%FF']){let calls=0;const response=new Response('fallback',{status:200});const result=await edge(new Request('https://example.com'+path),{next:async()=>{calls++;return response;}});assert.equal(result,response);assert.equal(calls,1);console.log('PASS Edge malformed falls through',path);}})().catch(e=>{console.error(e);process.exitCode=1});

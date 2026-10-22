@@ -1,0 +1,17 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const root='review/image-fix/';
+const ctx={};vm.createContext(ctx);vm.runInContext(fs.readFileSync(root+'js/utils.js','utf8'),ctx);
+const raw='https://res.cloudinary.com/p6esflub/image/upload/v1/a.png';
+const transformed='https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1/b.png';
+const marked=ctx.addWatermark(raw);
+assert.equal(ctx.addWatermark(marked),marked);
+assert.equal(ctx.addWatermark(ctx.addWatermark(transformed)),ctx.addWatermark(transformed));
+for(const input of [marked,transformed])assert.equal(ctx.parseImageUrls(input)[0],input);
+for(const separator of ['\n','\r\n',', ', ','])assert.deepEqual(Array.from(ctx.parseImageUrls(marked+separator+transformed)),[marked,transformed]);
+assert.deepEqual(Array.from(ctx.parseImageUrls(' \n ')),[]);
+vm.runInContext(fs.readFileSync(root+'js/firestore-write.js','utf8'),ctx);
+const html=fs.readFileSync(root+'index.html','utf8');
+for(const m of html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g))if(!m[1].includes('ld+json')&&!m[1].includes('src='))new vm.Script(m[2]);
+const values={newTitle:'edited',newCategory:'nursing',newReadTime:'3 min',newImages:marked+'\n'+transformed,newIgUrl:'https://example.com',newTags:'test',newSummary:'summary'};
+ctx.document={getElementById:id=>({value:values[id]})};ctx.editingPostId='test';ctx.customPosts=[{id:'test',date:'2026-01-01',likes:9}];ctx.window={location:{href:'https://example.com'},fb:{db:{},doc:()=>({}),updateDoc:async(_,data)=>{assert.equal(data.images.length,2);assert.equal(data.images[0],marked);assert.equal(data.images[1],ctx.addWatermark(transformed));assert.equal(data.likes,9);assert.equal(data.date,'2026-01-01');}}};ctx.closeAddPostModal=()=>{};ctx.showToast=()=>{};
+ctx.handleSaveCustomPost({preventDefault(){},target:{reset(){}}}).then(()=>console.log('PASS URL commas, legacy lists, newline lists, watermark idempotency, edit payload and syntax'));

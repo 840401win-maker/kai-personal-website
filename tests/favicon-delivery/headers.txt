@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 3629
+Content-Type: image/png
+X-Request-Id: 56c8f39e8947ab88de9035cc452c6874
+Last-Modified: Tue, 06 Oct 2026 17:34:24 GMT
+Etag: "eb9e0c67ddd936a706a3cdd2417038ef"
+Date: Tue, 06 Oct 2026 17:34:23 GMT
+Vary: Save-Data
+Strict-Transport-Security: max-age=604800
+Cache-Control: private, no-transform, immutable, max-age=2592000
+Server-Timing: cld-fastly;dur=781;cpu=1;start=2026-10-06T17:34:22.697Z;desc=miss,rtt;dur=54,content-info;desc="width=51,height=64,bytes=3629,format=\"png\",owidth=2000,oheight=2500,obytes=5104968,oformat=\"png\",crt=1791308063,ocrt=1786270726,ef=(1,13,17,97)",cloudinary;dur=620;start=2026-10-06T17:34:22.781Z,cld-id;desc=56c8f39e8947ab88de9035cc452c6874
+Server: Cloudinary
+Timing-Allow-Origin: *
+Access-Control-Allow-Origin: *
+Accept-Ranges: bytes
+X-Content-Type-Options: nosniff
+Access-Control-Expose-Headers: Content-Length,ETag,Server-Timing,Vary,X-Content-Type-Options
+

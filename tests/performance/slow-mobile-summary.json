@@ -1,0 +1,3020 @@
+{
+  "metadata": {
+    "source": "DevTools",
+    "startTime": "2026-10-17T00:23:26.042Z",
+    "emulatedDeviceTitle": "Responsive",
+    "cpuThrottling": 4,
+    "networkThrottling": "Slow 4G",
+    "networkThrottlingConditions": {
+      "download": 180000,
+      "upload": 84375,
+      "latency": 562.5,
+      "targetLatency": 150,
+      "key": "SPEED_SLOW_4G"
+    },
+    "dataOrigin": "TraceEvents",
+    "hostDPR": 1.25
+  },
+  "events": 147189,
+  "durationMs": 25588.1,
+  "navigation": {
+    "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+    "navId": "4CE5B138B3EF4510623AE8185E7A9CED",
+    "pid": 25512,
+    "tid": 28768
+  },
+  "fcp": [
+    3811.08
+  ],
+  "lcp": [
+    {
+      "time": 3811.08,
+      "candidateIndex": 1,
+      "isMainFrame": true,
+      "isOutermostMainFrame": true,
+      "navigationId": "4CE5B138B3EF4510623AE8185E7A9CED",
+      "nodeId": 30,
+      "nodeName": "P class='text-sm sm:text-base font-medium text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl'",
+      "performanceTimelineNavigationId": 1842,
+      "size": 32114,
+      "type": "text"
+    }
+  ],
+  "requests": [
+    {
+      "id": "4CE5B138B3EF4510623AE8185E7A9CED",
+      "url": "https://kai-personal-website.netlify.app/",
+      "start": 1379.54,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Document",
+      "response": 1379.71,
+      "status": 200,
+      "mime": "text/html",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 4503,
+      "receivedBytes": 112038,
+      "end": 1778.67,
+      "encoded": 24561,
+      "decoded": 112038,
+      "failed": false,
+      "duration": 399.13
+    },
+    {
+      "id": "25512.2",
+      "url": "https://kai-personal-website.netlify.app/css/tailwind.css",
+      "start": 1387.86,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Stylesheet",
+      "response": 1981.15,
+      "status": 200,
+      "mime": "text/css",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 6196,
+      "receivedBytes": 33301,
+      "end": 2028.49,
+      "encoded": 6196,
+      "decoded": 33301,
+      "failed": false,
+      "duration": 640.63
+    },
+    {
+      "id": "25512.3",
+      "url": "https://kai-personal-website.netlify.app/css/style.css",
+      "start": 1388.33,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Stylesheet",
+      "response": 1999.03,
+      "status": 200,
+      "mime": "text/css",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 741,
+      "receivedBytes": 1549,
+      "end": 1999.42,
+      "encoded": 741,
+      "decoded": 1549,
+      "failed": false,
+      "duration": 611.09
+    },
+    {
+      "id": "25512.4",
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png",
+      "start": 1388.44,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Medium",
+      "type": "Image",
+      "response": 3738.04,
+      "status": 200,
+      "mime": "image/webp",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 19142,
+      "receivedBytes": 18510,
+      "end": 3739.46,
+      "encoded": 19142,
+      "decoded": 18510,
+      "failed": false,
+      "duration": 2351.02
+    },
+    {
+      "id": "25512.6",
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      "start": 1390.21,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryLow",
+      "type": "Stylesheet",
+      "response": 3697.89,
+      "status": 200,
+      "mime": "text/css",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 652,
+      "receivedBytes": 102025,
+      "end": 3720.99,
+      "encoded": 19409,
+      "decoded": 102025,
+      "failed": false,
+      "duration": 2330.78
+    },
+    {
+      "id": "25512.7",
+      "url": "https://fonts.googleapis.com/css2",
+      "start": 1391.3,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryLow",
+      "type": "Stylesheet",
+      "response": 3726.83,
+      "status": 200,
+      "mime": "text/css",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 27,
+      "receivedBytes": 127048,
+      "end": 3736.65,
+      "encoded": 34930,
+      "decoded": 127048,
+      "failed": false,
+      "duration": 2345.35
+    },
+    {
+      "id": "25512.10",
+      "url": "https://kai-personal-website.netlify.app/js/vendor/purify.min.js",
+      "start": 1555.61,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "High",
+      "type": "Script",
+      "response": 3759.13,
+      "status": 200,
+      "mime": "application/javascript",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 11072,
+      "receivedBytes": 28885,
+      "end": 3759.72,
+      "encoded": 11072,
+      "decoded": 28885,
+      "failed": false,
+      "duration": 2204.11
+    },
+    {
+      "id": "25512.12",
+      "url": "https://kai-personal-website.netlify.app/js/utils.js",
+      "start": 1560.33,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Medium",
+      "type": "Script",
+      "response": 3757.51,
+      "status": 200,
+      "mime": "application/javascript",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 1826,
+      "receivedBytes": 4453,
+      "end": 3757.88,
+      "encoded": 1826,
+      "decoded": 4453,
+      "failed": false,
+      "duration": 2197.55
+    },
+    {
+      "id": "25512.13",
+      "url": "https://kai-personal-website.netlify.app/js/firebase.js",
+      "start": 1561.73,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "High",
+      "type": "Script",
+      "response": 3745.8,
+      "status": 200,
+      "mime": "application/javascript",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 729,
+      "receivedBytes": 1326,
+      "end": 3749.25,
+      "encoded": 729,
+      "decoded": 1326,
+      "failed": false,
+      "duration": 2187.52
+    },
+    {
+      "id": "25512.14",
+      "url": "https://kai-personal-website.netlify.app/js/firestore-read.js",
+      "start": 1562.03,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Medium",
+      "type": "Script",
+      "response": 3754.06,
+      "status": 200,
+      "mime": "application/javascript",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 868,
+      "receivedBytes": 767,
+      "end": 3754.89,
+      "encoded": 868,
+      "decoded": 767,
+      "failed": false,
+      "duration": 2192.86
+    },
+    {
+      "id": "25512.15",
+      "url": "https://kai-personal-website.netlify.app/js/firestore-write.js",
+      "start": 1562.28,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Medium",
+      "type": "Script",
+      "response": 3756.27,
+      "status": 200,
+      "mime": "application/javascript",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 1151,
+      "receivedBytes": 2921,
+      "end": 3756.49,
+      "encoded": 1151,
+      "decoded": 2921,
+      "failed": false,
+      "duration": 2194.21
+    },
+    {
+      "id": "25512.16",
+      "url": "https://kai-personal-website.netlify.app/js/auth.js",
+      "start": 1562.59,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Medium",
+      "type": "Script",
+      "response": 3752.26,
+      "status": 200,
+      "mime": "application/javascript",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 689,
+      "receivedBytes": 1924,
+      "end": 3752.64,
+      "encoded": 689,
+      "decoded": 1924,
+      "failed": false,
+      "duration": 2190.05
+    },
+    {
+      "id": "25512.17",
+      "url": "https://kai-personal-website.netlify.app/.netlify/scripts/hud",
+      "start": 1757.41,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Low",
+      "type": "Script",
+      "response": 3784.01,
+      "status": 200,
+      "mime": "application/javascript",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 10927,
+      "receivedBytes": 35855,
+      "end": 3784.43,
+      "encoded": 10927,
+      "decoded": 35855,
+      "failed": false,
+      "duration": 2027.02
+    },
+    {
+      "id": "25512.150",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9i1OCEKIfVZ1w.woff2",
+      "start": 3869.71,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 6876.46,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 24936,
+      "end": 6878.82,
+      "encoded": 24965,
+      "decoded": 24936,
+      "failed": false,
+      "duration": 3009.11
+    },
+    {
+      "id": "25512.27",
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+      "start": 3893.29,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 12397.67,
+      "status": 200,
+      "mime": "application/octet-stream",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 662,
+      "receivedBytes": 150124,
+      "end": 12413.24,
+      "encoded": 150829,
+      "decoded": 150124,
+      "failed": false,
+      "duration": 8519.95
+    },
+    {
+      "id": "25512.23",
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2",
+      "start": 3894.51,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 12196.68,
+      "status": 200,
+      "mime": "application/octet-stream",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 623,
+      "receivedBytes": 108020,
+      "end": 12197.39,
+      "encoded": 108676,
+      "decoded": 108020,
+      "failed": false,
+      "duration": 8302.88
+    },
+    {
+      "id": "25512.146",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.123.woff2",
+      "start": 3934.25,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 8056.23,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 36304,
+      "end": 8057.87,
+      "encoded": 36336,
+      "decoded": 36304,
+      "failed": false,
+      "duration": 4123.62
+    },
+    {
+      "id": "25512.145",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.122.woff2",
+      "start": 3935.06,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 10141.04,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 60152,
+      "end": 10142.49,
+      "encoded": 60186,
+      "decoded": 60152,
+      "failed": false,
+      "duration": 6207.43
+    },
+    {
+      "id": "25512.143",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.120.woff2",
+      "start": 3935.49,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 10946.39,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 71384,
+      "end": 10946.87,
+      "encoded": 71421,
+      "decoded": 71384,
+      "failed": false,
+      "duration": 7011.38
+    },
+    {
+      "id": "25512.139",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.116.woff2",
+      "start": 3936.07,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 11253.72,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 73264,
+      "end": 11255.19,
+      "encoded": 73301,
+      "decoded": 73264,
+      "failed": false,
+      "duration": 7319.12
+    },
+    {
+      "id": "25512.144",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.121.woff2",
+      "start": 3949.71,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 10578.65,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 65208,
+      "end": 10579.03,
+      "encoded": 65242,
+      "decoded": 65208,
+      "failed": false,
+      "duration": 6629.32
+    },
+    {
+      "id": "25512.141",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.118.woff2",
+      "start": 3950.34,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 11726.3,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 84908,
+      "end": 11729.38,
+      "encoded": 84947,
+      "decoded": 84908,
+      "failed": false,
+      "duration": 7779.04
+    },
+    {
+      "id": "25512.135",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.112.woff2",
+      "start": 3950.72,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 11259.77,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 72392,
+      "end": 11260.4,
+      "encoded": 72429,
+      "decoded": 72392,
+      "failed": false,
+      "duration": 7309.68
+    },
+    {
+      "id": "25512.142",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.119.woff2",
+      "start": 4047.46,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 11380.43,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 74096,
+      "end": 11389.9,
+      "encoded": 74133,
+      "decoded": 74096,
+      "failed": false,
+      "duration": 7342.44
+    },
+    {
+      "id": "25512.140",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.117.woff2",
+      "start": 4068.61,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 11262.69,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 71260,
+      "end": 11262.94,
+      "encoded": 71297,
+      "decoded": 71260,
+      "failed": false,
+      "duration": 7194.33
+    },
+    {
+      "id": "25512.137",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.114.woff2",
+      "start": 4109.08,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 11714.34,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 79056,
+      "end": 11718.31,
+      "encoded": 79093,
+      "decoded": 79056,
+      "failed": false,
+      "duration": 7609.23
+    },
+    {
+      "id": "25512.134",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.111.woff2",
+      "start": 4161.66,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 11391.77,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 72848,
+      "end": 11392.98,
+      "encoded": 72885,
+      "decoded": 72848,
+      "failed": false,
+      "duration": 7231.32
+    },
+    {
+      "id": "25512.131",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.108.woff2",
+      "start": 4186.17,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 11256.82,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 68564,
+      "end": 11258.69,
+      "encoded": 68601,
+      "decoded": 68564,
+      "failed": false,
+      "duration": 7072.52
+    },
+    {
+      "id": "25512.138",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.115.woff2",
+      "start": 4247.11,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 11702.73,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 74672,
+      "end": 11711.31,
+      "encoded": 74709,
+      "decoded": 74672,
+      "failed": false,
+      "duration": 7464.2
+    },
+    {
+      "id": "25512.155",
+      "url": "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js",
+      "start": 4353.43,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "High",
+      "type": "Script",
+      "response": 7546.65,
+      "status": 200,
+      "mime": "text/javascript",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 101721,
+      "end": 7546.82,
+      "encoded": 22564,
+      "decoded": 101721,
+      "failed": false,
+      "duration": 3193.39
+    },
+    {
+      "id": "25512.156",
+      "url": "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js",
+      "start": 4356.29,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "High",
+      "type": "Script",
+      "response": 12204.98,
+      "status": 200,
+      "mime": "text/javascript",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 436574,
+      "end": 12205.45,
+      "encoded": 111683,
+      "decoded": 436574,
+      "failed": false,
+      "duration": 7849.16
+    },
+    {
+      "id": "25512.157",
+      "url": "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js",
+      "start": 4356.98,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "High",
+      "type": "Script",
+      "response": 9052.94,
+      "status": 200,
+      "mime": "text/javascript",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 150996,
+      "end": 9054.52,
+      "encoded": 40056,
+      "decoded": 150996,
+      "failed": false,
+      "duration": 4697.54
+    },
+    {
+      "id": "25512.159",
+      "url": "https://kai-personal-website.netlify.app/.netlify/scripts/hud",
+      "start": 4363.75,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryLow",
+      "type": "Other",
+      "response": 5072.34,
+      "status": 200,
+      "mime": "application/javascript",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 10818,
+      "receivedBytes": 35855,
+      "end": 6240.51,
+      "encoded": 10818,
+      "decoded": 35855,
+      "failed": false,
+      "duration": 1876.76
+    },
+    {
+      "id": "1193A1F109A2D35C575CD593B055F973",
+      "url": "nullsrcdoc",
+      "start": 4386.95,
+      "frame": "DD6A1DD78CD338D4A87CF9076E391795",
+      "priority": "VeryHigh",
+      "type": "Document",
+      "response": 4386.97,
+      "status": 0,
+      "mime": "text/html",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 0,
+      "receivedBytes": 10780,
+      "end": 4395.67,
+      "encoded": 10780,
+      "decoded": 10780,
+      "failed": false,
+      "duration": 8.72
+    },
+    {
+      "id": "25512.166",
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_96/f_auto,q_auto/v1786270726/14_lfk0rp.png",
+      "start": 12905.12,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Low",
+      "type": "Image",
+      "response": 13755.69,
+      "status": 200,
+      "mime": "image/webp",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 2585,
+      "receivedBytes": 2188,
+      "end": 13756.13,
+      "encoded": 2585,
+      "decoded": 2188,
+      "failed": false,
+      "duration": 851.01
+    },
+    {
+      "id": "25512.25",
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-regular-400.woff2",
+      "start": 12922.03,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 13756.61,
+      "status": 200,
+      "mime": "application/octet-stream",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 623,
+      "receivedBytes": 24948,
+      "end": 13756.95,
+      "encoded": 25581,
+      "decoded": 24948,
+      "failed": false,
+      "duration": 834.92
+    },
+    {
+      "id": "25512.119",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.92.woff2",
+      "start": 13094.53,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 13758.11,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 27,
+      "receivedBytes": 7628,
+      "end": 13758.4,
+      "encoded": 7655,
+      "decoded": 7628,
+      "failed": false,
+      "duration": 663.87
+    },
+    {
+      "id": "25512.136",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.113.woff2",
+      "start": 13280.03,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 15945.84,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 29,
+      "receivedBytes": 71768,
+      "end": 15955.33,
+      "encoded": 71805,
+      "decoded": 71768,
+      "failed": false,
+      "duration": 2675.3
+    },
+    {
+      "id": "25512.132",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.109.woff2",
+      "start": 13336.25,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 16303.81,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 30,
+      "receivedBytes": 67908,
+      "end": 16304.53,
+      "encoded": 67946,
+      "decoded": 67908,
+      "failed": false,
+      "duration": 2968.28
+    },
+    {
+      "id": "25512.117",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.90.woff2",
+      "start": 13462.5,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 14329.03,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 30,
+      "receivedBytes": 12096,
+      "end": 14329.4,
+      "encoded": 12126,
+      "decoded": 12096,
+      "failed": false,
+      "duration": 866.9
+    },
+    {
+      "id": "25512.133",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.110.woff2",
+      "start": 13501.38,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 16567.87,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 34,
+      "receivedBytes": 72244,
+      "end": 16568.92,
+      "encoded": 72286,
+      "decoded": 72244,
+      "failed": false,
+      "duration": 3067.54
+    },
+    {
+      "id": "25512.47",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.10.woff2",
+      "start": 13676.15,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 14898.76,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 34,
+      "receivedBytes": 15264,
+      "end": 14898.95,
+      "encoded": 15298,
+      "decoded": 15264,
+      "failed": false,
+      "duration": 1222.8
+    },
+    {
+      "id": "25512.161",
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d",
+      "start": 13826.41,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Low",
+      "type": "Image",
+      "response": 14646.2,
+      "status": 200,
+      "mime": "image/avif",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 22806,
+      "receivedBytes": 22725,
+      "end": 15643.8,
+      "encoded": 22806,
+      "decoded": 22725,
+      "failed": false,
+      "duration": 1817.39
+    },
+    {
+      "id": "25512.162",
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514",
+      "start": 13826.54,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Low",
+      "type": "Image",
+      "response": 14648.52,
+      "status": 200,
+      "mime": "image/avif",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 34134,
+      "receivedBytes": 34066,
+      "end": 16303.51,
+      "encoded": 34134,
+      "decoded": 34066,
+      "failed": false,
+      "duration": 2476.97
+    },
+    {
+      "id": "25512.163",
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89",
+      "start": 13826.81,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Low",
+      "type": "Image",
+      "response": 14690.5,
+      "status": 200,
+      "mime": "image/avif",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 62818,
+      "receivedBytes": 62742,
+      "end": 16573.07,
+      "encoded": 62818,
+      "decoded": 62742,
+      "failed": false,
+      "duration": 2746.26
+    },
+    {
+      "id": "25512.164",
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png",
+      "start": 13827.08,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Low",
+      "type": "Image",
+      "response": 14478.89,
+      "status": 200,
+      "mime": "image/webp",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 42124,
+      "receivedBytes": 41708,
+      "end": 16308.61,
+      "encoded": 42124,
+      "decoded": 41708,
+      "failed": false,
+      "duration": 2481.53
+    },
+    {
+      "id": "25512.165",
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c",
+      "start": 13827.33,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Low",
+      "type": "Image",
+      "response": 14659.26,
+      "status": 200,
+      "mime": "image/avif",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 20613,
+      "receivedBytes": 20555,
+      "end": 15513.1,
+      "encoded": 20613,
+      "decoded": 20555,
+      "failed": false,
+      "duration": 1685.77
+    },
+    {
+      "id": "25512.172",
+      "url": "https://apis.google.com/js/api.js",
+      "start": 13860.68,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Low",
+      "type": "Script",
+      "response": 14845.53,
+      "status": 200,
+      "mime": "text/javascript",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 6430,
+      "receivedBytes": 14585,
+      "end": 14845.9,
+      "encoded": 6430,
+      "decoded": 14585,
+      "failed": false,
+      "duration": 985.22
+    },
+    {
+      "id": "25512.173",
+      "url": "https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.zh_TW.8ezJ7WFASIU.O/m=gapi_iframes/rt=j/sv=1/d=1/ed=1/rs=AHpOoo-XHSwQy8B7xJsR_LIrn08tAwWe2g/cb=gapi.loaded_0",
+      "start": 14895.61,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Low",
+      "type": "Script",
+      "response": 16453.56,
+      "status": 200,
+      "mime": "text/javascript",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 35555,
+      "receivedBytes": 107483,
+      "end": 16454.09,
+      "encoded": 35555,
+      "decoded": 107483,
+      "failed": false,
+      "duration": 1558.48
+    },
+    {
+      "id": "25512.184",
+      "url": "https://firestore.googleapis.com/google.firestore.v1.Firestore/Listen/channel",
+      "start": 16848.6,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "High",
+      "type": "Other",
+      "response": 17462.54,
+      "status": 200,
+      "mime": "text/plain",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 23,
+      "receivedBytes": 54,
+      "end": 17469.14,
+      "encoded": 94,
+      "decoded": 54,
+      "failed": false,
+      "duration": 620.54
+    },
+    {
+      "id": "25512.185",
+      "url": "https://firestore.googleapis.com/google.firestore.v1.Firestore/Listen/channel",
+      "start": 17477.21,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "High",
+      "type": "Other",
+      "response": 18072.44,
+      "status": 200,
+      "mime": "text/plain",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 22,
+      "receivedBytes": 15424,
+      "duration": null
+    },
+    {
+      "id": "25512.128",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.105.woff2",
+      "start": 18262.25,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 20155.16,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 37,
+      "receivedBytes": 62384,
+      "end": 20156.84,
+      "encoded": 62426,
+      "decoded": 62384,
+      "failed": false,
+      "duration": 1894.59
+    },
+    {
+      "id": "25512.129",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.106.woff2",
+      "start": 18266.75,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 20161.6,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 37,
+      "receivedBytes": 63124,
+      "end": 20162.65,
+      "encoded": 63166,
+      "decoded": 63124,
+      "failed": false,
+      "duration": 1895.9
+    },
+    {
+      "id": "25512.74",
+      "url": "https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.47.woff2",
+      "start": 18355.62,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "VeryHigh",
+      "type": "Font",
+      "response": 19809.96,
+      "status": 200,
+      "mime": "font/woff2",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 37,
+      "receivedBytes": 40096,
+      "end": 19811.77,
+      "encoded": 40136,
+      "decoded": 40096,
+      "failed": false,
+      "duration": 1456.15
+    },
+    {
+      "id": "25512.191",
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/l_text:Arial_36_bold:%40kai.nursing_life,co_white,o_75,g_south_east,x_18,y_18/v1786260835/eohl0urvzqnm9p6uffq4.png",
+      "start": 18412.26,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Low",
+      "type": "Image",
+      "response": 19069.63,
+      "status": 200,
+      "mime": "image/webp",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 105186,
+      "receivedBytes": 104540,
+      "end": 20429.09,
+      "encoded": 105186,
+      "decoded": 104540,
+      "failed": false,
+      "duration": 2016.83
+    },
+    {
+      "id": "25512.192",
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/l_text:Arial_36_bold:%40kai.nursing_life,co_white,o_75,g_south_east,x_18,y_18/v1786221349/10_fu35wr.png",
+      "start": 18412.42,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "Low",
+      "type": "Image",
+      "response": 19007.63,
+      "status": 404,
+      "mime": "text/plain",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 272,
+      "receivedBytes": 9,
+      "end": 19009.54,
+      "encoded": 272,
+      "decoded": 9,
+      "failed": false,
+      "duration": 597.12
+    },
+    {
+      "id": "28868.4",
+      "url": "https://www.googleapis.com/identitytoolkit/v3/relyingparty/getProjectConfig",
+      "start": 18951.41,
+      "frame": "BBD674190AFEB1CD6FA4762514B2C243",
+      "priority": "High",
+      "type": "Other",
+      "response": 19780.32,
+      "status": 200,
+      "mime": "application/json",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 407,
+      "receivedBytes": 188,
+      "end": 19810.87,
+      "encoded": 407,
+      "decoded": 188,
+      "failed": false,
+      "duration": 859.46
+    },
+    {
+      "id": "25512.201",
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_64,h_64/f_png,q_auto/v1786270726/11_skvgrb.png",
+      "start": 20582.13,
+      "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+      "priority": "High",
+      "type": "Other",
+      "response": 21180.2,
+      "status": 200,
+      "mime": "image/png",
+      "cache": false,
+      "serviceWorker": false,
+      "encodedResponse": 4071,
+      "receivedBytes": 3629,
+      "end": 21196,
+      "encoded": 4071,
+      "decoded": 3629,
+      "failed": false,
+      "duration": 613.87
+    }
+  ],
+  "longTasks": [
+    {
+      "start": 2028.85,
+      "duration": 1668.684
+    },
+    {
+      "start": 3839.7,
+      "duration": 513.346
+    },
+    {
+      "start": 4418.15,
+      "duration": 89.825
+    },
+    {
+      "start": 6880.82,
+      "duration": 65.41
+    },
+    {
+      "start": 8064.61,
+      "duration": 83.006
+    },
+    {
+      "start": 10145.36,
+      "duration": 104.084
+    },
+    {
+      "start": 10582.42,
+      "duration": 319.498
+    },
+    {
+      "start": 10962.06,
+      "duration": 291.066
+    },
+    {
+      "start": 11267.36,
+      "duration": 111.979
+    },
+    {
+      "start": 11397.45,
+      "duration": 302.054
+    },
+    {
+      "start": 11744.67,
+      "duration": 451.822
+    },
+    {
+      "start": 12213.71,
+      "duration": 183.774
+    },
+    {
+      "start": 12418.75,
+      "duration": 90.56
+    },
+    {
+      "start": 12509.4,
+      "duration": 73.77
+    },
+    {
+      "start": 12583.19,
+      "duration": 1171.881
+    },
+    {
+      "start": 13759.22,
+      "duration": 68.886
+    },
+    {
+      "start": 14330.44,
+      "duration": 92.471
+    },
+    {
+      "start": 14901.34,
+      "duration": 146.585
+    },
+    {
+      "start": 15962.81,
+      "duration": 338.214
+    },
+    {
+      "start": 16313.22,
+      "duration": 82.975
+    },
+    {
+      "start": 16454.86,
+      "duration": 112.828
+    },
+    {
+      "start": 16573.29,
+      "duration": 88.408
+    },
+    {
+      "start": 16671.91,
+      "duration": 83.498
+    },
+    {
+      "start": 16756.08,
+      "duration": 51.422
+    },
+    {
+      "start": 18073.85,
+      "duration": 60.906
+    },
+    {
+      "start": 18155.02,
+      "duration": 257.858
+    },
+    {
+      "start": 19831.92,
+      "duration": 320.489
+    },
+    {
+      "start": 20167.17,
+      "duration": 247.497
+    },
+    {
+      "start": 20431.26,
+      "duration": 76.438
+    },
+    {
+      "start": 20510.75,
+      "duration": 59.947
+    }
+  ],
+  "first5sMainEvents": [
+    {
+      "name": "RunTask",
+      "count": 748,
+      "ms": 2672.164000000018,
+      "max": 1668.684
+    },
+    {
+      "name": "Layout",
+      "count": 10,
+      "ms": 2046.9760000000003,
+      "max": 1560.756
+    },
+    {
+      "name": "LocalFrameView::performLayout",
+      "count": 10,
+      "ms": 2045.7029999999997,
+      "max": 1560.715
+    },
+    {
+      "name": "UpdateLayoutTree",
+      "count": 18,
+      "ms": 150.13,
+      "max": 80.022
+    },
+    {
+      "name": "ParseHTML",
+      "count": 22,
+      "ms": 73.38400000000001,
+      "max": 23.382
+    },
+    {
+      "name": "Paint",
+      "count": 17,
+      "ms": 69.22900000000001,
+      "max": 41.194
+    },
+    {
+      "name": "v8::Debugger::AsyncTaskRun",
+      "count": 26,
+      "ms": 68.931,
+      "max": 22.671
+    },
+    {
+      "name": "EvaluateScript",
+      "count": 8,
+      "ms": 57.79799999999999,
+      "max": 22.235
+    },
+    {
+      "name": "ScriptCompiled",
+      "count": 8,
+      "ms": 41.181999999999995,
+      "max": 20.286
+    },
+    {
+      "name": "v8.run",
+      "count": 8,
+      "ms": 36.089,
+      "max": 15.407
+    },
+    {
+      "name": "RenderFrameImpl::CommitNavigation",
+      "count": 2,
+      "ms": 35.605000000000004,
+      "max": 24.814
+    },
+    {
+      "name": "RenderFrameImpl::CommitNavigationWithParams",
+      "count": 2,
+      "ms": 34.827,
+      "max": 24.728
+    },
+    {
+      "name": "FrameLoader::CommitNavigation",
+      "count": 2,
+      "ms": 33.403,
+      "max": 23.971
+    },
+    {
+      "name": "ParseAuthorStyleSheet",
+      "count": 4,
+      "ms": 30.566000000000003,
+      "max": 20.899
+    },
+    {
+      "name": "NavigationBodyLoader::OnReadable",
+      "count": 12,
+      "ms": 27.891000000000002,
+      "max": 10.263
+    },
+    {
+      "name": "NavigationBodyLoader::ReadFromDataPipe",
+      "count": 12,
+      "ms": 27.241,
+      "max": 10.252
+    },
+    {
+      "name": "FrameLoader::CommitDocumentLoader",
+      "count": 4,
+      "ms": 25.077000000000005,
+      "max": 9.861
+    },
+    {
+      "name": "DocumentLoader::BodyDataReceivedImpl",
+      "count": 14,
+      "ms": 22.828000000000003,
+      "max": 6.251
+    },
+    {
+      "name": "DocumentLoader::CommitNavigation",
+      "count": 4,
+      "ms": 22.567,
+      "max": 9.614
+    },
+    {
+      "name": "DocumentLoader::BodyLoadingFinished",
+      "count": 2,
+      "ms": 21.467,
+      "max": 21.41
+    },
+    {
+      "name": "DocumentLoader::HandleData",
+      "count": 14,
+      "ms": 18.674999999999997,
+      "max": 4.043
+    },
+    {
+      "name": "DocumentLoader::StartLoadingResponse",
+      "count": 4,
+      "ms": 18.015,
+      "max": 7.664
+    },
+    {
+      "name": "DocumentLoader::CommitData",
+      "count": 14,
+      "ms": 17.046,
+      "max": 4.039
+    },
+    {
+      "name": "DecodedDataDocumentParser::AppendBytes",
+      "count": 14,
+      "ms": 16.643,
+      "max": 4.036
+    },
+    {
+      "name": "v8.compile",
+      "count": 8,
+      "ms": 16.14,
+      "max": 11.077
+    }
+  ],
+  "imagePaints": [
+    {
+      "time": 3690.13,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 3691.35,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 3691.54,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 3691.57,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 3790.68,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 4346.33,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 4346.53,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 4347.14,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 4347.34,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 4347.97,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 4505.67,
+      "node": 63,
+      "url": ""
+    },
+    {
+      "time": 4536.22,
+      "node": 63,
+      "url": ""
+    },
+    {
+      "time": 6943.86,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 6943.89,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 6944.08,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 6944.13,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 6944.18,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 6968.25,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 6968.43,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 6968.9,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 6969.27,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 6969.48,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 8145.87,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 8145.9,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 8146.1,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 8146.15,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 8146.19,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 10245.66,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 10245.85,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 10245.98,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 10246.2,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 10246.43,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 10895.22,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 10895.47,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 10896.24,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 10897.49,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 10901.21,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 11249.96,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 11250,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 11250.27,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 11250.47,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 11250.68,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 11362.36,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 11362.41,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 11363.66,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 11375.55,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 11377.05,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 11679.81,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 11679.85,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 11684.44,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 11688.26,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 11691.09,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 12188.99,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 12189.03,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 12195.3,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 12195.34,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 12195.4,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 12361.95,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 12362.43,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 12378.54,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 12378.81,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 12380.5,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 12577.64,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 12579.11,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 12579.27,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 12579.3,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 12579.61,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 13812.37,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 13812.51,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 13812.88,
+      "node": 174,
+      "url": ""
+    },
+    {
+      "time": 13813.52,
+      "node": 180,
+      "url": ""
+    },
+    {
+      "time": 13814.12,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 13814.3,
+      "node": 188,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_96/f_auto,q_auto/v1786270726/14_lfk0rp.png"
+    },
+    {
+      "time": 13814.7,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 13815.72,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 14418.48,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 14418.51,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 14418.91,
+      "node": 174,
+      "url": ""
+    },
+    {
+      "time": 14419.12,
+      "node": 180,
+      "url": ""
+    },
+    {
+      "time": 14419.5,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 14419.51,
+      "node": 188,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_96/f_auto,q_auto/v1786270726/14_lfk0rp.png"
+    },
+    {
+      "time": 14419.71,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 14419.9,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 14484.91,
+      "node": 243,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 14681.58,
+      "node": 244,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 14700.93,
+      "node": 245,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 14829.9,
+      "node": 246,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 15017.31,
+      "node": 244,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 15029.12,
+      "node": 246,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 15029.19,
+      "node": 245,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 15029.26,
+      "node": 243,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 15029.28,
+      "node": 247,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 15032.97,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 15033.16,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 15033.58,
+      "node": 174,
+      "url": ""
+    },
+    {
+      "time": 15034.16,
+      "node": 180,
+      "url": ""
+    },
+    {
+      "time": 15034.58,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 15034.75,
+      "node": 188,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_96/f_auto,q_auto/v1786270726/14_lfk0rp.png"
+    },
+    {
+      "time": 15034.79,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 15035.16,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 15524.45,
+      "node": 247,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 15529.14,
+      "node": 247,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 15554.38,
+      "node": 243,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 15651.86,
+      "node": 244,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 15662.34,
+      "node": 244,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 15780.9,
+      "node": 245,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 15929.53,
+      "node": 246,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 16256.76,
+      "node": 244,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 16257.58,
+      "node": 247,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 16274.61,
+      "node": 244,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 16274.83,
+      "node": 246,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 16274.84,
+      "node": 245,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 16275.01,
+      "node": 243,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 16275.03,
+      "node": 247,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 16291.27,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 16291.67,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 16292.28,
+      "node": 174,
+      "url": ""
+    },
+    {
+      "time": 16295.95,
+      "node": 180,
+      "url": ""
+    },
+    {
+      "time": 16297.39,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 16297.57,
+      "node": 188,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_96/f_auto,q_auto/v1786270726/14_lfk0rp.png"
+    },
+    {
+      "time": 16297.8,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 16298.18,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 16368.26,
+      "node": 244,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 16368.64,
+      "node": 246,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 16369.05,
+      "node": 243,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 16369.25,
+      "node": 247,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 16380.25,
+      "node": 244,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 16381.06,
+      "node": 246,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 16381.65,
+      "node": 245,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 16382.27,
+      "node": 243,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 16382.66,
+      "node": 247,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 16384.31,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 16384.68,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 16385.11,
+      "node": 174,
+      "url": ""
+    },
+    {
+      "time": 16385.51,
+      "node": 180,
+      "url": ""
+    },
+    {
+      "time": 16386.11,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 16386.12,
+      "node": 188,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_96/f_auto,q_auto/v1786270726/14_lfk0rp.png"
+    },
+    {
+      "time": 16386.32,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 16386.53,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 16632.18,
+      "node": 244,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 16632.41,
+      "node": 246,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 16636.61,
+      "node": 245,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 16637.01,
+      "node": 243,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 16637.21,
+      "node": 247,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 16643.03,
+      "node": 244,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 16643.24,
+      "node": 246,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 16643.27,
+      "node": 245,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 16643.44,
+      "node": 243,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 16643.46,
+      "node": 247,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 16644.45,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 16644.46,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 16645.18,
+      "node": 174,
+      "url": ""
+    },
+    {
+      "time": 16645.68,
+      "node": 180,
+      "url": ""
+    },
+    {
+      "time": 16645.98,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 16646.02,
+      "node": 188,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_96/f_auto,q_auto/v1786270726/14_lfk0rp.png"
+    },
+    {
+      "time": 16646.63,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 16647.86,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 16795.04,
+      "node": 250,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 16795.36,
+      "node": 251,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 16795.79,
+      "node": 252,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 16795.87,
+      "node": 253,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 16796.14,
+      "node": 254,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 16803.86,
+      "node": 250,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 16804.07,
+      "node": 251,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 16804.25,
+      "node": 252,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 16804.27,
+      "node": 253,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 16804.29,
+      "node": 254,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 16804.66,
+      "node": 318,
+      "url": ""
+    },
+    {
+      "time": 16804.9,
+      "node": 324,
+      "url": ""
+    },
+    {
+      "time": 17503.36,
+      "node": 250,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 17504.37,
+      "node": 251,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 17506.18,
+      "node": 252,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 17507.58,
+      "node": 253,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 17509.39,
+      "node": 254,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 18396.27,
+      "node": 332,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 18396.45,
+      "node": 333,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 18396.53,
+      "node": 334,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 18396.75,
+      "node": 335,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 18397.34,
+      "node": 336,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 18407.11,
+      "node": 332,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 18407.31,
+      "node": 333,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 18407.34,
+      "node": 334,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 18407.35,
+      "node": 335,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 18407.52,
+      "node": 336,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 18408.14,
+      "node": 424,
+      "url": ""
+    },
+    {
+      "time": 18408.52,
+      "node": 430,
+      "url": ""
+    },
+    {
+      "time": 19017.11,
+      "node": 440,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 19019.54,
+      "node": 440,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 19085.31,
+      "node": 441,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/l_text:Arial_36_bold:%40kai.nursing_life,co_white,o_75,g_south_east,x_18,y_18/v1786260835/eohl0urvzqnm9p6uffq4.png"
+    },
+    {
+      "time": 20119.45,
+      "node": 440,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 20119.65,
+      "node": 332,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 20119.84,
+      "node": 333,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 20120.04,
+      "node": 334,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 20120.23,
+      "node": 335,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 20120.26,
+      "node": 336,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 20126.26,
+      "node": 441,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/l_text:Arial_36_bold:%40kai.nursing_life,co_white,o_75,g_south_east,x_18,y_18/v1786260835/eohl0urvzqnm9p6uffq4.png"
+    },
+    {
+      "time": 20126.46,
+      "node": 440,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 20126.49,
+      "node": 332,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 20126.67,
+      "node": 333,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 20126.69,
+      "node": 334,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 20126.85,
+      "node": 335,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 20126.87,
+      "node": 336,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 20132.2,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 20132.23,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 20141.88,
+      "node": 424,
+      "url": ""
+    },
+    {
+      "time": 20144.53,
+      "node": 430,
+      "url": ""
+    },
+    {
+      "time": 20146.41,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 20146.51,
+      "node": 188,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_96/f_auto,q_auto/v1786270726/14_lfk0rp.png"
+    },
+    {
+      "time": 20146.66,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 20146.89,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 20451.65,
+      "node": 441,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/l_text:Arial_36_bold:%40kai.nursing_life,co_white,o_75,g_south_east,x_18,y_18/v1786260835/eohl0urvzqnm9p6uffq4.png"
+    },
+    {
+      "time": 20453.09,
+      "node": 440,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 20453.93,
+      "node": 332,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 20462.56,
+      "node": 333,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 20463.23,
+      "node": 334,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 20463.32,
+      "node": 335,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 20463.91,
+      "node": 336,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 20488.29,
+      "node": 441,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/l_text:Arial_36_bold:%40kai.nursing_life,co_white,o_75,g_south_east,x_18,y_18/v1786260835/eohl0urvzqnm9p6uffq4.png"
+    },
+    {
+      "time": 20491.52,
+      "node": 440,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 20492.15,
+      "node": 332,
+      "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+    },
+    {
+      "time": 20492.55,
+      "node": 333,
+      "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514"
+    },
+    {
+      "time": 20494.36,
+      "node": 334,
+      "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89"
+    },
+    {
+      "time": 20494.55,
+      "node": 335,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_800/f_auto,q_auto/v1790988449/1_ykf8js.png"
+    },
+    {
+      "time": 20494.57,
+      "node": 336,
+      "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
+    },
+    {
+      "time": 20496.01,
+      "node": 41,
+      "url": ""
+    },
+    {
+      "time": 20496.04,
+      "node": 50,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_256/f_auto,q_auto/v1786270726/11_skvgrb.png"
+    },
+    {
+      "time": 20496.55,
+      "node": 424,
+      "url": ""
+    },
+    {
+      "time": 20496.63,
+      "node": 430,
+      "url": ""
+    },
+    {
+      "time": 20496.72,
+      "node": 43,
+      "url": ""
+    },
+    {
+      "time": 20496.73,
+      "node": 188,
+      "url": "https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_96/f_auto,q_auto/v1786270726/14_lfk0rp.png"
+    },
+    {
+      "time": 20496.78,
+      "node": 44,
+      "url": ""
+    },
+    {
+      "time": 20496.82,
+      "node": 44,
+      "url": ""
+    }
+  ],
+  "viewportEvents": [
+    {
+      "name": "PaintTimingVisualizer::Viewport",
+      "time": 12.14,
+      "data": {
+        "dpr": 2.000000029802322,
+        "viewport_rect": [
+          0,
+          0,
+          980,
+          0,
+          980,
+          2121.60009765625,
+          0,
+          2121.60009765625
+        ]
+      }
+    },
+    {
+      "name": "InvalidateLayout",
+      "time": 1380.5,
+      "data": {
+        "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+        "nodeId": 5,
+        "sampleTraceId": 8546620103771336
+      }
+    },
+    {
+      "name": "ParseMetaViewport",
+      "time": 1389.95,
+      "data": {
+        "content": "width=device-width, initial-scale=1.0",
+        "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+        "node_id": 6
+      }
+    },
+    {
+      "name": "InvalidateLayout",
+      "time": 2107.89,
+      "data": {
+        "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+        "nodeId": 5,
+        "sampleTraceId": 8546620103771928
+      }
+    },
+    {
+      "name": "PaintTimingVisualizer::LayoutObjectPainted",
+      "time": 3687.32,
+      "data": {
+        "dom_node_id": 12,
+        "frame": "EA15D0A62ED119C7EA3FA84338CDD5F1",
+        "is_aggregation_text": true,
+        "is_in_main_frame": true,
+        "is_in_outermost_main_frame": true,
+        "is_svg": false,
+        "object_name": "LayoutBlockFlow",
+        "rect": [
+          194,
+          7,
+          296,
+          7,
+          296,
+          24,
+          194,
+          24
+        ]
+      }
+    }
+  ],
+  "markers": [
+    {
+      "name": "EvaluateScript",
+      "time": -16.49,
+      "duration": 9.172,
+      "url": ""
+    },
+    {
+      "name": "ParseHTML",
+      "time": 5.2,
+      "duration": 0.201,
+      "url": ""
+    },
+    {
+      "name": "ParseHTML",
+      "time": 1389.84,
+      "duration": 2.357,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 1395.98,
+      "duration": 0.014,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 1513.36,
+      "duration": 3.329,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 1522.11,
+      "duration": 1.676,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 1524.36,
+      "duration": 0.432,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 1524.96,
+      "duration": 0.002,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 1533.62,
+      "duration": 7.08,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 1541.3,
+      "duration": 21.369,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 1563.54,
+      "duration": 0.007,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 1607.64,
+      "duration": 0.011,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 1621.79,
+      "duration": 0.014,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 1744.78,
+      "duration": 0.022,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 1757.03,
+      "duration": 0.067,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "EvaluateScript",
+      "time": 3760.54,
+      "duration": 22.235,
+      "url": "https://kai-personal-website.netlify.app/js/vendor/purify.min.js"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 3816.1,
+      "duration": 23.382,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "EvaluateScript",
+      "time": 3816.91,
+      "duration": 0.993,
+      "url": "https://kai-personal-website.netlify.app/js/utils.js"
+    },
+    {
+      "name": "EvaluateScript",
+      "time": 3822.17,
+      "duration": 0.38,
+      "url": "https://kai-personal-website.netlify.app/js/firestore-read.js"
+    },
+    {
+      "name": "EvaluateScript",
+      "time": 3822.77,
+      "duration": 0.41,
+      "url": "https://kai-personal-website.netlify.app/js/firestore-write.js"
+    },
+    {
+      "name": "EvaluateScript",
+      "time": 3823.56,
+      "duration": 0.233,
+      "url": "https://kai-personal-website.netlify.app/js/auth.js"
+    },
+    {
+      "name": "EvaluateScript",
+      "time": 3825.99,
+      "duration": 13.306,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 4357.44,
+      "duration": 0.865,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "EvaluateScript",
+      "time": 4364.12,
+      "duration": 16.066,
+      "url": "https://kai-personal-website.netlify.app/.netlify/scripts/hud"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 4373.68,
+      "duration": 0.263,
+      "url": "nullblank"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 4380.36,
+      "duration": 0.004,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 4380.37,
+      "duration": 0.001,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 4405.62,
+      "duration": 12.265,
+      "url": "nullsrcdoc"
+    },
+    {
+      "name": "EvaluateScript",
+      "time": 4413.39,
+      "duration": 4.175,
+      "url": "nullsrcdoc"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 4508.02,
+      "duration": 0.022,
+      "url": "nullsrcdoc"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 4508.06,
+      "duration": 0.001,
+      "url": "nullsrcdoc"
+    },
+    {
+      "name": "MarkDOMContent",
+      "time": 4508.12,
+      "duration": 0,
+      "url": ""
+    },
+    {
+      "name": "MarkLoad",
+      "time": 4512.29,
+      "duration": 0,
+      "url": ""
+    },
+    {
+      "name": "ParseHTML",
+      "time": 12735.57,
+      "duration": 9.063,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 12744.66,
+      "duration": 0.172,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 12762.61,
+      "duration": 5.111,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 12767.74,
+      "duration": 0.187,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 12887.89,
+      "duration": 0.434,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 12888.5,
+      "duration": 0.014,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "MarkDOMContent",
+      "time": 12906.11,
+      "duration": 0,
+      "url": ""
+    },
+    {
+      "name": "EvaluateScript",
+      "time": 14849.36,
+      "duration": 47.616,
+      "url": "https://apis.google.com/js/api.js"
+    },
+    {
+      "name": "EvaluateScript",
+      "time": 16455,
+      "duration": 112.392,
+      "url": "https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.zh_TW.8ezJ7WFASIU.O/m=gapi_iframes/rt=j/sv=1/d=1/ed=1/rs=AHpOoo-XHSwQy8B7xJsR_LIrn08tAwWe2g/cb=gapi.loaded_0"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 16534.05,
+      "duration": 1.009,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 16535.23,
+      "duration": 0.19,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 16538.48,
+      "duration": 1.39,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 16539.88,
+      "duration": 0.195,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 16554.58,
+      "duration": 0.589,
+      "url": "nullblank"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 16691.05,
+      "duration": 3.437,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 16694.65,
+      "duration": 0.019,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 18147.8,
+      "duration": 4.837,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "ParseHTML",
+      "time": 18152.81,
+      "duration": 0.196,
+      "url": "https://kai-personal-website.netlify.app/"
+    },
+    {
+      "name": "MarkLoad",
+      "time": 20512.38,
+      "duration": 0,
+      "url": ""
+    }
+  ]
+}
