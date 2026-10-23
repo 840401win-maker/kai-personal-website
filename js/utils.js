@@ -79,6 +79,7 @@ function handleImgError(imgElem, category) {
     const fallback = getImageFallback(category);
     imgElem.onerror = null;
     imgElem.src = fallback;
+    if (imgElem.classList) imgElem.classList.add('is-fallback-cover');
 }
 
 // Newline-separated URLs; retain legacy commas only between absolute URLs.

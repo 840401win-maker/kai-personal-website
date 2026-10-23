@@ -220,7 +220,24 @@
 
     <!-- 4. 主功能區：主題系列專欄 + 分類選單 + 搜尋 + 排序 -->
     <main class="w-full min-w-0 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 flex-1">
-        <!-- 4A. 主題系列專欄 (Series Spotlight Showcase) -->
+        <!-- 4A. 新手路線引導（3 部曲導讀） -->
+        <aside class="mb-4" aria-label="新讀者入門路線">
+            <div class="starter-guide-bar">
+                <div class="starter-guide-main">
+                    <span class="starter-guide-badge">
+                        <svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg> 新手路線
+                    </span>
+                    <span class="starter-guide-text">
+                        <strong>護理理財 3 部曲</strong>：薪資結構公開 → 輪班複利試算 → 2030 指數化存股
+                    </span>
+                </div>
+                <button type="button" onclick="openPostModal('post-salary100')" class="starter-guide-action" title="開始閱讀第 1 部曲：護理師年薪百萬薪資拆解">
+                    從第 1 步開始 <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                </button>
+            </div>
+        </aside>
+
+        <!-- 4B. 主題系列專欄 (Series Spotlight Showcase) -->
         <section id="seriesSpotlightSection" class="series-spotlight-section" aria-label="主題系列專欄">
             <div class="series-spotlight-header">
                 <div class="series-spotlight-title-wrap">
@@ -297,7 +314,7 @@
                     <span aria-hidden="true">•</span>
                     <button type="button" onclick="openAboutModal()">關於創作者</button>
                     <span aria-hidden="true">•</span>
-                    <button type="button" onclick="openLoginModal()" class="admin-footer-btn" title="創作者管理員登入">管理登入</button>
+                    <button type="button" onclick="openLoginModal()" class="admin-footer-btn" title="創作者管理員登入">創作者登入</button>
                 </div>
             </div>
         </div>
@@ -360,7 +377,7 @@
                 </div>
 
                 <div class="reader-footer-group">
-                    <button type="button" onclick="copyCurrentLink()" class="reader-foot-btn">
+                    <button type="button" onclick="copyCurrentLink()" class="reader-foot-btn reader-foot-copy">
                         <svg class="ico" aria-hidden="true"><use href="#i-link"/></svg>
                         <span>複製連結</span>
                     </button>
@@ -571,7 +588,17 @@
                         <div class="calc-field">
                             <label for="investYears" class="calc-label">投資持續年限 (年)</label>
                             <input type="number" id="investYears" value="5" min="1" max="50" step="1" oninput="calculateSalary()" onblur="normalizeCalculatorInputs()" class="calc-input num">
-                            <div class="flex items-center gap-1.5 mt-1.5">
+                            <div class="calc-range-wrap">
+                                <input type="range" id="investYearsRange" min="1" max="50" step="1" value="5" oninput="onInvestYearsRange(this.value)" class="calc-range-slider" aria-label="投資持續年限滑桿" aria-valuemin="1" aria-valuemax="50" aria-valuenow="5">
+                                <div class="calc-range-ticks">
+                                    <span>1年</span>
+                                    <span>10年</span>
+                                    <span>20年</span>
+                                    <span>30年</span>
+                                    <span>50年</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-1.5 mt-1">
                                 <button type="button" data-years="3" onclick="setInvestYearsPreset(3)" class="calc-pill-btn">3年</button>
                                 <button type="button" data-years="5" onclick="setInvestYearsPreset(5)" class="calc-pill-btn is-active">5年</button>
                                 <button type="button" data-years="10" onclick="setInvestYearsPreset(10)" class="calc-pill-btn">10年</button>
@@ -827,10 +854,17 @@
     <script>
         const HOME_PAGE_TITLE = "Kai | 護理生活 & 理財投資筆記 (@kai.nursing_life)";
 
+        function createEditorialFallbackSvg(category) {
+            const catName = category === 'nursing' ? '護理生活' : (category === 'finance' ? '理財筆記' : '投資觀點');
+            const catColor = category === 'nursing' ? '#4A6B5D' : (category === 'finance' ? '#8B5E3C' : '#2B4C65');
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" fill="none"><rect width="800" height="500" fill="#F1EFEA"/><rect x="0" y="0" width="800" height="8" fill="${catColor}"/><rect x="32" y="32" width="736" height="436" rx="8" stroke="#E7E5E0" stroke-width="2"/><text x="64" y="120" font-family="'Noto Serif TC', serif" font-size="32" font-weight="700" fill="${catColor}" letter-spacing="4">${catName}</text><line x1="64" y1="148" x2="180" y2="148" stroke="${catColor}" stroke-width="3"/><text x="64" y="420" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="500" fill="#6B6862" letter-spacing="2">KAI ｜ 護理生活 &amp; 理財投資</text></svg>`;
+            return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+        }
+
         const DEFAULT_FALLBACK_IMAGES = {
-            'nursing': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
-            'finance': 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&auto=format&fit=crop&q=80',
-            'invest': 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&auto=format&fit=crop&q=80'
+            'nursing': createEditorialFallbackSvg('nursing'),
+            'finance': createEditorialFallbackSvg('finance'),
+            'invest': createEditorialFallbackSvg('invest')
         };
 
         const staticPostsData = [
@@ -1243,6 +1277,9 @@
             if (activeBtn) {
                 activeBtn.className = 'cat-btn';
                 activeBtn.setAttribute('aria-pressed', 'true');
+                if (typeof activeBtn.scrollIntoView === 'function') {
+                    activeBtn.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+                }
             }
 
             renderSubTags();
@@ -1306,7 +1343,7 @@
                 id: 'model-y-2030',
                 category: 'invest',
                 title: '2030 Model Y 圓夢與指數化存股計畫',
-                badge: '圓夢投資系列', icon: 'trending-up', theme: 'finance',
+                badge: '圓夢投資系列', icon: 'trending-up', theme: 'invest',
                 desc: '不盯盤的醫療人員理財法：結合大盤指數 ETF 定期定額、資產配置與 2030 特斯拉圓夢藍圖。',
                 match: (p) => p.category === 'invest'
             }
@@ -1408,8 +1445,8 @@
                 const safeDate = escapeHtml(post.date);
                 const safeReadTime = escapeHtml(post.readTime);
 
-                // 雙主題映射：nursing → 醫療藍；finance / invest → 深金；其餘 → 中性。類別另以 icon 與文字標示，不只靠顏色。
-                const theme = post.category === 'nursing' ? 'nursing' : ((post.category === 'finance' || post.category === 'invest') ? 'finance' : 'neutral');
+                // 三主題角色映射：nursing → 森林綠；finance → 暖陶棕；invest → 墨藍；其餘 → 中性。類別另以 icon 與文字標示。
+                const theme = post.category === 'nursing' ? 'nursing' : (post.category === 'invest' ? 'invest' : (post.category === 'finance' ? 'finance' : 'neutral'));
                 const catIcon = post.category === 'nursing' ? 'heart-pulse' : (post.category === 'finance' ? 'wallet' : (post.category === 'invest' ? 'trending-up' : 'sparkles'));
                 const catName = post.category === 'nursing' ? '護理' : (post.category === 'finance' ? '理財' : (post.category === 'invest' ? '投資' : '文章'));
                 const savedProg = (typeof userReadingProgress === 'object' && userReadingProgress && userReadingProgress[post.id]) ? userReadingProgress[post.id] : null;
@@ -2877,10 +2914,21 @@
 
         function setInvestYearsPreset(years) {
             const input = document.getElementById('investYears');
-            if (input) {
-                input.value = years;
-                calculateSalary();
+            const range = document.getElementById('investYearsRange');
+            if (input) input.value = years;
+            if (range) {
+                range.value = years;
+                range.setAttribute('aria-valuenow', String(years));
             }
+            calculateSalary();
+        }
+
+        function onInvestYearsRange(val) {
+            const input = document.getElementById('investYears');
+            const range = document.getElementById('investYearsRange');
+            if (input) input.value = val;
+            if (range) range.setAttribute('aria-valuenow', String(val));
+            requestAnimationFrame(calculateSalary);
         }
 
         function calculateSalary() {
@@ -3016,6 +3064,13 @@
                 }
             });
 
+            // 年限滑桿同步（若為有效整數且在 1~50 範圍內）
+            const rangeEl = document.getElementById('investYearsRange');
+            if (rangeEl && rangeEl.value != rawYears && Number.isInteger(rawYears) && rawYears >= 1 && rawYears <= 50) {
+                rangeEl.value = rawYears;
+                rangeEl.setAttribute('aria-valuenow', String(rawYears));
+            }
+
             const monthlyRate = (rawRate / 100) / 12;
             const months = rawYears * 12;
             
@@ -3081,6 +3136,11 @@
                     yearsEl.value = '50';
                 } else {
                     yearsEl.value = String(Math.round(y));
+                }
+                const rangeEl = document.getElementById('investYearsRange');
+                if (rangeEl) {
+                    rangeEl.value = yearsEl.value;
+                    rangeEl.setAttribute('aria-valuenow', yearsEl.value);
                 }
             }
 
