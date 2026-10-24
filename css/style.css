@@ -925,6 +925,32 @@ main { display: flex; flex-direction: column; }
 .starter-guide-action:hover .ico {
     transform: translateX(3px);
 }
+@media (max-width: 639px) {
+    .starter-guide-bar {
+        padding: .625rem .875rem;
+        gap: .5rem;
+    }
+    .starter-guide-main {
+        gap: .35rem .5rem;
+    }
+    .starter-guide-steps {
+        gap: .25rem;
+    }
+    .starter-step-pill {
+        padding: .25rem .5rem;
+        font-size: .75rem;
+        min-height: 40px;
+    }
+    .starter-step-num {
+        width: 1.125rem;
+        height: 1.125rem;
+        font-size: .625rem;
+    }
+    .starter-step-arrow {
+        font-size: .75rem;
+        margin: 0 .05rem;
+    }
+}
 
 /* ---------- 主題系列專欄（沉穩專題導讀・去按鈕框） ---------- */
 .series-spotlight-section { display: flex; flex-direction: column; gap: 1rem; }

@@ -60,9 +60,10 @@ for (const suite of subSuites) {
   totalUnitChecksPassed += passMatches;
 }
 
-console.log(`\n=== Running Phase 3 / v2.1 Feature & Accessibility Checks ===`);
+console.log(`\n=== Running Phase 3 / v2.1 & v2.2 Feature & Accessibility Checks ===`);
 const html = fs.readFileSync(path.join(repoDir, 'index.html'), 'utf8');
 const css = fs.readFileSync(path.join(repoDir, 'css', 'style.css'), 'utf8');
+const utils = fs.readFileSync(path.join(repoDir, 'js', 'utils.js'), 'utf8');
 
 let phase3ChecksPassed = 0;
 function check(description, condition) {
@@ -88,7 +89,10 @@ check('calcInvestHeading exists with whitespace-nowrap wrappers', html.includes(
 check('calcHighRiskNotice exists for rate > 12%', html.includes('id="calcHighRiskNotice"'));
 check('calcExtremeNotice exists for extreme compound returns', html.includes('id="calcExtremeNotice"'));
 check('investYearsRange slider exists in calculator', html.includes('id="investYearsRange"') && css.includes('.calc-range-slider'));
+check('investYearsRange has dynamic aria-valuetext and calibrated ticks', html.includes('aria-valuetext') && html.includes('style="left: 59.2%;"') && css.includes('.calc-range-ticks'));
 check('starterGuideBar exists for beginner route', html.includes('starter-guide-bar') && css.includes('.starter-guide-bar'));
+check('starterGuideSteps has 3 interactive pills with role="group"', html.includes('role="group"') && html.includes('starter-step-pill') && html.includes("openCalcModal()"));
+check('handleImgError DOM cover is scoped to post-card-media without innerHTML', utils.includes('.post-card-media') && utils.includes('card-editorial-dom-cover') && !utils.includes('domCover.innerHTML'));
 check('adminLoginBtn updated to creator login', html.includes('創作者登入') && css.includes('.admin-footer-btn'));
 
 const grandTotal = totalUnitChecksPassed + phase3ChecksPassed;

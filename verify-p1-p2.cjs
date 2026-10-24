@@ -119,6 +119,25 @@ const srv = http.createServer((req, res) => {
     await snap('v2-p1p2-insights-desktop-1280');
   });
 
+  console.log('=== Test Mobile 375px Homepage & Starter Guide Layout ===');
+  await withPage({ w: 375, h: 812, mobile: true }, async ({ ev, snap }) => {
+    const starterLayout = await ev(`(() => {
+      const bar = document.querySelector('.starter-guide-bar');
+      const pills = document.querySelectorAll('.starter-step-pill');
+      const rect = bar ? bar.getBoundingClientRect() : null;
+      return {
+        exists: !!bar,
+        pillCount: pills.length,
+        height: rect ? Math.round(rect.height) : 0,
+        top: rect ? Math.round(rect.top) : 0
+      };
+    })()`);
+    console.log('Starter Guide 375px Layout:', starterLayout);
+    assert.strictEqual(starterLayout.exists, true, 'Starter guide bar must exist on mobile');
+    assert.strictEqual(starterLayout.pillCount, 3, 'Must render 3 interactive step pills');
+    await snap('v2-p1p2-home-starter-mobile-375');
+  });
+
   console.log('=== Test A3: Unified 85% Toast Qualification Gate ===');
   await withPage({ w: 375, h: 812, mobile: true }, async ({ ev }) => {
     await ev(`openPostModal(postsData[0].id);`);

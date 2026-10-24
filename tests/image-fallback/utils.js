@@ -81,10 +81,14 @@ function handleImgError(imgElem, category) {
     imgElem.src = fallback;
     if (imgElem.classList) imgElem.classList.add('is-fallback-cover');
 
-    // 若在真實 DOM 環境中且具備父層容器，提供純 DOM/CSS 文藝封面以確保 Noto Serif TC 等 WebFont 完美繼承
-    if (typeof document !== 'undefined' && imgElem && imgElem.parentNode && imgElem.parentElement) {
+    // 僅在文章卡片封面容器（.post-card-media）內提供純 DOM/CSS 文藝封面降級
+    // 其他小縮圖、輪播圖保留優雅的 SVG 降級，避免撐壞佈局
+    if (typeof document !== 'undefined' && imgElem && imgElem.closest && imgElem.closest('.post-card-media')) {
         try {
-            const card = imgElem.closest ? imgElem.closest('.post-card, .series-spotlight-card, article') : null;
+            const mediaWrap = imgElem.closest('.post-card-media');
+            if (mediaWrap.querySelector('.card-editorial-dom-cover')) return; // 避免重複建立
+
+            const card = imgElem.closest('.post-card') || mediaWrap.parentElement;
             const titleEl = card ? card.querySelector('.post-card-title, h3, h2') : null;
             const titleText = titleEl ? titleEl.textContent.trim() : (imgElem.alt || 'Kai 個人成長與財務思維');
             const accentColor = category === 'nursing' ? 'var(--cat-nursing)' : (category === 'invest' ? 'var(--cat-invest)' : 'var(--cat-finance)');
@@ -92,14 +96,24 @@ function handleImgError(imgElem, category) {
 
             const domCover = document.createElement('div');
             domCover.className = 'card-editorial-dom-cover';
-            domCover.setAttribute('style', `--cover-accent: ${accentColor};`);
-            domCover.setAttribute('role', 'img');
-            domCover.setAttribute('aria-label', titleText);
-            domCover.innerHTML = `
-                <span class="card-dom-cover-tag">${catLabel}</span>
-                <div class="card-dom-cover-title">${titleText}</div>
-                <span class="card-dom-cover-brand">KAI · NURSING & FINANCE</span>
-            `;
+            domCover.style.setProperty('--cover-accent', accentColor);
+            domCover.setAttribute('aria-hidden', 'true'); // 封面在卡片標題旁，隱藏以避免朗讀器重複念
+
+            const tagSpan = document.createElement('span');
+            tagSpan.className = 'card-dom-cover-tag';
+            tagSpan.textContent = catLabel;
+
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'card-dom-cover-title';
+            titleDiv.textContent = titleText; // 安全賦值，杜絕 innerHTML XSS 隱患
+
+            const brandSpan = document.createElement('span');
+            brandSpan.className = 'card-dom-cover-brand';
+            brandSpan.textContent = 'KAI · NURSING & FINANCE';
+
+            domCover.appendChild(tagSpan);
+            domCover.appendChild(titleDiv);
+            domCover.appendChild(brandSpan);
 
             imgElem.style.display = 'none';
             imgElem.parentNode.insertBefore(domCover, imgElem.nextSibling);
