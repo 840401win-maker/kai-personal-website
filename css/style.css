@@ -703,6 +703,58 @@ main { display: flex; flex-direction: column; }
     object-fit: contain;
     background: var(--surface-sunk);
 }
+/* 純 DOM/CSS 文藝封面降級（避免 SVG 隔離導致外部 WebFont 無法套用） */
+.card-editorial-dom-cover {
+    width: 100%;
+    height: 100%;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.25rem 1.125rem;
+    background: linear-gradient(145deg, var(--surface) 0%, var(--bg) 100%);
+    border-radius: var(--r-img) var(--r-img) 0 0;
+    box-sizing: border-box;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+.card-editorial-dom-cover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--cover-accent, var(--cat-finance));
+}
+.card-dom-cover-tag {
+    font-size: .6875rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--cover-accent, var(--cat-finance));
+}
+.card-dom-cover-title {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-top: auto;
+    margin-bottom: .4rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.card-dom-cover-brand {
+    font-family: var(--font-serif);
+    font-size: .6875rem;
+    letter-spacing: .06em;
+    color: var(--ink-3);
+    text-transform: uppercase;
+}
 .badge-featured {
     position: absolute; top: .75rem; left: .75rem; z-index: 2;
     display: inline-flex; align-items: center; gap: .3rem;
@@ -798,6 +850,54 @@ main { display: flex; flex-direction: column; }
 .starter-guide-text strong {
     color: var(--ink);
     font-weight: 700;
+}
+.starter-guide-steps {
+    display: flex;
+    align-items: center;
+    gap: .375rem;
+    flex-wrap: wrap;
+}
+.starter-step-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .375rem;
+    padding: .35rem .75rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-pill);
+    font-size: .8125rem;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    min-height: 44px;
+    text-decoration: none;
+    transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.starter-step-pill:hover {
+    border-color: var(--blue-deep);
+    color: var(--blue-deep);
+    background: var(--surface-sunk);
+    transform: translateY(-1px);
+}
+.starter-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background: var(--blue-deep);
+    color: #FFFFFF;
+    font-size: .6875rem;
+    font-family: var(--font-num);
+    font-weight: 700;
+    line-height: 1;
+}
+.starter-step-arrow {
+    color: var(--ink-3);
+    font-size: .8125rem;
+    user-select: none;
+    margin: 0 .15rem;
 }
 .starter-guide-action {
     display: inline-flex;
@@ -2432,17 +2532,23 @@ main { display: flex; flex-direction: column; }
     background: var(--blue);
 }
 .calc-range-ticks {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.25rem 0.2rem 0;
+    position: relative;
+    width: 100%;
+    height: 1.25rem;
     font-size: 0.6875rem;
     color: var(--ink-3);
     font-family: var(--font-num);
     user-select: none;
+    margin-top: 0.25rem;
 }
-    border-color: var(--blue);
-    background: var(--surface);
+.calc-range-ticks span {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    white-space: nowrap;
 }
+.calc-range-ticks span:first-child { transform: none; left: 0; }
+.calc-range-ticks span:last-child { transform: none; right: 0; left: auto; }
 
 /* Result Display with 2.5rem Serif Big Numerals & Wrap Support */
 .calc-result-box {
@@ -2649,18 +2755,27 @@ iframe[src*="netlify"] {
 
 /* 創作者管理員登入與數據中心樣式 */
 .admin-footer-btn {
-    font-size: .71875rem;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-size: .75rem;
     color: var(--ink-3);
-    opacity: .75;
     text-decoration: none;
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0;
-    transition: color var(--t-fast) var(--ease), opacity var(--t-fast) var(--ease);
+    padding: .25rem .35rem;
+    min-height: 44px;
+    transition: color var(--t-fast) var(--ease);
+}
+.admin-footer-btn::after {
+    content: "";
+    position: absolute;
+    inset: -6px -8px;
+    min-width: 44px;
+    min-height: 44px;
 }
 .admin-footer-btn:hover {
-    opacity: 1;
     color: var(--blue);
     text-decoration: underline;
 }

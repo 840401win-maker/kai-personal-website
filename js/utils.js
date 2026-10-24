@@ -80,6 +80,33 @@ function handleImgError(imgElem, category) {
     imgElem.onerror = null;
     imgElem.src = fallback;
     if (imgElem.classList) imgElem.classList.add('is-fallback-cover');
+
+    // 若在真實 DOM 環境中且具備父層容器，提供純 DOM/CSS 文藝封面以確保 Noto Serif TC 等 WebFont 完美繼承
+    if (typeof document !== 'undefined' && imgElem && imgElem.parentNode && imgElem.parentElement) {
+        try {
+            const card = imgElem.closest ? imgElem.closest('.post-card, .series-spotlight-card, article') : null;
+            const titleEl = card ? card.querySelector('.post-card-title, h3, h2') : null;
+            const titleText = titleEl ? titleEl.textContent.trim() : (imgElem.alt || 'Kai 個人成長與財務思維');
+            const accentColor = category === 'nursing' ? 'var(--cat-nursing)' : (category === 'invest' ? 'var(--cat-invest)' : 'var(--cat-finance)');
+            const catLabel = category === 'nursing' ? '護理職場' : (category === 'invest' ? '投資理財' : '財務思維');
+
+            const domCover = document.createElement('div');
+            domCover.className = 'card-editorial-dom-cover';
+            domCover.setAttribute('style', `--cover-accent: ${accentColor};`);
+            domCover.setAttribute('role', 'img');
+            domCover.setAttribute('aria-label', titleText);
+            domCover.innerHTML = `
+                <span class="card-dom-cover-tag">${catLabel}</span>
+                <div class="card-dom-cover-title">${titleText}</div>
+                <span class="card-dom-cover-brand">KAI · NURSING & FINANCE</span>
+            `;
+
+            imgElem.style.display = 'none';
+            imgElem.parentNode.insertBefore(domCover, imgElem.nextSibling);
+        } catch (e) {
+            // 靜默降級，保留 imgElem.src
+        }
+    }
 }
 
 // Newline-separated URLs; retain legacy commas only between absolute URLs.

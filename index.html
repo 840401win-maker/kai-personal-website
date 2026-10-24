@@ -228,12 +228,22 @@
                         <svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg> 新手路線
                     </span>
                     <span class="starter-guide-text">
-                        <strong>護理理財 3 部曲</strong>：薪資結構公開 → 輪班複利試算 → 2030 指數化存股
+                        <strong>護理理財 3 部曲</strong>
                     </span>
                 </div>
-                <button type="button" onclick="openPostModal('post-salary100')" class="starter-guide-action" title="開始閱讀第 1 部曲：護理師年薪百萬薪資拆解">
-                    從第 1 步開始 <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-                </button>
+                <div class="starter-guide-steps" role="navigation" aria-label="3 部曲導讀步驟">
+                    <button type="button" onclick="openPostModal('post-salary100')" class="starter-step-pill" title="前往步驟 1：年薪百萬結構拆解">
+                        <span class="starter-step-num">1</span> 薪資結構公開
+                    </button>
+                    <span class="starter-step-arrow" aria-hidden="true">→</span>
+                    <button type="button" onclick="openCalcModal()" class="starter-step-pill" title="前往步驟 2：輪班複利試算工具">
+                        <span class="starter-step-num">2</span> 輪班複利試算
+                    </button>
+                    <span class="starter-step-arrow" aria-hidden="true">→</span>
+                    <button type="button" onclick="openPostModal('post-modely')" class="starter-step-pill" title="前往步驟 3：2030 指數化存股圓夢">
+                        <span class="starter-step-num">3</span> 2030 指數化存股
+                    </button>
+                </div>
             </div>
         </aside>
 
@@ -589,12 +599,12 @@
                             <label for="investYears" class="calc-label">投資持續年限 (年)</label>
                             <input type="number" id="investYears" value="5" min="1" max="50" step="1" oninput="calculateSalary()" onblur="normalizeCalculatorInputs()" class="calc-input num">
                             <div class="calc-range-wrap">
-                                <input type="range" id="investYearsRange" min="1" max="50" step="1" value="5" oninput="onInvestYearsRange(this.value)" class="calc-range-slider" aria-label="投資持續年限滑桿" aria-valuemin="1" aria-valuemax="50" aria-valuenow="5">
+                                <input type="range" id="investYearsRange" min="1" max="50" step="1" value="5" oninput="onInvestYearsRange(this.value)" class="calc-range-slider" aria-label="投資持續年限滑桿" aria-valuemin="1" aria-valuemax="50" aria-valuetext="投資持續 5 年">
                                 <div class="calc-range-ticks">
                                     <span>1年</span>
-                                    <span>10年</span>
-                                    <span>20年</span>
-                                    <span>30年</span>
+                                    <span style="left: 18.4%;">10年</span>
+                                    <span style="left: 38.8%;">20年</span>
+                                    <span style="left: 59.2%;">30年</span>
                                     <span>50年</span>
                                 </div>
                             </div>
@@ -2918,7 +2928,7 @@
             if (input) input.value = years;
             if (range) {
                 range.value = years;
-                range.setAttribute('aria-valuenow', String(years));
+                range.setAttribute('aria-valuetext', '投資持續 ' + years + ' 年');
             }
             calculateSalary();
         }
@@ -2927,7 +2937,7 @@
             const input = document.getElementById('investYears');
             const range = document.getElementById('investYearsRange');
             if (input) input.value = val;
-            if (range) range.setAttribute('aria-valuenow', String(val));
+            if (range) range.setAttribute('aria-valuetext', '投資持續 ' + val + ' 年');
             requestAnimationFrame(calculateSalary);
         }
 
@@ -3068,7 +3078,7 @@
             const rangeEl = document.getElementById('investYearsRange');
             if (rangeEl && rangeEl.value != rawYears && Number.isInteger(rawYears) && rawYears >= 1 && rawYears <= 50) {
                 rangeEl.value = rawYears;
-                rangeEl.setAttribute('aria-valuenow', String(rawYears));
+                rangeEl.setAttribute('aria-valuetext', '投資持續 ' + rawYears + ' 年');
             }
 
             const monthlyRate = (rawRate / 100) / 12;
@@ -3140,7 +3150,7 @@
                 const rangeEl = document.getElementById('investYearsRange');
                 if (rangeEl) {
                     rangeEl.value = yearsEl.value;
-                    rangeEl.setAttribute('aria-valuenow', yearsEl.value);
+                    rangeEl.setAttribute('aria-valuetext', '投資持續 ' + yearsEl.value + ' 年');
                 }
             }
 

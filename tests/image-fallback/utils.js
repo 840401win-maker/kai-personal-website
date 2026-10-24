@@ -1,3 +1,36 @@
+// Browser preferences are optional; damaged or blocked storage must not stop the page.
+function readStoredPreference(key) {
+    try {
+        return localStorage.getItem(key);
+    } catch (error) {
+        return null;
+    }
+}
+
+function writeStoredPreference(key, value) {
+    try {
+        localStorage.setItem(key, value);
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+function readStoredFlags(key) {
+    const flags = Object.create(null);
+    try {
+        const value = JSON.parse(readStoredPreference(key) || '{}');
+        if (value && typeof value === 'object' && !Array.isArray(value)) {
+            Object.keys(value).forEach(id => {
+                if (value[id] === true) flags[id] = true;
+            });
+        }
+    } catch (error) {
+        // Keep a usable in-memory state without deleting the stored data.
+    }
+    return flags;
+}
+
 // P1 Item: Comprehensive XSS Escaping Helper
 function escapeHtml(str) {
     if (str === null || str === undefined) return '';
@@ -46,6 +79,34 @@ function handleImgError(imgElem, category) {
     const fallback = getImageFallback(category);
     imgElem.onerror = null;
     imgElem.src = fallback;
+    if (imgElem.classList) imgElem.classList.add('is-fallback-cover');
+
+    // 若在真實 DOM 環境中且具備父層容器，提供純 DOM/CSS 文藝封面以確保 Noto Serif TC 等 WebFont 完美繼承
+    if (typeof document !== 'undefined' && imgElem && imgElem.parentNode && imgElem.parentElement) {
+        try {
+            const card = imgElem.closest ? imgElem.closest('.post-card, .series-spotlight-card, article') : null;
+            const titleEl = card ? card.querySelector('.post-card-title, h3, h2') : null;
+            const titleText = titleEl ? titleEl.textContent.trim() : (imgElem.alt || 'Kai 個人成長與財務思維');
+            const accentColor = category === 'nursing' ? 'var(--cat-nursing)' : (category === 'invest' ? 'var(--cat-invest)' : 'var(--cat-finance)');
+            const catLabel = category === 'nursing' ? '護理職場' : (category === 'invest' ? '投資理財' : '財務思維');
+
+            const domCover = document.createElement('div');
+            domCover.className = 'card-editorial-dom-cover';
+            domCover.setAttribute('style', `--cover-accent: ${accentColor};`);
+            domCover.setAttribute('role', 'img');
+            domCover.setAttribute('aria-label', titleText);
+            domCover.innerHTML = `
+                <span class="card-dom-cover-tag">${catLabel}</span>
+                <div class="card-dom-cover-title">${titleText}</div>
+                <span class="card-dom-cover-brand">KAI · NURSING & FINANCE</span>
+            `;
+
+            imgElem.style.display = 'none';
+            imgElem.parentNode.insertBefore(domCover, imgElem.nextSibling);
+        } catch (e) {
+            // 靜默降級，保留 imgElem.src
+        }
+    }
 }
 
 // Newline-separated URLs; retain legacy commas only between absolute URLs.
@@ -90,4 +151,3 @@ function sanitizeArticleContent(content) {
         FORBID_ATTR: ['style']
     });
 }
-
