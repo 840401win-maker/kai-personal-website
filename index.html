@@ -3537,10 +3537,8 @@
             if (event) event.stopPropagation();
             if (userLikes[postId]) {
                 delete userLikes[postId];
-                showToast('已取消按讚');
             } else {
                 userLikes[postId] = true;
-                showToast('❤️ 感謝支持 Kai！已按讚');
             }
             writeStoredPreference('kai_user_likes', JSON.stringify(userLikes));
             renderPosts();
@@ -3552,10 +3550,8 @@
             const removing = userBookmarks[postId] === true;
             if (userBookmarks[postId]) {
                 delete userBookmarks[postId];
-                showToast('已從個人收藏移除');
             } else {
                 userBookmarks[postId] = true;
-                showToast('🔖 已加入個人書籤庫！');
             }
             writeStoredPreference('kai_user_bookmarks', JSON.stringify(userBookmarks));
             renderPosts();
