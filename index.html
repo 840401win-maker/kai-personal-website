@@ -136,7 +136,7 @@
 
             <!-- Right Controls -->
             <div class="flex items-center gap-2 sm:gap-3">
-                <button id="adminInsightsBtn" onclick="openAdminInsightsModal()" class="hidden px-2.5 sm:px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-50 border border-amber-300 text-amber-800 hover:bg-amber-100 transition-colors items-center gap-1.5 shadow-sm" title="創作者數據中心">
+                <button id="adminInsightsBtn" onclick="openAdminInsightsModal()" class="hidden px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-50 border border-amber-300 text-amber-800 hover:bg-amber-100 transition-colors items-center gap-1.5 shadow-sm" title="創作者數據中心">
                     <svg class="ico text-amber-700" style="width:14px;height:14px;"><use href="#i-trending-up"/></svg>
                     <span><span class="hidden sm:inline">後台</span>數據</span>
                 </button>
@@ -247,20 +247,6 @@
             </div>
         </aside>
 
-        <!-- 4B. 主題系列專欄 (Series Spotlight Showcase) -->
-        <section id="seriesSpotlightSection" class="series-spotlight-section" aria-label="主題系列專欄">
-            <div class="series-spotlight-header">
-                <div class="series-spotlight-title-wrap">
-                    <h2 class="series-spotlight-heading"><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg> 主題系列專欄</h2>
-                    <span class="series-spotlight-subtitle">系統化整理 Kai 的長期實戰筆記，點選專欄即可篩選或直接進入代表作</span>
-                </div>
-                <button type="button" id="seriesResetBtn" class="series-reset-btn hidden" onclick="setCategory('all')">
-                    顯示全部系列 <svg class="ico" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>
-                </button>
-            </div>
-            <div id="seriesSpotlightGrid" class="series-spotlight-grid"></div>
-        </section>
-
         <div class="browse-header-wrap space-y-3 mb-6">
             <div class="cat-tabs-bar flex items-center justify-between gap-2 overflow-x-auto hide-scrollbar">
                 <div class="cat-tabs-list flex items-center">
@@ -305,6 +291,20 @@
             <p id="emptyStateMessage" class="text-slate-600 text-sm font-medium">找不到符合條件的文章，請試試其他關鍵字或分類！</p>
             <button onclick="resetFilters()" class="text-xs text-teal-600 font-semibold underline hover:text-teal-700">重設所有篩選條件</button>
         </div>
+
+        <!-- 4B. 主題系列專欄 (Series Spotlight Showcase) -->
+        <section id="seriesSpotlightSection" class="series-spotlight-section" aria-label="主題系列專欄">
+            <div class="series-spotlight-header">
+                <div class="series-spotlight-title-wrap">
+                    <h2 class="series-spotlight-heading"><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg> 主題系列專欄</h2>
+                    <span class="series-spotlight-subtitle">系統化整理 Kai 的長期實戰筆記，點選專欄即可篩選或直接進入代表作</span>
+                </div>
+                <button type="button" id="seriesResetBtn" class="series-reset-btn hidden" onclick="setCategory('all')">
+                    顯示全部系列 <svg class="ico" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>
+                </button>
+            </div>
+            <div id="seriesSpotlightGrid" class="series-spotlight-grid"></div>
+        </section>
     </main>
 
     <!-- 6. 頁尾 Footer -->
@@ -355,8 +355,8 @@
             <div id="articleReadingTools" class="article-reading-tools">
                 <div class="article-font-controls" role="group" aria-label="文章內文字級">
                     <span class="article-tools-label">字級</span>
-                    <button type="button" data-reader-size="standard" aria-pressed="true" onclick="setArticleFontSize('standard')">小</button>
-                    <button type="button" data-reader-size="large" aria-pressed="false" onclick="setArticleFontSize('large')">中</button>
+                    <button type="button" data-reader-size="standard" aria-pressed="false" onclick="setArticleFontSize('standard')">小</button>
+                    <button type="button" data-reader-size="large" aria-pressed="true" onclick="setArticleFontSize('large')">中</button>
                     <button type="button" data-reader-size="largest" aria-pressed="false" onclick="setArticleFontSize('largest')">大</button>
                     <span class="reader-storage-note">閱讀進度與收藏僅儲存於當前瀏覽器</span>
                 </div>
@@ -408,9 +408,9 @@
         </div>
     </div>
 
-    <!-- Modal 2: 關於我 (About Modal) -->
-    <div id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutModalTitle" onclick="if(event.target === this) closeAboutModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="editorial-modal-card w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="aboutModalCard">
+    <!-- Modal 2: 關於我 (About Modal — Bento Grid 社論版面) -->
+    <div id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutModalTitle" onclick="if(event.target === this) closeAboutModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="editorial-modal-card about-bento-card w-full overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="aboutModalCard">
             <div class="editorial-modal-header">
                 <h3 id="aboutModalTitle" class="editorial-modal-title">
                     <svg class="ico" aria-hidden="true"><use href="#i-award"/></svg>
@@ -422,77 +422,147 @@
                 </button>
             </div>
 
-            <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm leading-relaxed">
-                <div class="flex flex-col items-center text-center -mt-2">
-                    <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/12_qeh4rc.png')" aria-label="放大檢視 Kai 個人形象照" class="block p-0 border-0 bg-transparent rounded-full">
-                        <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270726/12_qeh4rc.png" width="480" height="480" alt="Kai 個人形象照" loading="lazy" class="w-28 h-28 rounded-full object-cover border-2 border-slate-200 shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
-                    </button>
-                    <p class="mt-2 font-bold text-slate-900">Kai</p>
-                    <p class="text-[11px] text-slate-600">@kai.nursing_life</p>
-                </div>
-
-                <div class="callout callout--nursing">
-                    <div class="callout-title">
-                        <svg class="ico" aria-hidden="true"><use href="#i-shield-check"/></svg> Kai 的核心理念
+            <div class="about-bento-body overflow-y-auto p-4 sm:p-6 text-sm leading-relaxed">
+                <!-- 1. Hero Bento: 核心身分、定位與純粹宣言 -->
+                <div class="bento-box bento-box--hero">
+                    <div class="bento-hero-main">
+                        <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/12_qeh4rc.png')" aria-label="放大檢視 Kai 個人形象照" class="bento-avatar-btn group">
+                            <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270726/12_qeh4rc.png" width="480" height="480" alt="Kai 個人形象照" loading="lazy" class="bento-avatar-img">
+                            <span class="bento-avatar-tip" aria-hidden="true"><svg class="ico"><use href="#i-search"/></svg></span>
+                        </button>
+                        <div class="bento-hero-info">
+                            <div class="bento-chip-row">
+                                <span class="bento-chip bento-chip--blue">
+                                    <svg class="ico" aria-hidden="true"><use href="#i-heart-pulse"/></svg> 公職護理師 N4
+                                </span>
+                                <span class="bento-chip bento-chip--gold">
+                                    <svg class="ico" aria-hidden="true"><use href="#i-award"/></svg> 臨床教師 &amp; 績優評選
+                                </span>
+                            </div>
+                            <h4 class="bento-hero-title">
+                                <span>Kai</span>
+                                <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer" class="bento-hero-handle" title="開啟 Instagram 官方主頁">
+                                    <i class="fa-brands fa-instagram" aria-hidden="true"></i> @kai.nursing_life
+                                    <svg class="ico" aria-hidden="true"><use href="#i-external-link"/></svg>
+                                </a>
+                            </h4>
+                            <p class="bento-hero-bio">
+                                「一個喜歡做圖文的護理師。」國立臺北護理健康大學畢業，返鄉至公立醫院臨床第一線服務滿 <span class="num">9</span> 年。公開記錄醫護臨床實戰、薪資記帳與指數化存股筆記。
+                            </p>
+                        </div>
                     </div>
-                    <p class="text-xs leading-relaxed">
-                        「一個喜歡做圖文的護理師。」畢業於國立臺北護理健康大學，返鄉至公立醫院服務滿 <span class="num">9</span> 年。這裡公開分享醫護職場心得、衛教學理與小資理財投資紀錄。堅持純粹分享，無私人群組、不推銷。
-                    </p>
+                    <div class="bento-hero-trust">
+                        <svg class="ico" aria-hidden="true"><use href="#i-shield-check"/></svg>
+                        <span>堅持純粹分享：官方唯一帳號，無私人群組、不報明牌、不進行推銷或付費諮詢。</span>
+                    </div>
                 </div>
 
-                <div class="space-y-4">
-                    <h4 class="font-bold text-slate-900 flex items-center gap-2 border-b pb-2 border-slate-200">
-                        <svg class="ico" aria-hidden="true"><use href="#i-heart-pulse"/></svg> 護理專業與職場資歷 (<span class="num">2017 - 2026</span>)
-                    </h4>
-                    <ul class="space-y-2.5 text-xs text-slate-700">
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-teal-700 mt-0.5" aria-hidden="true"></i>
-                            <span><b>學歷與公職：</b> 國立臺北護理健康大學畢業，考取公職護理師，現服務於南部公立醫院。</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-teal-700 mt-0.5" aria-hidden="true"></i>
-                            <span><b>專業晉升：</b> 取得 <b>N4 職級</b>，榮獲<b>績優護理師</b>與<b>臨床教師</b>殊榮，參加 QCC 競賽與海報發表。</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-teal-700 mt-0.5" aria-hidden="true"></i>
-                            <span><b>臨床考驗：</b> 經歷數百次急救生死離別、撐過 COVID-19 黑暗期，陪伴無數實習生與新人獨立。</span>
-                        </li>
-                    </ul>
+                <!-- 2. 中段雙欄組合：經歷時間軸 (7/12) + 主題代表作直達 (5/12) -->
+                <div class="bento-split-grid">
+                    <!-- 2A. 經歷時間軸卡片 (靜態自然呈現，無強制縮放與飄移) -->
+                    <div class="bento-box bento-box--timeline flex flex-col justify-between">
+                        <div class="bento-card-head">
+                            <span class="bento-label">
+                                <svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg> 2017 – 2026 歷練
+                            </span>
+                            <h5 class="bento-card-title">護理專業與職場資歷</h5>
+                        </div>
+                        <div class="bento-timeline">
+                            <div class="bento-timeline-item">
+                                <span class="bento-timeline-dot"></span>
+                                <div class="bento-timeline-content">
+                                    <span class="bento-timeline-year num">2017</span>
+                                    <p class="bento-timeline-text">國立臺北護理健康大學畢業，通過國家考試取得護理師證書。</p>
+                                </div>
+                            </div>
+                            <div class="bento-timeline-item">
+                                <span class="bento-timeline-dot"></span>
+                                <div class="bento-timeline-content">
+                                    <span class="bento-timeline-year num">2019</span>
+                                    <p class="bento-timeline-text">通過公職護理師高考，返鄉至公立醫院臨床第一線服務。</p>
+                                </div>
+                            </div>
+                            <div class="bento-timeline-item">
+                                <span class="bento-timeline-dot"></span>
+                                <div class="bento-timeline-content">
+                                    <span class="bento-timeline-year num">2023</span>
+                                    <p class="bento-timeline-text">晉升 <strong>N4 職級</strong>，獲頒<strong>臨床教師</strong>與<strong>績優護理師</strong>殊榮，發表 QCC 與實務海報。</p>
+                                </div>
+                            </div>
+                            <div class="bento-timeline-item bento-timeline-item--latest">
+                                <span class="bento-timeline-dot bento-timeline-dot--pulse"></span>
+                                <div class="bento-timeline-content">
+                                    <span class="bento-timeline-year num">2026</span>
+                                    <p class="bento-timeline-text">臨床資歷滿 <span class="num">9</span> 年，走過急救考驗與疫情黑暗期，持續建立護理理財圖文全典藏。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2B. 主題代表作直達卡片 -->
+                    <div class="bento-box bento-box--entries flex flex-col justify-between">
+                        <div class="bento-card-head">
+                            <span class="bento-label">
+                                <svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg> 精選代表作
+                            </span>
+                            <h5 class="bento-card-title">專欄導讀與試算工具</h5>
+                        </div>
+                        <div class="bento-entries-list">
+                            <button type="button" onclick="openPostFromAbout('post-30years')" class="bento-entry-btn bento-entry-btn--nursing" title="開啟：30 歲心路圖文">
+                                <div class="bento-entry-icon"><svg class="ico" aria-hidden="true"><use href="#i-heart-pulse"/></svg></div>
+                                <div class="bento-entry-meta">
+                                    <span class="bento-entry-tag">護理職涯代表作</span>
+                                    <span class="bento-entry-title">30 歲心路 16 張圖文</span>
+                                </div>
+                                <svg class="ico bento-entry-arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                            </button>
+
+                            <button type="button" onclick="openPostFromAbout('post-salary100')" class="bento-entry-btn bento-entry-btn--finance" title="開啟：年薪百萬薪資拆解">
+                                <div class="bento-entry-icon"><svg class="ico" aria-hidden="true"><use href="#i-wallet"/></svg></div>
+                                <div class="bento-entry-meta">
+                                    <span class="bento-entry-tag">理財薪資代表作</span>
+                                    <span class="bento-entry-title">年薪百萬薪資結構公開</span>
+                                </div>
+                                <svg class="ico bento-entry-arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                            </button>
+
+                            <button type="button" onclick="openCalcFromAbout()" class="bento-entry-btn bento-entry-btn--calc" title="開啟：夜班津貼與存股試算器">
+                                <div class="bento-entry-icon"><svg class="ico" aria-hidden="true"><use href="#i-calculator"/></svg></div>
+                                <div class="bento-entry-meta">
+                                    <span class="bento-entry-tag">互動計算工具</span>
+                                    <span class="bento-entry-title">夜班津貼 &amp; 存股試算器</span>
+                                </div>
+                                <svg class="ico bento-entry-arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                            </button>
+                        </div>
+                        <div class="bento-stat-chips">
+                            <span class="bento-stat-chip"><span class="num">9</span> 年公職資歷</span>
+                            <span class="bento-stat-chip"><span class="num">2</span> 年百萬年薪</span>
+                            <span class="bento-stat-chip"><span class="num">2030</span> Model Y</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="space-y-4">
-                    <h4 class="font-bold text-slate-900 flex items-center gap-2 border-b pb-2 border-slate-200">
-                        <svg class="ico" aria-hidden="true"><use href="#i-trending-up"/></svg> 理財投資與夢想地圖
-                    </h4>
-                    <ul class="space-y-2.5 text-xs text-slate-700">
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-amber-700 mt-0.5" aria-hidden="true"></i>
-                            <span><b>薪資里程碑：</b> 護理師也能達成年薪百萬（<span class="num">113</span> 年、<span class="num">114</span> 年連續達成）。</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-amber-700 mt-0.5" aria-hidden="true"></i>
-                            <span><b>資產成長實錄：</b> 實測淨資產 <span class="num">90</span> 天成長百萬，公開指數化投資與記帳心法。</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-amber-700 mt-0.5" aria-hidden="true"></i>
-                            <span><b><span class="num">2030</span> 夢想清單：</b> 目標於 <span class="num">2030</span> 年靠自己的能力擁有一台 Tesla Model Y。</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="space-y-3">
-                    <h4 class="font-bold text-slate-900 flex items-center gap-2 border-b pb-2 border-slate-200">
-                        <svg class="ico" aria-hidden="true"><use href="#i-image"/></svg> 生活剪影
-                    </h4>
+                <!-- 3. 生活剪影與追蹤卡片 (生活照 3 圖格) -->
+                <div class="bento-box bento-box--life">
+                    <div class="bento-card-head mb-2">
+                        <span class="bento-label">
+                            <svg class="ico" aria-hidden="true"><use href="#i-image"/></svg> 生活日常
+                        </span>
+                        <h5 class="bento-card-title">臨床之外的真實生活剪影</h5>
+                    </div>
                     <div class="grid grid-cols-3 gap-2">
-                        <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/13_sslpzj.png')" aria-label="放大檢視 Kai 生活照 1" class="block p-0 border-0 bg-transparent rounded-xl">
-                            <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270726/13_sslpzj.png" width="480" height="480" alt="Kai 生活照" loading="lazy" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+                        <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/13_sslpzj.png')" aria-label="放大檢視 Kai 生活照 1" class="bento-photo-thumb group">
+                            <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270726/13_sslpzj.png" width="480" height="480" alt="Kai 生活照 1" loading="lazy" class="w-full aspect-square rounded-xl object-cover transition-transform duration-300 group-hover:scale-105">
+                            <span class="bento-photo-overlay" aria-hidden="true"><svg class="ico"><use href="#i-search"/></svg></span>
                         </button>
-                        <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270901/15_ub1o2u.png')" aria-label="放大檢視 Kai 生活照 2" class="block p-0 border-0 bg-transparent rounded-xl">
-                            <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270901/15_ub1o2u.png" width="480" height="480" alt="Kai 生活照" loading="lazy" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+                        <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270901/15_ub1o2u.png')" aria-label="放大檢視 Kai 生活照 2" class="bento-photo-thumb group">
+                            <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270901/15_ub1o2u.png" width="480" height="480" alt="Kai 生活照 2" loading="lazy" class="w-full aspect-square rounded-xl object-cover transition-transform duration-300 group-hover:scale-105">
+                            <span class="bento-photo-overlay" aria-hidden="true"><svg class="ico"><use href="#i-search"/></svg></span>
                         </button>
-                        <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/14_lfk0rp.png')" aria-label="放大檢視 Kai 生活照 3" class="block p-0 border-0 bg-transparent rounded-xl">
-                            <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270726/14_lfk0rp.png" width="480" height="480" alt="Kai 生活照" loading="lazy" class="w-full aspect-square rounded-xl object-cover shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+                        <button type="button" onclick="openImageLightbox('https://res.cloudinary.com/p6esflub/image/upload/f_auto,q_auto/v1786270726/14_lfk0rp.png')" aria-label="放大檢視 Kai 生活照 3" class="bento-photo-thumb group">
+                            <img data-src="https://res.cloudinary.com/p6esflub/image/upload/c_limit,w_480/f_auto,q_auto/v1786270726/14_lfk0rp.png" width="480" height="480" alt="Kai 生活照 3" loading="lazy" class="w-full aspect-square rounded-xl object-cover transition-transform duration-300 group-hover:scale-105">
+                            <span class="bento-photo-overlay" aria-hidden="true"><svg class="ico"><use href="#i-search"/></svg></span>
                         </button>
                     </div>
                 </div>
@@ -503,7 +573,7 @@
                     <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                     <span>追蹤 Kai 的 IG @kai.nursing_life</span>
                 </a>
-                <button type="button" onclick="closeAboutModal(); openLoginModal();" class="admin-footer-btn py-1" title="前往管理員登入">
+                <button type="button" onclick="openLoginFromAbout()" class="admin-footer-btn py-1" title="前往管理員登入">
                     創作者管理員登入入口
                 </button>
             </div>
@@ -1091,7 +1161,7 @@
         const READER_SCALES = { standard: '0.9', large: '1', largest: '1.15' };
         const savedArticleFontSize = readStoredPreference('kai_article_font_size');
         let articleFontSize = Object.prototype.hasOwnProperty.call(ARTICLE_FONT_SIZES, savedArticleFontSize)
-            ? savedArticleFontSize : 'standard';
+            ? savedArticleFontSize : 'large';
         let articleReadingControlsReady = false;
         let articleProgressFrame = null;
         let articleContentObserver = null;
@@ -1132,10 +1202,17 @@
         // ================= Phase 2C-1: Accessibility — Modal Focus Management =================
         // 最小必要的 focus 管理：開啟 Modal 時記住觸發來源、把焦點移入 Modal 內第一個可操作元素；
         // 關閉時把焦點還給原本觸發的元素。不實作完整的 Tab 循環 focus trap（避免大幅重寫既有 Modal 系統）。
+        // 焦點管理堆疊（Focus Stack）：開啟 Modal 時將當前活躍元素壓入堆疊，關閉時彈出還原。
+        // 支援巢狀彈窗（如 #aboutModal 內開啟 Lightbox，或由試算器切換至文章），關閉後依序精準還原焦點。
+        const modalFocusStack = [];
         let lastFocusedElementBeforeModal = null;
 
         function moveFocusIntoModal(modalId) {
-            lastFocusedElementBeforeModal = document.activeElement;
+            const active = document.activeElement;
+            if (active && active !== document.body && !active.closest('.opacity-0, [hidden], .hidden')) {
+                modalFocusStack.push(active);
+                lastFocusedElementBeforeModal = active;
+            }
             const modal = document.getElementById(modalId);
             if (!modal) return;
             const focusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
@@ -1143,8 +1220,13 @@
         }
 
         function restoreFocusAfterModalClose() {
-            if (lastFocusedElementBeforeModal && typeof lastFocusedElementBeforeModal.focus === 'function') {
-                lastFocusedElementBeforeModal.focus();
+            while (modalFocusStack.length > 0) {
+                const target = modalFocusStack.pop();
+                if (target && typeof target.focus === 'function' && target.isConnected && !target.closest('.opacity-0, [hidden], .hidden')) {
+                    target.focus();
+                    lastFocusedElementBeforeModal = modalFocusStack[modalFocusStack.length - 1] || null;
+                    return;
+                }
             }
             lastFocusedElementBeforeModal = null;
         }
@@ -1154,11 +1236,15 @@
         // 完全依賴既有的 postsData / renderPosts() 來判斷文章是否已經可以被開啟。
         let pendingRouteId = null;
 
+        function sanitizePostId(id) {
+            return String(id || '').replace(/[^a-zA-Z0-9_-]/g, '');
+        }
+
         function parseRoute(pathname) {
             const match = pathname.match(/^\/post\/([^\/]+)\/?$/);
             if (!match) return null;
             try {
-                return decodeURIComponent(match[1]);
+                return sanitizePostId(decodeURIComponent(match[1]));
             } catch (error) {
                 return null;
             }
@@ -1183,7 +1269,14 @@
         //   同時設一個時間上限，避免文章真的不存在時，網址永遠停在 /post/:id 卡住
         function initRouting() {
             const id = parseRoute(location.pathname);
-            if (!id) return;
+            if (!id) {
+                if (location.hash === '#calc') {
+                    openCalcModal();
+                } else if (location.hash === '#about') {
+                    openAboutModal();
+                }
+                return;
+            }
             pendingRouteId = id;
             if (tryResolvePendingRoute()) return;
 
@@ -1225,9 +1318,7 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Keep route timeout and Firestore startup at their existing lifecycle point.
-            initRouting();
-
+            // Keep Firestore startup at its existing lifecycle point.
             if (window.fb) {
                 startFirestoreSync();
             } else {
@@ -1325,8 +1416,12 @@
             if (!url) return url;
             if (!url.includes('res.cloudinary.com') || !url.includes('/upload/')) return url;
             let optimized = url;
-            if (!url.includes('f_auto') && !url.includes('q_auto')) {
-                optimized = url.replace('/upload/', '/upload/f_auto,q_auto/');
+            // 若為小縮圖/卡片預覽（寬度 <= 400px），移除 36pt 浮水印層，避免文字巨型化遮擋縮圖
+            if (width && width <= 400) {
+                optimized = optimized.replace(/\/l_text:[^\/]+\//g, '/');
+            }
+            if (!optimized.includes('f_auto') && !optimized.includes('q_auto')) {
+                optimized = optimized.replace('/upload/', '/upload/f_auto,q_auto/');
             }
             if (width) optimized = optimized.replace('/upload/', `/upload/c_limit,w_${width}/`);
             return optimized;
@@ -1367,20 +1462,24 @@
                 resetBtn.classList.toggle('hidden', currentCategory === 'all');
             }
 
-            grid.innerHTML = SERIES_DEFINITIONS.map(series => {
+            grid.innerHTML = SERIES_DEFINITIONS.map((series, idx) => {
                 const seriesPosts = postsData
                     .filter(p => series.match(p))
                     .sort((a, b) => new Date(b.date) - new Date(a.date));
                 const count = seriesPosts.length;
                 const leadPost = seriesPosts.find(p => p.featured) || seriesPosts[0];
                 const isActive = currentCategory === series.category;
-                const safeLeadId = leadPost ? escapeHtml(leadPost.id) : '';
+                const safeLeadId = leadPost ? sanitizePostId(leadPost.id) : '';
                 const safeLeadTitle = leadPost ? escapeHtml(leadPost.title) : '';
+                const idxNum = String(idx + 1).padStart(2, '0');
 
                 return `
                     <div data-theme="${series.theme}" class="series-card ${isActive ? 'series-card-active' : ''}" role="region" aria-label="${escapeHtml(series.title)}">
                         <div class="series-card-top">
-                            <span class="series-card-badge"><svg class="ico" aria-hidden="true"><use href="#i-${series.icon}"/></svg>${series.badge}</span>
+                            <div class="series-card-tag-group">
+                                <span class="series-card-num num">${idxNum}</span>
+                                <span class="series-card-badge"><svg class="ico" aria-hidden="true"><use href="#i-${series.icon}"/></svg>${series.badge}</span>
+                            </div>
                             <span class="series-card-count num">共 ${count} 篇筆記</span>
                         </div>
                         <h3 class="series-card-title" onclick="setCategory('${escapeHtml(series.category)}')">${escapeHtml(series.title)}</h3>
@@ -1443,6 +1542,9 @@
             }
             emptyState.classList.add('hidden');
 
+            let mdCol = 0;
+            let lgCol = 0;
+
             grid.innerHTML = filtered.map(post => {
                 const isLiked = userLikes[post.id];
                 const likeCount = post.likes + (isLiked ? 1 : 0);
@@ -1464,9 +1566,24 @@
                     ? `<span class="post-read-prog num" title="上次閱讀進度（僅儲存於當前瀏覽器）">${savedProg.percent >= 95 ? '✓ 已讀完' : `已讀 ${savedProg.percent}%`}</span>`
                     : '';
 
+                // 動態判斷精選文章是否具備跨欄空間（不使用 dense，嚴格防止排版破洞）
+                let spanMd = false;
+                let spanLg = false;
+                if (post.featured) {
+                    if (mdCol === 0) spanMd = true; // 2 欄網格在第 0 格時可跨 2 欄
+                    if (lgCol <= 1) spanLg = true; // 3 欄網格在第 0 或 1 格時可跨 2 欄
+                }
+                mdCol = (mdCol + (spanMd ? 2 : 1)) % 2;
+                lgCol = (lgCol + (spanLg ? 2 : 1)) % 3;
+
+                const colSpanClasses = post.featured
+                    ? `post-card-featured ${spanMd ? 'md:col-span-2' : 'md:col-span-1'} ${spanLg ? 'lg:col-span-2' : 'lg:col-span-1'}`
+                    : '';
+                const mediaHeightClasses = 'h-48';
+
                 return `
-                    <article class="post-card flex flex-col group ${post.featured ? 'post-card-featured md:col-span-2 lg:col-span-2' : ''}" data-theme="${theme}">
-                        <div class="post-card-media relative overflow-hidden ${post.featured ? 'h-56 sm:h-72' : 'h-48'} cursor-pointer" onclick="openPostModal('${escapeHtml(post.id)}')">
+                    <article class="post-card flex flex-col group ${colSpanClasses}" data-theme="${theme}">
+                        <div class="post-card-media relative overflow-hidden ${mediaHeightClasses} cursor-pointer" onclick="openPostModal('${sanitizePostId(post.id)}')">
                             <img src="${safeImage}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="media-scrim"></div>
 
@@ -1478,14 +1595,14 @@
 
                             <div class="absolute top-3 right-3 flex items-center gap-2 z-10">
                                 ${isAdminLoggedIn && post._isCustom ? `
-                                    <button onclick="openEditPostModal('${escapeHtml(post.id)}', event)" aria-label="編輯文章" class="w-8 h-8 rounded-full bg-slate-900/40 text-white hover:bg-slate-900/70 backdrop-blur-md flex items-center justify-center transition-colors">
+                                    <button onclick="openEditPostModal('${sanitizePostId(post.id)}', event)" aria-label="編輯文章" class="w-8 h-8 rounded-full bg-slate-900/40 text-white hover:bg-slate-900/70 backdrop-blur-md flex items-center justify-center transition-colors">
                                         <i class="fa-solid fa-pen text-xs"></i>
                                     </button>
-                                    <button onclick="handleDeletePost('${escapeHtml(post.id)}', event)" aria-label="刪除文章" class="w-8 h-8 rounded-full bg-red-500/80 text-white hover:bg-red-600 backdrop-blur-md flex items-center justify-center transition-colors">
+                                    <button onclick="handleDeletePost('${sanitizePostId(post.id)}', event)" aria-label="刪除文章" class="w-8 h-8 rounded-full bg-red-500/80 text-white hover:bg-red-600 backdrop-blur-md flex items-center justify-center transition-colors">
                                         <i class="fa-solid fa-trash text-xs"></i>
                                     </button>
                                 ` : ''}
-                                <button onclick="toggleBookmark('${escapeHtml(post.id)}', event)" aria-label="收藏文章" aria-pressed="${!!isBookmarked}" class="card-bookmark">
+                                <button onclick="toggleBookmark('${sanitizePostId(post.id)}', event)" aria-label="收藏文章" aria-pressed="${!!isBookmarked}" class="card-bookmark">
                                     <svg class="ico" aria-hidden="true"><use href="#i-bookmark"/></svg>
                                 </button>
                             </div>
@@ -1510,7 +1627,7 @@
                                     ${progBadgeHtml}
                                 </div>
 
-                                <h2 onclick="openPostModal('${escapeHtml(post.id)}')" class="post-card-title line-clamp-2">
+                                <h2 onclick="openPostModal('${sanitizePostId(post.id)}')" class="post-card-title line-clamp-2">
                                     ${safeTitle}
                                 </h2>
 
@@ -1525,12 +1642,12 @@
                                 </div>
 
                                 <div class="post-card-actions">
-                                    <button onclick="toggleLike('${escapeHtml(post.id)}', event)" aria-pressed="${!!isLiked}" class="post-like ${isLiked ? 'is-liked' : ''}">
+                                    <button onclick="toggleLike('${sanitizePostId(post.id)}', event)" aria-pressed="${!!isLiked}" class="post-like ${isLiked ? 'is-liked' : ''}">
                                         <svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg>
                                         <span class="num">${likeCount > 0 ? likeCount : '讚'}</span>
                                     </button>
 
-                                    <button onclick="openPostModal('${escapeHtml(post.id)}')" class="post-readmore">
+                                    <button onclick="openPostModal('${sanitizePostId(post.id)}')" class="post-readmore">
                                         閱讀全文 <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg>
                                     </button>
                                 </div>
@@ -1549,6 +1666,7 @@
         let currentCarouselIndex = 0;
         let isFullscreenImage = false;
         let isShowingTailPreview = false;
+        let pendingResumeSnapshot = null;
 
         function changeCarousel(dir) {
             if (!currentActivePost || !currentActivePost.images) return;
@@ -1574,6 +1692,9 @@
                 // 首張往前滑不循環至最後一張，防止意外爆雷
                 return;
             }
+            if (dir > 0 && !tailElem && currentCarouselIndex === total - 1) {
+                return;
+            }
             currentCarouselIndex = (currentCarouselIndex + dir + total) % total;
             updateCarouselUI();
         }
@@ -1592,25 +1713,42 @@
             const thumbsContainer = document.getElementById('carouselThumbnails');
             const tailElem = document.getElementById('carouselTailPreview');
             const carouselBadge = document.getElementById('readerCarouselProgressBadge');
+            const container = document.getElementById('carouselImageContainer');
             const total = currentActivePost.images.length;
+
+            if (container) {
+                container.classList.toggle('is-showing-tail', isShowingTailPreview);
+            }
 
             if (tailElem && tailElem.classList) {
                 tailElem.classList.toggle('hidden', !isShowingTailPreview);
             }
 
-            if (imgElem) {
+            const prevBtn = document.querySelector('#carouselImageContainer .reader-carousel-prev');
+            const nextBtn = document.querySelector('#carouselImageContainer .reader-carousel-next');
+            if (prevBtn) {
+                prevBtn.disabled = (!isShowingTailPreview && currentCarouselIndex === 0);
+            }
+            if (nextBtn) {
+                nextBtn.disabled = isShowingTailPreview || (!tailElem && currentCarouselIndex === total - 1);
+            }
+
+            if (imgElem && !isShowingTailPreview) {
                 const rawCurrentUrl = sanitizeImageUrl(currentActivePost.images[currentCarouselIndex], currentActivePost.category);
-                if (imgElem.classList) imgElem.classList.add('is-loading');
-                imgElem.onload = () => { if (imgElem.classList) imgElem.classList.remove('is-loading'); };
-                imgElem.onerror = () => {
-                    if (imgElem.classList) imgElem.classList.remove('is-loading');
-                    handleImgError(imgElem, currentActivePost.category);
-                };
-                if (typeof getCloudinaryLqipUrl === 'function' && imgElem.parentElement && imgElem.parentElement.style) {
-                    imgElem.parentElement.style.backgroundImage = `url('${getCloudinaryLqipUrl(rawCurrentUrl)}')`;
+                const nextSrc = optimizeCloudinaryUrl(rawCurrentUrl);
+                if (imgElem.getAttribute('src') !== nextSrc) {
+                    if (imgElem.classList) imgElem.classList.add('is-loading');
+                    imgElem.onload = () => { if (imgElem.classList) imgElem.classList.remove('is-loading'); };
+                    imgElem.onerror = () => {
+                        if (imgElem.classList) imgElem.classList.remove('is-loading');
+                        handleImgError(imgElem, currentActivePost.category);
+                    };
+                    if (typeof getCloudinaryLqipUrl === 'function' && imgElem.parentElement && imgElem.parentElement.style) {
+                        imgElem.parentElement.style.backgroundImage = `url('${getCloudinaryLqipUrl(rawCurrentUrl)}')`;
+                    }
+                    imgElem.src = nextSrc;
+                    if (imgElem.complete && imgElem.classList) imgElem.classList.remove('is-loading');
                 }
-                imgElem.src = optimizeCloudinaryUrl(rawCurrentUrl);
-                if (imgElem.complete && imgElem.classList) imgElem.classList.remove('is-loading');
             }
             if (countElem) {
                 countElem.innerText = isShowingTailPreview
@@ -1625,11 +1763,16 @@
             
             if (thumbsContainer) {
                 const thumbs = thumbsContainer.querySelectorAll('.thumb-btn');
+                const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
                 thumbs.forEach((thumb, i) => {
                     if (!isShowingTailPreview && i === currentCarouselIndex) {
                         thumb.classList.add('ring-2', 'ring-teal-500', 'opacity-100', 'is-active');
                         thumb.classList.remove('opacity-60');
-                        thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                        const targetLeft = Math.max(0, thumb.offsetLeft - (thumbsContainer.clientWidth - thumb.clientWidth) / 2);
+                        thumbsContainer.scrollTo({
+                            left: targetLeft,
+                            behavior: prefersReducedMotion ? 'auto' : 'smooth'
+                        });
                     } else {
                         thumb.classList.remove('ring-2', 'ring-teal-500', 'opacity-100', 'is-active');
                         thumb.classList.add('opacity-60');
@@ -1659,6 +1802,7 @@
             const container = document.getElementById('carouselImageContainer');
             const imgWrapper = container ? container.querySelector('.relative.flex.items-center.justify-center') : null;
             const img = document.getElementById('carouselMainImg');
+            const card = document.getElementById('postModalCard');
             if (!container || !img) return;
             isFullscreenImage = !isFullscreenImage;
 
@@ -1669,19 +1813,25 @@
                 img.classList.add('max-h-[90vh]', 'cursor-zoom-out');
                 if (imgWrapper) imgWrapper.classList.add('min-h-0');
                 if (btnIcon) btnIcon.className = 'fa-solid fa-compress';
+                if (card) card.classList.add('is-carousel-fullscreen');
             } else {
                 container.classList.remove('fixed', 'inset-0', 'z-50', 'bg-slate-950/95', 'p-4', 'flex', 'flex-col', 'justify-center');
                 img.classList.remove('max-h-[90vh]', 'cursor-zoom-out');
                 img.classList.add('max-h-[560px]', 'cursor-zoom-in');
                 if (btnIcon) btnIcon.className = 'fa-solid fa-expand';
+                if (card) card.classList.remove('is-carousel-fullscreen');
             }
             const fullscreenButton = document.getElementById('fullscreenBtn');
-            fullscreenButton.setAttribute('aria-pressed', String(isFullscreenImage));
+            if (fullscreenButton) {
+                fullscreenButton.setAttribute('aria-pressed', String(isFullscreenImage));
+            }
             const exitButton = document.getElementById('exitFullscreenImageBtn');
             if (exitButton) {
                 exitButton.classList.toggle('hidden', !isFullscreenImage);
                 if (isFullscreenImage) exitButton.focus();
-                else if (exitButton.contains(document.activeElement)) fullscreenButton.focus();
+                else if (exitButton.contains(document.activeElement)) {
+                    if (fullscreenButton) fullscreenButton.focus();
+                }
             }
         }
 
@@ -1693,10 +1843,18 @@
             const seriesIndex = seriesPosts.findIndex(p => p.id === post.id);
 
             const allIndex = sortedAll.findIndex(p => p.id === post.id);
-            const prevPost = (seriesIndex > 0 ? seriesPosts[seriesIndex - 1] : null)
-                || (allIndex > 0 ? sortedAll[allIndex - 1] : null);
-            const nextPost = (seriesIndex >= 0 && seriesIndex < seriesPosts.length - 1 ? seriesPosts[seriesIndex + 1] : null)
-                || (allIndex >= 0 && allIndex < sortedAll.length - 1 ? sortedAll[allIndex + 1] : null);
+            // 同系列導覽候選
+            const seriesNextPost = (seriesIndex >= 0 && seriesIndex < seriesPosts.length - 1) ? seriesPosts[seriesIndex + 1] : null;
+            const seriesPrevPost = seriesIndex > 0 ? seriesPosts[seriesIndex - 1] : null;
+            const allNextPost = (allIndex >= 0 && allIndex < sortedAll.length - 1) ? sortedAll[allIndex + 1] : null;
+            const allPrevPost = allIndex > 0 ? sortedAll[allIndex - 1] : null;
+
+            // 主推下一篇優先延續同專欄系列，若系列已至末篇則循環推薦系列最新篇
+            const nextPost = seriesNextPost
+                || (seriesPosts.length > 1 ? (seriesPrevPost || seriesPosts[0]) : null)
+                || allNextPost
+                || allPrevPost;
+            const prevPost = [seriesPrevPost, seriesNextPost, ...seriesPosts, allPrevPost, allNextPost].find(p => p && p.id !== post.id && p.id !== nextPost?.id) || null;
 
             const excludedIds = new Set([post.id, prevPost?.id, nextPost?.id].filter(Boolean));
             const relatedPool = [
@@ -1707,7 +1865,7 @@
 
             const renderNavCard = (targetPost, dirLabel, isNext) => {
                 if (!targetPost) return '';
-                const safeId = escapeHtml(targetPost.id);
+                const safeId = sanitizePostId(targetPost.id);
                 const safeTitle = escapeHtml(targetPost.title);
                 const safeDate = escapeHtml(targetPost.date || '');
                 const safeReadTime = escapeHtml(targetPost.readTime || '3 分鐘');
@@ -1721,7 +1879,7 @@
             };
 
             const renderRelatedCard = (rPost) => {
-                const safeId = escapeHtml(rPost.id);
+                const safeId = sanitizePostId(rPost.id);
                 const safeTitle = escapeHtml(rPost.title);
                 const safeImg = optimizeCloudinaryUrl(sanitizeImageUrl(rPost.image, rPost.category), 320);
                 const safeReadTime = escapeHtml(rPost.readTime || '3 分鐘');
@@ -1740,13 +1898,13 @@
             const heroNextTarget = nextPost || prevPost;
             const renderNextHeroCard = (targetPost) => {
                 if (!targetPost) return '';
-                const safeId = escapeHtml(targetPost.id);
+                const safeId = sanitizePostId(targetPost.id);
                 const safeTitle = escapeHtml(targetPost.title);
                 const safeSummary = escapeHtml(targetPost.summary || '');
                 const safeImg = optimizeCloudinaryUrl(sanitizeImageUrl(targetPost.image, targetPost.category), 480);
                 const safeReadTime = escapeHtml(targetPost.readTime || '3 分鐘');
                 const targetSeries = SERIES_DEFINITIONS.find(s => s.match(targetPost)) || series;
-                const seriesBadgeText = targetSeries ? `${targetSeries.badge} · ${escapeHtml(targetSeries.title)}` : '專欄推薦';
+                const seriesBadgeText = targetSeries ? `下一篇推薦 · ${targetSeries.badge}` : '下一篇推薦';
                 return `
                     <div class="article-next-hero-card">
                         <div class="article-next-hero-media">
@@ -1773,14 +1931,15 @@
 
             return `
                 <section id="articleBottomSection" class="article-bottom-section" aria-label="系列文章與延伸閱讀">
-                    ${heroNextTarget ? renderNextHeroCard(heroNextTarget) : ''}
-
-                    <!-- 文末專屬 IG 追蹤與交流 CTA 區塊（附 UTM 追蹤標籤） -->
+                    <!-- 1. 文末專屬創作者作者卡（先建立作者信任，再導流延伸閱讀） -->
                     <div class="article-ig-cta-banner">
-                        <div class="article-ig-cta-left">
-                            <span class="article-ig-cta-tag"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram 專欄</span>
-                            <h4 class="article-ig-cta-title">喜歡 Kai 的圖文筆記嗎？</h4>
-                            <p class="article-ig-cta-desc">日常臨床隨筆、即時理財記帳與問答互動，都在 IG 首發更新。</p>
+                        <div class="article-author-card-content flex items-center gap-4">
+                            <img src="${optimizeCloudinaryUrl(sanitizeImageUrl(SITE_LOGO_URL), 96)}" alt="" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full border border-gold/40 shadow-sm flex-shrink-0 object-cover" onerror="this.style.display='none'">
+                            <div class="article-ig-cta-left">
+                                <span class="article-ig-cta-tag"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg> 專欄作者 · Kai</span>
+                                <p class="article-ig-cta-title">公職護理師 · 理財與研究所筆記</p>
+                                <p class="article-ig-cta-desc">臨床日常隨筆、公職轉職歷程與實用個人理財，都在 IG 首發更新與交流。</p>
+                            </div>
                         </div>
                         <a href="https://www.instagram.com/kai.nursing_life?utm_source=website&utm_medium=article_footer&utm_campaign=creator_cta" target="_blank" rel="noopener noreferrer" class="article-ig-cta-btn">
                             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
@@ -1788,6 +1947,8 @@
                             <svg class="ico" aria-hidden="true"><use href="#i-external-link"/></svg>
                         </a>
                     </div>
+
+                    ${heroNextTarget ? renderNextHeroCard(heroNextTarget) : ''}
 
                     <div class="article-series-banner">
                         <div class="article-series-info">
@@ -1831,19 +1992,23 @@
             const seriesIndex = seriesPosts.findIndex(p => p.id === post.id);
             const allIndex = sortedAll.findIndex(p => p.id === post.id);
             return (seriesIndex >= 0 && seriesIndex < seriesPosts.length - 1 ? seriesPosts[seriesIndex + 1] : null)
+                || (seriesPosts.length > 1 ? (seriesIndex > 0 ? seriesPosts[seriesIndex - 1] : seriesPosts[0]) : null)
                 || (allIndex >= 0 && allIndex < sortedAll.length - 1 ? sortedAll[allIndex + 1] : null)
-                || (seriesIndex > 0 ? seriesPosts[seriesIndex - 1] : null)
                 || (allIndex > 0 ? sortedAll[allIndex - 1] : null);
         }
 
         function saveReadingProgressState(postId, percent, slideIndex) {
             if (!postId) return;
+            // 若尚有待決策的續讀快照，暫緩覆寫持久化儲存，避免誤觸捲動沖銷舊進度 (STATE-01)
+            if (pendingResumeSnapshot !== null) return;
             const progressMap = (typeof userReadingProgress === 'object' && userReadingProgress) ? userReadingProgress : {};
             const prev = progressMap[postId] || { percent: 0, slide: 0, scrollTop: 0 };
-            const nextPercent = typeof percent === 'number' ? Math.max(prev.percent || 0, Math.min(100, Math.round(percent))) : (prev.percent || 0);
+            const nextPercent = typeof percent === 'number' ? Math.max(0, Math.min(100, Math.round(percent))) : (prev.percent || 0);
             const nextSlide = typeof slideIndex === 'number' ? Math.max(0, slideIndex) : (prev.slide || 0);
             const body = document.getElementById('modalBody');
-            const nextScrollTop = (body && typeof percent === 'number' && body.scrollTop > 40) ? Math.round(body.scrollTop) : (prev.scrollTop || 0);
+            const nextScrollTop = (body && typeof percent === 'number' && body.scrollTop > 40)
+                ? Math.round(body.scrollTop)
+                : (prev.scrollTop || 0);
             progressMap[postId] = {
                 percent: nextPercent,
                 slide: nextSlide,
@@ -1869,6 +2034,12 @@
             if (!isScrollable) return false;
             // 讀者必須實際往下閱讀超過 60px
             if (body.scrollTop < 60) return false;
+            // 當文末區塊（作者卡、推薦卡）已進入視窗時自動隱藏，避免與大型推薦卡同屏重複並遮擋底部導覽
+            if (bottomSection) {
+                const bodyRect = body.getBoundingClientRect();
+                const bottomRect = bottomSection.getBoundingClientRect();
+                if (bottomRect.top <= bodyRect.bottom - 80) return false;
+            }
             // 閱讀進度必須達 85%
             const range = Math.max(0, scrollH - excludedH - clientH);
             const percent = range === 0 ? 100 : Math.round(Math.min(1, Math.max(0, body.scrollTop / range)) * 100);
@@ -1910,9 +2081,59 @@
             reader85Observer.observe(sentinel);
         }
 
+        function isSummaryIdenticalToContent(summary, contentHtml) {
+            if (!summary || typeof summary !== 'string' || !summary.trim()) return false;
+            if (!contentHtml || typeof contentHtml !== 'string' || !contentHtml.trim()) return false;
+
+            function extractNormalizedText(input, isHtml) {
+                if (!input) return '';
+                let str = String(input);
+                if (isHtml) {
+                    str = str.replace(/<br\s*\/?>/gi, ' ')
+                             .replace(/<\/(p|div|h[1-6]|li)>/gi, ' ')
+                             .replace(/<[^>]+>/g, ' ')
+                             .replace(/&amp;/g, '&')
+                             .replace(/&lt;/g, '<')
+                             .replace(/&gt;/g, '>')
+                             .replace(/&quot;/g, '"')
+                             .replace(/&#0?39;/g, "'")
+                             .replace(/&nbsp;/g, ' ');
+                }
+                return str.replace(/\s+/g, ' ').trim();
+            }
+
+            const sNorm = extractNormalizedText(summary, false);
+            const cNorm = extractNormalizedText(contentHtml, true);
+            return sNorm.length > 0 && sNorm === cNorm;
+        }
+
+        function formatCustomArticleBody(rawHtml) {
+            if (!rawHtml || typeof rawHtml !== 'string') return '';
+            const trimmed = rawHtml.trim();
+            // 若為後台儲存的單一 <p class="whitespace-pre-line">...</p> 或含有多重換行
+            const wrapperMatch = trimmed.match(/^<p(?:\s+class="[^"]*whitespace-pre-line[^"]*")?>([\s\S]*)<\/p>$/i);
+            if (wrapperMatch) {
+                const inner = wrapperMatch[1];
+                let paragraphs = inner.split(/\n\s*\n+/).map(p => p.trim()).filter(Boolean);
+                if (paragraphs.length <= 1) {
+                    const singleLineParas = inner.split(/\n+/).map(p => p.trim()).filter(Boolean);
+                    if (singleLineParas.length >= 2) {
+                        paragraphs = singleLineParas;
+                    }
+                }
+                if (paragraphs.length > 1) {
+                    return paragraphs
+                        .map(para => `<p>${para.replace(/\n/g, '<br>')}</p>`)
+                        .join('\n');
+                }
+            }
+            return rawHtml;
+        }
+
         function resumeArticleReadingProgress() {
             if (!currentActivePost) return;
-            const saved = userReadingProgress[currentActivePost.id];
+            const saved = pendingResumeSnapshot || userReadingProgress[currentActivePost.id];
+            pendingResumeSnapshot = null;
             if (!saved) return;
             const banner = document.getElementById('readerResumeBanner');
             if (banner) banner.remove();
@@ -1920,43 +2141,123 @@
                 setCarouselIndex(saved.slide);
             }
             const body = document.getElementById('modalBody');
-            if (body && saved.scrollTop > 40) {
-                const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                body.scrollTo({ top: saved.scrollTop, behavior: reducedMotion ? 'auto' : 'smooth' });
+            if (body) {
+                const clientH = body.clientHeight;
+                const scrollH = body.scrollHeight;
+                const bottomSection = document.getElementById('articleBottomSection');
+                const excludedH = (bottomSection && typeof bottomSection.offsetHeight === 'number') ? bottomSection.offsetHeight : 0;
+                const range = Math.max(0, scrollH - excludedH - clientH);
+
+                let targetTop = null;
+                if (typeof saved.percent === 'number' && saved.percent >= 10 && saved.percent < 95 && range > 0) {
+                    targetTop = Math.round((range * saved.percent) / 100);
+                } else if (typeof saved.percent === 'number' && saved.percent >= 95 && saved.slide > 0) {
+                    if (window.innerWidth < 1024) {
+                        const carouselEl = document.getElementById('carouselImageContainer');
+                        if (carouselEl) {
+                            const bodyRect = body.getBoundingClientRect();
+                            const carouselRect = carouselEl.getBoundingClientRect();
+                            targetTop = Math.max(0, Math.round(body.scrollTop + (carouselRect.top - bodyRect.top) - 12));
+                        }
+                    } else {
+                        targetTop = 0; // 桌機長文已讀完時，明確平滑滾動回頂部以對齊左欄 Sticky 輪播 (STATE-02)
+                    }
+                } else if (typeof saved.scrollTop === 'number' && saved.scrollTop > 40 && (typeof saved.percent !== 'number' || saved.percent < 95)) {
+                    targetTop = Math.min(saved.scrollTop, Math.max(0, scrollH - clientH));
+                }
+
+                if (typeof targetTop === 'number') {
+                    const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    body.scrollTo({ top: targetTop, behavior: reducedMotion ? 'auto' : 'smooth' });
+                }
             }
+        }
+
+        function updateReaderTocScrollspy() {
+            const modalBody = document.getElementById('modalBody');
+            if (!modalBody) return;
+            const headings = modalBody.querySelectorAll('.article-prose h2[id], .article-prose h3[id]');
+            if (!headings.length) return;
+
+            const bodyRect = modalBody.getBoundingClientRect();
+            let currentId = null;
+
+            for (let i = 0; i < headings.length; i++) {
+                const h = headings[i];
+                const hRect = h.getBoundingClientRect();
+                if ((hRect.top - bodyRect.top) <= 120) {
+                    currentId = h.id;
+                } else {
+                    break;
+                }
+            }
+
+            if (!currentId && headings.length > 0) {
+                currentId = headings[0].id;
+            }
+
+            const tocLinks = modalBody.querySelectorAll('.reader-toc-link');
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                const isActive = href === '#' + currentId;
+                link.classList.toggle('is-current', isActive);
+                if (isActive) {
+                    link.setAttribute('aria-current', 'location');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
         }
 
         function onReaderScrollProgressUpdate(percent, scrollTop, clientH, scrollH) {
             if (!currentActivePost) return;
-            showNextChapterToast();
-            if (scrollTop > 20 || percent > 0) {
-                saveReadingProgressState(currentActivePost.id, percent, currentCarouselIndex);
+            if (canShowNextChapterToast()) {
+                showNextChapterToast();
+            } else {
+                const toast = document.getElementById('nextChapterToast');
+                if (toast && !toast.classList.contains('hidden')) {
+                    toast.classList.add('hidden');
+                }
+            }
+            updateReaderTocScrollspy();
+            if (scrollTop > 40) {
+                saveReadingProgressState(currentActivePost.id, percent, null);
             }
             const footer = document.getElementById('postModalFooter');
+            const modal = document.getElementById('postModal');
             if (footer && footer.classList) {
                 const delta = scrollTop - lastReaderScrollTop;
                 const nearBottom = (scrollTop + clientH) >= (scrollH - 80);
                 if (scrollTop <= 48 || nearBottom) {
                     footer.classList.remove('is-toolbar-hidden');
+                    if (modal) modal.classList.remove('toolbar-hidden');
                 } else if (delta > 10) {
                     footer.classList.add('is-toolbar-hidden');
+                    if (modal) modal.classList.add('toolbar-hidden');
                 } else if (delta < -8) {
                     footer.classList.remove('is-toolbar-hidden');
+                    if (modal) modal.classList.remove('toolbar-hidden');
                 }
                 lastReaderScrollTop = Math.max(0, scrollTop);
             }
         }
 
         function openPostModal(postId) {
-            const post = postsData.find(p => p.id === postId);
+            const cleanId = sanitizePostId(postId);
+            const post = postsData.find(p => p.id === cleanId);
             if (!post) return;
 
-            // Phase 2B-2: Independent Article URL — 只有在網址還不是這篇文章的網址時才 push，
-            // 避免「router 已經在 /post/:id 時又再次 push」造成重複的 history 記錄。
-            // 標記 isInternal: true，讓深連結直入讀者在按返回時能正確回到首頁而非跳離網站！
-            const targetPath = '/post/' + encodeURIComponent(postId);
+            // Phase 2B-2: Independent Article URL — 只有在網址還不是這篇文章的網址時才更新。
+            // 若為閱讀器內部連續導航（Modal 已呈開啟狀態），使用 replaceState 避免按返回時在歷史堆疊中循環上一篇 (NAV-01)！
+            const targetPath = '/post/' + encodeURIComponent(cleanId);
+            const postModalEl = document.getElementById('postModal');
+            const isInterArticleNav = postModalEl && !postModalEl.classList.contains('hidden') && !postModalEl.classList.contains('opacity-0');
             if (location.pathname !== targetPath) {
-                history.pushState({ postId, isInternal: true }, '', targetPath);
+                if (isInterArticleNav) {
+                    history.replaceState({ postId: cleanId, isInternal: true }, '', targetPath);
+                } else {
+                    history.pushState({ postId: cleanId, isInternal: true }, '', targetPath);
+                }
             }
 
             document.title = post.title + ' | Kai 護理生活 & 理財投資筆記';
@@ -1964,6 +2265,7 @@
             currentCarouselIndex = 0;
             isFullscreenImage = false;
             isShowingTailPreview = false;
+            pendingResumeSnapshot = null;
             nextChapterToastDismissedForId = null;
             lastReaderScrollTop = 0;
             currentNextChapterPost = resolveNextChapterPost(post);
@@ -1977,6 +2279,8 @@
             if (fsBtn) {
                 fsBtn.setAttribute('aria-pressed', 'false');
                 fsBtn.classList.toggle('hidden', !hasImages);
+                const fsIcon = fsBtn.querySelector('i');
+                if (fsIcon) fsIcon.className = 'fa-solid fa-expand';
             }
 
             const carouselBadge = document.getElementById('readerCarouselProgressBadge');
@@ -1998,7 +2302,7 @@
             if (toastEl) {
                 toastEl.classList.add('hidden');
                 if (currentNextChapterPost) {
-                    const nextSafeId = escapeHtml(currentNextChapterPost.id);
+                    const nextSafeId = sanitizePostId(currentNextChapterPost.id);
                     const nextSafeTitle = escapeHtml(currentNextChapterPost.title);
                     const nextSeries = SERIES_DEFINITIONS.find(s => s.match(currentNextChapterPost)) || SERIES_DEFINITIONS[0];
                     toastEl.innerHTML = `
@@ -2028,7 +2332,10 @@
             const catElem = document.getElementById('modalCategory');
             const bodyElem = document.getElementById('modalBody');
 
-            if (card) card.setAttribute('data-theme', theme);
+            if (card) {
+                card.setAttribute('data-theme', theme);
+                card.classList.remove('is-carousel-fullscreen');
+            }
             if (bodyElem) bodyElem.setAttribute('data-has-images', String(hasImages));
 
             catElem.innerHTML = `
@@ -2065,11 +2372,19 @@
             // P1 Item: Sanitize igUrl
             document.getElementById('modalIgLink').href = sanitizeUrl(post.igUrl);
 
-            const articleBodyHtml = post._isCustom ? sanitizeArticleContent(post.content) : (post.content || '');
+            const rawBodyHtml = post._isCustom ? sanitizeArticleContent(post.content) : (post.content || '');
+            const isDuplicateStandfirst = isSummaryIdenticalToContent(post.summary, rawBodyHtml);
+            const shouldShowStandfirst = !!(post.summary && !isDuplicateStandfirst);
+            const standfirstHtml = shouldShowStandfirst ? `<p class="reader-standfirst">${escapeHtml(post.summary.trim())}</p>` : '';
+            const articleBodyHtml = post._isCustom ? formatCustomArticleBody(rawBodyHtml) : rawBodyHtml;
             const tocHtml = buildReaderTocHtml(articleBodyHtml);
 
             const savedProgress = userReadingProgress[post.id];
-            const hasResumeState = savedProgress && ((savedProgress.percent >= 10 && savedProgress.percent < 95) || (hasImages && savedProgress.slide > 0));
+            const isTextDone = (savedProgress?.percent || 0) >= 95;
+            const isSlideDone = !hasImages || ((savedProgress?.slide || 0) >= post.images.length - 1);
+            const isPostFullyDone = isTextDone && isSlideDone;
+            const hasResumeState = !!(savedProgress && !isPostFullyDone && (((savedProgress.percent || 0) >= 10 && !isTextDone) || (hasImages && savedProgress.slide > 0 && !isSlideDone) || (!isTextDone && (savedProgress.slide || 0) > 0)));
+            pendingResumeSnapshot = hasResumeState ? { ...savedProgress } : null;
             const resumeBannerHtml = hasResumeState ? `
                 <div id="readerResumeBanner" class="reader-resume-banner" role="status">
                     <span class="reader-resume-text num">
@@ -2078,22 +2393,28 @@
                     </span>
                     <div class="reader-resume-actions">
                         <button type="button" onclick="resumeArticleReadingProgress()" class="reader-resume-btn">繼續上次位置</button>
-                        <button type="button" onclick="this.closest('#readerResumeBanner').remove()" class="reader-resume-dismiss" aria-label="關閉提示">略過</button>
+                        <button type="button" onclick="pendingResumeSnapshot = null; this.closest('#readerResumeBanner').remove()" class="reader-resume-dismiss" aria-label="關閉提示">略過</button>
                     </div>
                 </div>
             ` : '';
 
             const highlightsCalloutHtml = (Array.isArray(post.highlights) && post.highlights.length > 0) ? `
                 <aside class="callout callout--note reader-highlights-box" aria-label="文章重點整理">
-                    <div class="callout-title"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg> 30 秒重點精華整理</div>
+                    <div class="callout-title"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg> 本文重點整理</div>
                     <ul class="callout-list">
                         ${post.highlights.map(h => `<li>${escapeHtml(h)}</li>`).join('')}
                     </ul>
                 </aside>
             ` : '';
 
+            const tagsHtml = (Array.isArray(post.tags) && post.tags.length > 0) ? `
+                <div class="reader-tags-row">
+                    ${post.tags.map(t => `<span class="reader-tag">${escapeHtml(t)}</span>`).join('')}
+                </div>
+            ` : '';
+
             const tailPreviewHtml = (hasImages && post.images.length > 1 && currentNextChapterPost) ? (() => {
-                const nextSafeId = escapeHtml(currentNextChapterPost.id);
+                const nextSafeId = sanitizePostId(currentNextChapterPost.id);
                 const nextSafeTitle = escapeHtml(currentNextChapterPost.title);
                 const nextFirstRaw = (Array.isArray(currentNextChapterPost.images) && currentNextChapterPost.images[0])
                     ? currentNextChapterPost.images[0]
@@ -2102,9 +2423,9 @@
                 const nextReadTime = escapeHtml(currentNextChapterPost.readTime || '3 分鐘');
                 const nextSeries = SERIES_DEFINITIONS.find(s => s.match(currentNextChapterPost)) || SERIES_DEFINITIONS[0];
                 return `
-                    <div id="carouselTailPreview" class="carousel-tail-preview hidden" role="region" aria-label="下一篇圖卡尾頁預覽">
+                    <div id="carouselTailPreview" onclick="if (isFullscreenImage && event.target === this) toggleFullscreenImage();" class="carousel-tail-preview hidden" role="region" aria-label="下一篇圖卡尾頁預覽">
                         <div class="carousel-tail-card">
-                            <span class="carousel-tail-badge"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg> 已滑至最後一張 · 下一篇首張預覽</span>
+                            <span class="carousel-tail-badge"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg> 下一篇首張預覽</span>
                             <div class="carousel-tail-thumb-wrap">
                                 <img src="${nextImgUrl}" alt="${nextSafeTitle}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(currentNextChapterPost.category)}')" class="carousel-tail-thumb">
                             </div>
@@ -2132,82 +2453,77 @@
                 bodyElem.innerHTML = `
                     <div class="reader-shell reader-shell--dual">
                         ${resumeBannerHtml}
-                        <div class="reader-hero-grid">
-                            <header class="reader-meta-col">
-                                <div class="reader-kicker-row">
-                                    <span class="reader-cat-pill"><svg class="ico" aria-hidden="true"><use href="#i-${catIcon}"/></svg> ${catName}</span>
-                                    <span class="reader-meta-item num"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg> ${escapeHtml(post.date)}</span>
-                                    <span class="reader-meta-item"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg> 閱讀 ${escapeHtml(post.readTime)}</span>
-                                    <span class="reader-meta-item num"><svg class="ico" aria-hidden="true"><use href="#i-image"/></svg> ${post.images.length} 張圖卡</span>
-                                </div>
+                        <header class="reader-meta-col">
+                            <div class="reader-kicker-row">
+                                <span class="reader-cat-pill"><svg class="ico" aria-hidden="true"><use href="#i-${catIcon}"/></svg> ${catName}</span>
+                                <span class="reader-meta-item num"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg> ${escapeHtml(post.date)}</span>
+                                <span class="reader-meta-item"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg> 閱讀 ${escapeHtml(post.readTime)}</span>
+                                <span class="reader-meta-item num"><svg class="ico" aria-hidden="true"><use href="#i-image"/></svg> ${post.images.length} 張圖卡</span>
+                            </div>
 
-                                <h1 id="postModalTitle" class="reader-title">
-                                    ${escapeHtml(post.title)}
-                                </h1>
+                            <h1 id="postModalTitle" class="reader-title">
+                                ${escapeHtml(post.title)}
+                            </h1>
 
-                                ${post.summary ? `<p class="reader-standfirst">${escapeHtml(post.summary)}</p>` : ''}
+                            ${standfirstHtml}
 
-                                <div class="reader-tags-row">
-                                    ${(post.tags || []).map(t => `<span class="reader-tag">${escapeHtml(t)}</span>`).join('')}
-                                </div>
-
-                                <div class="reader-quick-actions">
-                                    <a href="#readerProseStart" onclick="scrollToReaderSection(event, 'readerProseStart')" class="reader-jump-btn">
-                                        <svg class="ico" aria-hidden="true"><use href="#i-arrow-down"/></svg>
-                                        <span>跳至正文</span>
+                            <div class="reader-quick-actions">
+                                <a href="#readerProseStart" onclick="scrollToReaderSection(event, 'readerProseStart')" class="reader-jump-btn">
+                                    <svg class="ico" aria-hidden="true"><use href="#i-arrow-down"/></svg>
+                                    <span>跳至正文</span>
+                                </a>
+                                ${post.igUrl ? `
+                                    <a href="${sanitizeUrl(post.igUrl)}" target="_blank" rel="noopener noreferrer" class="reader-ig-btn">
+                                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                        <span>IG 原文</span>
+                                        <svg class="ico" aria-hidden="true"><use href="#i-external-link"/></svg>
                                     </a>
-                                    ${post.igUrl ? `
-                                        <a href="${sanitizeUrl(post.igUrl)}" target="_blank" rel="noopener noreferrer" class="reader-ig-btn">
-                                            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                                            <span>IG 原文</span>
-                                            <svg class="ico" aria-hidden="true"><use href="#i-external-link"/></svg>
-                                        </a>
-                                    ` : ''}
+                                ` : ''}
+                            </div>
+
+                            ${tocHtml}
+                        </header>
+
+                        <section class="reader-carousel-col" aria-label="IG 圖卡輪播">
+                            <div id="carouselImageContainer" onclick="if (isFullscreenImage && (event.target === this || event.target.classList.contains('reader-carousel-stage'))) toggleFullscreenImage();" class="reader-carousel-card group transition-all duration-300">
+                                <div class="reader-carousel-stage relative flex items-center justify-center select-none" style="background-image: url('${firstLqipUrl}')">
+                                    <img id="carouselMainImg" onclick="toggleFullscreenImage()" src="${firstMainUrl}" alt="${escapeHtml(post.title)}" loading="eager" onload="this.classList.remove('is-loading')" onerror="this.classList.remove('is-loading'); handleImgError(this, '${escapeHtml(post.category)}')" class="reader-carousel-img lqip-img is-loading w-full h-auto max-h-[560px] object-contain mx-auto transition-all duration-300 cursor-zoom-in">
+                                    ${tailPreviewHtml}
                                 </div>
 
-                                ${tocHtml}
-                            </header>
+                                <button type="button" id="exitFullscreenImageBtn" onclick="toggleFullscreenImage()" aria-label="結束圖片放大" class="hidden absolute top-3 right-3 z-20 rounded-full bg-slate-900/80 text-white flex items-center justify-center">
+                                    <i class="fa-solid fa-compress" aria-hidden="true"></i>
+                                </button>
 
-                            <section class="reader-carousel-col" aria-label="IG 圖卡輪播">
-                                <div id="carouselImageContainer" class="reader-carousel-card group transition-all duration-300">
-                                    <div class="reader-carousel-stage relative flex items-center justify-center select-none" style="background-image: url('${firstLqipUrl}')">
-                                        <img id="carouselMainImg" onclick="toggleFullscreenImage()" src="${firstMainUrl}" alt="${escapeHtml(post.title)}" loading="eager" onload="this.classList.remove('is-loading')" onerror="this.classList.remove('is-loading'); handleImgError(this, '${escapeHtml(post.category)}')" class="reader-carousel-img lqip-img is-loading w-full h-auto max-h-[560px] object-contain mx-auto transition-all duration-300 cursor-zoom-in">
-                                        ${tailPreviewHtml}
-                                    </div>
+                                ${post.images.length > 1 ? `
+                                    <span id="carouselCounter" class="reader-carousel-counter num">
+                                        1 / ${post.images.length}
+                                    </span>
 
-                                    <button type="button" id="exitFullscreenImageBtn" onclick="toggleFullscreenImage()" aria-label="結束圖片放大" class="hidden absolute top-3 right-3 z-20 rounded-full bg-slate-900/80 text-white flex items-center justify-center">
-                                        <i class="fa-solid fa-compress" aria-hidden="true"></i>
+                                    <button type="button" onclick="changeCarousel(-1)" aria-label="上一張圖片" class="reader-carousel-nav reader-carousel-prev" disabled>
+                                        <svg class="ico" aria-hidden="true"><use href="#i-chevron-left"/></svg>
                                     </button>
 
-                                    ${post.images.length > 1 ? `
-                                        <span id="carouselCounter" class="reader-carousel-counter num">
-                                            1 / ${post.images.length}
-                                        </span>
+                                    <button type="button" onclick="changeCarousel(1)" aria-label="下一張圖片" class="reader-carousel-nav reader-carousel-next">
+                                        <svg class="ico" aria-hidden="true"><use href="#i-chevron-right"/></svg>
+                                    </button>
 
-                                        <button type="button" onclick="changeCarousel(-1)" aria-label="上一張圖片" class="reader-carousel-nav reader-carousel-prev">
-                                            <svg class="ico" aria-hidden="true"><use href="#i-chevron-left"/></svg>
-                                        </button>
-
-                                        <button type="button" onclick="changeCarousel(1)" aria-label="下一張圖片" class="reader-carousel-nav reader-carousel-next">
-                                            <svg class="ico" aria-hidden="true"><use href="#i-chevron-right"/></svg>
-                                        </button>
-
-                                        <div id="carouselThumbnails" class="reader-carousel-thumbs hide-scrollbar">
-                                            ${post.images.map((img, idx) => `
-                                                <button type="button" onclick="setCarouselIndex(${idx})" aria-label="觀看第 ${idx+1} 張" class="thumb-btn reader-thumb-btn ${idx === 0 ? 'ring-2 ring-teal-500 opacity-100 is-active' : 'opacity-60 hover:opacity-100'}">
-                                                    <img src="${optimizeCloudinaryUrl(sanitizeImageUrl(img, post.category), 160)}" alt="${escapeHtml(post.title)} - 縮圖 ${idx + 1}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover">
-                                                </button>
-                                            `).join('')}
-                                        </div>
-                                    ` : ''}
-                                </div>
-                            </section>
-                        </div>
+                                    <div id="carouselThumbnails" class="reader-carousel-thumbs hide-scrollbar">
+                                        ${post.images.map((img, idx) => `
+                                            <button type="button" onclick="setCarouselIndex(${idx})" aria-label="觀看第 ${idx+1} 張" class="thumb-btn reader-thumb-btn ${idx === 0 ? 'ring-2 ring-teal-500 opacity-100 is-active' : 'opacity-60 hover:opacity-100'}">
+                                                <img src="${optimizeCloudinaryUrl(sanitizeImageUrl(img, post.category), 160)}" alt="${escapeHtml(post.title)} - 縮圖 ${idx + 1}" loading="${idx < 8 ? 'eager' : 'lazy'}" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover">
+                                            </button>
+                                        `).join('')}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </section>
 
                         <div id="readerProseStart" class="reader-prose-section">
                             ${highlightsCalloutHtml}
                             <div class="article-prose">
                                 ${articleBodyHtml}
+                                ${tagsHtml}
                                 <div id="reader85Sentinel" class="reader-85-sentinel" aria-hidden="true"></div>
                             </div>
                             ${buildArticleBottomNav(post)}
@@ -2229,11 +2545,7 @@
                                 ${escapeHtml(post.title)}
                             </h1>
 
-                            ${post.summary ? `<p class="reader-standfirst">${escapeHtml(post.summary)}</p>` : ''}
-
-                            <div class="reader-tags-row">
-                                ${(post.tags || []).map(t => `<span class="reader-tag">${escapeHtml(t)}</span>`).join('')}
-                            </div>
+                            ${standfirstHtml}
 
                             ${post.igUrl ? `
                                 <div class="reader-quick-actions">
@@ -2244,18 +2556,31 @@
                                     </a>
                                 </div>
                             ` : ''}
+
+                            ${tocHtml ? `<div class="reader-single-toc mt-2">${tocHtml}</div>` : ''}
                         </header>
 
                         <div id="readerProseStart" class="reader-prose-section">
                             ${highlightsCalloutHtml}
                             <div class="article-prose">
                                 ${articleBodyHtml}
+                                ${tagsHtml}
                                 <div id="reader85Sentinel" class="reader-85-sentinel" aria-hidden="true"></div>
                             </div>
                             ${buildArticleBottomNav(post)}
                         </div>
                     </div>
                 `;
+            }
+
+            const mainImg = bodyElem.querySelector('#carouselMainImg');
+            if (mainImg) {
+                if (mainImg.complete && mainImg.naturalWidth > 0) {
+                    mainImg.classList.remove('is-loading');
+                } else {
+                    mainImg.addEventListener('load', () => mainImg.classList.remove('is-loading'), { once: true });
+                    mainImg.addEventListener('error', () => mainImg.classList.remove('is-loading'), { once: true });
+                }
             }
 
             bodyElem.scrollTop = 0;
@@ -2266,12 +2591,15 @@
             card.classList.remove('scale-95');
             document.body.style.overflow = 'hidden';
             moveFocusIntoModal('postModal');
+            setTimeout(updateReaderTocScrollspy, 60);
         }
 
         function getCloudinaryLqipUrl(url) {
             if (!url || typeof url !== 'string') return '';
             if (!url.includes('res.cloudinary.com') || !url.includes('/upload/')) return url;
-            return url.replace('/upload/', '/upload/c_limit,w_48,e_blur:800,q_20,f_auto/');
+            // 移除浮水印層，確保 48px LQIP 模糊預覽乾淨不產生巨型文字殘影
+            const cleanUrl = url.replace(/\/l_text:[^\/]+\//g, '/');
+            return cleanUrl.replace('/upload/', '/upload/c_limit,w_48,e_blur:800,q_20,f_auto/');
         }
 
         function buildReaderTocHtml(contentHtml) {
@@ -2345,7 +2673,7 @@
         }
 
         function setArticleFontSize(size, persist = true) {
-            if (!Object.prototype.hasOwnProperty.call(ARTICLE_FONT_SIZES, size)) size = 'standard';
+            if (!Object.prototype.hasOwnProperty.call(ARTICLE_FONT_SIZES, size)) size = 'large';
             articleFontSize = size;
             const modalBodyEl = document.getElementById('modalBody');
             modalBodyEl.style.setProperty('--article-font-size', ARTICLE_FONT_SIZES[size]);
@@ -2386,11 +2714,18 @@
         function setupKeyboardAndTouchEvents() {
             setupArticleReadingControls();
             document.addEventListener('keydown', (e) => {
+                if (e.target && e.target.closest && e.target.closest('input, textarea, select, [contenteditable]')) return;
                 if (e.key !== 'Escape') {
                     const modal = document.getElementById('postModal');
-                    if (modal && !modal.classList.contains('opacity-0')) {
-                        if (e.key === 'ArrowLeft') changeCarousel(-1);
-                        if (e.key === 'ArrowRight') changeCarousel(1);
+                    if (modal && !modal.classList.contains('opacity-0') && currentActivePost && Array.isArray(currentActivePost.images) && currentActivePost.images.length > 1) {
+                        if (e.key === 'ArrowLeft') {
+                            e.preventDefault();
+                            changeCarousel(-1);
+                        }
+                        if (e.key === 'ArrowRight') {
+                            e.preventDefault();
+                            changeCarousel(1);
+                        }
                     }
                     return;
                 }
@@ -2459,7 +2794,11 @@
             const modal = document.getElementById('postModal');
             const card = document.getElementById('postModalCard');
             if (isFullscreenImage) toggleFullscreenImage();
+            if (card) card.classList.remove('is-carousel-fullscreen');
+            const fsBtnIcon = document.querySelector('#fullscreenBtn i');
+            if (fsBtnIcon) fsBtnIcon.className = 'fa-solid fa-expand';
             isShowingTailPreview = false;
+            pendingResumeSnapshot = null;
             if (reader85Observer) {
                 reader85Observer.disconnect();
                 reader85Observer = null;
@@ -2617,7 +2956,7 @@
                 const isBookmarked = userBookmarks[p.id] === true;
                 const badgeClass = idx === 0 ? 'insights-rank-badge--1' : (idx === 1 ? 'insights-rank-badge--2' : (idx === 2 ? 'insights-rank-badge--3' : 'insights-rank-badge--sub'));
                 return `
-                    <div class="insights-rank-item cursor-pointer" onclick="closeAdminInsightsModal(); openPostModal('${escapeHtml(p.id)}');">
+                    <div class="insights-rank-item cursor-pointer" onclick="closeAdminInsightsModal(); openPostModal('${sanitizePostId(p.id)}');">
                         <div class="insights-rank-main">
                             <div class="insights-rank-head">
                                 <span class="insights-rank-badge ${badgeClass}">${medals[idx]}</span>
@@ -2872,12 +3211,46 @@
             }
         }
 
-        function openPostFromCalc(postId) {
+        function openPostFromAbout(postId) {
+            const cleanId = sanitizePostId(postId);
+            const post = postsData.find(p => p.id === cleanId);
+            if (!post) return;
+            closeAboutModal(true);
+            const targetPath = '/post/' + encodeURIComponent(cleanId);
+            history.replaceState({ postId: cleanId, isInternal: true }, '', targetPath);
+            openPostModal(cleanId);
+        }
+
+        function openCalcFromAbout() {
+            closeAboutModal(true);
+            history.replaceState({ modal: 'calc' }, '', '/#calc');
+            isModalPushed = true;
+            calculateSalary();
+            renderCalcRelatedPosts();
             const modal = document.getElementById('calcModal');
             const card = document.getElementById('calcModalCard');
-            if (modal) modal.classList.add('opacity-0', 'pointer-events-none');
-            if (card) card.classList.add('scale-95');
-            openPostModal(postId);
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-95');
+            document.body.style.overflow = 'hidden';
+            moveFocusIntoModal('calcModal');
+        }
+
+        function openLoginFromAbout() {
+            closeAboutModal(true);
+            if (location.hash === '#about') {
+                history.replaceState({ page: 'home' }, '', '/');
+            }
+            openLoginModal();
+        }
+
+        function openPostFromCalc(postId) {
+            const cleanId = sanitizePostId(postId);
+            const post = postsData.find(p => p.id === cleanId);
+            if (!post) return;
+            closeCalcModal(true);
+            const targetPath = '/post/' + encodeURIComponent(cleanId);
+            history.replaceState({ postId: cleanId, isInternal: true }, '', targetPath);
+            openPostModal(cleanId);
         }
 
         function renderCalcRelatedPosts() {
@@ -3309,6 +3682,7 @@
         calculateSalary();
         setupKeyboardAndTouchEvents();
         applySiteLogo();
+        initRouting();
     </script>
 </body>
 </html>
