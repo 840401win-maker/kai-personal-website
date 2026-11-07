@@ -155,14 +155,29 @@ const srv = http.createServer((req, res) => {
     console.log('Toast still hidden when calling showNextChapterToast at top:', toastStillHidden);
     assert.strictEqual(toastStillHidden, true, 'showNextChapterToast must be gated by canShowNextChapterToast');
 
-    await ev(`document.getElementById('modalBody').scrollTo({ top: 3000, behavior: 'instant' });`);
+    await ev(`(() => {
+      const body = document.getElementById('modalBody');
+      const bottomSection = document.getElementById('articleBottomSection');
+      const excludedH = bottomSection ? bottomSection.offsetHeight : 0;
+      const range = body.scrollHeight - excludedH - body.clientHeight;
+      body.scrollTo({ top: Math.round(range * 0.9), behavior: 'instant' });
+    })()`);
     await sleep(500);
     const toastVisibleAfterScroll = await ev(`(() => {
       const toast = document.getElementById('nextChapterToast');
       return toast && !toast.classList.contains('hidden');
     })()`);
-    console.log('Toast visible after actual 85%+ scroll:', toastVisibleAfterScroll);
-    assert.strictEqual(toastVisibleAfterScroll, true, 'Toast should appear when qualified');
+    console.log('Toast visible after actual 85%+ prose scroll (90%):', toastVisibleAfterScroll);
+    assert.strictEqual(toastVisibleAfterScroll, true, 'Toast should appear when qualified in 85%-99% prose range');
+
+    await ev(`document.getElementById('modalBody').scrollTo({ top: 3000, behavior: 'instant' });`);
+    await sleep(300);
+    const toastAutoHiddenAtBottom = await ev(`(() => {
+      const toast = document.getElementById('nextChapterToast');
+      return !toast || toast.classList.contains('hidden');
+    })()`);
+    console.log('Toast auto-hidden when bottom recommendation section enters viewport:', toastAutoHiddenAtBottom);
+    assert.strictEqual(toastAutoHiddenAtBottom, true, 'Toast must auto-hide when articleBottomSection enters viewport');
   });
 
   console.log('=== Test B1: Calculator Editing vs Blur Consistency & Finite Safety ===');
@@ -302,9 +317,32 @@ const srv = http.createServer((req, res) => {
     await snap('v2-p1p2-login-mobile-375');
   });
 
+  console.log('=== Test Hash Deep-Link (/#calc, /#about) Open → Close Returns Home ===');
+  for (const [hash, modalId, closeFn] of [['#calc', 'calcModal', 'closeCalcModal'], ['#about', 'aboutModal', 'closeAboutModal']]) {
+    await withPage({ w: 375, h: 812, mobile: true, initialUrl: URL + hash }, async ({ ev }) => {
+      const opened = await ev(`!document.getElementById('${modalId}').classList.contains('opacity-0')`);
+      await ev(`${closeFn}()`);
+      await sleep(600);
+      const state = await ev(`({ closed: document.getElementById('${modalId}').classList.contains('opacity-0'), hash: location.hash, path: location.pathname })`);
+      console.log(hash, 'opened on load:', opened, '| after close:', state);
+      assert.strictEqual(opened, true, hash + ' must open its modal on direct load');
+      assert.strictEqual(state.closed, true, hash + ' modal must stay closed after 返回 (no popstate reopen loop)');
+      assert.strictEqual(state.hash, '', hash + ' must return to home without hash');
+    });
+  }
+
+  console.log('=== Test Closed adminInsightsModal Is Not Keyboard Reachable ===');
+  await withPage({ w: 1280, h: 900, mobile: false }, async ({ ev }) => {
+    const reachable = await ev(`(() => {
+      const btns = [...document.querySelectorAll('#adminInsightsModal button')];
+      return btns.some(b => { b.focus(); return document.activeElement === b; });
+    })()`);
+    console.log('Closed adminInsightsModal buttons focusable:', reachable);
+    assert.strictEqual(reachable, false, 'Closed admin modal buttons must not receive focus');
+  });
+
   srv.close();
   proc.kill();
-
   console.log('\n=== ALL P1 & P2 AUDIT FIXES VERIFIED SUCCESSFULLY (100% PASS) ===');
   process.exit(0);
 })().catch(err => {

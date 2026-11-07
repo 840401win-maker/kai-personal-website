@@ -1270,10 +1270,13 @@
         function initRouting() {
             const id = parseRoute(location.pathname);
             if (!id) {
-                if (location.hash === '#calc') {
-                    openCalcModal();
-                } else if (location.hash === '#about') {
-                    openAboutModal();
+                // 直接開啟 /#calc 或 /#about：先把當前歷史改回 '/'，再由 open*Modal() 正常 push，
+                // 確保按「返回」會回到首頁，而不是回到另一個 #calc 又被 popstate 重新開啟。
+                const hash = location.hash;
+                if (hash === '#calc' || hash === '#about') {
+                    history.replaceState({ page: 'home' }, '', '/');
+                    if (hash === '#calc') openCalcModal();
+                    else openAboutModal();
                 }
                 return;
             }
