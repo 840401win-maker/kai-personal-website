@@ -4,7 +4,8 @@ import {
     doc, updateDoc, deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import {
-    getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut
+    getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut,
+    updatePassword, verifyBeforeUpdateEmail, EmailAuthProvider, reauthenticateWithCredential
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -23,11 +24,17 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-window.fb = { db, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, auth, signInWithEmailAndPassword, signOut, doc, updateDoc, deleteDoc };
+window.fb = {
+    db, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp,
+    auth, signInWithEmailAndPassword, signOut, doc, updateDoc, deleteDoc,
+    updatePassword, verifyBeforeUpdateEmail, EmailAuthProvider, reauthenticateWithCredential
+};
 
 onAuthStateChanged(auth, (user) => {
     const isAdmin = !!(user && user.uid === ADMIN_UID);
-    window.dispatchEvent(new CustomEvent('auth-changed', { detail: { isAdmin } }));
+    window.dispatchEvent(new CustomEvent('auth-changed', {
+        detail: { isAdmin, email: isAdmin && user.email ? user.email : '' }
+    }));
 });
 
 window.dispatchEvent(new Event('fb-ready'));

@@ -51,7 +51,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300..700&family=Noto+Serif+TC:wght@600&family=Plus+Jakarta+Sans:wght@400..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300..700&family=Noto+Serif+TC:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <!-- Firebase (CDN 版本) — 初始化邏輯已搬移至 js/firebase.js -->
 
@@ -101,16 +101,16 @@
         </defs>
     </svg>
 
-    <!-- 1. 頂部防詐與信譽宣言（手機預設精簡，可展開） -->
+    <!-- 1. 頂部獨立編採與信譽宣言（方案 A：社論專刊風格） -->
     <div id="trustBanner" class="trust-banner" data-open="false">
         <div class="trust-banner-inner">
             <p class="trust-banner-core">
                 <svg class="ico" aria-hidden="true"><use href="#i-shield-check"/></svg>
-                <span>官方唯一帳號 <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer">@kai.nursing_life</a> ｜ 無群組・不推銷</span>
+                <span>官方唯一識別 <a href="https://www.instagram.com/kai.nursing_life" target="_blank" rel="noopener noreferrer">@kai.nursing_life</a> ｜ 恪守獨立紀實原則 · 絕無商業推介與私人社群</span>
             </p>
             <p id="trustBannerMore" class="trust-banner-more">
                 <svg class="ico" aria-hidden="true"><use href="#i-ban"/></svg>
-                <span>不飆股私訊・純粹護理日常與理財經驗紀錄</span>
+                <span>本專刊純屬個人臨床職涯與指數化投資經驗之客觀筆記，全站不提供商業投顧、亦無招募任何付費諮詢或投資社群。</span>
             </p>
             <button type="button" id="trustBannerToggle" class="trust-banner-toggle" aria-expanded="false" aria-controls="trustBannerMore">
                 <span>完整聲明</span><svg class="ico" aria-hidden="true"><use href="#i-chevron-down"/></svg>
@@ -136,18 +136,9 @@
 
             <!-- Right Controls -->
             <div class="flex items-center gap-2 sm:gap-3">
-                <button id="adminInsightsBtn" onclick="openAdminInsightsModal()" class="hidden px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-50 border border-amber-300 text-amber-800 hover:bg-amber-100 transition-colors items-center gap-1.5 shadow-sm" title="創作者數據中心">
-                    <svg class="ico text-amber-700" style="width:14px;height:14px;"><use href="#i-trending-up"/></svg>
-                    <span><span class="hidden sm:inline">後台</span>數據</span>
-                </button>
-
-                <button id="addPostBtn" onclick="openAddPostModal()" class="hidden px-3 py-1.5 rounded-full text-xs font-semibold bg-teal-600 hover:bg-teal-700 text-white transition-colors items-center gap-1.5 shadow-sm">
-                    <i class="fa-solid fa-plus text-xs"></i>
-                    <span class="hidden sm:inline">匯入/新增</span>貼文
-                </button>
-
-                <button id="logoutBtn" onclick="handleAdminLogout()" class="hidden px-2.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors items-center gap-1.5" title="登出管理員身分">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <button id="creatorStudioBtn" type="button" onclick="openCreatorStudio('posts')" class="hidden nav-pill nav-pill-studio" title="進入 Kai 創作者中心">
+                    <svg class="ico" aria-hidden="true"><use href="#i-shield-check"/></svg>
+                    <span>創作者中心</span>
                 </button>
 
                 <button onclick="openCalcModal()" class="nav-pill nav-pill-gold">
@@ -312,7 +303,7 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 footer-inner">
             <div class="footer-disclaimer">
                 <p class="footer-disclaimer-title"><svg class="ico" aria-hidden="true"><use href="#i-triangle-alert"/></svg> 免責聲明與版權宣告</p>
-                本網站為 Kai 個人經驗分享與學習紀錄（包含護理衛教知識、個人薪資記帳與投資觀察），內容不構成任何醫療診斷建議或金融投資邀約。醫療相關問題請諮詢專業醫師，投資理財請審慎評估風險。本站無公開 Telegram / LINE 群組，亦不進行任何推銷行為。
+                本網站為 Kai 個人臨床職涯與指數化投資經驗之獨立紀實（包含護理衛教知識、薪資結構拆解與長期投資觀察），內容不構成任何醫療診斷建議或金融投資邀約。醫療相關問題請諮詢專業醫師，投資理財請審慎評估風險。全站恪守獨立編採原則，無任何商業推介、投資招攬或私人付費社群。
             </div>
 
             <div class="footer-row">
@@ -323,8 +314,6 @@
                     </a>
                     <span aria-hidden="true">•</span>
                     <button type="button" onclick="openAboutModal()">關於創作者</button>
-                    <span aria-hidden="true">•</span>
-                    <button type="button" onclick="openLoginModal()" class="admin-footer-btn" title="創作者管理員登入">創作者登入</button>
                 </div>
             </div>
         </div>
@@ -453,7 +442,7 @@
                     </div>
                     <div class="bento-hero-trust">
                         <svg class="ico" aria-hidden="true"><use href="#i-shield-check"/></svg>
-                        <span>堅持純粹分享：官方唯一帳號，無私人群組、不報明牌、不進行推銷或付費諮詢。</span>
+                        <span>獨立紀實宣告：官方唯一識別 @kai.nursing_life，全站恪守獨立編採原則，無任何商業推介、投顧諮詢或私人社群。</span>
                     </div>
                 </div>
 
@@ -573,9 +562,6 @@
                     <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                     <span>追蹤 Kai 的 IG @kai.nursing_life</span>
                 </a>
-                <button type="button" onclick="openLoginFromAbout()" class="admin-footer-btn py-1" title="前往管理員登入">
-                    創作者管理員登入入口
-                </button>
             </div>
         </div>
     </div>
@@ -717,6 +703,31 @@
                         </aside>
                     </div>
                     <p class="text-[11px] text-slate-500 mt-2.5 leading-relaxed">※ 試算假設：採「每月初固定投入」、年利率除以 12 計算月複利（實際複利略高於單利年化），數字僅供財務規劃參考。</p>
+
+                    <!-- IG 專屬試算卡生成與預覽區 -->
+                    <div class="calc-share-bar">
+                        <div class="calc-share-copy">
+                            <span class="calc-share-title">將本次試算匯出為社論風 IG 圖卡</span>
+                            <span class="calc-share-sub">一鍵產生專屬米白誌圖檔，方便發布 IG 限動記錄目標或與好友分享</span>
+                        </div>
+                        <button type="button" id="calcGenerateCardBtn" onclick="generateCalcShareCard()" class="calc-share-btn">
+                            <svg class="ico" aria-hidden="true"><use href="#i-image"/></svg>
+                            <span>生成 IG 專屬試算卡</span>
+                        </button>
+                    </div>
+                    <div id="calcCardPreviewWrap" class="calc-card-preview hidden" aria-live="polite">
+                        <div class="calc-card-preview-head">
+                            <span class="text-xs font-bold" style="color:var(--ink);">專屬試算圖卡預覽</span>
+                            <div class="flex flex-wrap items-center gap-2">
+                                <a id="calcCardDownloadLink" download="kai-shift-compound-card.png" class="calc-card-act-btn calc-card-act-btn--primary">下載 PNG 圖卡</a>
+                                <button type="button" id="calcCardShareBtn" onclick="shareCalcCardImage()" class="calc-card-act-btn">分享至 IG / 好友</button>
+                                <button type="button" onclick="closeCalcCardPreview()" aria-label="收起圖卡預覽" class="calc-card-act-btn">收起</button>
+                            </div>
+                        </div>
+                        <div class="calc-card-preview-stage">
+                            <img id="calcCardPreviewImg" src="" alt="輪班複利專屬 IG 試算圖卡預覽" class="calc-card-preview-img">
+                        </div>
+                    </div>
                 </section>
 
                 <!-- 3. 真實已發布相關文章導流入口 -->
@@ -729,187 +740,6 @@
                     </div>
                     <div id="calcRelatedPosts" class="calc-related-grid"></div>
                 </section>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 4: 新增/編輯貼文 Modal (Add/Edit Post Modal) -->
-    <div id="addPostModal" role="dialog" aria-modal="true" aria-labelledby="addPostModalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="addPostModalCard">
-            <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-teal-50/50">
-                <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
-                    <i class="fa-solid fa-plus-circle text-teal-600"></i> <span id="addPostModalTitle">➕ 匯入 / 新增 IG 圖文貼文</span>
-                </h3>
-                <button onclick="closeAddPostModal()" aria-label="關閉視窗" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-
-            <form id="addPostForm" onsubmit="handleSaveCustomPost(event)" class="p-6 space-y-4 text-xs overflow-y-auto max-h-[75vh]">
-                <div>
-                    <label for="newTitle" class="font-bold text-slate-700 block mb-1">文章標題 *</label>
-                    <input type="text" id="newTitle" required placeholder="例如：【護理日常】臨床夜班小撇步" class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none">
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label for="newCategory" class="font-bold text-slate-700 block mb-1">文章分類</label>
-                        <select id="newCategory" class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none">
-                            <option value="nursing">🏥 護理類</option>
-                            <option value="finance">📊 理財類</option>
-                            <option value="invest">📈 投資類</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="newReadTime" class="font-bold text-slate-700 block mb-1">閱讀估算時間</label>
-                        <input type="text" id="newReadTime" value="3 分鐘" class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="font-bold text-slate-700 block mb-1">上傳圖片（可一次選多張，會自動加浮水印並填入下方欄位）</label>
-                    <div class="flex items-center gap-2">
-                        <label for="imageFileInput" class="cursor-pointer flex-1 flex items-center justify-center gap-2 p-2.5 rounded-xl border-2 border-dashed border-teal-300 text-teal-600 font-semibold text-xs hover:bg-teal-50 transition-colors">
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
-                            <span id="uploadStatusLabel">選擇圖片檔案上傳</span>
-                        </label>
-                        <input type="file" id="imageFileInput" accept="image/*" multiple class="hidden" onchange="handleImageFileUpload(event)">
-                    </div>
-                    <div id="uploadPreviewRow" class="flex gap-2 mt-2 flex-wrap"></div>
-                </div>
-
-                <div>
-                    <label for="newImages" class="font-bold text-slate-700 block mb-1">圖片網址（第一張＝文章首圖；上傳後可點縮圖右上角⭐指定首圖）</label>
-                    <textarea id="newImages" placeholder="每行一個完整圖片網址" class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none" rows="3"></textarea>
-                </div>
-
-                <div>
-                    <label for="newIgUrl" class="font-bold text-slate-700 block mb-1">IG 貼文網址 (選填)</label>
-                    <input type="url" id="newIgUrl" placeholder="https://www.instagram.com/p/..." class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none">
-                </div>
-
-                <div>
-                    <label for="newTags" class="font-bold text-slate-700 block mb-1">標籤 Tags (用逗號隔開)</label>
-                    <input type="text" id="newTags" placeholder="#護理日常, #臨床經驗, #心律不整" class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none">
-                </div>
-
-                <div>
-                    <label for="newSummary" class="font-bold text-slate-700 block mb-1">文章內文概要與心得 *</label>
-                    <textarea id="newSummary" required rows="4" placeholder="在此貼上您在 IG 撰寫的發文內文..." class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:ring-2 focus:ring-teal-500 outline-none"></textarea>
-                </div>
-
-                <div class="pt-2 flex items-center justify-end gap-2">
-                    <button type="button" onclick="closeAddPostModal()" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-semibold">取消</button>
-                    <button type="submit" id="addPostSubmitBtn" class="px-5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold shadow-md">儲存並發布至網站</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal 5: 管理員登入 Modal -->
-    <div id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle" onclick="if(event.target === this) closeLoginModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="editorial-modal-card w-full max-w-sm overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="loginModalCard">
-            <div class="editorial-modal-header">
-                <h3 id="loginModalTitle" class="editorial-modal-title">
-                    <svg class="ico" style="width:16px;height:16px;color:var(--gold-text);"><use href="#i-shield-check"/></svg>
-                    <span>創作者管理員登入</span>
-                </h3>
-                <button type="button" onclick="closeLoginModal()" aria-label="關閉視窗" class="reader-back-btn">
-                    <svg class="ico" aria-hidden="true"><use href="#i-x"/></svg>
-                    <span>關閉</span>
-                </button>
-            </div>
-            <form onsubmit="handleAdminLogin(event)" class="p-5 space-y-4 text-xs">
-                <div>
-                    <label for="loginEmail" class="font-bold text-slate-700 block mb-1">管理員 Email</label>
-                    <input type="email" id="loginEmail" name="username" autocomplete="username" required class="calc-input w-full">
-                </div>
-                <div>
-                    <label for="loginPassword" class="font-bold text-slate-700 block mb-1">登入密碼</label>
-                    <input type="password" id="loginPassword" name="password" autocomplete="current-password" required class="calc-input w-full">
-                </div>
-                <p id="loginError" class="hidden text-rose-600 text-xs font-semibold"></p>
-                <button type="submit" class="reader-foot-btn reader-foot-primary w-full justify-center py-2.5">登入管理後台</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal 6: 創作者數據中心 (Admin Insights Modal — IG 專業主控板風格) -->
-    <div id="adminInsightsModal" role="dialog" aria-modal="true" aria-labelledby="adminInsightsModalTitle" onclick="if(event.target === this) closeAdminInsightsModal()" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="editorial-modal-card calc-modal-card w-full max-w-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="adminInsightsModalCard">
-            <div class="editorial-modal-header">
-                <div class="calc-header-copy">
-                    <span class="calc-header-kicker"><svg class="ico" aria-hidden="true"><use href="#i-trending-up"/></svg> 創作者專業數據中心</span>
-                    <h3 id="adminInsightsModalTitle" class="editorial-modal-title leading-snug">
-                        <span>網站數據與文章成效分析</span>
-                    </h3>
-                </div>
-                <button type="button" onclick="closeAdminInsightsModal()" aria-label="返回並關閉數據視窗" class="reader-back-btn">
-                    <svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>
-                    <span>返回</span>
-                </button>
-            </div>
-
-            <div class="calc-modal-body overflow-y-auto space-y-4" id="adminInsightsModalBody">
-                <!-- 1. 四大核心指標（IG 專業主控板卡片，誠信統計標示） -->
-                <div class="insights-stats-grid">
-                    <div class="insights-stat-card">
-                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#d97706;"><use href="#i-layers"/></svg> 全部文章數</span>
-                        <span id="insightsTotalPosts" class="insights-stat-val num">0</span>
-                        <span class="text-[11px] text-slate-400">已公開發布</span>
-                    </div>
-                    <div class="insights-stat-card">
-                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#f43f5e;"><use href="#i-heart"/></svg> 文章獲得愛心</span>
-                        <span id="insightsTotalLikes" class="insights-stat-val num">0</span>
-                        <span class="text-[11px] text-slate-400">文章基底讚數＋本裝置互動，非全站即時統計</span>
-                    </div>
-                    <div class="insights-stat-card">
-                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#2563eb;"><use href="#i-bookmark"/></svg> 本裝置收藏</span>
-                        <span id="insightsTotalBookmarks" class="insights-stat-val num">0</span>
-                        <span class="text-[11px] text-slate-400">儲存於當前瀏覽器</span>
-                    </div>
-                    <div class="insights-stat-card">
-                        <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#059669;"><use href="#i-clock"/></svg> 本機已讀紀錄</span>
-                        <span id="insightsTotalViews" class="insights-stat-val num">0</span>
-                        <span class="text-[11px] text-slate-400">當前瀏覽器紀錄（全站瀏覽需串接外部分析）</span>
-                    </div>
-                </div>
-
-                <!-- 2. 熱門文章排行榜 Top 5 -->
-                <section class="calc-panel">
-                    <div class="calc-panel-head">
-                        <h4 id="insightsRankingTitle" class="calc-panel-title">
-                            <svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>
-                            <span>最受歡迎文章排行榜（Top 5 熱門推薦）</span>
-                        </h4>
-                    </div>
-                    <div id="insightsRankingList" class="insights-ranking-list">
-                        <!-- 動態渲染 Top 5 文章 -->
-                    </div>
-                </section>
-
-                <!-- 3. 各專欄發布分佈與熱度 -->
-                <section class="calc-panel">
-                    <div class="calc-panel-head">
-                        <h4 class="calc-panel-title">
-                            <svg class="ico" aria-hidden="true"><use href="#i-filter"/></svg>
-                            <span>專欄文章表現與互動概覽</span>
-                        </h4>
-                    </div>
-                    <div id="insightsCategoryList" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <!-- 動態渲染 護理 / 理財 / 投資 數據 -->
-                    </div>
-                </section>
-            </div>
-
-            <div class="editorial-modal-footer flex items-center justify-between gap-3">
-                <button type="button" onclick="closeAdminInsightsModal(); openAddPostModal();" class="reader-foot-btn reader-foot-primary">
-                    <svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>
-                    <span>發布新文章</span>
-                </button>
-                <button type="button" onclick="closeAdminInsightsModal(); handleAdminLogout();" class="reader-foot-btn">
-                    <span>登出管理員</span>
-                </button>
             </div>
         </div>
     </div>
@@ -929,8 +759,6 @@
     <script src="/js/utils.js"></script>
     <script type="module" src="/js/firebase.js"></script>
     <script src="/js/firestore-read.js"></script>
-    <script src="/js/firestore-write.js"></script>
-    <script src="/js/auth.js"></script>
     <script>
         const HOME_PAGE_TITLE = "Kai | 護理生活 & 理財投資筆記 (@kai.nursing_life)";
 
@@ -1270,13 +1098,14 @@
         function initRouting() {
             const id = parseRoute(location.pathname);
             if (!id) {
-                // 直接開啟 /#calc 或 /#about：先把當前歷史改回 '/'，再由 open*Modal() 正常 push，
-                // 確保按「返回」會回到首頁，而不是回到另一個 #calc 又被 popstate 重新開啟。
+                // 直接開啟 /#calc、/#about 或隱藏入口 /#admin：先把當前歷史改回 '/'，再由對應模組 push，
+                // 確保按「返回」或關閉時會回到乾淨首頁網址 '/'，不會卡在 hash 迴圈。
                 const hash = location.hash;
-                if (hash === '#calc' || hash === '#about') {
+                if (hash === '#calc' || hash === '#about' || hash === '#admin') {
                     history.replaceState({ page: 'home' }, '', '/');
                     if (hash === '#calc') openCalcModal();
-                    else openAboutModal();
+                    else if (hash === '#about') openAboutModal();
+                    else if (hash === '#admin') openHiddenAdminEntry();
                 }
                 return;
             }
@@ -1307,6 +1136,8 @@
                     openCalcModal();
                 } else if (location.hash === '#about') {
                     openAboutModal();
+                } else if (location.hash === '#admin') {
+                    openHiddenAdminEntry();
                 } else {
                     const calcModal = document.getElementById('calcModal');
                     if (calcModal && !calcModal.classList.contains('opacity-0')) {
@@ -1315,6 +1146,14 @@
                     const aboutModal = document.getElementById('aboutModal');
                     if (aboutModal && !aboutModal.classList.contains('opacity-0')) {
                         closeAboutModal(true);
+                    }
+                    const studioModal = document.getElementById('creatorStudioModal');
+                    if (studioModal && !studioModal.classList.contains('opacity-0') && typeof window.closeCreatorStudio === 'function') {
+                        window.closeCreatorStudio({ fromHistory: true });
+                    }
+                    const loginModal = document.getElementById('loginModal');
+                    if (loginModal && !loginModal.classList.contains('opacity-0') && typeof window.closeLoginModal === 'function') {
+                        window.closeLoginModal({ fromHistory: true });
                     }
                 }
             }
@@ -1329,25 +1168,39 @@
             }
         });
 
-        window.addEventListener('auth-changed', (e) => {
-            const isAdmin = e.detail.isAdmin;
+        window.addEventListener('auth-changed', async (e) => {
+            const isAdmin = Boolean(e?.detail?.isAdmin);
+            window.__kaiAdminEmail = e?.detail?.email || '';
             isAdminLoggedIn = isAdmin;
-            const btn = document.getElementById('addPostBtn');
-            const logoutBtn = document.getElementById('logoutBtn');
-            const insightsBtn = document.getElementById('adminInsightsBtn');
-            if (insightsBtn) {
-                insightsBtn.classList.toggle('hidden', !isAdmin);
-                insightsBtn.classList.toggle('flex', isAdmin);
+
+            const studioBtn = document.getElementById('creatorStudioBtn');
+            if (studioBtn) {
+                studioBtn.classList.toggle('hidden', !isAdmin);
+                studioBtn.classList.toggle('inline-flex', isAdmin);
             }
-            if (btn) {
-                btn.classList.toggle('hidden', !isAdmin);
-                btn.classList.toggle('flex', isAdmin);
+
+            if (isAdmin) {
+                try {
+                    const mod = await ensureAdminCmsLoaded();
+                    mod.ensureAdminDomMounted();
+                    const loginModalEl = document.getElementById('loginModal');
+                    if (loginModalEl && !loginModalEl.classList.contains('opacity-0')) {
+                        mod.closeLoginModal({ skipHistoryReset: true, skipRestoreFocus: true });
+                        mod.openCreatorStudio('posts');
+                    } else if (document.getElementById('creatorStudioModal') && !document.getElementById('creatorStudioModal').classList.contains('opacity-0')) {
+                        mod.renderStudioPostList();
+                        mod.renderAdminInsights();
+                    }
+                    showToast('🔓 已登入創作者身分，可點擊導覽列「創作者中心」管理文章');
+                } catch (err) {
+                    console.error('載入創作者管理模組失敗：', err);
+                }
+            } else if (typeof window.closeCreatorStudio === 'function') {
+                const studioModalEl = document.getElementById('creatorStudioModal');
+                if (studioModalEl && !studioModalEl.classList.contains('opacity-0')) {
+                    window.closeCreatorStudio({ skipRestoreFocus: true });
+                }
             }
-            if (logoutBtn) {
-                logoutBtn.classList.toggle('hidden', !isAdmin);
-                logoutBtn.classList.toggle('flex', isAdmin);
-            }
-            if (isAdmin) showToast('🔓 已以管理員身分登入');
             renderPosts();
         });
 
@@ -2733,14 +2586,13 @@
                     return;
                 }
 
-                // Phase 2C-1: Escape 應能關閉目前開啟的任何一個 Modal（原本只處理 postModal / lightbox）
+                // Phase 2C-1: Escape 應能關閉目前開啟的任何一個 Modal（包含動態掛載之創作者中心與安全登入框）
                 const postModalEl = document.getElementById('postModal');
                 const lightboxEl = document.getElementById('imageLightbox');
                 const aboutModalEl = document.getElementById('aboutModal');
                 const calcModalEl = document.getElementById('calcModal');
-                const addPostModalEl = document.getElementById('addPostModal');
+                const creatorStudioModalEl = document.getElementById('creatorStudioModal');
                 const loginModalEl = document.getElementById('loginModal');
-                const adminInsightsModalEl = document.getElementById('adminInsightsModal');
 
                 if (lightboxEl && !lightboxEl.classList.contains('opacity-0')) {
                     closeImageLightbox();
@@ -2752,12 +2604,10 @@
                     closeAboutModal();
                 } else if (calcModalEl && !calcModalEl.classList.contains('opacity-0')) {
                     closeCalcModal();
-                } else if (adminInsightsModalEl && !adminInsightsModalEl.classList.contains('opacity-0')) {
-                    if (typeof closeAdminInsightsModal === 'function') closeAdminInsightsModal();
-                } else if (addPostModalEl && !addPostModalEl.classList.contains('opacity-0')) {
-                    closeAddPostModal();
+                } else if (creatorStudioModalEl && !creatorStudioModalEl.classList.contains('opacity-0')) {
+                    if (typeof window.closeCreatorStudio === 'function') window.closeCreatorStudio();
                 } else if (loginModalEl && !loginModalEl.classList.contains('opacity-0')) {
-                    closeLoginModal();
+                    if (typeof window.closeLoginModal === 'function') window.closeLoginModal();
                 }
             });
 
@@ -2830,324 +2680,74 @@
             }
         }
 
-        let editingPostId = null;
+        // ===== 動態按需載入創作者中心（Creator Studio CMS Lazy Loader）=====
+        let adminCmsPromise = null;
 
-        function openAddPostModal() {
-            editingPostId = null;
-            document.getElementById('addPostModalTitle').textContent = '➕ 匯入 / 新增 IG 圖文貼文';
-            document.getElementById('addPostSubmitBtn').textContent = '儲存並發布至網站';
-            document.getElementById('addPostForm').reset();
-            document.getElementById('uploadPreviewRow').innerHTML = '';
-
-            const modal = document.getElementById('addPostModal');
-            const card = document.getElementById('addPostModalCard');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            card.classList.remove('scale-95');
-            document.body.style.overflow = 'hidden';
-            moveFocusIntoModal('addPostModal');
+        async function ensureAdminCmsLoaded() {
+            if (!adminCmsPromise) {
+                adminCmsPromise = import('/js/admin-cms.js').catch((err) => {
+                    adminCmsPromise = null;
+                    throw err;
+                });
+            }
+            const mod = await adminCmsPromise;
+            mod.ensureAdminDomMounted();
+            return mod;
         }
 
-        function openEditPostModal(postId, event) {
+        async function openHiddenAdminEntry() {
+            try {
+                const mod = await ensureAdminCmsLoaded();
+                if (isAdminLoggedIn) {
+                    mod.openCreatorStudio('posts');
+                } else {
+                    mod.openLoginModal();
+                }
+            } catch (err) {
+                console.error('載入創作者中心失敗：', err);
+                showToast('❌ 無法載入創作者管理模組，請檢查網路後重試');
+            }
+        }
+
+        async function openCreatorStudio(tabName = 'posts') {
+            try {
+                const mod = await ensureAdminCmsLoaded();
+                if (!isAdminLoggedIn) {
+                    mod.openLoginModal();
+                    return;
+                }
+                mod.openCreatorStudio(tabName);
+            } catch (err) {
+                console.error('開啟創作者中心失敗：', err);
+                showToast('❌ 無法載入創作者管理模組');
+            }
+        }
+
+        async function openAdminInsightsModal() {
+            return openCreatorStudio('insights');
+        }
+
+        async function openAddPostModal() {
+            try {
+                const mod = await ensureAdminCmsLoaded();
+                mod.openAddPostModal();
+            } catch (err) {
+                console.error('開啟文章編輯器失敗：', err);
+            }
+        }
+
+        async function openEditPostModal(postId, event) {
             if (event) event.stopPropagation();
-            const post = customPosts.find(p => p.id === postId);
-            if (!post) return;
-
-            editingPostId = postId;
-            document.getElementById('addPostModalTitle').textContent = '✏️ 編輯圖文貼文';
-            document.getElementById('addPostSubmitBtn').textContent = '儲存更新';
-
-            document.getElementById('newTitle').value = post.title || '';
-            document.getElementById('newCategory').value = post.category || 'nursing';
-            document.getElementById('newReadTime').value = post.readTime || '3 分鐘';
-            document.getElementById('newImages').value = (post.images || []).join('\n');
-            document.getElementById('newIgUrl').value = post.igUrl || '';
-            document.getElementById('newTags').value = (post.tags || []).join(', ');
-            document.getElementById('newSummary').value = post.summary || '';
-            document.getElementById('uploadPreviewRow').innerHTML = '';
-
-            const modal = document.getElementById('addPostModal');
-            const card = document.getElementById('addPostModalCard');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            card.classList.remove('scale-95');
-            document.body.style.overflow = 'hidden';
-            moveFocusIntoModal('addPostModal');
-        }
-
-        function closeAddPostModal() {
-            editingPostId = null;
-            const modal = document.getElementById('addPostModal');
-            const card = document.getElementById('addPostModalCard');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            card.classList.add('scale-95');
-            document.body.style.overflow = '';
-            const previewRow = document.getElementById('uploadPreviewRow');
-            if (previewRow) previewRow.innerHTML = '';
-            restoreFocusAfterModalClose();
-        }
-
-        function renderAdminInsights() {
-            const totalPostsEl = document.getElementById('insightsTotalPosts');
-            const totalLikesEl = document.getElementById('insightsTotalLikes');
-            const totalBookmarksEl = document.getElementById('insightsTotalBookmarks');
-            const totalViewsEl = document.getElementById('insightsTotalViews');
-            const rankingListEl = document.getElementById('insightsRankingList');
-            const categoryListEl = document.getElementById('insightsCategoryList');
-
-            if (!totalPostsEl || !rankingListEl) return;
-
-            const totalPosts = postsData.length;
-            let totalLikes = 0;
-            postsData.forEach(p => {
-                totalLikes += (p.likes || 0) + (userLikes[p.id] ? 1 : 0);
-            });
-
-            // A2: 只計算目前有效存在文章的本機收藏
-            const bookmarkCount = Object.keys(userBookmarks || {}).filter(id => userBookmarks[id] && postsData.some(p => p.id === id)).length;
-            
-            // A1: 移除捏造公式！誠實呈現本機已讀文章數
-            const progressKeys = Object.keys(userReadingProgress || {}).filter(id => userReadingProgress[id] && postsData.some(p => p.id === id));
-            const localReadCount = progressKeys.length;
-
-            totalPostsEl.textContent = totalPosts;
-            totalLikesEl.textContent = totalLikes.toLocaleString();
-            totalBookmarksEl.textContent = bookmarkCount.toLocaleString();
-            totalViewsEl.textContent = localReadCount.toLocaleString();
-
-            const categoryLabels = { nursing: '臨床護理', finance: '理財筆記', invest: '存股投資' };
-
-            // B3: 嚴格 4 級排序法（愛心 > 精選 > 日期 > 穩定 ID），先正規化以防提早終止或 NaN
-            const sorted = [...postsData].sort((a, b) => {
-                const likesA = (a.likes || 0) + (userLikes[a.id] ? 1 : 0);
-                const likesB = (b.likes || 0) + (userLikes[b.id] ? 1 : 0);
-                if (likesB !== likesA) return likesB - likesA;
-
-                const featA = a.featured ? 1 : 0;
-                const featB = b.featured ? 1 : 0;
-                if (featB !== featA) return featB - featA;
-
-                const parseDateMs = (d) => {
-                    if (!d) return 0;
-                    const ms = new Date(d).getTime();
-                    return Number.isFinite(ms) ? ms : 0;
-                };
-                const dateA = parseDateMs(a.date);
-                const dateB = parseDateMs(b.date);
-                if (dateB !== dateA) return dateB - dateA;
-
-                return String(a.id || '').localeCompare(String(b.id || ''));
-            });
-
-            const hasAnyLikes = totalLikes > 0;
-            const top5 = sorted.slice(0, 5);
-            const medals = hasAnyLikes ? ['🥇', '🥈', '🥉', '4', '5'] : ['1', '2', '3', '4', '5'];
-
-            const rankingTitleEl = document.getElementById('insightsRankingTitle');
-            if (rankingTitleEl) {
-                rankingTitleEl.innerHTML = hasAnyLikes
-                    ? `<svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg><span>最受歡迎文章排行榜（讀者點讚熱門）</span>`
-                    : `<svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg><span>精選推薦文章排序（依編輯精選與發布）</span>`;
-            }
-
-            const hintBanner = !hasAnyLikes ? `
-                <div class="p-2.5 rounded-lg bg-amber-50/70 border border-amber-200/60 text-xs text-amber-800 flex items-center gap-2 mb-2">
-                    <span>💡 目前尚無讀者按讚互動記錄，榜單依「編輯精選」與「最新發布時間」推薦展示</span>
-                </div>
-            ` : '';
-
-            rankingListEl.innerHTML = hintBanner + top5.map((p, idx) => {
-                const likes = (p.likes || 0) + (userLikes[p.id] ? 1 : 0);
-                const isBookmarked = userBookmarks[p.id] === true;
-                const badgeClass = idx === 0 ? 'insights-rank-badge--1' : (idx === 1 ? 'insights-rank-badge--2' : (idx === 2 ? 'insights-rank-badge--3' : 'insights-rank-badge--sub'));
-                return `
-                    <div class="insights-rank-item cursor-pointer" onclick="closeAdminInsightsModal(); openPostModal('${sanitizePostId(p.id)}');">
-                        <div class="insights-rank-main">
-                            <div class="insights-rank-head">
-                                <span class="insights-rank-badge ${badgeClass}">${medals[idx]}</span>
-                                <span class="insights-rank-title">${escapeHtml(p.title)}</span>
-                            </div>
-                            <div class="insights-rank-meta">
-                                <span class="font-semibold text-slate-600">${categoryLabels[p.category] || p.category}</span>
-                                <span class="text-slate-300">•</span>
-                                <span>${p.date || ''}</span>
-                                <span class="text-slate-300">•</span>
-                                <span>${p.readTime || ''}</span>
-                            </div>
-                        </div>
-                        <div class="insights-rank-actions">
-                            <span class="inline-flex items-center gap-1 font-bold text-rose-500 text-xs">
-                                <svg class="ico" style="width:12px;height:12px;"><use href="#i-heart"/></svg>
-                                <span class="num">${likes}</span>
-                            </span>
-                            ${isBookmarked ? `<span class="text-blue-600" title="本裝置已收藏"><svg class="ico" style="width:12px;height:12px;"><use href="#i-bookmark"/></svg></span>` : ''}
-                            <button type="button" class="reader-back-btn py-1 px-2.5 text-xs">查看</button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
-            // 專欄分類統計
-            const catStats = {
-                nursing: { count: 0, likes: 0, name: '臨床護理' },
-                finance: { count: 0, likes: 0, name: '理財薪資' },
-                invest: { count: 0, likes: 0, name: '存股投資' }
-            };
-            postsData.forEach(p => {
-                const cat = catStats[p.category];
-                if (cat) {
-                    cat.count++;
-                    cat.likes += (p.likes || 0) + (userLikes[p.id] ? 1 : 0);
-                }
-            });
-
-            if (categoryListEl) {
-                categoryListEl.innerHTML = Object.entries(catStats).map(([key, data]) => `
-                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col gap-1">
-                        <span class="font-bold text-xs text-slate-700">${data.name} 專欄</span>
-                        <div class="flex items-baseline justify-between mt-1">
-                            <span class="text-lg font-bold text-slate-900 num">${data.count} <span class="text-xs font-normal text-slate-400">篇</span></span>
-                            <span class="text-xs text-rose-500 font-semibold num">❤️ ${data.likes} 讚</span>
-                        </div>
-                    </div>
-                `).join('');
+            try {
+                const mod = await ensureAdminCmsLoaded();
+                mod.openEditPostModal(postId, event);
+            } catch (err) {
+                console.error('開啟編輯文章失敗：', err);
             }
         }
 
-        function openAdminInsightsModal() {
-            renderAdminInsights();
-            const modal = document.getElementById('adminInsightsModal');
-            const card = document.getElementById('adminInsightsModalCard');
-            if (!modal || !card) return;
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            card.classList.remove('scale-95');
-            document.body.style.overflow = 'hidden';
-            moveFocusIntoModal('adminInsightsModal');
-        }
-
-        function closeAdminInsightsModal() {
-            const modal = document.getElementById('adminInsightsModal');
-            const card = document.getElementById('adminInsightsModalCard');
-            if (!modal || !card) return;
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            card.classList.add('scale-95');
-            document.body.style.overflow = '';
-            restoreFocusAfterModalClose();
-        }
-
-        const CLOUDINARY_CLOUD_NAME = 'p6esflub';
-
-        // P2 Item: Front-end Defense-in-depth File Validation for Cloudinary Uploads
-        async function handleImageFileUpload(event) {
-            const files = Array.from(event.target.files || []);
-            if (files.length === 0) return;
-
-            // Type and size validation
-            const validFiles = files.filter(file => {
-                if (!file.type.startsWith('image/')) {
-                    showToast(`⚠️ 「${escapeHtml(file.name)}」不是有效的圖片格式！`);
-                    return false;
-                }
-                if (file.size > 10 * 1024 * 1024) { // 10MB Limit
-                    showToast(`⚠️ 「${escapeHtml(file.name)}」檔案超過 10MB 限制！`);
-                    return false;
-                }
-                return true;
-            });
-
-            if (validFiles.length === 0) return;
-
-            const statusLabel = document.getElementById('uploadStatusLabel');
-            const previewRow = document.getElementById('uploadPreviewRow');
-            const imagesInput = document.getElementById('newImages');
-            const uploadedUrls = [];
-
-            statusLabel.textContent = `上傳中... (0/${validFiles.length})`;
-
-            for (let i = 0; i < validFiles.length; i++) {
-                const file = validFiles[i];
-                const formData = new FormData();
-                formData.append('file', file);
-
-                try {
-                    const user = window.fb?.auth?.currentUser;
-                    if (!user) throw new Error('請先登入管理員再上傳');
-                    const idToken = await user.getIdToken();
-                    const signatureResponse = await fetch('/.netlify/functions/upload-signature', {
-                        method: 'POST',
-                        headers: { Authorization: 'Bearer ' + idToken }
-                    });
-                    if (!signatureResponse.ok) {
-                        throw new Error(signatureResponse.status === 503
-                            ? '安全上傳尚未設定完成，請稍後再試'
-                            : '登入已失效或沒有上傳權限，請重新登入');
-                    }
-                    const signedUpload = await signatureResponse.json();
-                    if (signedUpload.cloud_name !== CLOUDINARY_CLOUD_NAME || !signedUpload.signature || !signedUpload.api_key) {
-                        throw new Error('上傳授權回應無效');
-                    }
-                    formData.append('api_key', signedUpload.api_key);
-                    formData.append('signature', signedUpload.signature);
-                    for (const [key, value] of Object.entries(signedUpload.params)) {
-                        formData.append(key, String(value));
-                    }
-                    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
-                        method: 'POST',
-                        body: formData
-                    });
-                    const data = await res.json();
-                    if (!res.ok) throw new Error(data.error?.message || '上傳失敗');
-
-                    uploadedUrls.push(data.secure_url);
-                    statusLabel.textContent = `上傳中... (${i + 1}/${validFiles.length})`;
-
-                    const thumbWrap = document.createElement('div');
-                    thumbWrap.className = 'relative';
-                    thumbWrap.dataset.url = data.secure_url;
-
-                    const thumb = document.createElement('img');
-                    thumb.src = addWatermark(data.secure_url);
-                    thumb.className = 'w-14 h-14 object-cover rounded-lg border-2 border-slate-200';
-
-                    const starBtn = document.createElement('button');
-                    starBtn.type = 'button';
-                    starBtn.title = '設為首圖';
-                    starBtn.className = 'absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-white text-slate-400 border border-slate-200 flex items-center justify-center text-[10px] shadow-sm';
-                    starBtn.innerHTML = '<i class="fa-solid fa-star"></i>';
-                    starBtn.onclick = () => setCoverImage(data.secure_url);
-
-                    thumbWrap.appendChild(thumb);
-                    thumbWrap.appendChild(starBtn);
-                    previewRow.appendChild(thumbWrap);
-                } catch (err) {
-                    console.error('圖片上傳失敗：', err);
-                    showToast(`❌ 「${escapeHtml(file.name)}」上傳失敗：${err.message || '請確認上傳設定'}`);
-                }
-            }
-
-            if (uploadedUrls.length > 0) {
-                imagesInput.value = parseImageUrls(imagesInput.value).concat(uploadedUrls).join('\n');
-                showToast(`✅ 成功上傳 ${uploadedUrls.length} 張圖片！`);
-            }
-
-            statusLabel.textContent = '選擇圖片檔案上傳';
-            event.target.value = '';
-        }
-
-        function setCoverImage(url) {
-            const imagesInput = document.getElementById('newImages');
-            let urls = parseImageUrls(imagesInput.value);
-            urls = urls.filter(u => u !== url);
-            urls.unshift(url);
-            imagesInput.value = urls.join('\n');
-
-            const previewRow = document.getElementById('uploadPreviewRow');
-            previewRow.querySelectorAll('[data-url]').forEach(wrap => {
-                const star = wrap.querySelector('button i');
-                const isCover = wrap.dataset.url === url;
-                star.parentElement.classList.toggle('text-amber-500', isCover);
-                star.parentElement.classList.toggle('border-amber-400', isCover);
-                star.parentElement.classList.toggle('text-slate-300', !isCover);
-            });
-            showToast('⭐ 已設為文章首圖');
+        async function openLoginModal() {
+            return openHiddenAdminEntry();
         }
 
         let isModalPushed = false;
@@ -3236,14 +2836,6 @@
             card.classList.remove('scale-95');
             document.body.style.overflow = 'hidden';
             moveFocusIntoModal('calcModal');
-        }
-
-        function openLoginFromAbout() {
-            closeAboutModal(true);
-            if (location.hash === '#about') {
-                history.replaceState({ page: 'home' }, '', '/');
-            }
-            openLoginModal();
         }
 
         function openPostFromCalc(postId) {
@@ -3533,6 +3125,244 @@
             calculateSalary();
         }
 
+        // ===== IG 專屬試算卡生成器 (1080×1350 Warm Editorial Alabaster Canvas) =====
+        let latestCalcCardDataUrl = '';
+
+        function drawRoundedRectPath(ctx, x, y, w, h, r) {
+            const radius = Math.min(r, w / 2, h / 2);
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.arcTo(x + w, y, x + w, y + h, radius);
+            ctx.arcTo(x + w, y + h, x, y + h, radius);
+            ctx.arcTo(x, y + h, x, y, radius);
+            ctx.arcTo(x, y, x + w, y, radius);
+            ctx.closePath();
+        }
+
+        function generateCalcShareCard() {
+            normalizeCalculatorInputs();
+
+            const smallDays = Math.max(0, parseInt(document.getElementById('nightSmallDays')?.value, 10) || 0);
+            const smallRate = Math.max(0, parseFloat(document.getElementById('nightSmallRate')?.value) || 0);
+            const bigDays = Math.max(0, parseInt(document.getElementById('nightBigDays')?.value, 10) || 0);
+            const bigRate = Math.max(0, parseFloat(document.getElementById('nightBigRate')?.value) || 0);
+            const shiftAllowance = Math.round(smallDays * smallRate + bigDays * bigRate);
+
+            const monthly = Math.max(0, parseFloat(document.getElementById('monthlyInvest')?.value) || 0);
+            const annualRate = Math.max(0, Math.min(20, parseFloat(document.getElementById('investRate')?.value) || 0));
+            const years = Math.max(1, Math.min(50, Math.round(parseFloat(document.getElementById('investYears')?.value) || 5)));
+
+            const monthlyRate = (annualRate / 100) / 12;
+            const months = years * 12;
+            const rawTotal = monthlyRate > 0
+                ? monthly * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate)
+                : monthly * months;
+            const roundedTotal = Math.round(rawTotal);
+            const principal = Math.round(monthly * months);
+            const gain = Math.max(0, roundedTotal - principal);
+
+            const W = 1080;
+            const H = 1350;
+            const canvas = document.createElement('canvas');
+            canvas.width = W;
+            canvas.height = H;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            // 1. Warm Editorial Alabaster background
+            ctx.fillStyle = '#FBF9F5';
+            ctx.fillRect(0, 0, W, H);
+
+            // Soft editorial grid accent top-right
+            const grad = ctx.createRadialGradient(W - 140, 140, 20, W - 140, 140, 420);
+            grad.addColorStop(0, 'rgba(184, 134, 11, 0.12)');
+            grad.addColorStop(1, 'rgba(251, 249, 245, 0)');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, W, H);
+
+            // Outer frame hairline
+            ctx.strokeStyle = '#E5DFD3';
+            ctx.lineWidth = 3;
+            drawRoundedRectPath(ctx, 42, 42, W - 84, H - 84, 34);
+            ctx.stroke();
+
+            // 2. Editorial masthead
+            ctx.fillStyle = '#8A6D1B';
+            ctx.font = '600 22px "Plus Jakarta Sans", "Noto Sans TC", sans-serif';
+            ctx.fillText('KAI PERSONAL JOURNAL  ·  SHIFT & COMPOUND PLANNER', 96, 122);
+
+            ctx.fillStyle = '#1C1917';
+            ctx.font = '700 50px "Noto Serif TC", "Noto Sans TC", serif';
+            ctx.fillText('護理輪班津貼 × 長期存股藍圖', 96, 194);
+
+            ctx.fillStyle = '#57534E';
+            ctx.font = '400 24px "Noto Sans TC", sans-serif';
+            ctx.fillText('把每一次值班的專注，轉化為看得見的複利時間曲線', 96, 242);
+
+            ctx.strokeStyle = '#E5DFD3';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(96, 276);
+            ctx.lineTo(W - 96, 276);
+            ctx.stroke();
+
+            // 3. Night shift summary panel
+            drawRoundedRectPath(ctx, 96, 314, W - 192, 232, 26);
+            ctx.fillStyle = '#F3EFE6';
+            ctx.fill();
+            ctx.strokeStyle = '#E2DACB';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            ctx.fillStyle = '#0F766E';
+            ctx.font = '700 22px "Noto Sans TC", sans-serif';
+            ctx.fillText('MONTHLY SHIFT ALLOWANCE · 本月夜班津貼預估', 138, 368);
+
+            ctx.fillStyle = '#44403C';
+            ctx.font = '500 26px "Noto Sans TC", sans-serif';
+            ctx.fillText(`小夜班 ${smallDays} 天 × $${smallRate.toLocaleString()}   ＋   大夜班 ${bigDays} 天 × $${bigRate.toLocaleString()}`, 138, 420);
+
+            ctx.fillStyle = '#1C1917';
+            ctx.font = '700 66px "Plus Jakarta Sans", "Noto Sans TC", sans-serif';
+            ctx.fillText(`+$${shiftAllowance.toLocaleString()}`, 138, 504);
+
+            ctx.fillStyle = '#78716C';
+            ctx.font = '500 24px "Noto Sans TC", sans-serif';
+            ctx.fillText('TWD / 月額外津貼現金流', 142 + ctx.measureText(`+$${shiftAllowance.toLocaleString()}`).width + 18, 500);
+
+            // 4. Compound investment editorial dark card
+            drawRoundedRectPath(ctx, 96, 582, W - 192, 520, 30);
+            ctx.fillStyle = '#1C1917';
+            ctx.fill();
+
+            ctx.fillStyle = '#E5C158';
+            ctx.font = '600 22px "Plus Jakarta Sans", "Noto Sans TC", sans-serif';
+            ctx.fillText('COMPOUND PROJECTION · 定期定額複利模擬', 138, 642);
+
+            // 3 parameter pills
+            const params = [
+                { label: '每月投入', val: `$${Math.round(monthly).toLocaleString()}` },
+                { label: '假設年化', val: `${annualRate}%` },
+                { label: '投資期間', val: `${years} 年` }
+            ];
+            params.forEach((item, idx) => {
+                const bx = 138 + idx * 276;
+                const by = 674;
+                drawRoundedRectPath(ctx, bx, by, 254, 102, 18);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.06)';
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(229, 193, 88, 0.28)';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+
+                ctx.fillStyle = '#A8A29E';
+                ctx.font = '500 20px "Noto Sans TC", sans-serif';
+                ctx.fillText(item.label, bx + 22, by + 38);
+
+                ctx.fillStyle = '#FAF8F5';
+                ctx.font = '700 34px "Plus Jakarta Sans", "Noto Sans TC", sans-serif';
+                ctx.fillText(item.val, bx + 22, by + 80);
+            });
+
+            // Hero total result
+            ctx.fillStyle = '#D6D3D1';
+            ctx.font = '500 24px "Noto Sans TC", sans-serif';
+            ctx.fillText(`持續投入 ${years} 年預估累積本利和`, 138, 846);
+
+            ctx.fillStyle = '#F5D06B';
+            ctx.font = '700 76px "Plus Jakarta Sans", "Noto Serif TC", sans-serif';
+            ctx.fillText(`NT$ ${roundedTotal.toLocaleString()}`, 138, 932);
+
+            // Stacked ratio bar (Principal vs Compound Gain)
+            const barX = 138;
+            const barY = 974;
+            const barW = W - 276;
+            const barH = 18;
+            const principalRatio = roundedTotal > 0 ? Math.max(0.06, Math.min(1, principal / roundedTotal)) : 1;
+
+            drawRoundedRectPath(ctx, barX, barY, barW, barH, 9);
+            ctx.fillStyle = '#B8860B';
+            ctx.fill();
+
+            drawRoundedRectPath(ctx, barX, barY, barW * principalRatio, barH, 9);
+            ctx.fillStyle = '#E7E5E4';
+            ctx.fill();
+
+            ctx.fillStyle = '#E7E5E4';
+            ctx.font = '500 22px "Noto Sans TC", sans-serif';
+            ctx.fillText(`● 累積投入本金 $${principal.toLocaleString()}`, 138, 1044);
+
+            ctx.fillStyle = '#F5D06B';
+            ctx.font = '600 22px "Noto Sans TC", sans-serif';
+            const gainTxt = `● 預估複利增值 +$${gain.toLocaleString()}`;
+            ctx.fillText(gainTxt, W - 138 - ctx.measureText(gainTxt).width, 1044);
+
+            // 5. Disclaimer & Official Stamp Footer
+            ctx.fillStyle = '#78716C';
+            ctx.font = '400 20px "Noto Sans TC", sans-serif';
+            ctx.fillText('※ 採「每月初固定投入」月複利模型試算，年化報酬率僅供理財規劃情境推估，不構成任何保證獲利承諾。', 96, 1152);
+
+            ctx.strokeStyle = '#E5DFD3';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(96, 1188);
+            ctx.lineTo(W - 96, 1188);
+            ctx.stroke();
+
+            ctx.fillStyle = '#1C1917';
+            ctx.font = '700 26px "Plus Jakarta Sans", "Noto Sans TC", sans-serif';
+            ctx.fillText('@kai.nursing_life  ·  護理生活 & 理財投資紀實', 96, 1246);
+
+            const today = new Date();
+            const dateStr = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
+            ctx.fillStyle = '#8A6D1B';
+            ctx.font = '600 22px "Plus Jakarta Sans", monospace';
+            const stampText = `EDITORIAL EDITION · ${dateStr}`;
+            ctx.fillText(stampText, W - 96 - ctx.measureText(stampText).width, 1246);
+
+            latestCalcCardDataUrl = canvas.toDataURL('image/png');
+            const wrap = document.getElementById('calcCardPreviewWrap');
+            const img = document.getElementById('calcCardPreviewImg');
+            const downloadLink = document.getElementById('calcCardDownloadLink');
+            if (img) img.src = latestCalcCardDataUrl;
+            if (downloadLink) downloadLink.href = latestCalcCardDataUrl;
+            if (wrap) {
+                wrap.classList.remove('hidden');
+                wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            showToast('✨ 已為您生成專屬 IG 試算圖卡！');
+        }
+
+        async function shareCalcCardImage() {
+            if (!latestCalcCardDataUrl) generateCalcShareCard();
+            if (!latestCalcCardDataUrl) return;
+
+            try {
+                const res = await fetch(latestCalcCardDataUrl);
+                const blob = await res.blob();
+                const file = new File([blob], 'kai-shift-compound-card.png', { type: 'image/png' });
+                if (typeof navigator.share === 'function' && navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({
+                        title: '護理夜班津貼 × 長期複利試算紀錄 | Kai',
+                        text: '用 @kai.nursing_life 輪班複利試算器整理的專屬目標圖卡 📊',
+                        files: [file]
+                    });
+                    return;
+                }
+            } catch (err) {
+                if (err && err.name === 'AbortError') return;
+            }
+
+            const downloadLink = document.getElementById('calcCardDownloadLink');
+            if (downloadLink) downloadLink.click();
+            showToast('📥 此裝置不支援直接喚起系統分享，已為您下載 PNG 圖卡！');
+        }
+
+        function closeCalcCardPreview() {
+            const wrap = document.getElementById('calcCardPreviewWrap');
+            if (wrap) wrap.classList.add('hidden');
+        }
+
         function toggleLike(postId, event) {
             if (event) event.stopPropagation();
             if (userLikes[postId]) {
@@ -3666,7 +3496,7 @@
                     adminTaps.push(now);
                     if (adminTaps.length >= 5) {
                         adminTaps = [];
-                        if (typeof openLoginModal === 'function') openLoginModal();
+                        if (typeof openHiddenAdminEntry === 'function') openHiddenAdminEntry();
                     }
                 }
             });

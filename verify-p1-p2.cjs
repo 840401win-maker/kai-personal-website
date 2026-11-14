@@ -293,8 +293,8 @@ const srv = http.createServer((req, res) => {
     console.log('Reader footer like button text on 0 likes:', JSON.stringify(likeBtnText));
     assert.strictEqual(likeBtnText, '按讚', '0 likes reader footer button must be "按讚", never "讚 按讚"');
 
-    // 2. Identify element at (x=40, y=115) behind login modal
-    await ev(`closePostModal(true); openLoginModal();`);
+    // 2. Identify element at (x=40, y=115) behind login modal (after hidden entry lazy-loads admin module)
+    await ev(`(() => { closePostModal(true); return openLoginModal(); })()`);
     await sleep(400);
     const circleIdentification = await ev(`(() => {
       // Find element behind backdrop at (40, 115)
@@ -331,14 +331,104 @@ const srv = http.createServer((req, res) => {
     });
   }
 
-  console.log('=== Test Closed adminInsightsModal Is Not Keyboard Reachable ===');
+  console.log('=== Test v2.3: Public Isolation, Hidden #admin & Lockout, Creator Studio Tabs, Calculator IG Card ===');
   await withPage({ w: 1280, h: 900, mobile: false }, async ({ ev }) => {
-    const reachable = await ev(`(() => {
-      const btns = [...document.querySelectorAll('#adminInsightsModal button')];
-      return btns.some(b => { b.focus(); return document.activeElement === b; });
+    // 1. Public visitor has ZERO static admin modals and ZERO visible public login buttons
+    const publicState = await ev(`(() => ({
+      hasLoginModal: !!document.getElementById('loginModal'),
+      hasCreatorStudioModal: !!document.getElementById('creatorStudioModal'),
+      hasAddPostModal: !!document.getElementById('addPostModal'),
+      footerText: (document.querySelector('footer')?.innerText || ''),
+      studioBtnHidden: document.getElementById('creatorStudioBtn')?.classList.contains('hidden') === true
+    }))()`);
+    console.log('Public visitor initial DOM state:', publicState);
+    assert.strictEqual(publicState.hasLoginModal, false, 'Public initial DOM must not contain #loginModal');
+    assert.strictEqual(publicState.hasCreatorStudioModal, false, 'Public initial DOM must not contain #creatorStudioModal');
+    assert.strictEqual(publicState.hasAddPostModal, false, 'Public initial DOM must not contain legacy #addPostModal');
+    assert.strictEqual(publicState.footerText.includes('創作者登入'), false, 'Footer must not display public login CTA');
+    assert.strictEqual(publicState.studioBtnHidden, true, 'Navbar Creator Studio button must stay hidden for public');
+  });
+
+  // 2. Hidden /#admin entry opens login modal, enforces 3-attempt lockout, and returns to / on close
+  await withPage({ w: 375, h: 812, mobile: true, initialUrl: URL + '#admin' }, async ({ ev }) => {
+    const opened = await ev(`(() => {
+      const m = document.getElementById('loginModal');
+      return !!m && !m.classList.contains('opacity-0');
     })()`);
-    console.log('Closed adminInsightsModal buttons focusable:', reachable);
-    assert.strictEqual(reachable, false, 'Closed admin modal buttons must not receive focus');
+    console.log('/#admin opened lazy #loginModal:', opened);
+    assert.strictEqual(opened, true, '/#admin must dynamically mount and open #loginModal');
+
+    // Simulate 3 failed login attempts via localStorage lock check + handleAdminLogin
+    const lockUiActive = await ev(`(() => {
+      localStorage.setItem('kai_admin_auth_lock_v1', JSON.stringify({ fails: 3, until: Date.now() + 55000 }));
+      closeLoginModal({ skipHistoryReset: true });
+      return Promise.resolve(openLoginModal()).then(() => {
+        const btn = document.getElementById('loginSubmitBtn');
+        const notice = document.getElementById('loginLockNotice');
+        const res = { disabled: !!btn?.disabled, noticeHidden: notice?.classList.contains('hidden'), noticeText: notice?.textContent || '' };
+        localStorage.removeItem('kai_admin_auth_lock_v1');
+        return res;
+      });
+    })()`);
+    console.log('3-attempt brute-force lockout UI:', lockUiActive);
+    assert.strictEqual(lockUiActive.disabled, true, 'Submit button must disable during 60s lockout');
+    assert.strictEqual(lockUiActive.noticeHidden, false, 'Lockout notice must be visible');
+
+    await ev(`closeLoginModal();`);
+    await sleep(450);
+    const closedState = await ev(`({
+      closed: document.getElementById('loginModal')?.classList.contains('opacity-0'),
+      hash: location.hash,
+      path: location.pathname
+    })`);
+    assert.strictEqual(closedState.closed, true, 'Closing login modal must hide #loginModal');
+    assert.strictEqual(closedState.hash, '', 'Closing /#admin login modal must clean hash back to /');
+  });
+
+  // 3. Authenticated Creator Studio tabs (posts / editor / insights / security) & keyboard reachability when closed
+  await withPage({ w: 1280, h: 900, mobile: false }, async ({ ev }) => {
+    await ev(`window.dispatchEvent(new CustomEvent('auth-changed', { detail: { isAdmin: true, uid: 'mYD4xk4Ii1aQI7DZSzC1kwllp5z1', email: 'kai@example.com' } }));`);
+    await sleep(500);
+
+    const studioCheck = await ev(`(() => Promise.resolve(openCreatorStudio('posts')).then(() => {
+      const studio = document.getElementById('creatorStudioModal');
+      const isOpen = !!studio && !studio.classList.contains('opacity-0');
+      const emailText = document.getElementById('studioAdminEmail')?.textContent || '';
+      switchCreatorTab('editor');
+      const editorVisible = !document.getElementById('studioPanel-editor')?.classList.contains('hidden');
+      switchCreatorTab('security');
+      const secVisible = !document.getElementById('studioPanel-security')?.classList.contains('hidden');
+      switchCreatorTab('insights');
+      const insightsVisible = !document.getElementById('studioPanel-insights')?.classList.contains('hidden');
+      closeCreatorStudio({ skipRestoreFocus: true });
+      const btns = [...document.querySelectorAll('#creatorStudioModal button')];
+      const reachableAfterClose = btns.some(b => { b.focus(); return document.activeElement === b; });
+      return { isOpen, emailText, editorVisible, secVisible, insightsVisible, reachableAfterClose };
+    }))()`);
+    console.log('Creator Studio verification:', studioCheck);
+    assert.strictEqual(studioCheck.isOpen, true, 'Creator Studio must open for authenticated admin');
+    assert.strictEqual(studioCheck.emailText, 'kai@example.com', 'Header must display authenticated email');
+    assert.strictEqual(studioCheck.editorVisible, true, 'Editor panel must switch visible');
+    assert.strictEqual(studioCheck.secVisible, true, 'Security panel must switch visible');
+    assert.strictEqual(studioCheck.insightsVisible, true, 'Insights panel must switch visible');
+    assert.strictEqual(studioCheck.reachableAfterClose, false, 'Closed Creator Studio buttons must not receive keyboard focus');
+
+    // 4. Calculator IG Share Card generation
+    const cardCheck = await ev(`(() => {
+      openCalcModal();
+      generateCalcShareCard();
+      const wrap = document.getElementById('calcCardPreviewWrap');
+      const img = document.getElementById('calcCardPreviewImg');
+      return {
+        wrapVisible: !!wrap && !wrap.classList.contains('hidden'),
+        srcPrefix: (img?.src || '').slice(0, 22),
+        length: (img?.src || '').length
+      };
+    })()`);
+    console.log('Calculator IG Share Card check:', cardCheck);
+    assert.strictEqual(cardCheck.wrapVisible, true, 'IG share card preview must appear after generateCalcShareCard()');
+    assert.strictEqual(cardCheck.srcPrefix, 'data:image/png;base64,', 'IG share card must render a PNG data URL');
+    assert(cardCheck.length > 5000, 'Rendered PNG canvas must not be blank');
   });
 
   srv.close();

@@ -64,6 +64,7 @@ console.log(`\n=== Running Phase 3 / v2.1 & v2.2 Feature & Accessibility Checks 
 const html = fs.readFileSync(path.join(repoDir, 'index.html'), 'utf8');
 const css = fs.readFileSync(path.join(repoDir, 'css', 'style.css'), 'utf8');
 const utils = fs.readFileSync(path.join(repoDir, 'js', 'utils.js'), 'utf8');
+const adminCms = fs.readFileSync(path.join(repoDir, 'js', 'admin-cms.js'), 'utf8');
 
 let phase3ChecksPassed = 0;
 function check(description, condition) {
@@ -81,9 +82,10 @@ check('modalLikeBtn exists in reader footer', html.includes('id="modalLikeBtn"')
 check('articleReadingProgress progress element exists', html.includes('id="articleReadingProgress"'));
 check('nextChapterToast element exists', html.includes('id="nextChapterToast"'));
 check('clearSearchBtn exists in browse bar', html.includes('id="clearSearchBtn"'));
-check('adminInsightsModal exists for creator analytics', html.includes('id="adminInsightsModal"'));
-check('insightsTotalPosts metric container exists', html.includes('id="insightsTotalPosts"'));
-check('insightsTotalLikes metric container exists', html.includes('id="insightsTotalLikes"'));
+check('creatorStudioModal & analytics containers reside in lazy js/admin-cms.js', adminCms.includes('id="creatorStudioModal"') && adminCms.includes('id="insightsTotalPosts"') && adminCms.includes('id="insightsTotalLikes"') && css.includes('.studio-tabs-bar'));
+check('public index.html isolates admin DOM and lazy-imports /js/admin-cms.js', !html.includes('id="loginModal"') && !html.includes('id="addPostModal"') && html.includes("import('/js/admin-cms.js')") && !html.includes('創作者登入'));
+check('Scheme A editorial independence banner & refined Noto Serif TC weights exist', html.includes('官方唯一識別') && html.includes('Noto+Serif+TC:wght@400;600;700'));
+check('calcGenerateCardBtn and IG share canvas styles exist', html.includes('id="calcGenerateCardBtn"') && html.includes('function generateCalcShareCard') && css.includes('.calc-share-bar'));
 check('calcShiftHeading exists in shift calculator', html.includes('id="calcShiftHeading"'));
 check('calcInvestHeading exists with whitespace-nowrap wrappers', html.includes('id="calcInvestHeading"') && html.includes('whitespace-nowrap'));
 check('calcHighRiskNotice exists for rate > 12%', html.includes('id="calcHighRiskNotice"'));
@@ -93,7 +95,7 @@ check('investYearsRange has dynamic aria-valuetext and calibrated ticks', html.i
 check('starterGuideBar exists for beginner route', html.includes('starter-guide-bar') && css.includes('.starter-guide-bar'));
 check('starterGuideSteps has 3 interactive pills with role="group"', html.includes('role="group"') && html.includes('starter-step-pill') && html.includes("openCalcModal()"));
 check('handleImgError DOM cover is scoped to post-card-media without innerHTML', utils.includes('.post-card-media') && utils.includes('card-editorial-dom-cover') && !utils.includes('domCover.innerHTML'));
-check('adminLoginBtn updated to creator login', html.includes('創作者登入') && css.includes('.admin-footer-btn'));
+check('hidden admin trigger uses openHiddenAdminEntry and 5-tap threshold', html.includes('openHiddenAdminEntry') && html.includes('adminTaps.length >= 5') && adminCms.includes('id="loginLockNotice"'));
 
 const grandTotal = totalUnitChecksPassed + phase3ChecksPassed;
 console.log(`\n=== DYNAMIC TEST SUMMARY ===`);
