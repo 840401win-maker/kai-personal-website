@@ -1191,7 +1191,6 @@
                         mod.renderStudioPostList();
                         mod.renderAdminInsights();
                     }
-                    showToast('🔓 已登入創作者身分，可點擊導覽列「創作者中心」管理文章');
                 } catch (err) {
                     console.error('載入創作者管理模組失敗：', err);
                 }
@@ -3139,6 +3138,33 @@
             ctx.closePath();
         }
 
+        function fitCanvasFont(ctx, text, weight, startSize, minSize, family, maxWidth) {
+            let size = startSize;
+            while (size > minSize) {
+                ctx.font = `${weight} ${size}px ${family}`;
+                if (ctx.measureText(text).width <= maxWidth) break;
+                size -= 2;
+            }
+            ctx.font = `${weight} ${size}px ${family}`;
+            return size;
+        }
+
+        function wrapCanvasLines(ctx, text, maxWidth) {
+            const lines = [];
+            let current = '';
+            for (const ch of text) {
+                const candidate = current + ch;
+                if (ctx.measureText(candidate).width > maxWidth && current) {
+                    lines.push(current);
+                    current = ch;
+                } else {
+                    current = candidate;
+                }
+            }
+            if (current) lines.push(current);
+            return lines;
+        }
+
         function generateCalcShareCard() {
             normalizeCalculatorInputs();
 
@@ -3218,20 +3244,27 @@
             ctx.font = '700 22px "Noto Sans TC", sans-serif';
             ctx.fillText('MONTHLY SHIFT ALLOWANCE · 本月夜班津貼預估', 138, 368);
 
+            const shiftSummaryLine = `小夜班 ${smallDays} 天 × $${smallRate.toLocaleString()}   ＋   大夜班 ${bigDays} 天 × $${bigRate.toLocaleString()}`;
             ctx.fillStyle = '#44403C';
-            ctx.font = '500 26px "Noto Sans TC", sans-serif';
-            ctx.fillText(`小夜班 ${smallDays} 天 × $${smallRate.toLocaleString()}   ＋   大夜班 ${bigDays} 天 × $${bigRate.toLocaleString()}`, 138, 420);
+            fitCanvasFont(ctx, shiftSummaryLine, '500', 26, 18, '"Noto Sans TC", sans-serif', W - 276);
+            ctx.fillText(shiftSummaryLine, 138, 420);
 
+            const shiftAmountStr = `+$${shiftAllowance.toLocaleString()}`;
+            const unitLabelStr = 'TWD / 月額外津貼現金流';
+            ctx.font = '500 24px "Noto Sans TC", sans-serif';
+            const unitWidth = ctx.measureText(unitLabelStr).width;
+            fitCanvasFont(ctx, shiftAmountStr, '700', 66, 34, '"Plus Jakarta Sans", "Noto Sans TC", sans-serif', W - 276 - unitWidth - 28);
             ctx.fillStyle = '#1C1917';
-            ctx.font = '700 66px "Plus Jakarta Sans", "Noto Sans TC", sans-serif';
-            ctx.fillText(`+$${shiftAllowance.toLocaleString()}`, 138, 504);
+            ctx.fillText(shiftAmountStr, 138, 504);
+            // 先於 66px 狀態量測實際寬度，避免切換為 24px 後才量測導致重疊
+            const measuredShiftWidth = ctx.measureText(shiftAmountStr).width;
 
             ctx.fillStyle = '#78716C';
             ctx.font = '500 24px "Noto Sans TC", sans-serif';
-            ctx.fillText('TWD / 月額外津貼現金流', 142 + ctx.measureText(`+$${shiftAllowance.toLocaleString()}`).width + 18, 500);
+            ctx.fillText(unitLabelStr, 138 + measuredShiftWidth + 20, 500);
 
             // 4. Compound investment editorial dark card
-            drawRoundedRectPath(ctx, 96, 582, W - 192, 520, 30);
+            drawRoundedRectPath(ctx, 96, 582, W - 192, 506, 30);
             ctx.fillStyle = '#1C1917';
             ctx.fill();
 
@@ -3260,22 +3293,23 @@
                 ctx.fillText(item.label, bx + 22, by + 38);
 
                 ctx.fillStyle = '#FAF8F5';
-                ctx.font = '700 34px "Plus Jakarta Sans", "Noto Sans TC", sans-serif';
+                fitCanvasFont(ctx, item.val, '700', 34, 18, '"Plus Jakarta Sans", "Noto Sans TC", sans-serif', 210);
                 ctx.fillText(item.val, bx + 22, by + 80);
             });
 
             // Hero total result
             ctx.fillStyle = '#D6D3D1';
             ctx.font = '500 24px "Noto Sans TC", sans-serif';
-            ctx.fillText(`持續投入 ${years} 年預估累積本利和`, 138, 846);
+            ctx.fillText(`持續投入 ${years} 年預估累積本利和`, 138, 842);
 
+            const totalText = `NT$ ${roundedTotal.toLocaleString()}`;
             ctx.fillStyle = '#F5D06B';
-            ctx.font = '700 76px "Plus Jakarta Sans", "Noto Serif TC", sans-serif';
-            ctx.fillText(`NT$ ${roundedTotal.toLocaleString()}`, 138, 932);
+            fitCanvasFont(ctx, totalText, '700', 76, 36, '"Plus Jakarta Sans", "Noto Serif TC", sans-serif', W - 276);
+            ctx.fillText(totalText, 138, 926);
 
             // Stacked ratio bar (Principal vs Compound Gain)
             const barX = 138;
-            const barY = 974;
+            const barY = 966;
             const barW = W - 276;
             const barH = 18;
             const principalRatio = roundedTotal > 0 ? Math.max(0.06, Math.min(1, principal / roundedTotal)) : 1;
@@ -3288,37 +3322,46 @@
             ctx.fillStyle = '#E7E5E4';
             ctx.fill();
 
-            ctx.fillStyle = '#E7E5E4';
+            const principalText = `● 累積投入本金 $${principal.toLocaleString()}`;
+            const gainTxt = `● 預估複利增值 +$${gain.toLocaleString()}`;
             ctx.font = '500 22px "Noto Sans TC", sans-serif';
-            ctx.fillText(`● 累積投入本金 $${principal.toLocaleString()}`, 138, 1044);
+            const legendOverflow = (ctx.measureText(principalText).width + ctx.measureText(gainTxt).width) > (W - 300);
+            const legendSize = legendOverflow ? 18 : 22;
+
+            ctx.fillStyle = '#E7E5E4';
+            ctx.font = `500 ${legendSize}px "Noto Sans TC", sans-serif`;
+            ctx.fillText(principalText, 138, 1036);
 
             ctx.fillStyle = '#F5D06B';
-            ctx.font = '600 22px "Noto Sans TC", sans-serif';
-            const gainTxt = `● 預估複利增值 +$${gain.toLocaleString()}`;
-            ctx.fillText(gainTxt, W - 138 - ctx.measureText(gainTxt).width, 1044);
+            ctx.font = `600 ${legendSize}px "Noto Sans TC", sans-serif`;
+            ctx.fillText(gainTxt, W - 138 - ctx.measureText(gainTxt).width, 1036);
 
-            // 5. Disclaimer & Official Stamp Footer
+            // 5. Disclaimer & Official Stamp Footer（自動換行以確保不超出左右邊框）
             ctx.fillStyle = '#78716C';
             ctx.font = '400 20px "Noto Sans TC", sans-serif';
-            ctx.fillText('※ 採「每月初固定投入」月複利模型試算，年化報酬率僅供理財規劃情境推估，不構成任何保證獲利承諾。', 96, 1152);
+            const disclaimerText = '※ 採「每月初固定投入」月複利模型試算，年化報酬率僅供理財規劃情境推估，不構成任何保證獲利承諾。';
+            const disclaimerLines = wrapCanvasLines(ctx, disclaimerText, W - 192);
+            disclaimerLines.slice(0, 2).forEach((line, i) => {
+                ctx.fillText(line, 96, 1134 + i * 28);
+            });
 
             ctx.strokeStyle = '#E5DFD3';
             ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.moveTo(96, 1188);
-            ctx.lineTo(W - 96, 1188);
+            ctx.moveTo(96, 1192);
+            ctx.lineTo(W - 96, 1192);
             ctx.stroke();
 
             ctx.fillStyle = '#1C1917';
             ctx.font = '700 26px "Plus Jakarta Sans", "Noto Sans TC", sans-serif';
-            ctx.fillText('@kai.nursing_life  ·  護理生活 & 理財投資紀實', 96, 1246);
+            ctx.fillText('@kai.nursing_life  ·  護理生活 & 理財投資紀實', 96, 1248);
 
             const today = new Date();
             const dateStr = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
             ctx.fillStyle = '#8A6D1B';
             ctx.font = '600 22px "Plus Jakarta Sans", monospace';
             const stampText = `EDITORIAL EDITION · ${dateStr}`;
-            ctx.fillText(stampText, W - 96 - ctx.measureText(stampText).width, 1246);
+            ctx.fillText(stampText, W - 96 - ctx.measureText(stampText).width, 1248);
 
             latestCalcCardDataUrl = canvas.toDataURL('image/png');
             const wrap = document.getElementById('calcCardPreviewWrap');

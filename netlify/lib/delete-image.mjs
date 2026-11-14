@@ -36,10 +36,11 @@ export function createDeleteImageHandler({
         }
 
         const timestamp = Math.floor(Date.now() / 1000);
-        const serialized = `public_id=${publicId}&timestamp=${timestamp}`;
+        const serialized = `invalidate=true&public_id=${publicId}&timestamp=${timestamp}`;
         const signature = createHash('sha256').update(serialized + secret).digest('hex');
 
         const form = new FormData();
+        form.append('invalidate', 'true');
         form.append('public_id', publicId);
         form.append('api_key', apiKey);
         form.append('timestamp', String(timestamp));

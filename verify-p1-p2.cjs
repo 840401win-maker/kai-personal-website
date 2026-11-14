@@ -74,11 +74,17 @@ const srv = http.createServer((req, res) => {
 
   console.log('=== Test A1 & A2 & B3: Data Center Integrity & Real DOM renderAdminInsights ===');
   await withPage({ w: 1280, h: 900, mobile: false }, async ({ ev, snap }) => {
+    // Wait briefly for deferred Firebase module's initial anonymous auth callback to settle before simulating admin state
+    await ev(`new Promise(resolve => {
+      if (window.fb) return setTimeout(resolve, 350);
+      const timer = setTimeout(resolve, 2500);
+      window.addEventListener('auth-changed', () => { clearTimeout(timer); setTimeout(resolve, 50); }, { once: true });
+    })`);
     // Clear storage for zero-base clean visitor
     await ev(`localStorage.clear(); sessionStorage.clear(); userReadingProgress = {}; userLikes = {}; userBookmarks = {}; renderPosts();`);
     await ev(`window.dispatchEvent(new CustomEvent('auth-changed', { detail: { isAdmin: true } }));`);
     await sleep(400);
-    await ev(`openAdminInsightsModal();`);
+    await ev(`return openAdminInsightsModal();`.replace('return ', ''));
     await sleep(400);
 
     const initialStats = await ev(`(() => ({
@@ -358,21 +364,51 @@ const srv = http.createServer((req, res) => {
     console.log('/#admin opened lazy #loginModal:', opened);
     assert.strictEqual(opened, true, '/#admin must dynamically mount and open #loginModal');
 
-    // Simulate 3 failed login attempts via localStorage lock check + handleAdminLogin
-    const lockUiActive = await ev(`(() => {
-      localStorage.setItem('kai_admin_auth_lock_v1', JSON.stringify({ fails: 3, until: Date.now() + 55000 }));
+    // Unauthenticated call to openCreatorStudio() must guard & open #loginModal instead
+    const guarded = await ev(`(() => {
       closeLoginModal({ skipHistoryReset: true });
-      return Promise.resolve(openLoginModal()).then(() => {
-        const btn = document.getElementById('loginSubmitBtn');
-        const notice = document.getElementById('loginLockNotice');
-        const res = { disabled: !!btn?.disabled, noticeHidden: notice?.classList.contains('hidden'), noticeText: notice?.textContent || '' };
-        localStorage.removeItem('kai_admin_auth_lock_v1');
-        return res;
-      });
+      openCreatorStudio('posts');
+      const studioOpen = !document.getElementById('creatorStudioModal')?.classList.contains('opacity-0');
+      const loginOpen = !document.getElementById('loginModal')?.classList.contains('opacity-0');
+      return { studioOpen, loginOpen };
     })()`);
-    console.log('3-attempt brute-force lockout UI:', lockUiActive);
-    assert.strictEqual(lockUiActive.disabled, true, 'Submit button must disable during 60s lockout');
-    assert.strictEqual(lockUiActive.noticeHidden, false, 'Lockout notice must be visible');
+    assert.strictEqual(guarded.studioOpen, false, 'Unauthenticated openCreatorStudio must stay closed');
+    assert.strictEqual(guarded.loginOpen, true, 'Unauthenticated openCreatorStudio must fall back to #loginModal');
+
+    // Real 3 consecutive failed submissions of #adminLoginForm trigger 60s lockout
+    const lockUiActive = await ev(`(async () => {
+      localStorage.removeItem('kai_admin_auth_lock_v1');
+      window.fb = Object.assign(window.fb || {}, {
+        auth: {},
+        signInWithEmailAndPassword: async () => { throw new Error('auth/invalid-credential'); }
+      });
+      document.getElementById('loginEmail').value = 'wrong@example.com';
+      document.getElementById('loginPassword').value = 'bad-pass';
+      const fakeEvt = { preventDefault() {}, target: document.getElementById('adminLoginForm') };
+      await handleAdminLogin(fakeEvt);
+      const err1 = document.getElementById('loginError').textContent;
+      await handleAdminLogin(fakeEvt);
+      const err2 = document.getElementById('loginError').textContent;
+      await handleAdminLogin(fakeEvt);
+      const btn = document.getElementById('loginSubmitBtn');
+      const notice = document.getElementById('loginLockNotice');
+      const res = {
+        err1,
+        err2,
+        disabled: !!btn?.disabled,
+        hasOpacityClass: btn?.classList.contains('opacity-50'),
+        noticeHidden: notice?.classList.contains('hidden'),
+        noticeText: notice?.textContent || ''
+      };
+      localStorage.removeItem('kai_admin_auth_lock_v1');
+      return res;
+    })()`);
+    console.log('Real 3-attempt brute-force lockout UI:', lockUiActive);
+    assert(lockUiActive.err1.includes('剩餘 2 次'), 'First failure must report 2 attempts left');
+    assert(lockUiActive.err2.includes('剩餘 1 次'), 'Second failure must report 1 attempt left');
+    assert.strictEqual(lockUiActive.disabled, true, 'Submit button must disable on 3rd failure');
+    assert.strictEqual(lockUiActive.hasOpacityClass, true, 'Disabled submit button must carry opacity-50');
+    assert.strictEqual(lockUiActive.noticeHidden, false, 'Lockout notice must be visible on 3rd failure');
 
     await ev(`closeLoginModal();`);
     await sleep(450);
@@ -413,7 +449,24 @@ const srv = http.createServer((req, res) => {
     assert.strictEqual(studioCheck.insightsVisible, true, 'Insights panel must switch visible');
     assert.strictEqual(studioCheck.reachableAfterClose, false, 'Closed Creator Studio buttons must not receive keyboard focus');
 
-    // 4. Calculator IG Share Card generation
+    // 3b. Editing an existing featured article preserves featured: true
+    const preserveFeatured = await ev(`(async () => {
+      let savedPayload = null;
+      customPosts.push({ id: 'feat-test-1', title: 'Featured Note', category: 'finance', readTime: '4 分鐘', featured: true, likes: 7, date: '2026-10-01', images: ['https://example.com/a.jpg'], summary: 'Original body' });
+      window.fb = Object.assign(window.fb || {}, {
+        db: {},
+        doc: (db, col, id) => ({ col, id }),
+        updateDoc: async (ref, payload) => { savedPayload = payload; }
+      });
+      openEditPostModal('feat-test-1');
+      await handleSaveCustomPost({ preventDefault() {}, target: document.getElementById('addPostForm') });
+      return savedPayload;
+    })()`);
+    console.log('Edited featured article payload:', { featured: preserveFeatured?.featured, likes: preserveFeatured?.likes });
+    assert.strictEqual(preserveFeatured?.featured, true, 'Editing a featured post must preserve featured: true');
+    assert.strictEqual(preserveFeatured?.likes, 7, 'Editing a post must preserve existing likes');
+
+    // 4. Calculator IG Share Card generation + export preview image for visual inspection
     const cardCheck = await ev(`(() => {
       openCalcModal();
       generateCalcShareCard();
@@ -421,14 +474,17 @@ const srv = http.createServer((req, res) => {
       const img = document.getElementById('calcCardPreviewImg');
       return {
         wrapVisible: !!wrap && !wrap.classList.contains('hidden'),
-        srcPrefix: (img?.src || '').slice(0, 22),
-        length: (img?.src || '').length
+        dataUrl: img?.src || ''
       };
     })()`);
-    console.log('Calculator IG Share Card check:', cardCheck);
+    console.log('Calculator IG Share Card check:', { wrapVisible: cardCheck.wrapVisible, prefix: cardCheck.dataUrl.slice(0, 22), length: cardCheck.dataUrl.length });
     assert.strictEqual(cardCheck.wrapVisible, true, 'IG share card preview must appear after generateCalcShareCard()');
-    assert.strictEqual(cardCheck.srcPrefix, 'data:image/png;base64,', 'IG share card must render a PNG data URL');
-    assert(cardCheck.length > 5000, 'Rendered PNG canvas must not be blank');
+    assert.strictEqual(cardCheck.dataUrl.slice(0, 22), 'data:image/png;base64,', 'IG share card must render a PNG data URL');
+    assert(cardCheck.dataUrl.length > 5000, 'Rendered PNG canvas must not be blank');
+    if (process.env.ARTIFACT_DIR && fs.existsSync(process.env.ARTIFACT_DIR)) {
+      const b64 = cardCheck.dataUrl.replace(/^data:image\/png;base64,/, '');
+      fs.writeFileSync(path.join(process.env.ARTIFACT_DIR, 'calc-card-preview.png'), Buffer.from(b64, 'base64'));
+    }
   });
 
   srv.close();

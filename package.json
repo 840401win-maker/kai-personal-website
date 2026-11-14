@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -c tailwind.config.cjs -i css/tailwind-input.css -o css/tailwind.css --minify",
-    "test:upload": "node --test tests/upload-signature.test.mjs tests/upload-client.test.cjs"
+    "test:upload": "node --test tests/signed-upload/tests/upload-signature.test.mjs tests/delete-image.test.mjs"
   },
   "devDependencies": {
     "tailwindcss": "3.4.17"

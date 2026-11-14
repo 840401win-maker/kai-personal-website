@@ -5,9 +5,20 @@
  */
 
 const CLOUDINARY_CLOUD_NAME = 'p6esflub';
+const ADMIN_UID = 'mYD4xk4Ii1aQI7DZSzC1kwllp5z1';
 const LOCKOUT_STORAGE_KEY = 'kai_admin_auth_lock_v1';
 const MAX_LOGIN_ATTEMPTS = 3;
 const LOCKOUT_DURATION_MS = 60 * 1000;
+const VALID_CATEGORIES = new Set(['nursing', 'finance', 'invest']);
+
+function normalizeCategorySlug(category) {
+    return VALID_CATEGORIES.has(category) ? category : 'nursing';
+}
+
+function isCreatorAuthenticated() {
+    if (typeof isAdminLoggedIn !== 'undefined' && isAdminLoggedIn === true) return true;
+    return window.fb?.auth?.currentUser?.uid === ADMIN_UID;
+}
 
 let domMounted = false;
 let currentStudioTab = 'posts';
@@ -423,10 +434,12 @@ export async function handleAdminLogin(e) {
         const { auth, signInWithEmailAndPassword } = window.fb;
         await signInWithEmailAndPassword(auth, email, password);
         clearLockState();
+        if (typeof isAdminLoggedIn !== 'undefined') isAdminLoggedIn = true;
         e.target.reset();
-        // 標記剛由登入框成功進入，auth-changed 或直接在此跳轉至創作者中心
+        // 標記剛由登入框成功進入，立即跳轉至創作者中心並顯示一次登入提示
         closeLoginModal({ skipHistoryReset: true, skipRestoreFocus: true });
         openCreatorStudio('posts');
+        if (typeof showToast === 'function') showToast('🔓 驗證通過！歡迎回到創作者中心');
     } catch (err) {
         console.error('登入失敗：', err);
         const state = readLockState();
@@ -486,6 +499,10 @@ export function switchCreatorTab(tabName) {
 
 export function openCreatorStudio(initialTab = 'posts') {
     ensureAdminDomMounted();
+    if (!isCreatorAuthenticated()) {
+        openLoginModal();
+        return;
+    }
     updateStudioAccountLabels();
     renderStudioPostList();
     renderAdminInsights();
@@ -545,8 +562,9 @@ export function renderStudioPostList() {
 
     listEl.innerHTML = filtered.map(post => {
         const safeId = sanitizePostId(post.id);
+        const safeCat = normalizeCategorySlug(post.category);
         const safeTitle = escapeHtml(post.title);
-        const safeImg = optimizeCloudinaryUrl(sanitizeImageUrl(post.image, post.category), 160);
+        const safeImg = optimizeCloudinaryUrl(sanitizeImageUrl(post.image, safeCat), 160);
         const isCustom = post._isCustom === true;
         const badge = isCustom
             ? '<span class="studio-badge studio-badge--cloud">雲端文章</span>'
@@ -563,11 +581,11 @@ export function renderStudioPostList() {
 
         return `
             <div class="studio-post-row">
-                <img src="${safeImg}" alt="${safeTitle}" class="studio-post-thumb" onerror="handleImgError(this, '${escapeHtml(post.category)}')">
+                <img src="${safeImg}" alt="${safeTitle}" class="studio-post-thumb" onerror="handleImgError(this, '${safeCat}')">
                 <div class="studio-post-info">
                     <div class="flex flex-wrap items-center gap-1.5 mb-1">
                         ${badge}
-                        <span class="text-[11px] font-semibold text-slate-500">${catMap[post.category] || escapeHtml(post.category)}</span>
+                        <span class="text-[11px] font-semibold text-slate-500">${escapeHtml(catMap[safeCat] || safeCat)}</span>
                         <span class="text-slate-300">·</span>
                         <span class="text-[11px] text-slate-400 num">${escapeHtml(post.date || '')}</span>
                     </div>
@@ -742,7 +760,14 @@ export function removeEditorImage(url) {
 }
 
 export async function deleteCloudinaryImage(url, publicId) {
-    if (!confirm('確定要從 Cloudinary 雲端圖庫「永久刪除」這張照片嗎？此動作無法復原。')) return;
+    const otherRefs = (typeof postsData !== 'undefined' ? postsData : []).filter(p =>
+        p.id !== editingPostId && [p.image, ...(p.images || [])].some(u => typeof u === 'string' && u.includes(publicId))
+    );
+    const confirmMsg = otherRefs.length > 0
+        ? `⚠️ 注意：網站中仍有 ${otherRefs.length} 篇其他文章引用這張圖片。確定要從 Cloudinary 雲端圖庫「永久刪除」嗎？此動作無法復原。`
+        : '確定要從 Cloudinary 雲端圖庫「永久刪除」這張照片嗎？此動作無法復原。';
+    if (!confirm(confirmMsg)) return;
+
     const user = window.fb?.auth?.currentUser;
     if (!user) {
         if (typeof showToast === 'function') showToast('⚠️ 請先登入創作者帳號');
@@ -761,7 +786,22 @@ export async function deleteCloudinaryImage(url, publicId) {
         const data = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(data.error || '雲端刪檔失敗');
         removeEditorImage(url);
-        if (typeof showToast === 'function') showToast('🗑️ 已從 Cloudinary 雲端徹底清除圖片');
+
+        // 若正在編輯已發布的雲端文章，同步將剩餘圖片列表寫回 Firestore，避免不按儲存就離開導致前台破圖
+        if (editingPostId && window.fb?.db && window.fb?.doc && window.fb?.updateDoc) {
+            const safeCat = normalizeCategorySlug(document.getElementById('newCategory')?.value);
+            let syncedImages = parseImageUrls(document.getElementById('newImages')?.value || '');
+            if (syncedImages.length === 0 && typeof DEFAULT_FALLBACK_IMAGES !== 'undefined') {
+                syncedImages = [DEFAULT_FALLBACK_IMAGES[safeCat]];
+            }
+            syncedImages = syncedImages.map(addWatermark);
+            await window.fb.updateDoc(window.fb.doc(window.fb.db, 'posts', editingPostId), {
+                images: syncedImages,
+                image: syncedImages[0] || ''
+            });
+            renderStudioPostList();
+        }
+        if (typeof showToast === 'function') showToast('🗑️ 已從 Cloudinary 雲端徹底清除圖片並同步文章');
     } catch (err) {
         console.error('雲端刪除失敗：', err);
         if (typeof showToast === 'function') showToast(`❌ 雲端刪除失敗：${err.message}`);
@@ -884,14 +924,18 @@ export async function handleSaveCustomPost(e) {
 
     const tagsArr = rawTags ? rawTags.split(',').map(s => s.trim().startsWith('#') ? s.trim() : '#' + s.trim()) : ['#新圖文'];
 
+    const existingPost = (editingPostId && typeof customPosts !== 'undefined')
+        ? customPosts.find(p => p.id === editingPostId)
+        : null;
+
     const newPost = {
         title,
         category,
         tags: tagsArr,
-        date: editingPostId ? (customPosts.find(p => p.id === editingPostId)?.date || new Date().toISOString().split('T')[0]) : new Date().toISOString().split('T')[0],
+        date: existingPost?.date || new Date().toISOString().split('T')[0],
         readTime,
-        likes: editingPostId ? (customPosts.find(p => p.id === editingPostId)?.likes || 0) : 0,
-        featured: false,
+        likes: existingPost?.likes ?? 0,
+        featured: existingPost ? Boolean(existingPost.featured) : false,
         image: imagesArr[0],
         images: imagesArr,
         summary,
@@ -1058,6 +1102,7 @@ export function renderAdminInsights() {
     rankingListEl.innerHTML = hintBanner + top5.map((p, idx) => {
         const likes = (p.likes || 0) + (userLikes[p.id] ? 1 : 0);
         const isBookmarked = userBookmarks[p.id] === true;
+        const safeCat = normalizeCategorySlug(p.category);
         const badgeClass = idx === 0 ? 'insights-rank-badge--1' : (idx === 1 ? 'insights-rank-badge--2' : (idx === 2 ? 'insights-rank-badge--3' : 'insights-rank-badge--sub'));
         return `
             <div class="insights-rank-item cursor-pointer" onclick="closeCreatorStudio(); openPostModal('${sanitizePostId(p.id)}');">
@@ -1067,7 +1112,7 @@ export function renderAdminInsights() {
                         <span class="insights-rank-title">${escapeHtml(p.title)}</span>
                     </div>
                     <div class="insights-rank-meta">
-                        <span class="font-semibold text-slate-600">${categoryLabels[p.category] || p.category}</span>
+                        <span class="font-semibold text-slate-600">${escapeHtml(categoryLabels[safeCat] || safeCat)}</span>
                         <span class="text-slate-300">•</span>
                         <span>${escapeHtml(p.date || '')}</span>
                         <span class="text-slate-300">•</span>

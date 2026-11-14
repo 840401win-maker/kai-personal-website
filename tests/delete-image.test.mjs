@@ -107,8 +107,9 @@ test('signs Cloudinary destroy request correctly for valid kai-blog asset', asyn
     assert.match(capturedUrl, /\/image\/destroy$/);
 
     const ts = capturedForm.get('timestamp');
+    assert.equal(capturedForm.get('invalidate'), 'true');
     const expectedSig = createHash('sha256')
-        .update(`public_id=kai-blog/photo_2026&timestamp=${ts}${VALID_ENV.CLOUDINARY_API_SECRET}`)
+        .update(`invalidate=true&public_id=kai-blog/photo_2026&timestamp=${ts}${VALID_ENV.CLOUDINARY_API_SECRET}`)
         .digest('hex');
     assert.equal(capturedForm.get('signature'), expectedSig);
     assert.equal(capturedForm.get('api_key'), VALID_ENV.CLOUDINARY_API_KEY);

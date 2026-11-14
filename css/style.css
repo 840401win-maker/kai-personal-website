@@ -3652,7 +3652,10 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
 }
-.hero-title,
+.profile-title,
+.series-spotlight-heading,
+.series-card-title,
+.article-next-hero-title,
 .post-card-title,
 .editorial-modal-title,
 .bento-hero-title {
