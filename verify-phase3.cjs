@@ -96,6 +96,8 @@ check('starterGuideBar exists for beginner route', html.includes('starter-guide-
 check('starterGuideSteps has 3 interactive pills with role="group"', html.includes('role="group"') && html.includes('starter-step-pill') && html.includes("openCalcModal()"));
 check('handleImgError DOM cover is scoped to post-card-media without innerHTML', utils.includes('.post-card-media') && utils.includes('card-editorial-dom-cover') && !utils.includes('domCover.innerHTML'));
 check('hidden admin trigger uses openHiddenAdminEntry and 5-tap threshold', html.includes('openHiddenAdminEntry') && html.includes('adminTaps.length >= 5') && adminCms.includes('id="loginLockNotice"'));
+check('admin CMS exposes featured toggle in editor & post list', adminCms.includes('id="newFeatured"') && adminCms.includes('togglePostFeatured') && css.includes('.studio-switch-card') && css.includes('.studio-badge--featured'));
+check('default articles replace external Unsplash stock photos with unified local editorial covers', !html.includes('images.unsplash.com') && html.includes('./assets/covers/cover-ig-archive.webp') && html.includes('./assets/covers/cover-9years.webp') && html.includes('./assets/covers/cover-salary100.webp') && html.includes('./assets/covers/cover-modely.webp'));
 
 const grandTotal = totalUnitChecksPassed + phase3ChecksPassed;
 console.log(`\n=== DYNAMIC TEST SUMMARY ===`);

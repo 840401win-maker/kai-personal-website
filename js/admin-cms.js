@@ -171,6 +171,17 @@ function buildAdminDomHtml() {
                                 </div>
                             </div>
 
+                            <label for="newFeatured" class="studio-switch-card">
+                                <div>
+                                    <span class="studio-switch-title">⭐ 設為精選主打文章（Featured）</span>
+                                    <span class="studio-switch-desc">開啟後將優先顯示於首頁跨欄精選卡片，並作為所屬專欄 Spotlight 的領銜推薦文章。</span>
+                                </div>
+                                <span class="studio-switch">
+                                    <input type="checkbox" id="newFeatured" class="studio-switch-input">
+                                    <span class="studio-switch-track" aria-hidden="true"></span>
+                                </span>
+                            </label>
+
                             <div>
                                 <label class="font-bold text-slate-700 block mb-1">圖片上傳與視覺管理（支援設為首圖、從文章移除或雲端永久刪除）</label>
                                 <div class="flex items-center gap-2">
@@ -566,12 +577,17 @@ export function renderStudioPostList() {
         const safeTitle = escapeHtml(post.title);
         const safeImg = optimizeCloudinaryUrl(sanitizeImageUrl(post.image, safeCat), 160);
         const isCustom = post._isCustom === true;
+        const isFeatured = Boolean(post.featured);
         const badge = isCustom
             ? '<span class="studio-badge studio-badge--cloud">雲端文章</span>'
             : '<span class="studio-badge studio-badge--seed">預設範本</span>';
+        const featuredBadge = isFeatured
+            ? '<span class="studio-badge studio-badge--featured">⭐ 精選主打</span>'
+            : '';
 
         const actions = isCustom
             ? `
+                <button type="button" onclick="togglePostFeatured('${safeId}', event)" aria-pressed="${isFeatured}" class="studio-act-btn ${isFeatured ? 'studio-act-btn--featured-on' : ''}">${isFeatured ? '⭐ 已精選' : '☆ 設為精選'}</button>
                 <button type="button" onclick="openEditPostModal('${safeId}', event)" class="studio-act-btn">編輯</button>
                 <button type="button" onclick="handleDeletePost('${safeId}', event)" class="studio-act-btn studio-act-btn--danger">刪除</button>
               `
@@ -585,6 +601,7 @@ export function renderStudioPostList() {
                 <div class="studio-post-info">
                     <div class="flex flex-wrap items-center gap-1.5 mb-1">
                         ${badge}
+                        ${featuredBadge}
                         <span class="text-[11px] font-semibold text-slate-500">${escapeHtml(catMap[safeCat] || safeCat)}</span>
                         <span class="text-slate-300">·</span>
                         <span class="text-[11px] text-slate-400 num">${escapeHtml(post.date || '')}</span>
@@ -600,6 +617,38 @@ export function renderStudioPostList() {
     }).join('');
 }
 
+export async function togglePostFeatured(postId, event) {
+    if (event) event.stopPropagation();
+    if (!window.fb) {
+        if (typeof showToast === 'function') showToast('⚠️ 尚未連上資料庫，請稍後再試一次');
+        return;
+    }
+
+    const post = (typeof customPosts !== 'undefined') ? customPosts.find(p => p.id === postId) : null;
+    if (!post) return;
+
+    const btn = event?.currentTarget instanceof HTMLButtonElement ? event.currentTarget : null;
+    const nextFeatured = !Boolean(post.featured);
+    if (btn) btn.disabled = true;
+
+    try {
+        const { db, doc, updateDoc } = window.fb;
+        await updateDoc(doc(db, 'posts', postId), { featured: nextFeatured });
+        post.featured = nextFeatured;
+        if (typeof rebuildPostsData === 'function') rebuildPostsData();
+        if (typeof renderPosts === 'function') renderPosts();
+        renderStudioPostList();
+        if (typeof showToast === 'function') {
+            showToast(nextFeatured ? '⭐ 已設為精選主打文章' : '已取消精選主打狀態');
+        }
+    } catch (err) {
+        console.error('切換精選狀態失敗：', err);
+        if (typeof showToast === 'function') showToast('❌ 切換失敗，請確認網路連線或管理員權限');
+    } finally {
+        if (btn && btn.isConnected) btn.disabled = false;
+    }
+}
+
 export function duplicateStaticPostToEditor(postId) {
     const post = (typeof postsData !== 'undefined') ? postsData.find(p => p.id === postId) : null;
     if (!post) return;
@@ -612,6 +661,7 @@ export function duplicateStaticPostToEditor(postId) {
     document.getElementById('newTitle').value = post.title || '';
     document.getElementById('newCategory').value = post.category || 'nursing';
     document.getElementById('newReadTime').value = post.readTime || '3 分鐘';
+    document.getElementById('newFeatured').checked = Boolean(post.featured);
     document.getElementById('newImages').value = (post.images && post.images.length ? post.images : [post.image].filter(Boolean)).join('\n');
     document.getElementById('newIgUrl').value = post.igUrl || '';
     document.getElementById('newTags').value = (post.tags || []).join(', ');
@@ -628,6 +678,7 @@ export function openAddPostModal() {
     document.getElementById('studioEditorTabLabel').textContent = '新增文章';
     document.getElementById('addPostSubmitBtn').textContent = '儲存並發布至網站';
     document.getElementById('addPostForm').reset();
+    document.getElementById('newFeatured').checked = false;
     syncEditorImagePreviews();
 
     const modal = document.getElementById('creatorStudioModal');
@@ -652,6 +703,7 @@ export function openEditPostModal(postId, event) {
     document.getElementById('newTitle').value = post.title || '';
     document.getElementById('newCategory').value = post.category || 'nursing';
     document.getElementById('newReadTime').value = post.readTime || '3 分鐘';
+    document.getElementById('newFeatured').checked = Boolean(post.featured);
     document.getElementById('newImages').value = (post.images || []).join('\n');
     document.getElementById('newIgUrl').value = post.igUrl || '';
     document.getElementById('newTags').value = (post.tags || []).join(', ');
@@ -911,6 +963,7 @@ export async function handleSaveCustomPost(e) {
     const title = document.getElementById('newTitle').value.trim();
     const category = document.getElementById('newCategory').value;
     const readTime = document.getElementById('newReadTime').value.trim() || '3 分鐘';
+    const featured = Boolean(document.getElementById('newFeatured')?.checked);
     const rawImages = document.getElementById('newImages').value.trim();
     const igUrl = document.getElementById('newIgUrl').value.trim();
     const rawTags = document.getElementById('newTags').value.trim();
@@ -935,7 +988,7 @@ export async function handleSaveCustomPost(e) {
         date: existingPost?.date || new Date().toISOString().split('T')[0],
         readTime,
         likes: existingPost?.likes ?? 0,
-        featured: existingPost ? Boolean(existingPost.featured) : false,
+        featured,
         image: imagesArr[0],
         images: imagesArr,
         summary,
@@ -1168,6 +1221,7 @@ Object.assign(window, {
     closeCreatorStudio,
     switchCreatorTab,
     renderStudioPostList,
+    togglePostFeatured,
     duplicateStaticPostToEditor,
     openAddPostModal,
     openEditPostModal,
