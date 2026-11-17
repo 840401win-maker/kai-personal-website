@@ -1,6 +1,10 @@
 function rebuildPostsData() {
     const taggedCustom = customPosts.map(p => ({ ...p, _isCustom: true }));
-    postsData = [...taggedCustom, ...staticPostsData];
+    const overriddenIds = new Set(
+        customPosts.flatMap(p => [p.id, p.replacesStaticId].filter(Boolean))
+    );
+    const remainingStatic = staticPostsData.filter(p => !overriddenIds.has(p.id));
+    postsData = [...taggedCustom, ...remainingStatic];
 }
 
 function startFirestoreSync() {

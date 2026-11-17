@@ -21,25 +21,25 @@ const STATIC_ARTICLES = {
     title: '【IG 最新貼文】Kai 的護理與理財圖文筆記實錄',
     summary: '這是一篇來自 IG @kai.nursing_life (DSzZGbLknAR) 的最新圖文分享！點擊展開觀看詳細心得與摘要，亦可直接點擊連結跳轉至 IG 看原文圖文討論...',
     date: '2026-08-08',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80'
+    image: 'https://kai-personal-website.netlify.app/assets/covers/cover-ig-archive.webp'
   },
   'post-9years': {
     title: '【2026.08.01】擔任護理師的第 9 年，我還在！從成績倒數到公職護理師的心路歷程',
     summary: '2026.08.01 是我擔任護理師的第 9 年，今年我 31 歲，我還在！22 歲成績倒數的小屁孩，如今取得 N4 職級、公職護理師與臨床教師殊榮。只要還能行，我就會繼續堅守下去...',
     date: '2026-08-01',
-    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&auto=format&fit=crop&q=80'
+    image: 'https://kai-personal-website.netlify.app/assets/covers/cover-9years.webp'
   },
   'post-salary100': {
     title: '【薪資公開】護理師如何達成年薪百萬？113 & 114 年連續達標的薪資結構拆解',
     summary: '護理師真的能領到年薪百萬嗎？公開公職護理師的薪資結構：本薪、專業加給、夜班津貼、年終與績效獎金，以及如何透過理性排班與存股打造百萬年收入...',
     date: '2026-02-15',
-    image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&auto=format&fit=crop&q=80'
+    image: 'https://kai-personal-website.netlify.app/assets/covers/cover-salary100.webp'
   },
   'post-modely': {
     title: '【夢想清單】2030 擁有一台 Tesla Model Y！資產 90 天成長百萬的理財規劃',
     summary: '設定目標是實現夢想的第一步！分享我的 2030 買車目標：如何透過「淨資產 90 天成長百萬」的紀律記帳與指數化投資，按部就班往 Tesla Model Y 邁進...',
     date: '2026-06-10',
-    image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&auto=format&fit=crop&q=80'
+    image: 'https://kai-personal-website.netlify.app/assets/covers/cover-modely.webp'
   }
 };
 

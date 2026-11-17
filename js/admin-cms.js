@@ -23,6 +23,7 @@ function isCreatorAuthenticated() {
 let domMounted = false;
 let currentStudioTab = 'posts';
 let editingPostId = null;
+let overridingStaticPostId = null;
 let lockoutTimerId = null;
 
 function readLockState() {
@@ -211,8 +212,19 @@ function buildAdminDomHtml() {
                             </div>
 
                             <div>
+                                <label for="newHighlights" class="font-bold text-slate-700 block mb-1">📌 本文重點整理 Highlights（選填，每行一項，自動於閱讀器頂部生成重點盒）</label>
+                                <textarea id="newHighlights" rows="3" placeholder="例如：&#10;🏥 完整拆解公立醫院本俸、夜班津貼與考績獎金比例&#10;📈 結合定期定額指數投資打造穩定被動現金流" class="calc-input w-full leading-relaxed"></textarea>
+                            </div>
+
+                            <div>
                                 <label for="newSummary" class="font-bold text-slate-700 block mb-1">文章正文與內文摘要 *</label>
-                                <textarea id="newSummary" required rows="8" placeholder="在此撰寫或貼上完整圖文內文..." class="calc-input w-full leading-relaxed"></textarea>
+                                <div class="studio-format-bar" role="toolbar" aria-label="文章排版快捷工具">
+                                    <button type="button" onclick="insertEditorSnippet('h2')" class="studio-format-btn">+ 章節標題 H2</button>
+                                    <button type="button" onclick="insertEditorSnippet('nursing')" class="studio-format-btn">+ 🩺 臨床提醒框</button>
+                                    <button type="button" onclick="insertEditorSnippet('money')" class="studio-format-btn">+ ⚠️ 理財聲明框</button>
+                                    <button type="button" onclick="insertEditorSnippet('quote')" class="studio-format-btn">+ 💬 金句引言</button>
+                                </div>
+                                <textarea id="newSummary" required rows="8" placeholder="在此撰寫或貼上完整圖文內文，或使用上方按鈕插入章節與提醒框..." class="calc-input w-full leading-relaxed"></textarea>
                             </div>
 
                             <div class="pt-2 flex flex-wrap items-center justify-end gap-2">
@@ -577,9 +589,12 @@ export function renderStudioPostList() {
         const safeTitle = escapeHtml(post.title);
         const safeImg = optimizeCloudinaryUrl(sanitizeImageUrl(post.image, safeCat), 160);
         const isCustom = post._isCustom === true;
+        const isOverride = Boolean(post.replacesStaticId);
         const isFeatured = Boolean(post.featured);
         const badge = isCustom
-            ? '<span class="studio-badge studio-badge--cloud">雲端文章</span>'
+            ? (isOverride
+                ? '<span class="studio-badge studio-badge--cloud">雲端覆寫</span>'
+                : '<span class="studio-badge studio-badge--cloud">雲端文章</span>')
             : '<span class="studio-badge studio-badge--seed">預設範本</span>';
         const featuredBadge = isFeatured
             ? '<span class="studio-badge studio-badge--featured">⭐ 精選主打</span>'
@@ -592,7 +607,8 @@ export function renderStudioPostList() {
                 <button type="button" onclick="handleDeletePost('${safeId}', event)" class="studio-act-btn studio-act-btn--danger">刪除</button>
               `
             : `
-                <button type="button" onclick="duplicateStaticPostToEditor('${safeId}')" class="studio-act-btn" title="複製成可自由修改與覆寫的新文章">複製編修</button>
+                <button type="button" onclick="togglePostFeatured('${safeId}', event)" aria-pressed="${isFeatured}" class="studio-act-btn ${isFeatured ? 'studio-act-btn--featured-on' : ''}">${isFeatured ? '⭐ 已精選' : '☆ 設為精選'}</button>
+                <button type="button" onclick="duplicateStaticPostToEditor('${safeId}')" class="studio-act-btn" title="編修並覆寫此預設範本（不重複出現）">覆寫編修</button>
               `;
 
         return `
@@ -624,17 +640,52 @@ export async function togglePostFeatured(postId, event) {
         return;
     }
 
-    const post = (typeof customPosts !== 'undefined') ? customPosts.find(p => p.id === postId) : null;
-    if (!post) return;
+    const customPost = (typeof customPosts !== 'undefined')
+        ? customPosts.find(p => p.id === postId || p.replacesStaticId === postId)
+        : null;
+    const seedPost = (!customPost && typeof staticPostsData !== 'undefined')
+        ? staticPostsData.find(p => p.id === postId)
+        : null;
+    if (!customPost && !seedPost) return;
 
     const btn = event?.currentTarget instanceof HTMLButtonElement ? event.currentTarget : null;
-    const nextFeatured = !Boolean(post.featured);
+    const nextFeatured = customPost ? !Boolean(customPost.featured) : !Boolean(seedPost.featured);
     if (btn) btn.disabled = true;
 
     try {
-        const { db, doc, updateDoc } = window.fb;
-        await updateDoc(doc(db, 'posts', postId), { featured: nextFeatured });
-        post.featured = nextFeatured;
+        const { db, collection, addDoc, doc, updateDoc, serverTimestamp } = window.fb;
+        if (customPost) {
+            await updateDoc(doc(db, 'posts', customPost.id), { featured: nextFeatured });
+            customPost.featured = nextFeatured;
+        } else if (seedPost) {
+            const imgs = (Array.isArray(seedPost.images) && seedPost.images.length)
+                ? seedPost.images
+                : [seedPost.image].filter(Boolean);
+            const overridePayload = {
+                title: seedPost.title || '',
+                category: normalizeCategorySlug(seedPost.category),
+                tags: Array.isArray(seedPost.tags) ? seedPost.tags : ['#精選'],
+                date: seedPost.date || new Date().toISOString().split('T')[0],
+                readTime: seedPost.readTime || '3 分鐘',
+                likes: seedPost.likes ?? 0,
+                featured: nextFeatured,
+                image: imgs[0] || seedPost.image || '',
+                images: imgs,
+                summary: seedPost.summary || '',
+                highlights: Array.isArray(seedPost.highlights) ? seedPost.highlights : [],
+                igUrl: seedPost.igUrl || '',
+                content: seedPost.content || `<p class="whitespace-pre-line">${escapeHtml(seedPost.summary || '')}</p>`,
+                replacesStaticId: seedPost.id,
+                createdAt: serverTimestamp()
+            };
+            const docRef = await addDoc(collection(db, 'posts'), overridePayload);
+            if (typeof customPosts !== 'undefined') {
+                const newId = docRef?.id || `override-${seedPost.id}`;
+                if (!customPosts.some(p => p.id === newId || p.replacesStaticId === seedPost.id)) {
+                    customPosts.unshift({ id: newId, ...overridePayload, _isCustom: true });
+                }
+            }
+        }
         if (typeof rebuildPostsData === 'function') rebuildPostsData();
         if (typeof renderPosts === 'function') renderPosts();
         renderStudioPostList();
@@ -650,13 +701,22 @@ export async function togglePostFeatured(postId, event) {
 }
 
 export function duplicateStaticPostToEditor(postId) {
+    const existingOverride = (typeof customPosts !== 'undefined')
+        ? customPosts.find(p => p.replacesStaticId === postId || p.id === postId)
+        : null;
+    if (existingOverride) {
+        openEditPostModal(existingOverride.id);
+        return;
+    }
+
     const post = (typeof postsData !== 'undefined') ? postsData.find(p => p.id === postId) : null;
     if (!post) return;
     ensureAdminDomMounted();
     editingPostId = null;
-    document.getElementById('addPostModalTitle').textContent = '✨ 複製範本建立全新文章';
-    document.getElementById('studioEditorTabLabel').textContent = '建立新文章';
-    document.getElementById('addPostSubmitBtn').textContent = '儲存並發布至網站';
+    overridingStaticPostId = post.id;
+    document.getElementById('addPostModalTitle').textContent = '✨ 編修並覆寫預設範本';
+    document.getElementById('studioEditorTabLabel').textContent = '覆寫範本';
+    document.getElementById('addPostSubmitBtn').textContent = '儲存並覆寫範本';
 
     document.getElementById('newTitle').value = post.title || '';
     document.getElementById('newCategory').value = post.category || 'nursing';
@@ -665,7 +725,8 @@ export function duplicateStaticPostToEditor(postId) {
     document.getElementById('newImages').value = (post.images && post.images.length ? post.images : [post.image].filter(Boolean)).join('\n');
     document.getElementById('newIgUrl').value = post.igUrl || '';
     document.getElementById('newTags').value = (post.tags || []).join(', ');
-    document.getElementById('newSummary').value = post.summary || '';
+    document.getElementById('newHighlights').value = (post.highlights || []).join('\n');
+    document.getElementById('newSummary').value = post.rawBody || post.summary || '';
 
     syncEditorImagePreviews();
     switchCreatorTab('editor');
@@ -674,11 +735,13 @@ export function duplicateStaticPostToEditor(postId) {
 export function openAddPostModal() {
     ensureAdminDomMounted();
     editingPostId = null;
+    overridingStaticPostId = null;
     document.getElementById('addPostModalTitle').textContent = '➕ 匯入 / 新增 IG 圖文貼文';
     document.getElementById('studioEditorTabLabel').textContent = '新增文章';
     document.getElementById('addPostSubmitBtn').textContent = '儲存並發布至網站';
     document.getElementById('addPostForm').reset();
     document.getElementById('newFeatured').checked = false;
+    document.getElementById('newHighlights').value = '';
     syncEditorImagePreviews();
 
     const modal = document.getElementById('creatorStudioModal');
@@ -696,6 +759,7 @@ export function openEditPostModal(postId, event) {
 
     ensureAdminDomMounted();
     editingPostId = postId;
+    overridingStaticPostId = post.replacesStaticId || null;
     document.getElementById('addPostModalTitle').textContent = '✏️ 編輯圖文貼文';
     document.getElementById('studioEditorTabLabel').textContent = '編輯中';
     document.getElementById('addPostSubmitBtn').textContent = '儲存更新';
@@ -707,7 +771,8 @@ export function openEditPostModal(postId, event) {
     document.getElementById('newImages').value = (post.images || []).join('\n');
     document.getElementById('newIgUrl').value = post.igUrl || '';
     document.getElementById('newTags').value = (post.tags || []).join(', ');
-    document.getElementById('newSummary').value = post.summary || '';
+    document.getElementById('newHighlights').value = (post.highlights || []).join('\n');
+    document.getElementById('newSummary').value = post.rawBody || post.summary || '';
 
     syncEditorImagePreviews();
 
@@ -721,6 +786,7 @@ export function openEditPostModal(postId, event) {
 
 export function closeAddPostModal() {
     editingPostId = null;
+    overridingStaticPostId = null;
     const label = document.getElementById('studioEditorTabLabel');
     if (label) label.textContent = '新增／編輯文章';
     const previewRow = document.getElementById('uploadPreviewRow');
@@ -952,6 +1018,128 @@ export async function handleDeletePost(postId, event) {
     }
 }
 
+const CALLOUT_DEFAULT_TITLES = {
+    nursing: '🩺 臨床提醒',
+    money: '⚠️ 理財風險聲明',
+    note: '💡 重點筆記'
+};
+
+export function insertEditorSnippet(type) {
+    const textarea = document.getElementById('newSummary');
+    if (!textarea) return;
+    const snippets = {
+        h2: '\n\n## 📌 請輸入章節標題\n',
+        nursing: '\n\n:::nursing 🩺 臨床提醒\n請輸入臨床提醒或排班建議...\n:::\n',
+        money: '\n\n:::money ⚠️ 理財風險聲明\n本文僅為個人紀律分享，不構成任何投資建議。\n:::\n',
+        quote: '\n\n> 「請輸入想強調的金句或感悟...」\n'
+    };
+    const snippet = snippets[type];
+    if (!snippet) return;
+
+    const value = textarea.value || '';
+    const start = typeof textarea.selectionStart === 'number' ? textarea.selectionStart : value.length;
+    const end = typeof textarea.selectionEnd === 'number' ? textarea.selectionEnd : value.length;
+    const inserted = (start === 0 ? snippet.replace(/^\n+/, '') : snippet);
+    textarea.value = value.slice(0, start) + inserted + value.slice(end);
+    const nextPos = start + inserted.length;
+    textarea.focus();
+    if (typeof textarea.setSelectionRange === 'function') {
+        textarea.setSelectionRange(nextPos, nextPos);
+    }
+}
+
+export function extractCleanSummary(rawText) {
+    const cleaned = String(rawText || '')
+        .replace(/\r\n?/g, '\n')
+        .replace(/^:::(?:nursing|money|note)\s*/gmi, '')
+        .replace(/^:::\s*$/gm, '')
+        .replace(/^#{2,3}\s+/gm, '')
+        .replace(/^>\s*/gm, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    if (cleaned.length <= 180) return cleaned;
+    return cleaned.slice(0, 177).trimEnd() + '...';
+}
+
+export function buildCustomArticleContent(rawText) {
+    const trimmed = String(rawText || '').replace(/\r\n?/g, '\n').trim();
+    if (!trimmed) return '';
+
+    const hasStructuredSyntax = /^(?:::(?:nursing|money|note)\b|#{2,3}\s+|>\s*)/mi.test(trimmed);
+    if (!hasStructuredSyntax) {
+        return `<p class="whitespace-pre-line">${escapeHtml(trimmed)}</p>`;
+    }
+
+    const lines = trimmed.split('\n');
+    const blocks = [];
+    let paraLines = [];
+    let callout = null;
+    let headingCount = 0;
+
+    const flushPara = () => {
+        if (paraLines.length > 0) {
+            blocks.push(`<p>${paraLines.map(escapeHtml).join('<br>')}</p>`);
+            paraLines = [];
+        }
+    };
+    const flushCallout = () => {
+        if (!callout) return;
+        const bodyHtml = escapeHtml(callout.lines.join('\n').trim()).replace(/\n/g, '<br>');
+        blocks.push(
+            `<div class="callout callout--${callout.kind}"><div class="callout-title">${escapeHtml(callout.title)}</div><p>${bodyHtml}</p></div>`
+        );
+        callout = null;
+    };
+
+    for (const line of lines) {
+        if (callout) {
+            if (line.trim() === ':::') {
+                flushCallout();
+            } else {
+                callout.lines.push(line);
+            }
+            continue;
+        }
+        const calloutStart = line.match(/^:::(nursing|money|note)\s*(.*)$/i);
+        if (calloutStart) {
+            flushPara();
+            const kind = calloutStart[1].toLowerCase();
+            const title = (calloutStart[2] || '').trim() || CALLOUT_DEFAULT_TITLES[kind] || '💡 重點提醒';
+            callout = { kind, title, lines: [] };
+            continue;
+        }
+        const h2Match = line.match(/^##\s+(.+)$/);
+        if (h2Match) {
+            flushPara();
+            headingCount++;
+            blocks.push(`<h2 id="sec-custom-${headingCount}">${escapeHtml(h2Match[1].trim())}</h2>`);
+            continue;
+        }
+        const h3Match = line.match(/^###\s+(.+)$/);
+        if (h3Match) {
+            flushPara();
+            headingCount++;
+            blocks.push(`<h3 id="sec-custom-${headingCount}">${escapeHtml(h3Match[1].trim())}</h3>`);
+            continue;
+        }
+        const quoteMatch = line.match(/^>\s*(.+)$/);
+        if (quoteMatch) {
+            flushPara();
+            blocks.push(`<blockquote>${escapeHtml(quoteMatch[1].trim())}</blockquote>`);
+            continue;
+        }
+        if (!line.trim()) {
+            flushPara();
+            continue;
+        }
+        paraLines.push(line.trim());
+    }
+
+    flushCallout();
+    flushPara();
+    return blocks.join('\n');
+}
+
 export async function handleSaveCustomPost(e) {
     e.preventDefault();
 
@@ -967,7 +1155,8 @@ export async function handleSaveCustomPost(e) {
     const rawImages = document.getElementById('newImages').value.trim();
     const igUrl = document.getElementById('newIgUrl').value.trim();
     const rawTags = document.getElementById('newTags').value.trim();
-    const summary = document.getElementById('newSummary').value.trim();
+    const rawHighlights = document.getElementById('newHighlights')?.value || '';
+    const rawBody = document.getElementById('newSummary').value.trim();
 
     let imagesArr = parseImageUrls(rawImages);
     if (imagesArr.length === 0) {
@@ -976,25 +1165,48 @@ export async function handleSaveCustomPost(e) {
     imagesArr = imagesArr.map(addWatermark);
 
     const tagsArr = rawTags ? rawTags.split(',').map(s => s.trim().startsWith('#') ? s.trim() : '#' + s.trim()) : ['#新圖文'];
+    const highlightsArr = rawHighlights.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
 
     const existingPost = (editingPostId && typeof customPosts !== 'undefined')
         ? customPosts.find(p => p.id === editingPostId)
         : null;
+    const staticTargetId = existingPost?.replacesStaticId || overridingStaticPostId || null;
+    const seedPost = (staticTargetId && typeof staticPostsData !== 'undefined')
+        ? staticPostsData.find(p => p.id === staticTargetId)
+        : null;
+
+    const keptSeedSummaryOnly = Boolean(
+        seedPost &&
+        rawBody === seedPost.summary &&
+        !(existingPost?.rawBody && existingPost.rawBody !== seedPost.summary) &&
+        seedPost.content
+    );
+    const summary = (seedPost && rawBody === seedPost.summary)
+        ? seedPost.summary
+        : extractCleanSummary(rawBody);
+    const content = keptSeedSummaryOnly
+        ? (existingPost?.content || seedPost.content)
+        : buildCustomArticleContent(rawBody);
 
     const newPost = {
         title,
         category,
         tags: tagsArr,
-        date: existingPost?.date || new Date().toISOString().split('T')[0],
+        date: existingPost?.date || seedPost?.date || new Date().toISOString().split('T')[0],
         readTime,
-        likes: existingPost?.likes ?? 0,
+        likes: existingPost?.likes ?? seedPost?.likes ?? 0,
         featured,
         image: imagesArr[0],
         images: imagesArr,
+        highlights: highlightsArr,
         summary,
+        rawBody,
         igUrl: sanitizeUrl(igUrl),
-        content: `<p class="whitespace-pre-line">${escapeHtml(summary)}</p>`
+        content
     };
+    if (staticTargetId) {
+        newPost.replacesStaticId = staticTargetId;
+    }
 
     try {
         const { db, collection, addDoc, doc, updateDoc, serverTimestamp } = window.fb;
@@ -1008,7 +1220,9 @@ export async function handleSaveCustomPost(e) {
             await addDoc(collection(db, 'posts'), newPost);
             e.target.reset();
             closeAddPostModal();
-            if (typeof showToast === 'function') showToast('✨ 成功新增並發布新圖文貼文！所有訪客都看得到囉');
+            if (typeof showToast === 'function') {
+                showToast(staticTargetId ? '✨ 已覆寫預設範本並同步發布' : '✨ 成功新增並發布新圖文貼文！所有訪客都看得到囉');
+            }
         }
         renderStudioPostList();
     } catch (err) {
@@ -1210,8 +1424,8 @@ export function renderAdminInsights() {
     }
 }
 
-// 註冊至 window，供 HTML inline 事件與跨模組呼叫
-Object.assign(window, {
+// 集中掛載至 window.KaiCMS 命名空間，並保留 window 頂層別名以維持 HTML inline 事件相容性
+const KaiCMS = Object.freeze({
     ensureAdminDomMounted,
     openLoginModal,
     closeLoginModal,
@@ -1232,6 +1446,9 @@ Object.assign(window, {
     deleteCloudinaryImage,
     handleImageFileUpload,
     handleDeletePost,
+    insertEditorSnippet,
+    extractCleanSummary,
+    buildCustomArticleContent,
     handleSaveCustomPost,
     handleUpdatePassword,
     handleUpdateEmail,
@@ -1239,3 +1456,6 @@ Object.assign(window, {
     closeAdminInsightsModal,
     renderAdminInsights
 });
+
+window.KaiCMS = KaiCMS;
+Object.assign(window, KaiCMS);

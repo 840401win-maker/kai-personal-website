@@ -3917,6 +3917,28 @@ html, body {
     border-color: #FECDD3;
     background: #FFF1F2;
 }
+.studio-format-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-bottom: .45rem;
+}
+.studio-format-btn {
+    padding: .28rem .6rem;
+    border-radius: 8px;
+    font-size: .7rem;
+    font-weight: 600;
+    color: var(--ink-2);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    cursor: pointer;
+    transition: background-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.studio-format-btn:hover {
+    background: var(--surface-sunk);
+    color: var(--ink);
+    border-color: var(--line-strong);
+}
 .studio-act-btn--danger:hover {
     background: #FFE4E6;
     color: #9F1239;

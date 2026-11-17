@@ -65,6 +65,8 @@ const html = fs.readFileSync(path.join(repoDir, 'index.html'), 'utf8');
 const css = fs.readFileSync(path.join(repoDir, 'css', 'style.css'), 'utf8');
 const utils = fs.readFileSync(path.join(repoDir, 'js', 'utils.js'), 'utf8');
 const adminCms = fs.readFileSync(path.join(repoDir, 'js', 'admin-cms.js'), 'utf8');
+const firestoreRead = fs.readFileSync(path.join(repoDir, 'js', 'firestore-read.js'), 'utf8');
+const edgeMeta = fs.readFileSync(path.join(repoDir, 'netlify', 'edge-functions', 'article-metadata.js'), 'utf8');
 
 let phase3ChecksPassed = 0;
 function check(description, condition) {
@@ -98,6 +100,10 @@ check('handleImgError DOM cover is scoped to post-card-media without innerHTML',
 check('hidden admin trigger uses openHiddenAdminEntry and 5-tap threshold', html.includes('openHiddenAdminEntry') && html.includes('adminTaps.length >= 5') && adminCms.includes('id="loginLockNotice"'));
 check('admin CMS exposes featured toggle in editor & post list', adminCms.includes('id="newFeatured"') && adminCms.includes('togglePostFeatured') && css.includes('.studio-switch-card') && css.includes('.studio-badge--featured'));
 check('default articles replace external Unsplash stock photos with unified local editorial covers', !html.includes('images.unsplash.com') && html.includes('./assets/covers/cover-ig-archive.webp') && html.includes('./assets/covers/cover-9years.webp') && html.includes('./assets/covers/cover-salary100.webp') && html.includes('./assets/covers/cover-modely.webp'));
+check('edge article-metadata syncs static covers without Unsplash', !edgeMeta.includes('images.unsplash.com') && edgeMeta.includes('assets/covers/cover-ig-archive.webp') && edgeMeta.includes('assets/covers/cover-9years.webp') && edgeMeta.includes('assets/covers/cover-salary100.webp') && edgeMeta.includes('assets/covers/cover-modely.webp'));
+check('firestore-read deduplicates static posts overridden by replacesStaticId', firestoreRead.includes('replacesStaticId') && firestoreRead.includes('overriddenIds'));
+check('admin CMS supports highlights field, formatting snippets & KaiCMS namespace', adminCms.includes('id="newHighlights"') && adminCms.includes('insertEditorSnippet') && adminCms.includes('buildCustomArticleContent') && adminCms.includes('window.KaiCMS = KaiCMS') && css.includes('.studio-format-bar'));
+check('homepage uses 1200x630 og-brand-home.jpg social share card', html.includes('og-brand-home.jpg') && fs.existsSync(path.join(repoDir, 'assets', 'covers', 'og-brand-home.jpg')));
 
 const grandTotal = totalUnitChecksPassed + phase3ChecksPassed;
 console.log(`\n=== DYNAMIC TEST SUMMARY ===`);
