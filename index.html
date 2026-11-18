@@ -1400,7 +1400,7 @@
             let mdCol = 0;
             let lgCol = 0;
 
-            grid.innerHTML = filtered.map(post => {
+            grid.innerHTML = filtered.map((post, idx) => {
                 const isLiked = userLikes[post.id];
                 const likeCount = post.likes + (isLiked ? 1 : 0);
                 const isBookmarked = userBookmarks[post.id];
@@ -1439,7 +1439,7 @@
                 return `
                     <article class="post-card flex flex-col group ${colSpanClasses}" data-theme="${theme}">
                         <div class="post-card-media relative overflow-hidden ${mediaHeightClasses} cursor-pointer" onclick="openPostModal('${sanitizePostId(post.id)}')">
-                            <img src="${safeImage}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <img src="${safeImage}" alt="${safeTitle}" loading="${idx < 2 ? 'eager' : 'lazy'}" fetchpriority="${idx === 0 ? 'high' : 'auto'}" decoding="async" onerror="handleImgError(this, '${escapeHtml(post.category)}')" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="media-scrim"></div>
 
                             ${post.featured ? `
@@ -2101,6 +2101,9 @@
             const cleanId = sanitizePostId(postId);
             const post = postsData.find(p => p.id === cleanId);
             if (!post) return;
+            if (typeof window !== 'undefined' && typeof window.trackSiteEvent === 'function') {
+                window.trackSiteEvent('article_view', { post_id: cleanId, category: post.category || 'nursing' });
+            }
 
             // Phase 2B-2: Independent Article URL — 只有在網址還不是這篇文章的網址時才更新。
             // 若為閱讀器內部連續導航（Modal 已呈開啟狀態），使用 replaceState 避免按返回時在歷史堆疊中循環上一篇 (NAV-01)！
@@ -3374,6 +3377,9 @@
                 wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
             showToast('✨ 已為您生成專屬 IG 試算圖卡！');
+            if (typeof window !== 'undefined' && typeof window.trackSiteEvent === 'function') {
+                window.trackSiteEvent('calc_share_card_generate');
+            }
         }
 
         async function shareCalcCardImage() {
@@ -3414,6 +3420,9 @@
                 userLikes[postId] = true;
             }
             writeStoredPreference('kai_user_likes', JSON.stringify(userLikes));
+            if (typeof window !== 'undefined' && typeof window.trackSiteEvent === 'function') {
+                window.trackSiteEvent('article_like', { post_id: postId, liked: Boolean(userLikes[postId]) });
+            }
             renderPosts();
         }
 
@@ -3427,6 +3436,9 @@
                 userBookmarks[postId] = true;
             }
             writeStoredPreference('kai_user_bookmarks', JSON.stringify(userBookmarks));
+            if (typeof window !== 'undefined' && typeof window.trackSiteEvent === 'function') {
+                window.trackSiteEvent('article_bookmark', { post_id: postId, bookmarked: Boolean(userBookmarks[postId]) });
+            }
             renderPosts();
             if (showOnlyBookmarks && removing && gridHadFocus) {
                 document.getElementById('bookmarksFilter').focus({ preventScroll: true });

@@ -256,8 +256,12 @@ function buildAdminDomHtml() {
                         <div class="insights-stat-card">
                             <span class="insights-stat-title"><svg class="ico" style="width:13px;height:13px;color:#059669;"><use href="#i-clock"/></svg> 本機已讀紀錄</span>
                             <span id="insightsTotalViews" class="insights-stat-val num">0</span>
-                            <span class="text-[11px] text-slate-400">當前瀏覽器紀錄（全站瀏覽需串接外部分析）</span>
+                            <span class="text-[11px] text-slate-400">當前瀏覽器紀錄（下方卡片為本機與即時資料庫數據）</span>
                         </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-teal-50/70 border border-teal-200/70 text-[11px] text-teal-900 leading-relaxed">
+                        📈 <b>跨裝置全站行為事件追蹤已啟用（GA4 · <span class="num">G-5JH7SP3NS2</span>）</b>：訪客觸發之 <code>article_view</code>、<code>article_like</code>、<code>article_bookmark</code> 與 <code>calc_share_card_generate</code> 將自動傳送至 Firebase Analytics 後台報表。
                     </div>
 
                     <section class="calc-panel">

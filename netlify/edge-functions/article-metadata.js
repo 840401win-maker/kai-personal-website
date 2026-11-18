@@ -47,6 +47,58 @@ function isAbsoluteHttpUrl(value) {
   return typeof value === 'string' && /^https?:\/\//i.test(value);
 }
 
+function normalizeArticleImageUrl(rawImage) {
+  if (typeof rawImage !== 'string') return '';
+  const trimmed = rawImage.trim();
+  if (!trimmed) return '';
+  if (isAbsoluteHttpUrl(trimmed)) return trimmed;
+  if (trimmed.startsWith('./')) {
+    return `https://kai-personal-website.netlify.app/${trimmed.slice(2)}`;
+  }
+  if (trimmed.startsWith('/')) {
+    return `https://kai-personal-website.netlify.app${trimmed}`;
+  }
+  return '';
+}
+
+function cleanMetaSummary(rawSummary) {
+  const cleaned = String(rawSummary || '').replace(/\s+/g, ' ').trim();
+  if (cleaned.length <= 180) return cleaned;
+  return `${cleaned.slice(0, 177).trimEnd()}...`;
+}
+
+async function fetchFirestoreArticle(id) {
+  if (!/^[A-Za-z0-9_-]{1,128}$/.test(id)) return null;
+  try {
+    const endpoint = `https://firestore.googleapis.com/v1/projects/kainursinglife/databases/(default)/documents/posts/${encodeURIComponent(id)}`;
+    const init = typeof AbortSignal !== 'undefined' && typeof AbortSignal.timeout === 'function'
+      ? { signal: AbortSignal.timeout(1800) }
+      : undefined;
+    const res = await fetch(endpoint, init);
+    if (!res.ok) return null;
+
+    const doc = await res.json();
+    const fields = doc && doc.fields;
+    if (!fields) return null;
+
+    const title = fields.title && fields.title.stringValue ? fields.title.stringValue.trim() : '';
+    const rawSummary = fields.summary && fields.summary.stringValue ? fields.summary.stringValue : '';
+    const summary = cleanMetaSummary(rawSummary);
+    if (!title || !summary) return null;
+
+    const date = fields.date && fields.date.stringValue ? fields.date.stringValue : '';
+    const firstImgVal = fields.images && fields.images.arrayValue && Array.isArray(fields.images.arrayValue.values) && fields.images.arrayValue.values[0]
+      ? fields.images.arrayValue.values[0].stringValue
+      : '';
+    const rawImage = (fields.image && fields.image.stringValue) ? fields.image.stringValue : firstImgVal;
+    const image = normalizeArticleImageUrl(rawImage);
+
+    return { title, summary, date, image };
+  } catch (error) {
+    return null;
+  }
+}
+
 // 只用來安全地放進 HTML 屬性 / 文字節點，避免文章資料裡萬一含有 < > " & 破壞 HTML 結構
 function escapeForHtml(str) {
   return String(str)
@@ -72,10 +124,12 @@ export default async (request, context) => {
   } catch (error) {
     return context.next();
   }
-  const article = STATIC_ARTICLES[id];
+  let article = STATIC_ARTICLES[id];
+  if (!article) {
+    article = await fetchFirestoreArticle(id);
+  }
 
-  // 不是目前已知的 5 篇靜態文章之一（可能是打錯字、或是 Firestore 自訂文章的 id）
-  // → 完全不處理，交回原本既有的 SPA 行為，不猜測、不捏造內容。
+  // 找不到靜態或雲端文章資料 → 交回原本既有的 SPA 行為
   if (!article) {
     return context.next();
   }

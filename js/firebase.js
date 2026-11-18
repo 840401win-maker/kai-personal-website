@@ -7,6 +7,7 @@ import {
     getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut,
     updatePassword, verifyBeforeUpdateEmail, EmailAuthProvider, reauthenticateWithCredential
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getAnalytics, isSupported, logEvent } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBsdlmDz1LTcQiqlIYBbWbjdUZq0OzUXe0",
@@ -24,10 +25,24 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
+let analyticsInstance = null;
+isSupported().then((yes) => {
+    if (yes) analyticsInstance = getAnalytics(app);
+}).catch(() => {});
+
+window.trackSiteEvent = function trackSiteEvent(eventName, params = {}) {
+    try {
+        if (analyticsInstance && typeof logEvent === 'function') {
+            logEvent(analyticsInstance, eventName, params);
+        }
+    } catch { /* ignore ad-blocker or offline restrictions */ }
+};
+
 window.fb = {
     db, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp,
     auth, signInWithEmailAndPassword, signOut, doc, updateDoc, deleteDoc,
-    updatePassword, verifyBeforeUpdateEmail, EmailAuthProvider, reauthenticateWithCredential
+    updatePassword, verifyBeforeUpdateEmail, EmailAuthProvider, reauthenticateWithCredential,
+    trackSiteEvent: window.trackSiteEvent
 };
 
 onAuthStateChanged(auth, (user) => {

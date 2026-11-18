@@ -104,6 +104,14 @@ check('edge article-metadata syncs static covers without Unsplash', !edgeMeta.in
 check('firestore-read deduplicates static posts overridden by replacesStaticId', firestoreRead.includes('replacesStaticId') && firestoreRead.includes('overriddenIds'));
 check('admin CMS supports highlights field, formatting snippets & KaiCMS namespace', adminCms.includes('id="newHighlights"') && adminCms.includes('insertEditorSnippet') && adminCms.includes('buildCustomArticleContent') && adminCms.includes('window.KaiCMS = KaiCMS') && css.includes('.studio-format-bar'));
 check('homepage uses 1200x630 og-brand-home.jpg social share card', html.includes('og-brand-home.jpg') && fs.existsSync(path.join(repoDir, 'assets', 'covers', 'og-brand-home.jpg')));
+check('edge article-metadata supports dynamic Firestore REST fallback & matches static covers', edgeMeta.includes('fetchFirestoreArticle') && edgeMeta.includes('firestore.googleapis.com/v1/projects/kainursinglife') && [
+  ['post-30years', '1_ykf8js.png'],
+  ['ig-post-DSzZGbLknAR', 'cover-ig-archive.webp'],
+  ['post-9years', 'cover-9years.webp'],
+  ['post-salary100', 'cover-salary100.webp'],
+  ['post-modely', 'cover-modely.webp']
+].every(([id, file]) => html.includes(id) && html.includes(file) && edgeMeta.includes(id) && edgeMeta.includes(file)));
+check('GA4 cross-device trackSiteEvent and LCP card priority are wired', fs.readFileSync(path.join(repoDir, 'js', 'firebase.js'), 'utf8').includes('trackSiteEvent') && html.includes("trackSiteEvent('article_view'") && html.includes('fetchpriority=') && fs.existsSync(path.join(repoDir, 'verify-live-deploy.cjs')));
 
 const grandTotal = totalUnitChecksPassed + phase3ChecksPassed;
 console.log(`\n=== DYNAMIC TEST SUMMARY ===`);
